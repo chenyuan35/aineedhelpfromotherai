@@ -1632,6 +1632,20 @@
     "label": "eSIM.gg +372 app-verification discussion: named-user conflicting outcomes within one original thread; success-only poll cannot establish a success rate"
   },
   {
+    "id": "linuxdo-esimgg-2992813-20261008",
+    "url": "https://linux.do/t/topic/2992813",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2026-10-08",
+    "label": "One eSIM.gg 5317 Codex SMS success claim by kbyxlin; OP Google Voice retention loss is unrelated; Discord invalid-number mention is unassigned to any provider"
+  },
+  {
+    "id": "linuxdo-esimgg-saily-2836806-20260831",
+    "url": "https://linux.do/t/topic/2836806",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2026-08-31",
+    "label": "eSIM.gg first-day WhatsApp failure followed by later success; separate same-thread new-line generic SMS failures; Saily claims not normalized"
+  },
+  {
     "id": "linuxdo-giffgaff-1615582",
     "url": "https://linux.do/t/topic/1615582",
     "type": "first-hand-community-thread",
@@ -4016,6 +4030,13 @@
     "reportedAt": "2026-07-13"
   },
   {
+    "id": "reddit-globe-prepaid-keeping-abroad-20260402",
+    "url": "https://www.reddit.com/r/phmigrate/comments/1sa5uhm",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2026-04-02",
+    "label": "Three author-level original Globe prepaid abroad experiences: incoming generic OTP, two-year reload retention and foreigner-registered promo-purchase friction"
+  },
+  {
     "id": "reddit-gp-visitor-biometric-2026-03-21",
     "url": "https://www.reddit.com/r/bangladesh/comments/1rzl9ms/the_biometric_sim_card_registration_at_dhaka/",
     "type": "first-hand-community-thread",
@@ -4112,6 +4133,13 @@
     "reportedAt": "2026-02-15"
   },
   {
+    "id": "reddit-smarty-overseas-periodic-sms-1i0c96q-20250116",
+    "url": "https://www.reddit.com/r/SmartyMobile/comments/1i0c96q",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2025-01-16",
+    "label": "r/SmartyMobile: cacolac323 reports maintaining a paid SMARTY UK number while living abroad, switching it on briefly for occasional SMS. Destination and named app unverified."
+  },
+  {
     "id": "reddit-srilanka-number-keep-job-2026-08-13",
     "url": "https://www.reddit.com/r/srilanka/comments/1vn8blh/best_way_to_keep_your_sl_mobile_numbers_active/",
     "type": "community-demand-thread",
@@ -4140,6 +4168,13 @@
     "url": "https://www.reddit.com/r/NoContract/comments/1i3tzxb/ultra_mobile_is_a_scam/",
     "type": "community-report",
     "reportedAt": "2025-01-17"
+  },
+  {
+    "id": "reddit-usmobile-light-uzbekistan-20250118",
+    "url": "https://www.reddit.com/r/USMobile/comments/1i4hksg",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2025-01-18",
+    "label": "US Mobile Light user on Warp in Uzbekistan: intermittent ordinary SMS, Wi-Fi call failure and overseas eSIM switch friction"
   },
   {
     "id": "redpocket-annual-20260929",

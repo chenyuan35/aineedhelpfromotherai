@@ -13,8 +13,8 @@ const observations = read('data/phone/v1/observations.json');
 assert.equal(inbox.schemaVersion, 1);
 assert.equal(inbox.scope, 'real-number-original-user-service-verification');
 assert.equal(inbox.publicationState, 'backstage-candidate-only');
-assert.equal(inbox.newCanonicalSourceCount, 1);
-assert.equal(inbox.newCanonicalObservationCount, 9);
+assert.equal(inbox.newCanonicalSourceCount, 3);
+assert.equal(inbox.newCanonicalObservationCount, 11);
 assert.equal(inbox.sourcePolicy.oneThreadOnePrimaryUrl, true);
 assert.equal(inbox.sourcePolicy.multiAuthorsWithinThreadCountAsIndependentSourceUrls, false);
 assert.equal(inbox.sourcePolicy.votesAreOutcomes, false);
@@ -28,7 +28,7 @@ for (const thread of inbox.threads) {
   assert(!threadIds.has(thread.threadId), 'one original discussion per thread id');
   assert(!threadUrls.has(thread.url), 'one original URL per discussion');
   assert(/^https:\/\/linux\.do\/t\/topic\/\d+$/.test(thread.url));
-  const admitted = thread.threadId === 'linuxdo-2919304';
+  const admitted = ['linuxdo-2919304','linuxdo-2836806','linuxdo-2992813'].includes(thread.threadId);
   assert.equal(thread.primarySourceRecordExistsInCanonical, admitted);
   assert.equal(sources.some((s) => s.url === thread.url), admitted, 'only the reviewed original discussion is canonical');
   assert(Array.isArray(thread.reports) && thread.reports.length);
@@ -51,7 +51,7 @@ for (const thread of inbox.threads) {
   }
 }
 assert.equal(inbox.threads.length, 4);
-assert.equal(n, 11, 'preserve all eleven separately dated/user-attributed assertions');
+assert.equal(n, 12, 'preserve all twelve separately dated/user-attributed assertions');
 const first = inbox.threads.find((t) => t.threadId === 'linuxdo-2919304');
 const positive = first.reports.find((r) => r.authorHandle === 'luweiji' && r.prefixBands.includes('5405'));
 const negative = first.reports.find((r) => r.authorHandle === 'KPI' && r.prefixBands.includes('5405'));
@@ -64,7 +64,9 @@ const temporal = inbox.threads.find((t) => t.threadId === 'linuxdo-2836806');
 assert(temporal.reports.some((r) => r.provider === 'eSIM.gg' && r.outcome === 'failure-then-success'), 'the same account first failed then worked');
 assert(temporal.reports.some((r) => r.provider === 'Saily US-number add-on' && r.outcome === 'success-after-delay'), 'VoIP incident must not be attributed to eSIM.gg');
 const stagedUrls = new Set(inbox.threads.filter(t => !t.primarySourceRecordExistsInCanonical).map(t => t.url));
+assert.equal(stagedUrls.size, 1);
+assert.equal(temporal.reports.find(r => r.authorHandle === 'cyminute' && r.provider === 'eSIM.gg').date, '2026-09-08');
 assert(observations.every((o) => !stagedUrls.has(sources.find((s) => s.id === o.sourceId)?.url)), 'unreviewed reports must not silently affect current service acceptance samples');
 assert.equal(observations.filter(o => o.sourceId === 'linuxdo-esimgg-2919304-20260918').length, 9);
-assert(/before commit to normalized database/i.test(inbox.reviewGate), 'manual source review gate is required');
-console.log('Community original-outcome inbox: 4 thread URLs / 11 attributed assertions / mixed same-prefix and delayed outcomes preserved; one reviewed original canonical source — PASS');
+assert(/require independent manual review before normalization/i.test(inbox.reviewGate), 'manual source review gate is required');
+console.log('Community original-outcome inbox: 4 thread URLs / 12 attributed assertions / mixed same-prefix and delayed outcomes preserved; three reviewed original canonical sources — PASS');
