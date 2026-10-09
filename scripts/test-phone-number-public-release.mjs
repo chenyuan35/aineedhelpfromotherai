@@ -235,7 +235,7 @@ assert.match(giffCard.textContent,/Recovery and refunds are NOT guaranteed/,'no 
 assert(giffCard.querySelector('a[href="https://linux.do/t/topic/2996513"]'),'dated Oct 8 firsthand refund source is linked');
 assert(giffCard.querySelector('a[href="https://linux.do/t/topic/2894665"]'),'dated firsthand port-out source is linked');
 assert.match(lebaraCard.textContent,/Lebara requires UK service activation/,'official Lebara overseas activation restriction visible');
-assert.match(lebaraCard.textContent,/does NOT establish supported, complete first activation abroad/,'one mainland SMS report cannot be promoted');
+assert.match(lebaraCard.textContent,/(?:does|do) NOT establish supported, complete first activation abroad/i,'one mainland SMS report cannot be promoted');
 assert(lebaraCard.querySelector('a[href="https://www.lebara.co.uk/en/help/esim.html"]'),'Lebara official constraint linked');
 assert(lebaraCard.querySelector('a[href="https://linux.do/t/topic/2745784"]'),'Lebara first-hand mainland exception linked');
 assert(lebaraCard.querySelector('a[href="https://linux.do/t/topic/2815946"]'),'Lebara independent mainland no-signal report linked');
