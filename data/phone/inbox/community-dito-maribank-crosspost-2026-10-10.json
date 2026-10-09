@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "signalId": "ditoph-maribank-otp-firsthand-crosspost-dedupe-20261010",
+  "capturedAt": "2026-10-10",
+  "scope": "DITO Philippines route-specific bank-login and number-change OTP incidents",
+  "canonicalRouteLink": "dito-prepaid-ph-2026",
+  "publicationState": "backstage-candidate-only",
+  "newCanonicalSources": 0,
+  "newCanonicalObservations": 0,
+  "newCanonicalRoutes": 0,
+  "evidenceRules": {
+    "originalThreads": 3,
+    "uniqueFirsthandAuthors": 5,
+    "authorAssertions": 6,
+    "crosspostedAuthorCount": 1,
+    "noRateOrCarrierBlame": "Bank/provider/device/sender routing attribution is unresolved. These are operation-specific user experiences, not DITO-wide OTP probability.",
+    "doNotEquate": "Other apps functioning or normal SMS reception do not demonstrate MariBank or BDO success.",
+    "privacy": "Public pseudonyms only. No full phone numbers, bank account identifiers, verification codes, private messages, location tracking or credentials.",
+    "nextGate": "Before canonical admission, reconcile exact route identity, same-author crossposts, operation, physical location, dates and account-change context. MariBank bank-specific failure is not general SMS outage."
+  },
+  "threads": [
+    {
+      "id": "reddit-ditoph-1r70sdn",
+      "url": "https://www.reddit.com/r/DitoPH/comments/1r70sdn/ofw_dito_sim_otp_problem/",
+      "originalPostedAt": "2026-02-17",
+      "reports": [
+        {
+          "author": "Fermooooo",
+          "postRole": "original",
+          "date": "2026-02-17",
+          "service": "MariBank",
+          "operation": "bank-login-otp-after-phone-reset",
+          "outcome": "failure",
+          "numberNetwork": "DITO",
+          "geography": "overseas-worker; actual country not stated",
+          "device": "phone reset reported; model not stated",
+          "evidence": "MariBank OTP not received after resetting phone. OP reports GCash, Lazada, Shopee still work; this is not proof of those apps' OTP receipt.",
+          "resolution": "Later said changed number; no independently confirmed technical cause.",
+          "classification": "firsthand-negative"
+        },
+        {
+          "author": "jjas21",
+          "postRole": "commenter",
+          "date": null,
+          "service": "Maybank",
+          "operation": "bank-otp-after-ported-number",
+          "outcome": "failure-then-success",
+          "numberNetwork": "Reported port to DITO from another network",
+          "geography": "not stated",
+          "device": "not stated",
+          "evidence": "Different bank and subscriber. User says Maybank updated provider mapping after MNP and OTP then arrived.",
+          "resolution": "Bank-side provider mapping corrected, based on commenter's claim.",
+          "classification": "separate-firsthand-comparator-not-Maribank"
+        }
+      ]
+    },
+    {
+      "id": "reddit-internetph-1rs9xf2",
+      "url": "https://www.reddit.com/r/InternetPH/comments/1rs9xf2/dito_esim_cannot_recieve_otp/",
+      "originalPostedAt": "2026-03-13",
+      "reports": [
+        {
+          "author": "KenLovesG",
+          "postRole": "original",
+          "date": "2026-03-13",
+          "service": "MariBank and BDO",
+          "operation": "bank-otp-after-change-registered-phone-number",
+          "outcome": "failure",
+          "numberNetwork": "DITO eSIM",
+          "geography": "not stated",
+          "device": "not stated",
+          "evidence": "After changing a bank-registered mobile number, user reports no MariBank/BDO OTP despite suggested troubleshooting.",
+          "resolution": "No confirmed fix.",
+          "classification": "firsthand-negative",
+          "samePersonAs": "reddit-maribankph-1rhqafu:KenLovesG"
+        }
+      ]
+    },
+    {
+      "id": "reddit-maribankph-1rhqafu",
+      "url": "https://www.reddit.com/r/MariBankPH/comments/1rhqafu/otp_problem_dito_sim_user/",
+      "originalPostedAt": "2026-03-01",
+      "reports": [
+        {
+          "author": "CarOwn7886",
+          "postRole": "original",
+          "date": "2026-03-01",
+          "service": "MariBank",
+          "operation": "bank-login-otp",
+          "outcome": "failure-then-success",
+          "numberNetwork": "DITO (title)",
+          "geography": "not stated",
+          "device": "not stated",
+          "evidence": "Originally could not receive MariBank code; reported later that retrying around four hours later worked with no other action.",
+          "resolution": "Recovered on retry; not persistent carrier failure.",
+          "classification": "firsthand-mixed-recovery"
+        },
+        {
+          "author": "Klutzy-Ebb4654",
+          "postRole": "commenter",
+          "date": "2026-03-02",
+          "service": "MariBank",
+          "operation": "bank-login-otp",
+          "outcome": "failure",
+          "numberNetwork": "not explicitly stated by commenter; participating in DITO topic",
+          "geography": "not stated",
+          "device": "not stated",
+          "evidence": "Commenter reports roughly a week without MariBank login code.",
+          "resolution": "not stated",
+          "classification": "firsthand-negative-network-not-confirmed"
+        },
+        {
+          "author": "KenLovesG",
+          "postRole": "commenter",
+          "date": "2026-03-13",
+          "service": "MariBank and BDO",
+          "operation": "bank-otp-after-change-registered-phone-number",
+          "outcome": "failure",
+          "numberNetwork": "DITO eSIM (from same author's other original)",
+          "geography": "not stated",
+          "device": "not stated",
+          "evidence": "Same commenter reports OTP failure after changing number as in r/InternetPH original thread.",
+          "resolution": "not stated",
+          "classification": "crosspost-repeat-not-new-person",
+          "samePersonAs": "reddit-internetph-1rs9xf2:KenLovesG"
+        }
+      ]
+    }
+  ],
+  "reviewDecision": "Stage precise contradictory firsthand cases for route-specific review, do not normalize into app grades, claim DITO reliability failure, or change public eligibility without separate PR."
+}
