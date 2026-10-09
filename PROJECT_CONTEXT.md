@@ -6,6 +6,10 @@ This file is the compact current-facts source for the project. Historical execut
 
 ## Current progress checkpoint
 
+**S5 evidence gate, 2026-10-09:** direct official/independent Giffgaff and Lebara source reconciliation completed. Lebara explicitly requires UK service activation even though a single Aug 12 mainland eSIM buyer received Telegram/WhatsApp texts without full outgoing service. Giffgaff independent Sep 12–Oct 8 accounts report both surviving and closed numbers, with case-level portability and refunds but no guarantees; the Oct 7 secondary “two months then port-out” claim remains untraced to its original author. First-screen risk text now links primary incidents and provider activation rules. **No mainland-origin ready-to-buy candidate verified**: preserve `No verified matches`. Canonical 160 routes / 896 sources and public 135 historical / 3 indexable / 31 sitemap unchanged; no new source/event ingestion. 375/390px real browser and recruited user tests remain incomplete. Ledger: `docs/PHONE_RADAR_S5_CHINA_ACTIVATION_CONTINUITY_EVIDENCE_2026-10-09.md`. Next: independent, repeatable mainland purchase/eligible payment/KYC/first network attach + target app SMS proof; if not found retain no-match.
+
+
+
 After reading `AGENTS.md`, read this checkpoint before any deeper project inspection. Do not rescan the whole repository, VPS fleet, deployment history or old chats unless this checkpoint is stale, contradictory or the selected task requires deeper inspection.
 
 | Area | Current state | Next move |
