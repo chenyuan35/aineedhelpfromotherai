@@ -22,7 +22,7 @@
       "topic": "eSIM.gg prefix-band app verification discussion",
       "opened": "2026-09-18",
       "sourceGrade": "original-firsthand-mixed-and-unrepresentative-poll",
-      "primarySourceRecordExistsInCanonical": false,
+      "primarySourceRecordExistsInCanonical": true,
       "ballotWarning": "Poll records ONLY positive claims and allows many selections; respondent counts and apparent percentage cannot be read as a failure-inclusive denominator.",
       "reports": [
         {
@@ -101,7 +101,10 @@
           "attribution": "reply firsthand but exact apps not specified",
           "confidence": "do not invent Telegram/WhatsApp-specific outcome"
         }
-      ]
+      ],
+      "canonicalSourceId": "linuxdo-esimgg-2919304-20260918",
+      "normalizedAt": "2026-10-10",
+      "normalizedScope": "One original discussion; 4 identified authors, 9 app-specific author-service claims, 1 non-OTP event; remaining authors/replies and all other threads still research-only."
     },
     {
       "threadId": "linuxdo-2836806",
@@ -261,7 +264,7 @@
       "reason": "Existing number-keeper loss is a separate real user job; no new product/SEO URL authorized."
     }
   ],
-  "newCanonicalSourceCount": 0,
-  "newCanonicalObservationCount": 0,
-  "reviewGate": "Nothing in this candidate inbox is counted as verified production, source corpus, app success percentage or new public URL. Exact original claim at post, author, date and service must be reviewed before commit to normalized database."
+  "newCanonicalSourceCount": 1,
+  "newCanonicalObservationCount": 9,
+  "reviewGate": "Only linuxdo-2919304 has been independently reviewed and normalized. Other three original discussions still require manual original-source verification before commit to normalized database. Do not count forum poll percentages, authors in one thread as independent sources, or specific prefixes as guarantees."
 }

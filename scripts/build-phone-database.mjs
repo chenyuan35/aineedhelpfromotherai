@@ -129,6 +129,8 @@ const compactText = (value, max = 180) => {
 const classifyKyc = value => {
   const text = normalize(value);
   if (!text) return 'unknown';
+  // An explicit evidence gap or disclaimer must beat a substring such as "no-KYC" inside "do not market as no-KYC".
+  if (/do not market.{0,100}\b(?:no kyc|without kyc)\b/.test(text)) return 'unknown';
   if (/not required|no kyc|without kyc|no identity/.test(text)) return 'not-required';
   if (/required|real name|passport|identity|kyc/.test(text)) return 'required';
   return 'unclear';
