@@ -156,9 +156,11 @@ for (const button of leaderButtons) {
   assert.notEqual(route.surfaceState, 'backstage-only', 'Top route must not promote backstage-only evidence');
 }
 
-// Task-first finder acceptance: ten independent user jobs and negative/unknown cases.
+// Task-first finder: fail-closed S4 task validation against canonical data.
+// These are deterministic simulated browser interactions, NOT real people/actual checkout.
 const taskDoc = dom.window.document;
 const taskList = () => [...taskDoc.querySelectorAll('[data-task-route]')].map(el=>el.dataset.taskRoute);
+const researchList = () => [...taskDoc.querySelectorAll('[data-task-research-route]')].map(el=>el.dataset.taskResearchRoute);
 const taskFilter = (id,value) => {
   const select = taskDoc.getElementById('pr-task-'+id);
   assert(select, 'task filter '+id+' must exist');
@@ -174,68 +176,88 @@ const eligibleIndex = canonicalIndex.routes.filter(r =>
   ['public-legacy','public-pilot'].includes(r.surfaceState)
 );
 assert.match(page,/id="pr-task-finder"/,'task finder must ship on existing Phone URL');
-await waitFor(()=>taskList().length===Math.min(5,eligibleIndex.length),'first-screen honest shortlist');
-assert(eligibleIndex.length>0,'an evidence-eligible shortlist must exist');
-assert(eligibleIndex.length<canonicalIndex.routes.length,'a shortlist must not be all canonical research routes');
-for(const id of taskList()) {
-  const r=canonicalIndex.routes.find(x=>x.id===id);
-  assert(r&&eligibleIndex.includes(r),'shortlist may contain only admitted public real-mobile');
+assert.match(page,/id="pr-task-research"/,'research candidates must have a separate opt-in disclosure');
+assert.match(page,/id="pr-task-advanced"/,'extra filters must be optionally expandable');
+assert.match(page,/@media\(max-width:345px\)/,'375 and 390 layouts keep two columns, narrow screens degrade to one');
+await waitFor(()=>taskList().length===Math.min(5,eligibleIndex.length),'first-screen evidence shortlist');
+assert(eligibleIndex.length>0&&eligibleIndex.length<canonicalIndex.routes.length,'only vetted routes should be shortlisted');
+for(const id of taskList()) assert(eligibleIndex.some(r=>r.id===id),'default shortlist must be admitted/public/real-mobile');
+assert.match(taskDoc.getElementById('pr-task-summary').textContent,/evidence-screened/);
+
+// S3-derived scenarios: 5 P0 mainland China (3 with deliberately weak app reports),
+// 3 P1 existing-US-number preservation/port-in, 2 negative cases. None can claim a
+// confirmed China-first activation / bank SMS / US port route from this evidence.
+const cases = [
+  {id:'P0-1',job:'verify',location:'china',market:'United Kingdom',form:'esim',service:'telegram',research:2},
+  {id:'P0-2',job:'verify',location:'china',market:'United Kingdom',form:'any',service:'openai',research:1},
+  {id:'P0-3',job:'verify',location:'china',market:'Hong Kong',form:'any',service:'telegram',research:0},
+  {id:'P0-4',job:'buy',location:'china',market:'Croatia',form:'esim',service:'any',research:0},
+  {id:'P0-5',job:'verify',location:'china',market:'United Kingdom',form:'any',service:'whatsapp',research:2},
+  {id:'P1-6',job:'keep',location:'abroad',market:'United States',form:'esim',service:'bank',research:0},
+  {id:'P1-7',job:'keep',location:'abroad',market:'United States',form:'any',service:'any',research:0},
+  {id:'P1-8',job:'keep',location:'abroad',market:'United States',form:'any',service:'bank',research:0},
+  {id:'NEG-9',job:'buy',location:'china',market:'United States',form:'esim',service:'bank',research:0},
+  {id:'NEG-10',job:'buy',location:'china',market:'United States',form:'esim',service:'any',research:0}
+];
+let passedTasks=0;
+for(const scenario of cases){
+  taskReset();
+  for(const field of ['job','location','market','form','service']) taskFilter(field,scenario[field]);
+  assert.equal(taskList().length,0,scenario.id+': remote first activation / port / bank requests must not have verified winners');
+  assert.match(taskDoc.getElementById('pr-task-summary').textContent,/No verified matches/i,scenario.id+': explicit no-verified-match copy');
+  assert.equal(researchList().length,scenario.research,scenario.id+': only eligible optional research candidates are shown');
+  assert.equal(taskDoc.getElementById('pr-task-research').hidden,scenario.research===0,scenario.id+': research section disclosure visibility');
+  for(const id of researchList()){
+    const r=eligibleIndex.find(x=>x.id===id);
+    assert(r,scenario.id+': HOLD/backstage/VoIP/data must never be a research candidate');
+    const el=taskDoc.querySelector('[data-task-research-route="'+id+'"]');
+    assert.match(el.textContent,/Research only.+NOT verified/i,scenario.id+': research must be labeled as not verified');
+    assert.match(el.textContent,/UNVERIFIED/i,scenario.id+': research must state remote activation unknown');
+    assert.match(el.textContent,/independent source/i,scenario.id+': distinguish sources from raw observations');
+  }
+  passedTasks++;
 }
-assert(taskDoc.getElementById('pr-task-summary').textContent.includes('evidence-screened'),'honest evidence summary');
+assert.equal(passedTasks,10,'ten S3-derived scenarios must produce safe, deterministic S4 answers');
 
-// Scenario 1: visitor in China does not receive an unverified first-activation guarantee.
-taskFilter('location','china');
-assert.match(taskDoc.getElementById('pr-task-summary').textContent,/NOT established/i);
-assert.match(taskDoc.getElementById('pr-task-results').textContent,/unverified/i);
+// Disclosure click and source drill-down should work from research cards without
+// turning the research suggestion into a verified recommendation.
+taskReset();
+taskFilter('location','china');taskFilter('market','United Kingdom');taskFilter('service','telegram');
+const researchId=researchList()[0];
+assert(researchId,'China research flow must show a genuine candidate after explicit disclosure');
+taskDoc.getElementById('pr-task-research').open=true;
+taskDoc.querySelector('[data-task-research-route="'+researchId+'"] [data-task-open]').click();
+await waitFor(()=>taskDoc.querySelector('#pr-task-detail')?.dataset.route===researchId,'research-only detail opens existing lazy source');
+assert.match(taskDoc.querySelector('#pr-task-detail').textContent,/Evidence boundary/i);
+assert.match(taskDoc.getElementById('pr-task-research-results').textContent,/independent source/);
+assert.match(taskDoc.getElementById('pr-task-research-results').textContent,/last observed/i);
+assert.match(taskDoc.getElementById('pr-task-research-results').textContent,/setup|activation|UNVERIFIED/i);
+taskReset();
 
-// Scenario 2: outside-number-country use is explicitly conditional rather than confirmed.
-taskFilter('location','abroad');
-assert.match(taskDoc.getElementById('pr-task-summary').textContent,/NOT established/i);
-taskFilter('location','any');
-
-// Scenario 3: eSIM filter cannot admit a physical-only product.
+// Non-remote candidates, strict eSIM and documented cost filters still work.
 taskFilter('form','esim');
-for(const id of taskList())assert(/\besim\b/i.test(canonicalIndex.routes.find(r=>r.id===id).form||''),'eSIM support must be explicit');
+for(const id of taskList())assert(/\besim\b/i.test(eligibleIndex.find(r=>r.id===id).form||''),'eSIM filter must be explicit');
 taskFilter('form','any');
-
-// Scenarios 4-6: service filters require observed success, never assume universal app compatibility.
 for(const service of ['telegram','whatsapp','openai']){
   taskFilter('service',service);
   for(const id of taskList()){
     const r=eligibleIndex.find(x=>x.id===id);
-    assert(r&&(r.serviceEvidence||[]).some(e=>e.serviceId===service&&e.successCount>0),
-      'selected app cannot be inferred from the presence of a brand or ordinary SMS');
+    assert((r.serviceEvidence||[]).some(e=>e.serviceId===service&&e.successCount>0),
+      'app evidence must be positive before a named-app shortlist');
   }
-  assert.match(taskDoc.getElementById('pr-task-summary').textContent,/not guarantee|No evidence-eligible/i);
+  assert.match(taskDoc.getElementById('pr-task-summary').textContent,/NOT verified|No verified matches/);
 }
 taskFilter('service','any');
-
-// Scenario 7: ongoing cost budget must exclude unknown price and high-cost offers.
 taskFilter('keep','10');
 for(const id of taskList()){
   const r=eligibleIndex.find(x=>x.id===id);
-  assert(Number.isFinite(r.metrics.keepYearCostCny)&&r.metrics.keepYearCostCny<=10,'keep budget is strict');
+  assert(Number.isFinite(r.metrics.keepYearCostCny)&&r.metrics.keepYearCostCny<=10,'keep budget strict');
 }
 taskFilter('keep','any');
-
-// Scenario 8: requested US number cannot silently turn into UK or a backstage suggestion.
 taskFilter('market','United States');
-assert.equal(taskList().length,0,'no approved US candidate in this audited baseline');
-assert.match(taskDoc.getElementById('pr-task-summary').textContent,/No evidence-eligible matches/i);
+assert.equal(taskList().length,0,'US region cannot turn into UK winner');
+assert.match(taskDoc.getElementById('pr-task-summary').textContent,/No verified matches/);
 taskFilter('market','any');
-
-// Scenario 9: keep/port an existing number is a distinct unresolved job.
-taskFilter('job','keep');
-assert.equal(taskList().length,0,'a new SIM is not a proven port-in path');
-assert.match(taskDoc.getElementById('pr-task-summary').textContent,/portability/i);
-taskFilter('job','buy');
-
-// Scenario 10: bank short-code SMS is not proven by generic verification evidence.
-taskFilter('service','bank');
-assert.equal(taskList().length,0,'banking SMS must be bank/operation specific');
-assert.match(taskDoc.getElementById('pr-task-summary').textContent,/bank-specific/i);
-taskFilter('service','any');
-
 // Save/restore semantics remain device-local, ID-only, and require no sign-in or network.
 taskReset();
 const chosenId=taskList()[0];
