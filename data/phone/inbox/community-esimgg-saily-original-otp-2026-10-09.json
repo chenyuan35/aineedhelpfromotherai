@@ -112,7 +112,7 @@
       "topic": "two separately acquired eSIM.gg and Saily lines over time",
       "opened": "2026-08-31",
       "sourceGrade": "original-firsthand-mixed",
-      "primarySourceRecordExistsInCanonical": false,
+      "primarySourceRecordExistsInCanonical": true,
       "reports": [
         {
           "post": 1,
@@ -151,7 +151,7 @@
         {
           "post": 10,
           "authorHandle": "cyminute",
-          "date": "2026-09-07",
+          "date": "2026-09-08",
           "provider": "eSIM.gg",
           "prefixBands": [],
           "targetServices": [],
@@ -165,7 +165,7 @@
         {
           "post": 10,
           "authorHandle": "cyminute",
-          "date": "2026-09-07",
+          "date": "2026-09-08",
           "provider": "Saily US-number add-on",
           "prefixBands": [],
           "targetServices": [
@@ -179,7 +179,10 @@
           "device": "not stated",
           "confidence": "author states service-level success, but account-class/purchase/payment not reproduced"
         }
-      ]
+      ],
+      "canonicalSourceId": "linuxdo-esimgg-saily-2836806-20260831",
+      "normalizedAt": "2026-10-10",
+      "normalizedScope": "eSIM.gg ONLY: one temporal mixed WhatsApp author-service observation and one non-rate incident covering separate generic failures; all Saily assertions still research-only."
     },
     {
       "threadId": "linuxdo-2900228",
@@ -264,7 +267,7 @@
       "reason": "Existing number-keeper loss is a separate real user job; no new product/SEO URL authorized."
     }
   ],
-  "newCanonicalSourceCount": 1,
-  "newCanonicalObservationCount": 9,
-  "reviewGate": "Only linuxdo-2919304 has been independently reviewed and normalized. Other three original discussions still require manual original-source verification before commit to normalized database. Do not count forum poll percentages, authors in one thread as independent sources, or specific prefixes as guarantees."
+  "newCanonicalSourceCount": 2,
+  "newCanonicalObservationCount": 10,
+  "reviewGate": "Two original Linux.do discussions are now linked as two canonical source URLs. Thread 2836806 only eSIM.gg WhatsApp temporal mixed outcome plus generic no-app failures are normalized; its Saily claims and both remaining discussions still require independent manual review before normalization. Polls, same-thread multi-author replies and multiple lines by one author are not population denominators."
 }
