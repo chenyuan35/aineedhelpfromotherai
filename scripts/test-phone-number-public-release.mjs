@@ -30,6 +30,11 @@ assert.match(page, /<dt>Keep<\/dt>/);
 assert.match(page, /<dt>Verify<\/dt>/);
 assert.match(page, /<dt>Recover<\/dt>/);
 assert.match(page, /phone-first-identity\.css/);
+const phoneIdentityCss=fs.readFileSync(path.join(dist,'media','phone-first-identity.css'),'utf8');
+assert.match(phoneIdentityCss,/Phone Radar mobile first-fold correction/,'mobile first-fold source must ship');
+assert.match(phoneIdentityCss,/\.pr-product-answers dl\{display:grid!important;grid-template-columns:repeat\(2,minmax\(0,1fr\)\)!important/,'mobile keeps answer legend accessible');
+assert.match(phoneIdentityCss,/\.pr-product-hero h1\{font-size:1\.86rem!important/,'mobile title sizing must remain bounded');
+
 assert.match(page, /id="route-search"/);
 assert.match(page, /Global long-term number finder\./);
 assert.match(page, /Top decision shortcuts/);
@@ -230,9 +235,11 @@ assert.match(giffCard.textContent,/Recovery and refunds are NOT guaranteed/,'no 
 assert(giffCard.querySelector('a[href="https://linux.do/t/topic/2996513"]'),'dated Oct 8 firsthand refund source is linked');
 assert(giffCard.querySelector('a[href="https://linux.do/t/topic/2894665"]'),'dated firsthand port-out source is linked');
 assert.match(lebaraCard.textContent,/Lebara requires UK service activation/,'official Lebara overseas activation restriction visible');
-assert.match(lebaraCard.textContent,/does NOT establish supported, complete first activation abroad/,'one mainland SMS report cannot be promoted');
+assert.match(lebaraCard.textContent,/(?:does|do) NOT establish supported, complete first activation abroad/i,'one mainland SMS report cannot be promoted');
 assert(lebaraCard.querySelector('a[href="https://www.lebara.co.uk/en/help/esim.html"]'),'Lebara official constraint linked');
 assert(lebaraCard.querySelector('a[href="https://linux.do/t/topic/2745784"]'),'Lebara first-hand mainland exception linked');
+assert(lebaraCard.querySelector('a[href="https://linux.do/t/topic/2815946"]'),'Lebara independent mainland no-signal report linked');
+assert.match(lebaraCard.textContent,/not a general failure rate/,'one failure thread must not imply population success or failure frequency');
 
 
 // Disclosure click and source drill-down should work from research cards without

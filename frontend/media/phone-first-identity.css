@@ -30,3 +30,26 @@ html[data-theme="dark"] .pr-product-hero{background:radial-gradient(circle at 94
 @media(max-width:700px){.phone-first-shell{padding:48px 0 54px;gap:28px}.phone-first-copy h1{font-size:clamp(2.8rem,13vw,4.1rem)}.phone-first-lead{font-size:.96rem}.phone-first-actions{align-items:stretch}.phone-first-actions a{width:100%}.phone-first-proof{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 10px}.phone-first-panel{padding:17px;border-radius:19px}.phone-first-job-grid{grid-template-columns:1fr}.phone-first-job-grid a{min-height:91px}.phone-first-answer-strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.phone-first-explainer{padding-top:55px!important;padding-bottom:55px!important}.phone-first-explainer .phone-copy h2{font-size:2.6rem}.phone-first-lifecycle .phone-lifecycle-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pr-wrap{padding-top:18px}.pr-product-hero{padding:22px 18px!important;border-radius:21px!important;gap:22px!important}.pr-product-hero h1{font-size:2.45rem!important;line-height:1!important}.pr-product-copy>p:not(.pr-product-kicker){font-size:.91rem!important}.pr-product-proof{gap:6px}.pr-product-proof span{font-size:.61rem}.pr-product-answers{padding:15px}.pr-family{display:flex!important}.pr-family button{min-height:74px!important}.pr-tools{display:grid!important;grid-template-columns:1fr!important;padding:10px!important}.pr-filter select{max-width:none!important}.pr-decision-chips{grid-template-columns:1fr!important}.pr-decisions{padding:13px!important}}
 @media(max-width:470px){.phone-first-copy h1{font-size:2.75rem}.phone-first-kicker{font-size:.58rem}.phone-first-panel-head h2{font-size:1.2rem}.phone-first-proof strong{font-size:.85rem}.phone-first-lifecycle .phone-lifecycle-grid{grid-template-columns:1fr 1fr!important}.pr-product-hero h1{font-size:2.18rem!important}.pr-product-answers dl>div{grid-template-columns:48px 1fr}}
 @media(prefers-reduced-motion:reduce){.phone-first-job-grid a{transition:none}.phone-first-job-grid a:hover{transform:none}}
+
+
+/* Phone Radar mobile first-fold correction: verified in a 375/390px real browser.
+   Keep the Buy/Keep/Verify/Recover answer legend visible and readable, but
+   shorten decorative hero/proof spacing so the primary task inputs appear sooner.
+   The full route evidence and backend/publication boundaries are unaffected. */
+@media(max-width:700px){
+  .pr-wrap{padding-top:10px!important}
+  .pr-product-hero{padding:14px 16px!important;gap:10px!important;margin:0 0 12px!important}
+  .pr-product-kicker{margin:0 0 7px!important;font-size:.56rem!important}
+  .pr-product-hero h1{font-size:1.86rem!important;line-height:1.04!important}
+  .pr-product-copy>p:not(.pr-product-kicker){font-size:.82rem!important;line-height:1.44!important;margin:8px 0 0!important}
+  .pr-product-proof{display:none!important}
+  .pr-product-answers{padding:10px 11px!important}
+  .pr-product-answers>p{margin:0 0 4px!important}
+  .pr-product-answers dl{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:3px 11px!important}
+  .pr-product-answers dl>div{display:block!important;padding:3px 0!important}
+  .pr-product-answers dt{display:block!important;font-size:.64rem!important}
+  .pr-product-answers dd{display:block!important;font-size:.64rem!important;line-height:1.25!important}
+  .pr-prompt{margin:0 0 5px!important}
+  .pr-family{margin-bottom:9px!important}
+  .pr-family button{min-height:62px!important;padding:8px 10px!important}
+}
