@@ -1,6 +1,6 @@
 # Phone Radar database coverage audit — 2026-10-03 (updated 2026-10-04)
 
-Status: **90%+ BACKEND COVERAGE OBJECTIVE MET FOR THE KNOWN EVIDENCE-QUALIFIED ROUTE UNIVERSE**
+Status: **HISTORICAL CLOSED-INVENTORY RECONCILIATION ONLY — EXTERNAL 90%/100% COVERAGE NOT ESTABLISHED (reassessed 2026-10-09)**
 
 This audit closes the expansion phase defined in `docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md`. It does **not** claim coverage of 90% of every mobile carrier, prepaid SKU or phone number product in the world. The project objective is the relevant low-cost / long-term real-number route universe that has enough evidence to matter to Phone Radar users.
 
@@ -63,21 +63,25 @@ No currently known evidence-qualified distinct atomic residual candidate remains
 
 **Resolved residuals:** Saily U.S. phone number cleared its classification blocker on 2026-10-04 and is canonical backstage HOLD as a distinct non-cellular VoIP/second-line route. LuckySIM Hong Kong cleared its durable renewal blocker and is canonical backstage HOLD as a real-mobile route. China Telecom Macau Easy PASS / Greater Bay Area prepaid then cleared the final lifecycle blocker: current provider material establishes 180-day validity, another 180 days from each recharge, >90-day suspended-number cancellation, real-name registration, ordinary incoming-SMS capability and current eSIM support. It is canonical backstage HOLD because service-specific bank/app OTP reliability remains insufficiently sampled. None of these admissions creates a recommendation or public/indexable route.
 
-## Coverage calculation
+## Coverage calculation — corrected 2026-10-09
 
-For the current known evidence-qualified universe:
+**Retract the general-coverage inference.** The earlier `160 / 160 = 100%` used a denominator created by *the same internally reviewed staging/canonical list*. This is a **closed-world inventory reconciliation ratio**, not an independently discovered set of all user-relevant low-cost number routes. It cannot establish >90% of external real-world user demand, provider/SKU routes, app-specific activation feasibility or operational evidence. The earlier `0 residual candidate` meant **no unresolved candidate left in that particular frozen queue**, not that other original community threads had been searched and reconciled.
 
-- normalized canonical routes: **160**
-- known distinct unresolved atomic candidates: **0**
-- denominator: **160**
+External original-thread sampling on 2026-10-09 found distinct potential routes not yet represented as such in canonical: **Simyo Netherlands prepaid**, **Cuniq Hong Kong dual-number/low-rate mechanism**, and **China Mobile Beijing CNY8 4G number-retention plan**; these are review candidates only, with separate location, registration and product-availability gates. Other existing routes (eSIM.gg Estonia, US Mobile) lack recent significant firsthand source/operation outcomes even though those threads are public. See [market-gap ledger / GitHub #467](https://github.com/chenyuan35/aineedhelpfromotherai/issues/467). Do not automatically count every mention as a qualified missing route.
 
-**Coverage = 160 / 160 = 100% of the current known evidence-qualified relevant atomic universe.**
+**Current data baseline (main as audited 2026-10-09):** 160 canonical routes, 897 source records, 322 operational/lifecycle events, 220 snapshots, **27 service-specific observations across only 7 routes**, and **61 admitted / 89 hold / 10 needs-reconciliation**. Of 160, **72 lack numeric acquisition cost**, **66 lack numeric annual retention cost**, and **153 have no app/SMS-operation-specific observation**. All 160 route detail JSON endpoints are reachable and count-consistent, but that measures technical delivery, **not a successful acquisition/activation/OTP or retention job**. The independent data quality breakdown is in [GitHub #465](https://github.com/chenyuan35/aineedhelpfromotherai/issues/465).
 
-This does **not** mean the database contains every carrier product worldwide. It means every distinct route currently admitted to the project's evidence-qualified universe is normalized. New evidence can enlarge the denominator at any time. As a sensitivity check, ten newly discovered qualifying missing routes would make coverage `160 / 170 = 94.1%`; at least 18 newly discovered qualifying missing routes with no corresponding admissions would be required to move coverage below 90%.
+**External coverage numerator/denominator: UNMEASURED.** Do not use a 90% or 100% site/database completion badge, claim broad carrier coverage, extrapolate market language share from forum frequency, or simply raise the denominator artificially by adding keyword copies. If needed later, measure separately:
+- **Discovery coverage:** sample a dated, independently discovered universe of *atomic products satisfying a defined user job*, with predeclared source channels and a reproducible missing/alias/rejected disposition; denominator must not be limited to the already catalogued 160.
+- **Field completeness:** proportion of qualifying rows with sourced acquisition route, paid first checkout, KYC/payment/location and retention costs; unknown must remain unknown, not zero.
+- **Operational proof coverage:** route × initial/port/keep task × physical location × device × service+operation with dated independent evidence, contradictory outcomes and source/author dedupe.
+- **Publication coverage:** number of distinct search tasks with justified indexable URL, completely separate from all the above.
+
+Future target evaluation requires a sufficiently broad independent sample (e.g., staged cross-forum/cross-market study), case-by-case adjudication, documented source freshness, denominator freeze date and separately exposed confidence. No numerical completion target is met merely by 160 rows.
 
 ## Decision
 
-The broad database expansion phase is complete. Do **not** create DB-C24 from carrier directories, country checklists or page-count pressure.
+The **historical directory/staging enumeration phase** is closed, but *user-demand-driven original-source discovery and bounded evidence-qualified atomic admissions remain OPEN*. Do not create DB-C24 from arbitrary carrier directories, country checklists or page-count pressure. If multiple independent user cases expose a truly missing distinct acquisition/retention route and lifecycle/eligibility facts can be verified, review one bounded admission behind the normal test/release gates.
 
 Move Phone database work to maintenance mode:
 
