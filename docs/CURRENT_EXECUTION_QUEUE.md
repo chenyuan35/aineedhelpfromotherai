@@ -21,6 +21,14 @@ Saily release closeout: `docs/PHONE_SAILY_US_NUMBER_ADMISSION_CLOSEOUT_2026-10-0
 LuckySIM residual review: `docs/PHONE_LUCKYSIM_HK_REVIEW_2026-10-04.md`.
 China Telecom Macau residual review: `docs/PHONE_CT_MACAU_EASY_PASS_REVIEW_2026-10-04.md`.
 
+## S5 PRIMARY EVIDENCE RECONCILIATION — 2026-10-09
+
+**Reviewed:** Giffgaff UK and Lebara UK mainland-China acquisition/activation, eSIM setup, payment/KYC gaps, Telegram/WhatsApp SMS and Giffgaff continuity (including independent Sep 12–Oct 8 first-hand closure, functioning-service, PAC, port-out and refund outcomes). Ledger: `docs/PHONE_RADAR_S5_CHINA_ACTIVATION_CONTINUITY_EVIDENCE_2026-10-09.md`.
+
+**Decision:** Lebara's official eSIM policy requires activation in the UK; a mainland firsthand receive-only Telegram/WhatsApp case does not override that restriction. Giffgaff has contradictory primary closure/survival/refund/port reports; no reliable success probability or guaranteed reinstatement. Neither supports a verified mainland-origin payment + legal activation + target-app SMS workflow. **Retain No verified matches for China/foreign first activation**. No new canonical source/event counts, route promotions, prices, indexability or URL additions. Giffgaff and Lebara first-screen warnings now link direct reviewed reports and the Lebara provider policy.
+
+**NEXT SINGLE ATOMIC TASK:** gather independently reproducible, newly dated mainland-origin Lebara first-purchase/identity/payment/UK-activation-contradiction + named-app SMS evidence from separate original reporters, with precise operation/location and device but without collecting personal data or paying for tests; otherwise preserve fail-closed no-match and record gaps. Keep 375/390 real browser visual and 5-person usability tests unresolved for a separate authorized QA task. No additional routes, SEO pages, bulk ingestion or claims of real-user success.
+
 ## LATEST S4 RELEASE / NEXT EVIDENCE GATE — 2026-10-09
 
 **S4 shipped and production verified:** [PR #454](https://github.com/chenyuan35/aineedhelpfromotherai/pull/454) Eval Gate **#37881896430 SUCCESS**, exact-head Vercel Preview READY, main SHA `9959c39819c5ba5a218dab9c0e44724eb674da41`, production `dpl_A3nEjtJKuKsu378GLm2HnqkzdBxz` READY. Independent apex/www Phone HTML **200** with fail-closed China/foreign activation and collapsed research-only candidates; data summary **200/160**, sitemap **200/31**. Source-level named-app observation vs distinct independent-source count and latest date displayed; Giffgaff newer incident lead linked but unreconciled. No DB/SEO/privacy/GA4 changes.
