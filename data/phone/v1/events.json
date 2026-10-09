@@ -2914,5 +2914,32 @@
     "scope": "route",
     "outcome": "One Linux.do original discussion has both success and failure claims for Telegram, WhatsApp and OpenAI/Codex. 5405 appears in the positive OP multi-line claim and in a negative multi-line reply; prefix-specific attribution, geography, purchase/KYC and first activation remain unproven. The poll only solicits success and cannot serve as the denominator. Some later commenters report eventual SMS delivery after 24–48 hours; this is not a validated workaround.",
     "sourceId": "linuxdo-esimgg-2919304-20260918"
+  },
+  {
+    "id": "evt-globe-abroad-unnamed-otp-20260402",
+    "routeId": "globe-prepaid-1yr-2026",
+    "type": "independent-abroad-incoming-generic-otp-report",
+    "reportedAt": "2026-04-02",
+    "scope": "one original-thread commenter helveticanuu; abroad destination, identity cohort and bank/app unspecified",
+    "outcome": "Responding to a direct question about living abroad, one Globe prepaid user reports receiving unnamed OTPs and ordinary SMS while abroad and claims PHP20 in regular reload once per year maintains their line. The post does not identify a named app/bank, SIM registration cohort, country, device, or latest repeatable renewal; PHP20 is an author account, not a verified current price or universal validity promise.",
+    "sourceId": "reddit-globe-prepaid-keeping-abroad-20260402"
+  },
+  {
+    "id": "evt-globe-two-year-small-reloads-20260402",
+    "routeId": "globe-prepaid-1yr-2026",
+    "type": "independent-multi-year-keep-with-reload-report",
+    "reportedAt": "2026-04-02",
+    "scope": "one original-thread commenter angelicar19; whether physically outside Philippines throughout period not specified",
+    "outcome": "A distinct commenter reports keeping a Globe prepaid SIM active for about two years while leaving PHP10 of load per year. Their account does not identify a destination, named OTP app, legal registration cohort or proof of 2026 purchase availability; do not generalize PHP10 as a current Globe rule.",
+    "sourceId": "reddit-globe-prepaid-keeping-abroad-20260402"
+  },
+  {
+    "id": "evt-globe-foreign-registered-overseas-promo-friction-20260402",
+    "routeId": "globe-prepaid-1yr-2026",
+    "type": "independent-foreigner-registered-overseas-app-recharge-friction",
+    "reportedAt": "2026-04-02",
+    "scope": "one original-thread commenter Mountainvole comparing own foreigner-registered SIM with spouse Filipino-registered SIM on a trip abroad; country and exact app state unspecified",
+    "outcome": "During an overseas trip about a month earlier, commenter reports their foreigner-registered Globe SIM could no longer buy a promo using existing load in the app and could only manage top-up through SMS. Spouse's Filipino-registered Globe SIM still worked in the app; after returning to the Philippines the commenter used phone SMS menus to buy a promo and the app worked again the following week. This is one paired firsthand account, not proof of an official nationality-based rule, SMS OTP failure or permanent service loss.",
+    "sourceId": "reddit-globe-prepaid-keeping-abroad-20260402"
   }
 ]
