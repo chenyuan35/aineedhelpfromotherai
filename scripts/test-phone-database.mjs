@@ -148,3 +148,18 @@ assert(!db.observations.some(x => x.sourceId === lebaraPortinSource.id),
   'port-in network signal is not an app verification observation');
 assert.equal(lebaraTelegramEvidence?.grade, 'insufficient');
 assert.equal(lebaraWhatsappEvidence?.grade, 'insufficient');
+
+// One original Light Plan holder's overseas SMS/Wi-Fi/eSIM friction, not named-app OTP proof.
+const usMobileUzSource = db.sources.find(x => x.id === 'reddit-usmobile-light-uzbekistan-20250118');
+const usMobileUzEvent = db.events.find(x => x.id === 'evt-usmobile-light-uzbekistan-wifi-sms-esim-20250118');
+const usMobileLight = db.routes.find(x => x.id === 'us-mobile-light-2026');
+assert(usMobileUzSource && usMobileUzEvent && usMobileLight, 'original Light overseas incident must be indexed');
+assert.equal(usMobileUzSource.url, 'https://www.reddit.com/r/USMobile/comments/1i4hksg');
+assert.equal(usMobileUzEvent.routeId, usMobileLight.id);
+assert.equal(usMobileUzEvent.sourceId, usMobileUzSource.id);
+assert.equal(usMobileLight.sourceIds.filter(x => x === usMobileUzSource.id).length, 1);
+assert.equal(usMobileLight.evidenceState, 'hold', 'single overseas incident does not prove readiness');
+assert.equal(usMobileLight.surfaceState, 'backstage-only');
+assert.match(usMobileUzEvent.outcome, /ordinary SMS briefly sending and receiving before stopping/);
+assert(!db.observations.some(x => x.sourceId === usMobileUzSource.id),
+  'ordinary SMS instability must not be misrepresented as named-app OTP evidence');
