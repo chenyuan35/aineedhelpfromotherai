@@ -283,16 +283,21 @@ assert.match(taskDoc.getElementById('pr-task-summary').textContent,/No verified 
 taskFilter('market','any');
 // Save/restore semantics remain device-local, ID-only, and require no sign-in or network.
 taskReset();
-const chosenId=taskList()[0];
+const defaultEligible=taskList();
+assert.equal(defaultEligible.length,3,'default Buy matches three conditional admitted choices');
+const chosenId=defaultEligible[0];
 taskDoc.querySelector('[data-task-save="'+chosenId+'"]').click();
 const savedRaw=JSON.parse(dom.window.localStorage.getItem('phone-radar-shortlist-v1'));
 assert.deepEqual(savedRaw,[chosenId],'only whitelisted route IDs may be stored');
-taskDoc.getElementById('pr-task-saved').click();
+const savedButton=taskDoc.getElementById('pr-task-saved');
+savedButton.click();
 assert.deepEqual(taskList(),[chosenId],'saved-only browser view must be deterministic');
+assert.equal(savedButton.getAttribute('aria-pressed'),'true');
 taskDoc.getElementById('pr-task-clear').click();
-assert.equal(taskList().length,0,'clear saved removes all selections');
-assert.deepEqual(JSON.parse(dom.window.localStorage.getItem('phone-radar-shortlist-v1')),[]);
-taskDoc.getElementById('pr-task-saved').click();
+assert.deepEqual(JSON.parse(dom.window.localStorage.getItem('phone-radar-shortlist-v1')),[],'clear saved removes stored IDs');
+assert.equal(savedButton.getAttribute('aria-pressed'),'false','clear saved exits saved-only view');
+assert.deepEqual(taskList(),defaultEligible,'clearing saved must restore the original eligible results');
+assert.doesNotMatch(taskDoc.getElementById('pr-task-summary').textContent,/No verified matches/i,'empty shortlist must not impersonate an eligibility failure');
 
 // Route evidence in a task result must open the existing lazy canonical detail.
 const inspectId=taskList()[0];
