@@ -63,5 +63,5 @@ const temporal = inbox.threads.find((t) => t.threadId === 'linuxdo-2836806');
 assert(temporal.reports.some((r) => r.provider === 'eSIM.gg' && r.outcome === 'failure-then-success'), 'the same account first failed then worked');
 assert(temporal.reports.some((r) => r.provider === 'Saily US-number add-on' && r.outcome === 'success-after-delay'), 'VoIP incident must not be attributed to eSIM.gg');
 assert(observations.every((o) => !threadUrls.has(sources.find((s) => s.id === o.sourceId)?.url)), 'candidate reports must not silently affect current service acceptance samples');
-assert(inbox.reviewGate.includes('not'), 'human gate is required');
+assert(/before commit to normalized database/i.test(inbox.reviewGate), 'manual source review gate is required');
 console.log('Community original-outcome inbox: 4 thread URLs / 11 attributed assertions / mixed same-prefix and delayed outcomes preserved; zero canonical admissions — PASS');
