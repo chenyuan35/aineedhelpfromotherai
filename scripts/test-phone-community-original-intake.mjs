@@ -50,7 +50,7 @@ for (const thread of inbox.threads) {
   }
 }
 assert.equal(inbox.threads.length, 4);
-assert.equal(n, 10, 'preserve all ten separately dated/user-attributed assertions');
+assert.equal(n, 11, 'preserve all eleven separately dated/user-attributed assertions');
 const first = inbox.threads.find((t) => t.threadId === 'linuxdo-2919304');
 const positive = first.reports.find((r) => r.authorHandle === 'luweiji' && r.prefixBands.includes('5405'));
 const negative = first.reports.find((r) => r.authorHandle === 'KPI' && r.prefixBands.includes('5405'));
@@ -64,4 +64,4 @@ assert(temporal.reports.some((r) => r.provider === 'eSIM.gg' && r.outcome === 'f
 assert(temporal.reports.some((r) => r.provider === 'Saily US-number add-on' && r.outcome === 'success-after-delay'), 'VoIP incident must not be attributed to eSIM.gg');
 assert(observations.every((o) => !threadUrls.has(sources.find((s) => s.id === o.sourceId)?.url)), 'candidate reports must not silently affect current service acceptance samples');
 assert(inbox.reviewGate.includes('not'), 'human gate is required');
-console.log('Community original-outcome inbox: 4 thread URLs / 10 attributed assertions / mixed same-prefix and delayed outcomes preserved; zero canonical admissions — PASS');
+console.log('Community original-outcome inbox: 4 thread URLs / 11 attributed assertions / mixed same-prefix and delayed outcomes preserved; zero canonical admissions — PASS');
