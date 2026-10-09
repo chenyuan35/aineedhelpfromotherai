@@ -17,7 +17,8 @@
       "esimgg-faq-20261003",
       "esimgg-home-20261003",
       "linuxdo-esimgg-2900517-20260914",
-      "linuxdo-esimgg-2919304-20260918"
+      "linuxdo-esimgg-2919304-20260918",
+      "linuxdo-esimgg-saily-2836806-20260831"
     ]
   },
   "market": {
@@ -77,15 +78,15 @@
       "numberRangeId": null,
       "grade": "C",
       "label": "Mixed / weak",
-      "confidence": "very-low",
-      "sampleSize": 3,
-      "independentSourceCount": 1,
+      "confidence": "low",
+      "sampleSize": 4,
+      "independentSourceCount": 2,
       "successCount": 1,
       "failureCount": 2,
-      "mixedCount": 0,
+      "mixedCount": 1,
       "percentageEligible": false,
       "successRatePct": null,
-      "firstObservedAt": "2026-09-18",
+      "firstObservedAt": "2026-08-31",
       "lastObservedAt": "2026-09-19"
     },
     {
@@ -133,6 +134,13 @@
       "type": "first-hand-community-thread",
       "reportedAt": "2026-09-18",
       "label": "eSIM.gg +372 app-verification discussion: named-user conflicting outcomes within one original thread; success-only poll cannot establish a success rate"
+    },
+    {
+      "id": "linuxdo-esimgg-saily-2836806-20260831",
+      "url": "https://linux.do/t/topic/2836806",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-31",
+      "label": "eSIM.gg first-day WhatsApp failure followed by later success; separate same-thread new-line generic SMS failures; Saily claims not normalized"
     }
   ],
   "observations": [
@@ -289,6 +297,21 @@
         "4205"
       ],
       "reviewNote": "Reply says WhatsApp did not work on 5405/4205 lines; one author; conflicts with OP claim mentioning 5405."
+    },
+    {
+      "id": "obs-esimgg-2836806-tpssl-whatsapp-temporal",
+      "routeId": "esimgg-estonia-372-2026",
+      "service": "WhatsApp",
+      "operation": "new-account-registration",
+      "outcome": "mixed",
+      "reportedAt": "2026-08-31",
+      "geography": "unspecified",
+      "sourceId": "linuxdo-esimgg-saily-2836806-20260831",
+      "dedupeKey": "esimgg-2836806-tpssl-whatsapp-failure-then-success",
+      "authorHandle": "Tpssl",
+      "originalPostNumber": 1,
+      "prefixBands": [],
+      "reviewNote": "One original author: newly purchased eSIM.gg number did not receive WhatsApp code on first day but worked next day. Provider test SMS may have helped (unproven). One temporal mixed account outcome, NOT independent failure+success samples; network location, payment/KYC and prefix unverified."
     }
   ],
   "events": [
@@ -309,6 +332,15 @@
       "scope": "route",
       "outcome": "One Linux.do original discussion has both success and failure claims for Telegram, WhatsApp and OpenAI/Codex. 5405 appears in the positive OP multi-line claim and in a negative multi-line reply; prefix-specific attribution, geography, purchase/KYC and first activation remain unproven. The poll only solicits success and cannot serve as the denominator. Some later commenters report eventual SMS delivery after 24–48 hours; this is not a validated workaround.",
       "sourceId": "linuxdo-esimgg-2919304-20260918"
+    },
+    {
+      "id": "evt-esimgg-2836806-delayed-otp-generic-failures",
+      "routeId": "esimgg-estonia-372-2026",
+      "type": "app-verification-temporal-and-unknown-app-failures",
+      "reportedAt": "2026-09-08",
+      "scope": "One Linux.do original thread, two separate firsthand authors. Tpssl WhatsApp failure->success is one temporal claim; cyminute two purchased eSIM.gg lines are one author and exact failed apps unspecified.",
+      "outcome": "Tpssl reported WhatsApp code initially failing on eSIM.gg, then succeeding on the next day; use of an operator test SMS was suspected, not a proven fix. On Sep 8, cyminute independently reported two recently purchased eSIM.gg lines unable to receive unspecified verification codes, without assigning apps, country, prefix, device or first activation. This is not a representative rate or verified remedy.",
+      "sourceId": "linuxdo-esimgg-saily-2836806-20260831"
     }
   ],
   "snapshots": [

@@ -5687,8 +5687,8 @@
       "surfaceState": "backstage-only",
       "evidenceState": "admitted",
       "lastVerifiedAt": "2026-10-03",
-      "observationCount": 9,
-      "eventCount": 2,
+      "observationCount": 10,
+      "eventCount": 3,
       "services": [
         "OpenAI/Codex",
         "Telegram",
@@ -5720,12 +5720,12 @@
           "operation": "new-account-registration",
           "grade": "C",
           "label": "Mixed / weak",
-          "confidence": "very-low",
-          "sampleSize": 3,
-          "independentSourceCount": 1,
+          "confidence": "low",
+          "sampleSize": 4,
+          "independentSourceCount": 2,
           "successCount": 1,
           "failureCount": 2,
-          "mixedCount": 0,
+          "mixedCount": 1,
           "percentageEligible": false,
           "successRatePct": null,
           "lastObservedAt": "2026-09-19"
@@ -5748,7 +5748,7 @@
         }
       ],
       "decisionFacts": {
-        "sourceCount": 4,
+        "sourceCount": 5,
         "kycState": "unknown",
         "keepAction": "Use the phone-number line at least once per year. Provider states line balance does not expire and the number remains active with annual use; exact cheapest chargeable action is n…",
         "roamingSms": "September 2026 Linux.do users report successful GPT, WhatsApp and Telegram SMS reception on some +372 prefixes in China, alongside reports that some prefixes initially or persiste…",
@@ -5797,6 +5797,7 @@
         "success",
         "unspecified",
         "failure",
+        "mixed",
         "evt",
         "db",
         "c23",
@@ -5863,8 +5864,7 @@
         "original",
         "discussion",
         "both",
-        "claims",
-        "for"
+        "claims"
       ]
     },
     {
