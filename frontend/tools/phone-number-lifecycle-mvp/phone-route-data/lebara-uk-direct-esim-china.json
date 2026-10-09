@@ -19,7 +19,8 @@
       "linuxdo-lebara-2894665",
       "src-2948194201a0",
       "src-337a1e0a1330",
-      "src-aa91ae8faea1"
+      "src-aa91ae8faea1",
+      "linuxdo-lebara-2815946-20260826"
     ]
   },
   "market": {
@@ -127,6 +128,13 @@
       "url": "https://www.lebara.co.uk/en/help/esim.html",
       "type": "official",
       "label": "Lebara UK — eSIM help and UK activation requirement"
+    },
+    {
+      "id": "linuxdo-lebara-2815946-20260826",
+      "url": "https://linux.do/t/topic/2815946",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-26",
+      "label": "Lebara mainland eSIM no-signal/refund reports: two authors in one original forum thread"
     }
   ],
   "observations": [
@@ -184,6 +192,15 @@
       "scope": "multiple-same-thread-observations",
       "outcome": "inbound verification SMS worked while outgoing SMS/voice/Wi-Fi Calling were initially incomplete or conflicting",
       "sourceId": "linuxdo-lebara-2745784-op"
+    },
+    {
+      "id": "evt-lebara-mainland-no-signal-20260826",
+      "routeId": "lebara-uk-direct-esim-china",
+      "type": "mainland-first-network-no-signal",
+      "reportedAt": "2026-08-26",
+      "scope": "two first-hand participants in ONE original mainland forum thread; not two independent sources",
+      "outcome": "Two speakers report Lebara eSIM showing no mainland carrier signal after installation; one used Xesim and was told by provider support that UK activation was required. Both report later refunds (one next day, one after about three days). Exact foreign-payment eligibility and named-app OTP were not tested by these speakers; this is not a population failure rate or a refund guarantee.",
+      "sourceId": "linuxdo-lebara-2815946-20260826"
     }
   ],
   "snapshots": [

@@ -2887,5 +2887,14 @@
     "scope": "marketplace-comparison-single-author",
     "outcome": "A community comparison author reports 5SIM one-time activation inventory as low-cost but inconsistent in 2026, without an exact service/country/operator reproduction or statistical denominator. One author report, not a platform-wide failure rate.",
     "sourceId": "5sim-reddit-nocontract-20260511"
+  },
+  {
+    "id": "evt-lebara-mainland-no-signal-20260826",
+    "routeId": "lebara-uk-direct-esim-china",
+    "type": "mainland-first-network-no-signal",
+    "reportedAt": "2026-08-26",
+    "scope": "two first-hand participants in ONE original mainland forum thread; not two independent sources",
+    "outcome": "Two speakers report Lebara eSIM showing no mainland carrier signal after installation; one used Xesim and was told by provider support that UK activation was required. Both report later refunds (one next day, one after about three days). Exact foreign-payment eligibility and named-app OTP were not tested by these speakers; this is not a population failure rate or a refund guarantee.",
+    "sourceId": "linuxdo-lebara-2815946-20260826"
   }
 ]

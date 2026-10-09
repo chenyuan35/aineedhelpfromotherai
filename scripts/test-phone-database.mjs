@@ -78,3 +78,19 @@ assert.ok(comparisonIdx.routes.some(r => r.marketName !== 'United Kingdom'));
 assert.ok(comparisonIdx.routes.every(r => ['comparison-visible','detail-eligible','indexable'].includes(r.publicationState)));
 
 console.log(`Phone DB tests passed: ${db.routes.length} routes, ${db.markets.length} markets, ${idx.routes.length} searchable records.`);
+
+// S7: one primary failure discussion, two accounts, no invented named-app OTP.
+const lebaraSource = db.sources.find(x=>x.id==='linuxdo-lebara-2815946-20260826');
+const lebaraEvent = db.events.find(x=>x.id==='evt-lebara-mainland-no-signal-20260826');
+const lebaraRoute = db.routes.find(x=>x.id==='lebara-uk-direct-esim-china');
+const lebaraIndex = idx.routes.find(x=>x.id===lebaraRoute?.id);
+assert(lebaraSource && lebaraEvent && lebaraRoute && lebaraIndex,'Lebara failure evidence normalized');
+assert.equal(lebaraEvent.sourceId,lebaraSource.id);
+assert.equal(lebaraRoute.sourceIds.filter(x=>x===lebaraSource.id).length,1);
+assert.equal(lebaraIndex.decisionFacts.sourceCount,7);
+assert.equal(lebaraIndex.eventCount,2);
+assert(!db.observations.some(x=>x.sourceId===lebaraSource.id),'a failed network attach is not a named-app OTP failure');
+const lebaraTelegramEvidence=lebaraIndex.serviceEvidence.find(x=>/Telegram/i.test(x.serviceName));
+const lebaraWhatsappEvidence=lebaraIndex.serviceEvidence.find(x=>/WhatsApp/i.test(x.serviceName));
+assert.equal(lebaraTelegramEvidence?.independentSourceCount,1);
+assert.equal(lebaraWhatsappEvidence?.independentSourceCount,1);
