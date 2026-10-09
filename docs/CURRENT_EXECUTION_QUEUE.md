@@ -21,6 +21,12 @@ Saily release closeout: `docs/PHONE_SAILY_US_NUMBER_ADMISSION_CLOSEOUT_2026-10-0
 LuckySIM residual review: `docs/PHONE_LUCKYSIM_HK_REVIEW_2026-10-04.md`.
 China Telecom Macau residual review: `docs/PHONE_CT_MACAU_EASY_PASS_REVIEW_2026-10-04.md`.
 
+## S3 DECISION — 2026-10-09 / NEXT S4 FEASIBILITY REPAIR
+
+**S3 read-only product/job audit COMPLETE; acceptance threshold FAILED.** Ten dated public scenarios were independently replayed against fresh live Phone matcher and 160-row canonical JSON: **7 explicit correct no-match / 3 conditional China-use cards that cannot prove a mandatory China-first activation + named app SMS**. Conservative S3 score **7/10** (<8 required), with no explicit false activation/bank-OTP/port-in guarantee or HOLD/backstage winner in the examined paths. Real volunteer usability and true 375/390 visual/no-overflow checks **not completed** (only compiled mobile CSS inspected). See `docs/PHONE_RADAR_S3_JOB_ACCEPTANCE_AUDIT_2026-10-09.md`.
+
+**NEXT SINGLE ATOMIC TASK S4:** bounded fail-closed **existing Phone URL** patch for mandatory mainland/foreign first-activation suitability: do not present unverified research candidates as verified fit; display **No verified matches**, then separate optional **Research candidates — activation/OTP unverified** with dated specific evidence and distinct-source counts. Review current independent Giffgaff long-roaming incident reports before representing continuity as safe; preserve cost/accounting, route IDs, 2–4 Compare, local saved IDs, 160/896 canonical, 135/3/31 SEO boundary. Validate 10 replay fixtures, keyboard/mobile 375/390 and no-hold/no-VoIP winners in CI/Eval/Preview then exact production READY/live. Stop before merge if free deploy quota or evidence gate blocks. **No bulk DB expansion, new SEO URL, registration, backend, GA4/privacy change or paid service**. No authorized concurrent Qwen/Kimi lane.
+
 ## LATEST RELEASE CHECKPOINT — 2026-10-09
 
 Phone task-first user interface is **LIVE** (PR #451/main SHA `60ea6e1d`, Vercel `dpl_FSo2hKC2b5YTdDyHddWuwhCjy8W3` READY, Phone apex/www HTTP 200). The old S1 and S2 "next" claims later in this historical queue are superseded by the **S3 scenario/competitor/mobile-validation** task below. Canonical/public boundaries unchanged.
