@@ -21,6 +21,14 @@ Saily release closeout: `docs/PHONE_SAILY_US_NUMBER_ADMISSION_CLOSEOUT_2026-10-0
 LuckySIM residual review: `docs/PHONE_LUCKYSIM_HK_REVIEW_2026-10-04.md`.
 China Telecom Macau residual review: `docs/PHONE_CT_MACAU_EASY_PASS_REVIEW_2026-10-04.md`.
 
+## LATEST S4 RELEASE / NEXT EVIDENCE GATE — 2026-10-09
+
+**S4 shipped and production verified:** [PR #454](https://github.com/chenyuan35/aineedhelpfromotherai/pull/454) Eval Gate **#37881896430 SUCCESS**, exact-head Vercel Preview READY, main SHA `9959c39819c5ba5a218dab9c0e44724eb674da41`, production `dpl_A3nEjtJKuKsu378GLm2HnqkzdBxz` READY. Independent apex/www Phone HTML **200** with fail-closed China/foreign activation and collapsed research-only candidates; data summary **200/160**, sitemap **200/31**. Source-level named-app observation vs distinct independent-source count and latest date displayed; Giffgaff newer incident lead linked but unreconciled. No DB/SEO/privacy/GA4 changes.
+
+**Ten S3-derived automated fail-closed cases pass**, but these are simulated browser states, not real volunteers or ten feasible purchases. Original S3 7/10 research audit remains the pre-fix assessment. CSS 375/390 inspected; live browser interactive check timed out, so no visual no-overflow or task-time claim.
+
+**NEXT SINGLE ATOMIC TASK:** independently reconcile Giffgaff/Lebara mainland-China first activation, eligibility for overseas buyer KYC/payment, named Telegram/WhatsApp SMS operation and recent Giffgaff continuity incidents using independent primary reports; publish an evidence grade and concrete proof gaps. Unless genuinely supported, **keep No verified matches** and do not add pages, route count, backend, paid APIs, OTP automation or unverifiable recommendations. No authorized parallel worker. Ledger `docs/PHONE_RADAR_S4_PRODUCTION_RELEASE_2026-10-09.md`.
+
 ## S3 DECISION — 2026-10-09 / NEXT S4 FEASIBILITY REPAIR
 
 **S3 read-only product/job audit COMPLETE; acceptance threshold FAILED.** Ten dated public scenarios were independently replayed against fresh live Phone matcher and 160-row canonical JSON: **7 explicit correct no-match / 3 conditional China-use cards that cannot prove a mandatory China-first activation + named app SMS**. Conservative S3 score **7/10** (<8 required), with no explicit false activation/bank-OTP/port-in guarantee or HOLD/backstage winner in the examined paths. Real volunteer usability and true 375/390 visual/no-overflow checks **not completed** (only compiled mobile CSS inspected). See `docs/PHONE_RADAR_S3_JOB_ACCEPTANCE_AUDIT_2026-10-09.md`.
