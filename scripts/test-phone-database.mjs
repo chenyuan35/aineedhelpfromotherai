@@ -148,3 +148,17 @@ assert(!db.observations.some(x => x.sourceId === lebaraPortinSource.id),
   'port-in network signal is not an app verification observation');
 assert.equal(lebaraTelegramEvidence?.grade, 'insufficient');
 assert.equal(lebaraWhatsappEvidence?.grade, 'insufficient');
+
+// One Globe original overseas conversation: three authors, no named-app test or guaranteed retention tariff.
+const globeAbroadSource = db.sources.find(x => x.id === 'reddit-globe-prepaid-keeping-abroad-20260402');
+const globeAbroadRoute = db.routes.find(x => x.id === 'globe-prepaid-1yr-2026');
+const globeAbroadEvents = db.events.filter(x => x.sourceId === 'reddit-globe-prepaid-keeping-abroad-20260402');
+assert(globeAbroadSource && globeAbroadRoute, 'Globe original reports need a canonical provenance link');
+assert.equal(globeAbroadSource.url, 'https://www.reddit.com/r/phmigrate/comments/1sa5uhm');
+assert.equal(globeAbroadRoute.sourceIds.filter(x => x === globeAbroadSource.id).length, 1);
+assert.equal(globeAbroadEvents.length, 3, 'three author-level stories are one original source');
+assert(globeAbroadEvents.every(x => x.routeId === globeAbroadRoute.id));
+assert.equal(globeAbroadRoute.evidenceState, 'hold');
+assert.equal(globeAbroadRoute.surfaceState, 'backstage-only');
+assert(!db.observations.some(x => x.sourceId === globeAbroadSource.id),
+  'unnamed OTP and app promo purchase must not become a named-app success sample');
