@@ -438,7 +438,7 @@ function bindTaskControls(){
   origin.innerHTML='<option value="any">Any number origin</option>'+markets.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('');
   for(const id of taskSelectIds)taskGet(id).addEventListener('change',renderTaskFinder);
   taskGet('pr-task-saved').addEventListener('click',()=>{state.showSaved=!state.showSaved;renderTaskFinder()});
-  taskGet('pr-task-clear').addEventListener('click',()=>{state.saved.clear();persistTaskSaved();renderTaskFinder()});
+  taskGet('pr-task-clear').addEventListener('click',()=>{state.saved.clear();state.showSaved=false;persistTaskSaved();renderTaskFinder()});
   for(const id of ['pr-task-results','pr-task-research-results'])taskGet(id).addEventListener('click',event=>{
     const saved=event.target.closest('[data-task-save]');if(saved){const id=saved.dataset.taskSave;const route=(canonicalIndex?.routes||[]).find(r=>r.id===id);if(!route||!taskEligible(route))return;if(state.saved.has(id))state.saved.delete(id);else state.saved.add(id);persistTaskSaved();renderTaskFinder();return}
     const opened=event.target.closest('[data-task-open]');if(opened){openIndexedRoute(opened.dataset.taskOpen,'task')}
