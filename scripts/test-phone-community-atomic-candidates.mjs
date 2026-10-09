@@ -31,7 +31,7 @@ for(const item of queue.candidates){
     assert(/^https:\/\/www\.nodeseek\.com\/post-\d+-1$/.test(src.url),'only grounded public original thread');
     assert(!sourceURLs.has(src.url),'candidate source not already canonical');
     assert(!urls.has(src.url),'do not double count the same discussion');
-    assert(/^\d{4}-\d{2}$/.test(src.postDate));
+    assert(/^\d{4}-\d{2}(?:-\d{2})?$/.test(src.postDate));
     assert(src.author.length>1 && src.operation.length>8);
     assert(src.uncertain.length>0,'unknown eligibility preserved');
     urls.add(src.url);
