@@ -35,6 +35,8 @@ sub mentioned_hosts {
     nodeloc => qr/(?:^|\.)nodeloc\.com$/i,
     nodeseek => qr/(?:^|\.)nodeseek\.com$/i,
     v2ex => qr/(?:^|\.)v2ex\.com$/i,
+    linuxdo_gossip => qr/(?:^|\.)linux\.do$/i,
+    linuxdo_latest => qr/(?:^|\.)linux\.do$/i,
   );
   my %seen; my @hosts;
   while ($raw =~ m{https?://([^/\s"'<>]+)}ig) {
