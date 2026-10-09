@@ -2914,5 +2914,14 @@
     "scope": "route",
     "outcome": "One Linux.do original discussion has both success and failure claims for Telegram, WhatsApp and OpenAI/Codex. 5405 appears in the positive OP multi-line claim and in a negative multi-line reply; prefix-specific attribution, geography, purchase/KYC and first activation remain unproven. The poll only solicits success and cannot serve as the denominator. Some later commenters report eventual SMS delivery after 24–48 hours; this is not a validated workaround.",
     "sourceId": "linuxdo-esimgg-2919304-20260918"
+  },
+  {
+    "id": "evt-usmobile-light-uzbekistan-wifi-sms-esim-20250118",
+    "routeId": "us-mobile-light-2026",
+    "type": "independent-overseas-wifi-sms-reprovisioning-friction",
+    "reportedAt": "2025-01-18",
+    "scope": "one first-person Warp/Verizon Light-plan user in Uzbekistan; Wi-Fi and handset details unknown; no named bank/app OTP",
+    "outcome": "The original Light Plan user reports Wi-Fi calls failing, ordinary SMS briefly sending and receiving before stopping, and a failed attempt to install an eSIM after switching from Warp to Light Speed while already in Uzbekistan. In the same original thread, a US Mobile representative suggests weak Wi-Fi and advises arranging Wi-Fi Calling/network provisioning before departure; no successful resolution is shown. One January 2025 account, not a general activation ban, universal SMS failure or any named-app OTP result.",
+    "sourceId": "reddit-usmobile-light-uzbekistan-20250118"
   }
 ]
