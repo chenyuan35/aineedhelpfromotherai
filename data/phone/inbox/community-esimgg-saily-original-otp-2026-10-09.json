@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "signalId": "linuxdo-esimgg-saily-prefix-app-incident-cluster-20261009",
+  "capturedAt": "2026-10-09",
+  "scope": "real-number-original-user-service-verification",
+  "publicationState": "backstage-candidate-only",
+  "sourcePolicy": {
+    "oneThreadOnePrimaryUrl": true,
+    "multiAuthorsWithinThreadCountAsIndependentSourceUrls": false,
+    "votesAreOutcomes": false,
+    "sameAuthorMultiNumberNotIndependentPersons": true,
+    "samePrefixReportsCanConflict": true,
+    "unverifiedDeviceAndActivationRemainUnknown": true,
+    "safety": "No phone numbers, OTP codes, credentials, account IDs, unpublished seller inventory, private or automated verification data were collected.",
+    "normalization": "Maintain source-first author-date app-operation observations; manual review of account/device/geography is required before promoting any result into data/phone/v1/observations.json. Never infer population success rates or paid offer currentness."
+  },
+  "canonicalRouteLink": "esimgg-estonia-372-2026",
+  "threads": [
+    {
+      "threadId": "linuxdo-2919304",
+      "url": "https://linux.do/t/topic/2919304",
+      "topic": "eSIM.gg prefix-band app verification discussion",
+      "opened": "2026-09-18",
+      "sourceGrade": "original-firsthand-mixed-and-unrepresentative-poll",
+      "primarySourceRecordExistsInCanonical": false,
+      "ballotWarning": "Poll records ONLY positive claims and allows many selections; respondent counts and apparent percentage cannot be read as a failure-inclusive denominator.",
+      "reports": [
+        {
+          "post": 1,
+          "authorHandle": "luweiji",
+          "date": "2026-09-18",
+          "mode": "author-reported-two-owned-lines",
+          "prefixBands": [
+            "8103",
+            "5405"
+          ],
+          "targetServices": [
+            "Telegram",
+            "WhatsApp"
+          ],
+          "operation": "new-account-registration",
+          "outcome": "success",
+          "quantityClaim": 2,
+          "geography": "not explicitly reproduced with precise cell-registration location",
+          "device": "not stated",
+          "attribution": "OP firsthand",
+          "confidence": "dated-claimed-firsthand; two lines by one author; not two independent author samples"
+        },
+        {
+          "post": 21,
+          "authorHandle": "ikaka",
+          "date": "2026-09-19",
+          "mode": "one-user-photo-claim",
+          "prefixBands": [],
+          "targetServices": [
+            "OpenAI/ChatGPT",
+            "WhatsApp"
+          ],
+          "operation": "new-account-registration",
+          "outcome": "failure",
+          "geography": "not stated",
+          "device": "not stated",
+          "attribution": "reply firsthand (screenshot) but underlying precise number prefix unclear",
+          "confidence": "firsthand failure with unclassified prefix"
+        },
+        {
+          "post": 22,
+          "authorHandle": "KPI",
+          "date": "2026-09-19",
+          "mode": "user-described-phone-numbers",
+          "prefixBands": [
+            "5405",
+            "4205"
+          ],
+          "targetServices": [
+            "Telegram",
+            "OpenAI/Codex",
+            "WhatsApp"
+          ],
+          "operation": "new-account-registration",
+          "outcome": "failure",
+          "geography": "not stated",
+          "device": "not stated",
+          "attribution": "reply firsthand",
+          "confidence": "conflicts with OP 5405 positive case; do not aggregate universal prefix-level verdict"
+        },
+        {
+          "post": 23,
+          "authorHandle": "Iguang9881",
+          "date": "2026-09-21",
+          "mode": "user-described-prefixes",
+          "prefixBands": [
+            "5705",
+            "53"
+          ],
+          "targetServices": [],
+          "operation": "app-verification-unspecified",
+          "outcome": "mixed",
+          "geography": "not stated",
+          "device": "not stated",
+          "attribution": "reply firsthand but exact apps not specified",
+          "confidence": "do not invent Telegram/WhatsApp-specific outcome"
+        }
+      ]
+    },
+    {
+      "threadId": "linuxdo-2836806",
+      "url": "https://linux.do/t/topic/2836806",
+      "topic": "two separately acquired eSIM.gg and Saily lines over time",
+      "opened": "2026-08-31",
+      "sourceGrade": "original-firsthand-mixed",
+      "primarySourceRecordExistsInCanonical": false,
+      "reports": [
+        {
+          "post": 1,
+          "authorHandle": "Tpssl",
+          "date": "2026-08-31",
+          "provider": "eSIM.gg",
+          "prefixBands": [],
+          "targetServices": [
+            "WhatsApp"
+          ],
+          "operation": "new-account-registration",
+          "outcome": "failure-then-success",
+          "timeline": "Could not receive WhatsApp on the first day; says received code on next day, possibly after operator self-test SMS. Temporal change, not proven workaround.",
+          "geography": "not explicitly stated",
+          "device": "third-party programmable eUICC mentioned",
+          "confidence": "one firsthand account, one original thread"
+        },
+        {
+          "post": 1,
+          "authorHandle": "Tpssl",
+          "date": "2026-08-31",
+          "provider": "Saily US-number add-on",
+          "prefixBands": [],
+          "targetServices": [
+            "WhatsApp",
+            "Telegram",
+            "PayPal"
+          ],
+          "operation": "registration-and-number-binding",
+          "outcome": "success-after-delay",
+          "timeline": "Saily delayed first inbound codes, then used to register WhatsApp, change Telegram phone binding, and set up a US PayPal account. Specific account risk and provider eligibility unknown.",
+          "geography": "not explicitly stated",
+          "device": "Nekoko eUICC mentioned",
+          "confidence": "one person/test, VoIP class distinct from real mobile"
+        },
+        {
+          "post": 10,
+          "authorHandle": "cyminute",
+          "date": "2026-09-07",
+          "provider": "eSIM.gg",
+          "prefixBands": [],
+          "targetServices": [],
+          "operation": "registration-code-reception-unspecified",
+          "outcome": "failure",
+          "timeline": "Reports two newly acquired eSIM.gg lines unable to receive codes; exact apps not identified in this clause.",
+          "geography": "not stated",
+          "device": "not stated",
+          "confidence": "do not infer Telegram or WhatsApp failure from generic code statement"
+        },
+        {
+          "post": 10,
+          "authorHandle": "cyminute",
+          "date": "2026-09-07",
+          "provider": "Saily US-number add-on",
+          "prefixBands": [],
+          "targetServices": [
+            "OpenAI/Codex",
+            "WhatsApp",
+            "Telegram"
+          ],
+          "operation": "verification-unspecified",
+          "outcome": "success",
+          "geography": "not stated",
+          "device": "not stated",
+          "confidence": "author states service-level success, but account-class/purchase/payment not reproduced"
+        }
+      ]
+    },
+    {
+      "threadId": "linuxdo-2900228",
+      "url": "https://linux.do/t/topic/2900228",
+      "topic": "user asks which foreign real number is stable",
+      "opened": "2026-09-14",
+      "sourceGrade": "original-firsthand-mixed",
+      "primarySourceRecordExistsInCanonical": false,
+      "reports": [
+        {
+          "post": 1,
+          "authorHandle": "LiuLiYu",
+          "date": "2026-09-14",
+          "provider": "eSIM.gg",
+          "prefixBands": [],
+          "targetServices": [
+            "OpenAI/Codex"
+          ],
+          "operation": "sms-verification",
+          "outcome": "success",
+          "geography": "not stated",
+          "device": "not stated",
+          "confidence": "firsthand reply but purchase history and initial service activation not described"
+        }
+      ]
+    },
+    {
+      "threadId": "linuxdo-2992813",
+      "url": "https://linux.do/t/topic/2992813",
+      "topic": "Google Voice number was recycled after keep-script error; VoXI vs eSIM.gg vs Giffgaff",
+      "opened": "2026-10-07",
+      "sourceGrade": "firsthand-demand-and-one-reply",
+      "primarySourceRecordExistsInCanonical": false,
+      "reports": [
+        {
+          "post": 1,
+          "authorHandle": "c3c",
+          "date": "2026-10-08",
+          "provider": "Google Voice",
+          "prefixBands": [],
+          "targetServices": [],
+          "operation": "number-retention",
+          "outcome": "number-lost",
+          "geography": "not stated",
+          "device": "not stated",
+          "confidence": "OP firsthand account-loss report from erroneous maintenance automation; not an eSIM.gg operational outcome"
+        },
+        {
+          "post": null,
+          "authorHandle": "kbyxlin",
+          "date": "2026-10-08",
+          "provider": "eSIM.gg",
+          "prefixBands": [
+            "5317"
+          ],
+          "targetServices": [
+            "OpenAI/Codex"
+          ],
+          "operation": "sms-verification",
+          "outcome": "success",
+          "geography": "not stated",
+          "device": "not stated",
+          "confidence": "one reply firsthand; no evidence on account creation/payment/KYC"
+        }
+      ]
+    }
+  ],
+  "dispositions": [
+    {
+      "target": "esimgg-estonia-372-2026",
+      "action": "review-for-normalized-original-source-and-service-observations",
+      "reason": "Already canonical, zero service observations; source-by-author outcomes conflict. Prefix-band may matter but sample too sparse to rank."
+    },
+    {
+      "target": "saily-us-phone-number-2026",
+      "action": "review-VoIP-service-evidence-separately",
+      "reason": "Saily is app-managed second-line, not equivalent to Estonian real-mobile number; author reports cannot be bulk imported as provider guarantee."
+    },
+    {
+      "target": "Google Voice",
+      "action": "incident-demand-candidate",
+      "reason": "Existing number-keeper loss is a separate real user job; no new product/SEO URL authorized."
+    }
+  ],
+  "newCanonicalSourceCount": 0,
+  "newCanonicalObservationCount": 0,
+  "reviewGate": "Nothing in this candidate inbox is counted as verified production, source corpus, app success percentage or new public URL. Exact original claim at post, author, date and service must be reviewed before commit to normalized database."
+}
