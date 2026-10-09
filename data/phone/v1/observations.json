@@ -295,5 +295,159 @@
     "geography": "unspecified",
     "sourceId": "linuxdo-hahasim-telegram-conditional-20260105",
     "dedupeKey": "hahasim-linuxdo-1408847-soultionlss-telegram"
+  },
+  {
+    "id": "obs-esimgg-2919304-luweiji-telegram",
+    "routeId": "esimgg-estonia-372-2026",
+    "service": "Telegram",
+    "operation": "new-account-registration",
+    "outcome": "success",
+    "reportedAt": "2026-09-18",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-esimgg-2919304-20260918",
+    "dedupeKey": "esimgg-2919304-luweiji-telegram",
+    "authorHandle": "luweiji",
+    "originalPostNumber": 1,
+    "prefixBands": [
+      "8103",
+      "5405"
+    ],
+    "reviewNote": "OP tested two owned lines; successful Telegram registration claimed; one author, not two independent reports; success cannot be assigned separately to either prefix."
+  },
+  {
+    "id": "obs-esimgg-2919304-luweiji-whatsapp",
+    "routeId": "esimgg-estonia-372-2026",
+    "service": "WhatsApp",
+    "operation": "new-account-registration",
+    "outcome": "success",
+    "reportedAt": "2026-09-18",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-esimgg-2919304-20260918",
+    "dedupeKey": "esimgg-2919304-luweiji-whatsapp",
+    "authorHandle": "luweiji",
+    "originalPostNumber": 1,
+    "prefixBands": [
+      "8103",
+      "5405"
+    ],
+    "reviewNote": "OP tested two owned lines; successful WhatsApp registration claimed; same author as Telegram report; avoid 2 independent source samples."
+  },
+  {
+    "id": "obs-esimgg-2919304-leinata-telegram",
+    "routeId": "esimgg-estonia-372-2026",
+    "service": "Telegram",
+    "operation": "new-account-registration",
+    "outcome": "success",
+    "reportedAt": "2026-09-18",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-esimgg-2919304-20260918",
+    "dedupeKey": "esimgg-2919304-leinata-telegram",
+    "authorHandle": "leinata",
+    "originalPostNumber": 13,
+    "prefixBands": [
+      "53"
+    ],
+    "reviewNote": "Reply says 53-series line received Telegram code; exact 4-digit prefix, location and device unknown."
+  },
+  {
+    "id": "obs-esimgg-2919304-leinata-openai",
+    "routeId": "esimgg-estonia-372-2026",
+    "service": "OpenAI/Codex",
+    "operation": "new-account-registration",
+    "outcome": "success",
+    "reportedAt": "2026-09-18",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-esimgg-2919304-20260918",
+    "dedupeKey": "esimgg-2919304-leinata-openai",
+    "authorHandle": "leinata",
+    "originalPostNumber": 13,
+    "prefixBands": [
+      "53"
+    ],
+    "reviewNote": "Reply says 53-series line received GPT verification code; exact account-flow details unverified."
+  },
+  {
+    "id": "obs-esimgg-2919304-ikaka-openai",
+    "routeId": "esimgg-estonia-372-2026",
+    "service": "OpenAI/Codex",
+    "operation": "new-account-registration",
+    "outcome": "failure",
+    "reportedAt": "2026-09-19",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-esimgg-2919304-20260918",
+    "dedupeKey": "esimgg-2919304-ikaka-openai",
+    "authorHandle": "ikaka",
+    "originalPostNumber": 21,
+    "prefixBands": [],
+    "reviewNote": "Reply reports GPT code rejection/non-success with screenshot; precise prefix and cellular reason unknown."
+  },
+  {
+    "id": "obs-esimgg-2919304-ikaka-whatsapp",
+    "routeId": "esimgg-estonia-372-2026",
+    "service": "WhatsApp",
+    "operation": "new-account-registration",
+    "outcome": "failure",
+    "reportedAt": "2026-09-19",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-esimgg-2919304-20260918",
+    "dedupeKey": "esimgg-2919304-ikaka-whatsapp",
+    "authorHandle": "ikaka",
+    "originalPostNumber": 21,
+    "prefixBands": [],
+    "reviewNote": "Same reply says WhatsApp unsuccessful; prefix unconfirmed; one author and one original discussion."
+  },
+  {
+    "id": "obs-esimgg-2919304-kpi-telegram",
+    "routeId": "esimgg-estonia-372-2026",
+    "service": "Telegram",
+    "operation": "new-account-registration",
+    "outcome": "failure",
+    "reportedAt": "2026-09-19",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-esimgg-2919304-20260918",
+    "dedupeKey": "esimgg-2919304-kpi-telegram",
+    "authorHandle": "KPI",
+    "originalPostNumber": 22,
+    "prefixBands": [
+      "5405",
+      "4205"
+    ],
+    "reviewNote": "Reply says both 5405 and 4205 lines did not work for TG; multi-line claim from one user, cannot assign independent samples or isolate prefix."
+  },
+  {
+    "id": "obs-esimgg-2919304-kpi-openai",
+    "routeId": "esimgg-estonia-372-2026",
+    "service": "OpenAI/Codex",
+    "operation": "new-account-registration",
+    "outcome": "failure",
+    "reportedAt": "2026-09-19",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-esimgg-2919304-20260918",
+    "dedupeKey": "esimgg-2919304-kpi-openai",
+    "authorHandle": "KPI",
+    "originalPostNumber": 22,
+    "prefixBands": [
+      "5405",
+      "4205"
+    ],
+    "reviewNote": "Reply says Codex did not work on 5405/4205 lines; one author; cannot isolate exact band."
+  },
+  {
+    "id": "obs-esimgg-2919304-kpi-whatsapp",
+    "routeId": "esimgg-estonia-372-2026",
+    "service": "WhatsApp",
+    "operation": "new-account-registration",
+    "outcome": "failure",
+    "reportedAt": "2026-09-19",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-esimgg-2919304-20260918",
+    "dedupeKey": "esimgg-2919304-kpi-whatsapp",
+    "authorHandle": "KPI",
+    "originalPostNumber": 22,
+    "prefixBands": [
+      "5405",
+      "4205"
+    ],
+    "reviewNote": "Reply says WhatsApp did not work on 5405/4205 lines; one author; conflicts with OP claim mentioning 5405."
   }
 ]

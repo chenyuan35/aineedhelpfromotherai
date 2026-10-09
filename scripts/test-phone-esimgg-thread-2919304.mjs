@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { gradeServiceEvidence } from './phone-evidence-grading.mjs';
+const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
+const R='esimgg-estonia-372-2026', S='linuxdo-esimgg-2919304-20260918', U='https://linux.do/t/topic/2919304';
+const routes=read('data/phone/v1/routes.json'),sources=read('data/phone/v1/sources.json'), obs=read('data/phone/v1/observations.json'), events=read('data/phone/v1/events.json'), inbox=read('data/phone/inbox/community-esimgg-saily-original-otp-2026-10-09.json');
+const route=routes.find(x=>x.id===R);assert(route);
+assert.equal(route.surfaceState,'backstage-only');assert.equal(route.evidenceState,'admitted');assert(route.sourceIds.includes(S));
+assert.equal(sources.filter(x=>x.id===S&&x.url===U).length,1,'exactly one original thread source');
+const os=obs.filter(x=>x.sourceId===S);assert.equal(os.length,9);
+assert.equal(new Set(os.map(x=>x.dedupeKey)).size,9);
+assert.deepEqual([...new Set(os.map(x=>x.authorHandle))].sort(),['KPI','ikaka','leinata','luweiji'].sort());
+assert.deepEqual([...new Set(os.map(x=>x.operation))],['new-account-registration']);
+assert(os.every(x=>x.geography==='unspecified'&&x.prefixBands.every(b=>/^\d{2,4}$/.test(b))));
+for(const service of ['Telegram','WhatsApp','OpenAI/Codex']){
+ const rows=os.filter(x=>x.service===service);const result=gradeServiceEvidence(rows);
+ assert.equal(result.independentSourceCount,1,service+' must remain a single original source');
+ assert.equal(result.grade,'C');assert.equal(result.successRatePct,null);
+ assert(rows.some(x=>x.outcome==='success')&&rows.some(x=>x.outcome==='failure'));
+}
+assert(os.some(x=>x.authorHandle==='luweiji'&&x.prefixBands.includes('5405')&&x.outcome==='success'));
+assert(os.some(x=>x.authorHandle==='KPI'&&x.prefixBands.includes('5405')&&x.outcome==='failure'));
+assert.equal(events.filter(x=>x.sourceId===S).length,1);
+assert.match(events.find(x=>x.sourceId===S).outcome,/poll only solicits success/);
+assert.equal(inbox.newCanonicalSourceCount,1);assert.equal(inbox.newCanonicalObservationCount,9);
+assert.equal(inbox.threads.filter(x=>x.primarySourceRecordExistsInCanonical).length,1);
+assert.equal(inbox.threads.find(x=>x.threadId==='linuxdo-2919304').canonicalSourceId,S);
+const unreviewed=new Set(inbox.threads.filter(x=>!x.primarySourceRecordExistsInCanonical).map(x=>x.url));
+assert.equal(unreviewed.size,3);assert(obs.every(x=>!unreviewed.has(sources.find(s=>s.id===x.sourceId)?.url)));
+const idx=read('frontend/tools/phone-number-lifecycle-mvp/phone-route-summaries.json');
+const summary=idx.routes.find(x=>x.id===R); assert(summary);assert.equal(summary.decisionFacts.sourceCount,4);assert.equal(summary.decisionFacts.kycState,'unknown','no-KYC disclaimer cannot be presented as KYC exempt'); 
+const serviceRows=summary.serviceEvidence.filter(x=>['openai','telegram','whatsapp'].includes(x.serviceId));assert.equal(serviceRows.length,3);
+assert(serviceRows.every(x=>x.independentSourceCount===1 && x.grade==='C' && x.successRatePct===null));
+const detail=read('frontend/tools/phone-number-lifecycle-mvp/phone-route-data/esimgg-estonia-372-2026.json');
+assert.equal(detail.observations.filter(x=>x.sourceId===S).length,9);
+assert.equal(detail.sources.filter(x=>x.url===U).length,1);
+console.log('eSIM.gg Linux.do 2919304 primary discussion: 1 source / 9 author-service reports / 1 conflict event, 3 grade-C no-rate aggregates, remaining 3 discussions staged — PASS');
