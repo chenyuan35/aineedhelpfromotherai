@@ -213,9 +213,9 @@
       "threadId": "linuxdo-2992813",
       "url": "https://linux.do/t/topic/2992813",
       "topic": "Google Voice number was recycled after keep-script error; VoXI vs eSIM.gg vs Giffgaff",
-      "opened": "2026-10-07",
+      "opened": "2026-10-08",
       "sourceGrade": "firsthand-demand-and-one-reply",
-      "primarySourceRecordExistsInCanonical": false,
+      "primarySourceRecordExistsInCanonical": true,
       "reports": [
         {
           "post": 1,
@@ -231,7 +231,7 @@
           "confidence": "OP firsthand account-loss report from erroneous maintenance automation; not an eSIM.gg operational outcome"
         },
         {
-          "post": null,
+          "post": 3,
           "authorHandle": "kbyxlin",
           "date": "2026-10-08",
           "provider": "eSIM.gg",
@@ -246,8 +246,26 @@
           "geography": "not stated",
           "device": "not stated",
           "confidence": "one reply firsthand; no evidence on account creation/payment/KYC"
+        },
+        {
+          "post": 21,
+          "authorHandle": "kbyxlin",
+          "date": "2026-10-08",
+          "provider": "unspecified eSIM number(s), potentially across multiple providers",
+          "prefixBands": [],
+          "targetServices": [
+            "Discord"
+          ],
+          "operation": "number-format-or-service-acceptance",
+          "outcome": "invalid-number-message",
+          "geography": "not stated",
+          "device": "not stated",
+          "confidence": "same author later reports Discord invalid-phone-number message for 'these eSIMs'; not safely assignable to eSIM.gg or prefix 5317; research-only"
         }
-      ]
+      ],
+      "canonicalSourceId": "linuxdo-esimgg-2992813-20261008",
+      "normalizedAt": "2026-10-10",
+      "normalizedScope": "One original Linux.do thread; one eSIM.gg 5317 Codex SMS reception claim from post #3 admitted. Google Voice script-error number loss is a separate product/task, not mapped to eSIM.gg. A subsequent same-author Discord invalid-number question lacks precise provider/prefix and remains backstage. No general rate or purchase guarantee."
     }
   ],
   "dispositions": [
@@ -267,7 +285,7 @@
       "reason": "Existing number-keeper loss is a separate real user job; no new product/SEO URL authorized."
     }
   ],
-  "newCanonicalSourceCount": 2,
-  "newCanonicalObservationCount": 10,
-  "reviewGate": "Two original Linux.do discussions are now linked as two canonical source URLs. Thread 2836806 only eSIM.gg WhatsApp temporal mixed outcome plus generic no-app failures are normalized; its Saily claims and both remaining discussions still require independent manual review before normalization. Polls, same-thread multi-author replies and multiple lines by one author are not population denominators."
+  "newCanonicalSourceCount": 3,
+  "newCanonicalObservationCount": 11,
+  "reviewGate": "Three original Linux.do discussions manually reviewed and normalized with one original source per thread: 2919304 (9 conflicting app claims), 2836806 (1 WhatsApp mixed temporal report), 2992813 (1 Codex SMS receipt report). The fourth (2900228), Saily VoIP success claims, Google Voice keeper loss without a canonical route, and later ambiguous Discord report require independent manual review before normalization. Polls are success-only, not a denominator; same-author crossposts/extra lines are not independent sources. No verified mainland first purchase/KYC/activation or positive-rate promise."
 }

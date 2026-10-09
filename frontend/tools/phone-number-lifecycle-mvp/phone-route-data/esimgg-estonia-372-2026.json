@@ -18,7 +18,8 @@
       "esimgg-home-20261003",
       "linuxdo-esimgg-2900517-20260914",
       "linuxdo-esimgg-2919304-20260918",
-      "linuxdo-esimgg-saily-2836806-20260831"
+      "linuxdo-esimgg-saily-2836806-20260831",
+      "linuxdo-esimgg-2992813-20261008"
     ]
   },
   "market": {
@@ -107,6 +108,25 @@
       "successRatePct": null,
       "firstObservedAt": "2026-09-18",
       "lastObservedAt": "2026-09-19"
+    },
+    {
+      "id": "svcagg-esimgg-estonia-372-2026-openai-sms-verification",
+      "routeId": "esimgg-estonia-372-2026",
+      "serviceId": "openai",
+      "operation": "sms-verification",
+      "numberRangeId": null,
+      "grade": "insufficient",
+      "label": "One positive report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "independentSourceCount": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "percentageEligible": false,
+      "successRatePct": null,
+      "firstObservedAt": "2026-10-08",
+      "lastObservedAt": "2026-10-08"
     }
   ],
   "sources": [
@@ -141,6 +161,13 @@
       "type": "first-hand-community-thread",
       "reportedAt": "2026-08-31",
       "label": "eSIM.gg first-day WhatsApp failure followed by later success; separate same-thread new-line generic SMS failures; Saily claims not normalized"
+    },
+    {
+      "id": "linuxdo-esimgg-2992813-20261008",
+      "url": "https://linux.do/t/topic/2992813",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-10-08",
+      "label": "One eSIM.gg 5317 Codex SMS success claim by kbyxlin; OP Google Voice retention loss is unrelated; Discord invalid-number mention is unassigned to any provider"
     }
   ],
   "observations": [
@@ -312,6 +339,23 @@
       "originalPostNumber": 1,
       "prefixBands": [],
       "reviewNote": "One original author: newly purchased eSIM.gg number did not receive WhatsApp code on first day but worked next day. Provider test SMS may have helped (unproven). One temporal mixed account outcome, NOT independent failure+success samples; network location, payment/KYC and prefix unverified."
+    },
+    {
+      "id": "obs-esimgg-2992813-kbyxlin-codex-5317",
+      "routeId": "esimgg-estonia-372-2026",
+      "service": "OpenAI/Codex",
+      "operation": "sms-verification",
+      "outcome": "success",
+      "reportedAt": "2026-10-08",
+      "geography": "unspecified",
+      "sourceId": "linuxdo-esimgg-2992813-20261008",
+      "dedupeKey": "esimgg-2992813-kbyxlin-codex-sms",
+      "authorHandle": "kbyxlin",
+      "originalPostNumber": 3,
+      "prefixBands": [
+        "5317"
+      ],
+      "reviewNote": "Author reports their 5317 eSIM.gg (乌龟卡) receives Codex and similar verification codes. Not proof of signup completion, buyer eligibility, KYC, location, first activation, or all 5317 lines. Later this author reports unspecified eSIM numbers rejected by Discord; do NOT infer the specific provider/prefix or map that to an eSIM.gg Discord failure."
     }
   ],
   "events": [

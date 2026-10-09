@@ -18,7 +18,7 @@ assert.equal(obs.filter(o=>o.sourceId===S && o.authorHandle==='cyminute').length
 const group=gradeServiceEvidence(obs.filter(o=>o.routeId===R && o.service==='WhatsApp'));
 assert.equal(group.grade,'C');assert.equal(group.independentSourceCount,2);assert.equal(group.successRatePct,null);
 const routeSummary=read('frontend/tools/phone-number-lifecycle-mvp/phone-route-summaries.json').routes.find(x=>x.id===R);
-assert.equal(routeSummary.decisionFacts.sourceCount,5);
+assert.equal(routeSummary.decisionFacts.sourceCount,6);
 const evidence=routeSummary.serviceEvidence.find(s=>s.serviceId==='whatsapp');assert(evidence);assert.equal(evidence.independentSourceCount,2);assert.equal(evidence.grade,'C');assert.equal(evidence.successRatePct,null);
 const detail=read('frontend/tools/phone-number-lifecycle-mvp/phone-route-data/esimgg-estonia-372-2026.json');
 assert.equal(detail.sources.filter(s=>s.url===U).length,1);assert.equal(detail.observations.filter(o=>o.sourceId===S).length,1);
