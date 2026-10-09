@@ -6,7 +6,7 @@ This is the default execution loop for `aineedhelpfromotherai.com`.
 
 Before a non-trivial work round, create a bounded checklist from the current GitHub facts and execution queue. The checklist should state the intended actions, verification steps, blockers/triggers and stop conditions.
 
-After the checklist exists, execute all eligible checklist items inside the selected bounded session task continuously. Do not stop after each item merely to narrate progress or request confirmation. Stop only when authorization is required, an irreversible/high-impact choice appears, a documented blocker/wait gate applies, or no eligible item remains.
+After the checklist exists, execute meaningful eligible queue items sequentially across the user's requested roughly 30-minute continuous work window. Do not stop after each small item merely to narrate progress or request confirmation. Once a bounded task completes and passes its release gate, continue another already-approved safe task without asking for a new conversation. Stop when authorization is required, an irreversible/high-impact choice appears, a documented blocker/wait gate applies, no eligible high-value work remains, or tool/time/context capacity is exhausted. Never manufacture busywork to occupy time.
 
 ### In-round defect handling
 
@@ -18,6 +18,8 @@ When a new issue is discovered while executing an already-authorized project tas
 - it does not violate a documented wait gate or provider blocker.
 
 Do not pause merely to report a routine defect, ask whether to fix it, or hand the obvious next step back to the user. Ask only when missing authorization or information would materially change direction, risk, cost, user-visible behavior or an irreversible/high-impact action. If one subtask is blocked but another eligible subtask in the same bounded work round remains, continue the eligible work instead of stopping the whole round.
+
+If a separate adjacent task is evidence-backed, reversible, authorized, already in the queue and feasible in the remaining work window, continue through its own branch/test/PR/CI/preview/production check; do not leave it pending solely because the preceding small task passed. Keep an external wait or evidence hold marked as blocked, not an excuse to invent work.
 
 At least once per project workday, append a dated entry to the Google Docs journal `aineedhelpfromotherai — Daily Project Journal` containing: the checklist, what actually completed, verification evidence, blockers/holds, and the next trigger. The Google Docs journal is a readable chronological diary only; it never overrides GitHub `main`, canonical fact sources, or verified production. Material accepted results must still be written to the correct GitHub fact source in the same work round.
 
@@ -44,7 +46,7 @@ Default division of labor:
 - delegated research outputs are `RESEARCH CANDIDATE` / raw evidence by default. They do not become accepted product data, public routes, rankings or roadmap tasks until the coordinating session reviews them against the applicable evidence/value gates;
 - official/provider sources may verify provider-controlled facts after a candidate exists, but must not be used to mass-create Phone candidates merely because products are listed;
 - delegated workers must not independently change `docs/CURRENT_EXECUTION_QUEUE.md`, product direction, production UI/data schema, infrastructure roles, DNS, billing, AdSense/account settings, merge/deploy state or other high-impact contracts;
-- a worker may research many candidates in parallel, but public production still follows the one-current-task/session gate. High model quota is a reason to increase evidence throughput, not to increase unreviewed page/PR volume;
+- a worker may research many candidates in parallel; production still follows a separately reviewed PR/release gate for each bounded change even when one conversation handles consecutive tasks. High model quota is a reason to increase evidence throughput, not to increase unreviewed page/PR volume;
 - before accepting a large batch, audit a small sample for source quality, duplication and classification error. Narrow or stop the batch if quality is poor.
 
 A delegated worker's local heartbeat, memory or task list is never a project fact source. It must read the same GitHub startup chain before project work and treat conflicts as stale local state.
