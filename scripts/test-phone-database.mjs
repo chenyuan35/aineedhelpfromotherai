@@ -88,8 +88,8 @@ const lebaraIndex = idx.routes.find(x=>x.id===lebaraRoute?.id);
 assert(lebaraSource && lebaraEvent && lebaraRoute && lebaraIndex,'Lebara failure evidence normalized');
 assert.equal(lebaraEvent.sourceId,lebaraSource.id);
 assert.equal(lebaraRoute.sourceIds.filter(x=>x===lebaraSource.id).length,1);
-assert.equal(lebaraIndex.decisionFacts.sourceCount,7);
-assert.equal(lebaraIndex.eventCount,2);
+assert.equal(lebaraIndex.decisionFacts.sourceCount,8);
+assert.equal(lebaraIndex.eventCount,3);
 assert(!db.observations.some(x=>x.sourceId===lebaraSource.id),'a failed network attach is not a named-app OTP failure');
 const lebaraTelegramEvidence=lebaraIndex.serviceEvidence.find(x=>/Telegram/i.test(x.serviceName));
 const lebaraWhatsappEvidence=lebaraIndex.serviceEvidence.find(x=>/WhatsApp/i.test(x.serviceName));
@@ -134,3 +134,17 @@ const negativeThread = gradeServiceEvidence([
 ]);
 assert.equal(negativeThread.grade, 'C', 'negative and mixed reports remain visible');
 assert.equal(negativeThread.confidence, 'very-low');
+
+// S8: ported-number China roaming signal is a separate operational event,
+// never a new China-first acquisition or app OTP success.
+const lebaraPortinSource = db.sources.find(x => x.id === 'nodeseek-lebara-869053-20260811');
+const lebaraPortinEvent = db.events.find(x => x.id === 'evt-lebara-portin-mainland-signal-20260811');
+assert(lebaraPortinSource && lebaraPortinEvent, 'port-in field report must be normalized');
+assert.equal(lebaraPortinEvent.sourceId, lebaraPortinSource.id);
+assert.equal(lebaraPortinEvent.routeId, 'lebara-uk-direct-esim-china');
+assert.equal(lebaraRoute.sourceIds.filter(x => x === lebaraPortinSource.id).length, 1);
+assert.match(lebaraPortinEvent.outcome, /post-port roaming-attach observation/i);
+assert(!db.observations.some(x => x.sourceId === lebaraPortinSource.id),
+  'port-in network signal is not an app verification observation');
+assert.equal(lebaraTelegramEvidence?.grade, 'insufficient');
+assert.equal(lebaraWhatsappEvidence?.grade, 'insufficient');

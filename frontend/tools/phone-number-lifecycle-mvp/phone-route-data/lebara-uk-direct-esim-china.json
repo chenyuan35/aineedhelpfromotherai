@@ -20,7 +20,8 @@
       "src-2948194201a0",
       "src-337a1e0a1330",
       "src-aa91ae8faea1",
-      "linuxdo-lebara-2815946-20260826"
+      "linuxdo-lebara-2815946-20260826",
+      "nodeseek-lebara-869053-20260811"
     ]
   },
   "market": {
@@ -135,6 +136,13 @@
       "type": "first-hand-community-thread",
       "reportedAt": "2026-08-26",
       "label": "Lebara mainland eSIM no-signal/refund reports: two authors in one original forum thread"
+    },
+    {
+      "id": "nodeseek-lebara-869053-20260811",
+      "url": "https://www.nodeseek.com/post-869053-1",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-11",
+      "label": "Mainland Lebara after Giffgaff port-in: intermittent roaming signal despite GBP5 plan and GBP5 PAYG; one original author"
     }
   ],
   "observations": [
@@ -201,6 +209,15 @@
       "scope": "two first-hand participants in ONE original mainland forum thread; not two independent sources",
       "outcome": "Two speakers report Lebara eSIM showing no mainland carrier signal after installation; one used Xesim and was told by provider support that UK activation was required. Both report later refunds (one next day, one after about three days). Exact foreign-payment eligibility and named-app OTP were not tested by these speakers; this is not a population failure rate or a refund guarantee.",
       "sourceId": "linuxdo-lebara-2815946-20260826"
+    },
+    {
+      "id": "evt-lebara-portin-mainland-signal-20260811",
+      "routeId": "lebara-uk-direct-esim-china",
+      "type": "post-port-mainland-roaming-signal-instability",
+      "reportedAt": "2026-08-11",
+      "scope": "first-hand original author after Giffgaff-to-Lebara port-in; additional replies same thread, not separate independent source",
+      "outcome": "Author says they ported an existing Giffgaff UK number to Lebara while using it in mainland China, bought a GBP5 Lebara plan and added GBP5 PAYG credit, and only intermittently registered signal after repeatedly manually selecting China Unicom; switching eSIM lines often lost registration again. This is a post-port roaming-attach observation, not a verified new-number acquisition, UK-compliant first service activation, or Telegram/WhatsApp app OTP test. Another same-thread commenter reports stable automatic registration on their own line; no prevalence can be inferred.",
+      "sourceId": "nodeseek-lebara-869053-20260811"
     }
   ],
   "snapshots": [

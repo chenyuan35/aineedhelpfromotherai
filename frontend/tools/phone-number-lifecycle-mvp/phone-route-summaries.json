@@ -2902,7 +2902,7 @@
       "evidenceState": "admitted",
       "lastVerifiedAt": "2026-09-12",
       "observationCount": 4,
-      "eventCount": 2,
+      "eventCount": 3,
       "services": [
         "Telegram",
         "WhatsApp"
@@ -2945,7 +2945,7 @@
         }
       ],
       "decisionFacts": {
-        "sourceCount": 7,
+        "sourceCount": 8,
         "kycState": "unclear",
         "keepAction": "Generate confirmed chargeable activity and verify it appears in usage history; one account/support interaction confirmed a 90-day reset.",
         "roamingSms": "inbound SMS reproduced in mainland China",
