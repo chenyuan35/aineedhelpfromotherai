@@ -4401,7 +4401,8 @@
         "smarty-uk-inactive-plan-20261003",
         "smarty-uk-pause-20261003",
         "smarty-uk-paused-incoming-20261003",
-        "smarty-uk-roaming-fair-use-20261003"
+        "smarty-uk-roaming-fair-use-20261003",
+        "reddit-smarty-overseas-periodic-sms-1i0c96q-20250116"
       ]
     },
     {
@@ -9548,6 +9549,13 @@
       "reportedAt": "2026-02-15"
     },
     {
+      "id": "reddit-smarty-overseas-periodic-sms-1i0c96q-20250116",
+      "url": "https://www.reddit.com/r/SmartyMobile/comments/1i0c96q",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2025-01-16",
+      "label": "r/SmartyMobile: cacolac323 reports maintaining a paid SMARTY UK number while living abroad, switching it on briefly for occasional SMS. Destination and named app unverified."
+    },
+    {
       "id": "reddit-srilanka-number-keep-job-2026-08-13",
       "url": "https://www.reddit.com/r/srilanka/comments/1vn8blh/best_way_to_keep_your_sl_mobile_numbers_active/",
       "type": "community-demand-thread",
@@ -14208,6 +14216,15 @@
       "scope": "route",
       "outcome": "One Linux.do original discussion has both success and failure claims for Telegram, WhatsApp and OpenAI/Codex. 5405 appears in the positive OP multi-line claim and in a negative multi-line reply; prefix-specific attribution, geography, purchase/KYC and first activation remain unproven. The poll only solicits success and cannot serve as the denominator. Some later commenters report eventual SMS delivery after 24–48 hours; this is not a validated workaround.",
       "sourceId": "linuxdo-esimgg-2919304-20260918"
+    },
+    {
+      "id": "evt-smarty-uk-1i0c96q-periodic-overseas-sms",
+      "routeId": "smarty-uk-2026",
+      "type": "firsthand-periodic-overseas-sms-usage",
+      "reportedAt": "2025-01-16",
+      "scope": "route",
+      "outcome": "One Reddit commenter, cacolac323, reports keeping a paid SMARTY UK subscription while resident abroad, leaving the UK SIM device off for weeks and turning it on briefly when needing a text message. The number reportedly remained usable in that intermittent-roaming pattern over multiple years, with occasional UK visits. This does NOT establish uninterrupted roaming, service in Georgia or mainland China, an exact bank/app OTP result, payment/first activation abroad, a no-UK-return policy, or permission to avoid subscription charges.",
+      "sourceId": "reddit-smarty-overseas-periodic-sms-1i0c96q-20250116"
     }
   ],
   "snapshots": [
