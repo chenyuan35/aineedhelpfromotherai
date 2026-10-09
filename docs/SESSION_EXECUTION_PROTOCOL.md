@@ -1,4 +1,4 @@
-# Session Execution Protocol — 25-minute work window
+# Session Execution Protocol — continuous ~30-minute work window
 
 Last updated: 2026-09-29
 
@@ -21,9 +21,9 @@ These answer: **what the site is trying to achieve, what is true now, and what w
 
 ### Session layer
 
-Each chat/session selects **one bounded task** from the project queue that can realistically reach a useful stopping point inside one roughly 25-minute tool-use window.
+Each chat/session selects an **ordered set of independently bounded, eligible tasks** from the project queue. Target the user's requested roughly 30-minute continuous work window when practical. Close one task with verification and immediately proceed to the next safe, genuinely valuable queued task; never stop solely to say the next task is in the queue.
 
-The session layer answers: **what exactly will be completed in this conversation.**
+The session layer answers: **which verified tasks can be completed continuously in this conversation without relaxing review and release safety.**
 
 Do not copy the entire project backlog into one session.
 
@@ -31,20 +31,20 @@ Do not copy the entire project backlog into one session.
 
 Before substantial tool calls, state a compact Session Card:
 
-- **Session task** — one task only;
+- **Session work queue** — one primary task plus subsequent eligible, bounded tasks in order;
 - **Why now** — which current project priority/blocker it serves;
 - **Deliverable** — concrete artifact, code change, audit result, decision, or verification expected by the end of this session;
 - **Steps** — normally 3–5 bounded actions;
 - **Parallel lane** — if the current queue explicitly defines an already-authorized delegated/background lane, name the worker and bounded backstage job; otherwise state none;
 - **Write target** — for any GitHub mutation, name the non-`main` branch/worktree before the first write;
-- **Definition of done** — observable completion condition;
+- **Definition of done** — observable completion condition per bounded task plus final combined audit;
 - **Stop conditions** — blocker, authorization need, provider quota, missing evidence, or task proving too large for the remaining window.
 
 If the task cannot reasonably be completed or brought to a clean verified checkpoint in one tool window, split it **before execution begins**.
 
 ## Parallel delegated-lane guardrail
 
-The one-session-task rule constrains the coordinating session's decision and production scope. It does **not** cancel an explicitly authorized parallel backstage lane already defined by `docs/CURRENT_EXECUTION_QUEUE.md` or the applicable operating plan.
+The ordered-session-queue rule constrains production to one separately reviewed change gate at a time. It does **not** cancel an explicitly authorized parallel backstage lane already defined by `docs/CURRENT_EXECUTION_QUEUE.md` or the applicable operating plan.
 
 At session start, after reading the queue, perform one explicit parallel-lane check:
 
@@ -52,7 +52,7 @@ At session start, after reading the queue, perform one explicit parallel-lane ch
 2. if the delegated lane is already running, record its task/status and continue the coordinator's bounded main task without waiting for the worker unless its result is required for the current definition of done;
 3. if the delegated lane is unavailable or blocked, record that fact explicitly instead of silently reverting to single-agent execution;
 4. delegated output remains `RESEARCH CANDIDATE` by default and cannot change production, canonical admission, publication, roadmap, DNS, billing, account settings, or other protected state without normal coordinator review and release gates;
-5. background delegation does not authorize a second coordinator roadmap task. The coordinating session still owns exactly one bounded decision/release task.
+5. background delegation does not authorize a second coordinator roadmap task. The coordinating session still owns each bounded decision/release task sequentially.
 
 A session that ignores an explicitly active parallel lane without recording a blocker is incomplete even if the coordinator's narrow measurement or review step succeeded.
 
@@ -67,24 +67,24 @@ Before the first repository mutation in a session, verify the target branch/work
 
 A session cannot be marked complete if it knowingly leaves an accidental direct-`main` mutation unreconciled.
 
-## 25-minute planning budget
+## ~30-minute continuous execution budget
 
-Treat the practical tool window as approximately 25 minutes.
+Target approximately 30 minutes of continuous useful execution when the environment makes it practical, rather than arbitrarily stopping after 5–10 minutes. This is a planning target, not a guarantee of exact wall-clock duration or a reason to manufacture work.
 
 Default allocation:
 
-1. **0–4 min — orient**: read only the required fact sources and inspect the exact target;
-2. **4–17 min — execute**: perform the bounded research/change;
-3. **17–22 min — verify**: tests, browser/live check, diff review, or source cross-check;
-4. **22–25 min — persist and hand off**: update the correct fact/task source and state the next session task.
+1. **Early orientation**: read required fact sources and inspect the exact target;
+2. **Continuous execution**: carry out each eligible task, including bounded source verification, safe fixes and complete release gates;
+3. **Per-task verification**: tests, independent live checks and necessary GitHub fact updates before advancing;
+4. **Final combined audit**: consolidate results and append the real workday journal once; identify only genuine remaining holds and triggers.
 
-Do not start a new independent subtask once the session has entered verification/handoff.
+Do not interrupt a release while its required verification is in progress. Once that task is verified and closed, use remaining time for another genuinely eligible queue item; do not add changes merely to keep the session running.
 
-A task may use less than the full window. Finishing early is preferred to expanding scope.
+A task may use less than the full window; its completion is a checkpoint, not an automatic conversation stop. End early only if all meaningful eligible work is exhausted or a real limit blocks further action.
 
 ## Scope discipline inside a session
 
-A session must not silently expand from one task into several adjacent tasks.
+A session may explicitly proceed from one completed task to a second eligible bounded task without seeking repeated confirmation. Each independent production change retains a distinct scope, branch/PR, validation and rollback boundary.
 
 Examples:
 
@@ -115,7 +115,7 @@ At session end, provide:
 - unresolved items;
 - **one recommended next-session task**.
 
-When the current session task is complete, explicitly say that the next independent task should begin in a **new conversation/session** rather than continuing to accumulate work in the current one.
+When the current task is complete, do not instruct the user to start a new conversation; continue the next safe eligible item in the current requested work window. Only hand off when work capacity is exhausted or further action requires external participation/authorization.
 
 ## Plugin role
 
@@ -139,7 +139,7 @@ Temporary phase-specific rules do not belong here once that phase has ended. Cur
 At handoff:
 
 - persist material facts/blocker changes to the canonical GitHub source in the same work round;
-- leave exactly one recommended next-session task in the queue, with its trigger, done condition and stop conditions;
+- preserve the ordered remaining task queue with clear triggers, done conditions and stop conditions, distinguishing genuine holds from available follow-up work;
 - mark waiting/blocked work explicitly so the next session does not reinterpret it as eligible;
 - do not carry obsolete temporary priorities forward merely because they appeared in an older chat or handoff document;
-- do not silently switch to a different roadmap task when the selected task hits a real blocker unless the current queue explicitly defines that fallback as eligible.
+- when the selected task hits a real blocker, continue a separate eligible low-risk task only if its priority is already approved by the main execution queue; otherwise record the gate and stop rather than inventing work.
