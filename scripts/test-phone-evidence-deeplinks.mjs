@@ -4,6 +4,8 @@ const root=new URL('../',import.meta.url);
 const page=fs.readFileSync(new URL('frontend/tools/phone-number-lifecycle-mvp/index.html',root),'utf8');
 assert.match(page,/new URLSearchParams\(location\.search\)\.get\('route'\)/);
 assert.match(page,/await openIndexedRoute\(routeId\)/);
+assert.match(page,/function dirHashRoute\(\).*canonicalIndex\?\.routes/, 'hash routes must resolve through the canonical catalog, not loaded legacy cards');
+assert.match(page,/if\(!p\|\|!dirRoute\(id\)\)void openIndexedRoute\(id\)/, 'hash navigation without a pre-rendered panel must create canonical evidence detail');
 assert.match(page,/\(canonicalIndex\?\.routes\|\|\[\]\)\.some\(x=>x\.id===routeId\)/);
 const guideRoot=new URL('frontend/site/src/pages/tools/phone-number-survival-guide/guides/',root);
 const files=['cheapest-sim-receiving-sms-abroad.astro','hong-kong-sim-retention-guide.astro','japan-sim-retention-guide.astro','keep-uk-number-alive-abroad.astro','keep-us-number-alive-abroad.astro'];
