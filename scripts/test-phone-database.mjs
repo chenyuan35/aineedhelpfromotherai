@@ -110,6 +110,23 @@ assert.ok(comparisonIdx.routes.some(r => r.marketName === 'United Kingdom'));
 assert.ok(comparisonIdx.routes.some(r => r.marketName !== 'United Kingdom'));
 assert.ok(comparisonIdx.routes.every(r => ['comparison-visible','detail-eligible','indexable'].includes(r.publicationState)));
 
+// One original 2025 Reddit firsthand case improves SMARTY operational provenance,
+// not service-specific signup reliability or a China-first acquisition result.
+const smartyRoute = db.routes.find(r=>r.id==='smarty-uk-2026');
+const smartySource = db.sources.find(s=>s.id==='reddit-smarty-overseas-periodic-sms-1i0c96q-20250116');
+const smartyEvent = db.events.find(e=>e.id==='evt-smarty-uk-1i0c96q-periodic-overseas-sms');
+assert(smartyRoute && smartySource && smartyEvent);
+assert.equal(smartyRoute.sourceIds.filter(x=>x===smartySource.id).length,1);
+assert.equal(smartySource.url,'https://www.reddit.com/r/SmartyMobile/comments/1i0c96q');
+assert.equal(smartySource.type,'first-hand-community-thread');
+assert.equal(smartyEvent.sourceId,smartySource.id);
+assert.equal(smartyEvent.routeId,smartyRoute.id);
+assert.match(smartyEvent.outcome,/device off for weeks|device off/);
+assert.match(smartyEvent.outcome,/NOT establish/);
+assert.equal(db.observations.filter(o=>o.sourceId===smartySource.id).length,0,'unspecified SMS reception is not a bank, Telegram or app signup observation');
+assert.equal(idx.routes.find(r=>r.id===smartyRoute.id)?.serviceEvidence.length,0,'new firsthand event must not invent verified named-app results');
+assert.equal(idx.routes.find(r=>r.id===smartyRoute.id)?.decisionFacts.sourceCount,9);
+
 console.log(`Phone DB tests passed: ${db.routes.length} routes, ${db.markets.length} markets, ${idx.routes.length} searchable records.`);
 
 // S7: one primary failure discussion, two accounts, no invented named-app OTP.
@@ -180,3 +197,32 @@ assert(!db.observations.some(x => x.sourceId === lebaraPortinSource.id),
   'port-in network signal is not an app verification observation');
 assert.equal(lebaraTelegramEvidence?.grade, 'insufficient');
 assert.equal(lebaraWhatsappEvidence?.grade, 'insufficient');
+
+// One original Light Plan holder's overseas SMS/Wi-Fi/eSIM friction, not named-app OTP proof.
+const usMobileUzSource = db.sources.find(x => x.id === 'reddit-usmobile-light-uzbekistan-20250118');
+const usMobileUzEvent = db.events.find(x => x.id === 'evt-usmobile-light-uzbekistan-wifi-sms-esim-20250118');
+const usMobileLight = db.routes.find(x => x.id === 'us-mobile-light-2026');
+assert(usMobileUzSource && usMobileUzEvent && usMobileLight, 'original Light overseas incident must be indexed');
+assert.equal(usMobileUzSource.url, 'https://www.reddit.com/r/USMobile/comments/1i4hksg');
+assert.equal(usMobileUzEvent.routeId, usMobileLight.id);
+assert.equal(usMobileUzEvent.sourceId, usMobileUzSource.id);
+assert.equal(usMobileLight.sourceIds.filter(x => x === usMobileUzSource.id).length, 1);
+assert.equal(usMobileLight.evidenceState, 'hold', 'single overseas incident does not prove readiness');
+assert.equal(usMobileLight.surfaceState, 'backstage-only');
+assert.match(usMobileUzEvent.outcome, /ordinary SMS briefly sending and receiving before stopping/);
+assert(!db.observations.some(x => x.sourceId === usMobileUzSource.id),
+  'ordinary SMS instability must not be misrepresented as named-app OTP evidence');
+
+// One Globe original overseas conversation: three authors, no named-app test or guaranteed retention tariff.
+const globeAbroadSource = db.sources.find(x => x.id === 'reddit-globe-prepaid-keeping-abroad-20260402');
+const globeAbroadRoute = db.routes.find(x => x.id === 'globe-prepaid-1yr-2026');
+const globeAbroadEvents = db.events.filter(x => x.sourceId === 'reddit-globe-prepaid-keeping-abroad-20260402');
+assert(globeAbroadSource && globeAbroadRoute, 'Globe original reports need a canonical provenance link');
+assert.equal(globeAbroadSource.url, 'https://www.reddit.com/r/phmigrate/comments/1sa5uhm');
+assert.equal(globeAbroadRoute.sourceIds.filter(x => x === globeAbroadSource.id).length, 1);
+assert.equal(globeAbroadEvents.length, 3, 'three author-level stories are one original source');
+assert(globeAbroadEvents.every(x => x.routeId === globeAbroadRoute.id));
+assert.equal(globeAbroadRoute.evidenceState, 'hold');
+assert.equal(globeAbroadRoute.surfaceState, 'backstage-only');
+assert(!db.observations.some(x => x.sourceId === globeAbroadSource.id),
+  'unnamed OTP and app promo purchase must not become a named-app success sample');
