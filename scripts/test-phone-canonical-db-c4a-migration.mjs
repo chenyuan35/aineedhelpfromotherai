@@ -44,11 +44,11 @@ assert.match(frog.keep.action, /13-month/i);
 assert.equal(frog.holdReason, null);
 
 const optus = buildCanonicalComparisonRoute(canonical, 'optus-flex-plus-au-2026');
-assert.equal(optus.keep.observedActionCost, 350);
+assert.equal(optus.keep.observedActionCost, 395);
 assert.equal(optus.keep.intervalDays, 365);
-assert.match(optus.keep.state, /2026-09-30/);
+assert.match(optus.keep.state, /2026-10-12/);
 assert.match(optus.kyc, /valid form of ID/i);
-assert.match(optus.holdReason, /2026-09-30/i);
+assert.match(optus.holdReason, /mainland-first activation/i);
 
 const lebara = buildCanonicalComparisonRoute(canonical, 'lebara-fr-2026');
 assert.equal(lebara.keep.observedActionCost, null);

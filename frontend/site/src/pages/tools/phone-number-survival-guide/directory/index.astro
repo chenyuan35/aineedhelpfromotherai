@@ -1,6 +1,6 @@
 ---
 import PhoneLayout from '../../../../layouts/PhoneLayout.astro';
-import { data, brandOf, statusLabel, comparisonRoutes, routeDetailHref, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
+import { data, brandOf, statusLabel, comparisonRoutes, routeDetailHref, canonicalRouteSummaries, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
 
 const byMarket = new Map<string, any[]>();
 const visibleRoutes = comparisonRoutes() as any[];
@@ -11,16 +11,21 @@ for (const r of visibleRoutes) {
 }
 const markets = [...byMarket.keys()].sort((a, b) => a.localeCompare(b));
 
-const ranked = visibleRoutes
-  .filter((r) => Number.isFinite(r.keep?.yearCostOriginal) && r.keep?.yearCostCny != null && r.publishState !== 'observation-hold')
-  .map((r) => ({ r, brand: brandOf(r) }))
-  .sort((a, b) => (a.r.keep.yearCostCny ?? 9e9) - (b.r.keep.yearCostCny ?? 9e9));
-const top10 = ranked.slice(0, 10);
+const comparisonIds = new Set(visibleRoutes.map(r => r.id));
+const top10 = canonicalRouteSummaries()
+  .filter((r: any) => comparisonIds.has(r.id) && r.family === 'long-term'
+    && r.numberClass === 'real-mobile' && r.evidenceState === 'admitted'
+    && Number.isFinite(r.metrics?.keepYearCostOriginal)
+    && Number.isFinite(r.metrics?.keepYearCostCny)
+    && Number.isFinite(r.metrics?.keepIntervalDays))
+  .sort((a: any, b: any) => a.metrics.keepYearCostCny - b.metrics.keepYearCostCny
+    || String(a.id).localeCompare(String(b.id)))
+  .slice(0, 10);
 const avoidRoutes = visibleRoutes.filter((r) => r.avoidRoute);
 
 const canonical = `${PHONE_BASE}directory/`;
-const title = `Cheapest SIM to keep a number alive — ${visibleRoutes.length} routes, ${markets.length} markets – Phone Radar`;
-const desc = `Global SIM number retention directory: ${visibleRoutes.length} comparison-visible routes across ${markets.length} markets — cheapest keep-alive routes ranked, acquisition cost, keep-alive cost and interval, KYC and evidence status per route.`;
+const title = `SIM retention route directory — costs and evidence in ${markets.length} markets – Phone Radar`;
+const desc = `Compare ${visibleRoutes.length} reviewed SIM routes by market, published retention costs, eligibility and evidence status. Cheap keep-alive does not verify activation abroad or SMS OTP success.`;
 ---
 <PhoneLayout title={title} desc={desc} canonical={canonical}>
 <style is:global>
@@ -28,13 +33,13 @@ const desc = `Global SIM number retention directory: ${visibleRoutes.length} com
 .dir-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 8px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5}
 .dir-toolbar input,.dir-toolbar select{min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font-size:.92rem}
 .dir-toolbar input{flex:1;min-width:200px}
-.lb{margin:22px 0 8px;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:18px;overflow-x:auto}
+.lb{margin:22px 0 8px;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:18px;max-width:100%;min-width:0;box-sizing:border-box;overflow-x:auto;overscroll-behavior-inline:contain}
 .lb h2{margin:0 0 4px;font-size:1.2rem}.lb p{margin:0 0 12px;color:var(--muted);font-size:.88rem}
 .lb table{width:100%;border-collapse:collapse;font-size:.9rem}.lb th,.lb td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
 .lb th{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
 .lb .rank{font-weight:850;color:var(--muted)}.lb .cost{font-weight:800}.lb .cny{color:var(--muted)}.lb .mkt{display:block;font-size:.74rem;color:var(--muted);font-weight:400}
 .dir-count{margin:6px 0 0;color:var(--muted);font-size:.85rem}
-.dir-market{margin:26px 0}.dir-market h2{font-size:1.15rem}.dir-market small{color:var(--muted);font-weight:400}
+.dir-market{margin:26px 0;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-inline:contain}.dir-market h2{font-size:1.15rem}.dir-market small{color:var(--muted);font-weight:400}
 .dir-market table{width:100%;border-collapse:collapse;font-size:.88rem}.dir-market th,.dir-market td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line)}
 .dir-market th{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
 tr.hidden,section.hidden{display:none}
@@ -43,13 +48,14 @@ tr.hidden,section.hidden{display:none}
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href={GUIDE_BASE}>Phone Radar</a><span>›</span><span>Directory</span></nav>
 <p class="eyebrow">Phone Radar · Global directory</p>
 <h1>SIM number retention — {visibleRoutes.length} routes, {markets.length} markets</h1>
-<p class="dir-lead">Every route is marked with its evidence status. Candidate routes have official terms captured; observation routes are still pending verification. Unverified fields are shown as pending — never invented. Last global check {data.checkedAt}.</p>
+<p class="dir-lead">This legacy comparison view covers {visibleRoutes.length} route records; the Phone Radar task finder and normalized evidence layer contain more reviewed research. Costs are method- and account-dependent, not an SMS/OTP success ranking. Unknown and HOLD restrictions must remain visible. Legacy directory snapshot {data.checkedAt}.</p>
 
-<section class="lb"><h2>Cheapest keep-alive routes</h2><p>Ranked by annual keep-alive cost, normalized to CNY. Only routes with an established yearly cost are ranked.</p>
-<table><thead><tr><th>#</th><th>Route</th><th>Keep/yr</th><th>≈CNY</th><th>Interval</th></tr></thead>
-<tbody>{top10.map(({ r, brand }, i) => { const detail = routeDetailHref(r); return (
-<tr><td class="rank">#{i + 1}</td><td>{detail ? <a href={detail}><strong>{brand?.name || r.id}</strong></a> : <strong>{brand?.name || r.id}</strong>}<small class="mkt">{r.marketName || ''}</small></td><td class="cost">{r.keep.currency} {r.keep.yearCostOriginal}</td><td class="cny">≈¥{r.keep.yearCostCny}</td><td>{Number.isFinite(r.keep?.intervalDays) ? r.keep.intervalDays + 'd' : '—'}</td></tr>
-);})}</tbody></table></section>
+<section class="lb"><h2>Indicative low-cost retention options</h2><p>Sorted only by the latest normalized annual keep-cost model in reference CNY, not by purchase suitability, overseas activation or OTP success. Research-only routes and conditional recharge paths are not automatic recommendations.</p>
+<table><thead><tr><th>#</th><th>Route</th><th>Modeled keep/yr</th><th>≈CNY</th><th>Interval</th><th>Evidence</th></tr></thead>
+<tbody>{top10.map((r: any, i: number) => (
+<tr><td class="rank">#{i + 1}</td><td><a href={`${GUIDE_BASE}?route=${encodeURIComponent(r.id)}`}><strong>{r.displayName || r.id}</strong></a><small class="mkt">{r.marketName || ''}</small></td><td class="cost">{r.metrics.keepCurrency} {r.metrics.keepYearCostOriginal}</td><td class="cny">≈¥{r.metrics.keepYearCostCny}</td><td>{r.metrics.keepIntervalDays}d</td><td>{r.surfaceState === 'backstage-only' ? 'Research-only' : 'Reviewed route'}</td></tr>
+))}</tbody></table>
+<p>Source dates and account eligibility matter. An annual activity cost is not necessarily the cash needed to acquire or top up a SIM. <a href={`${GUIDE_BASE}guides/cheapest-sim-receiving-sms-abroad/`}>Read the cost vs SMS evidence guide</a>.</p></section>
 
 <section class="lb" style="border-color:#c0392b"><h2>Not viable for retention — avoid these</h2><p>Routes documented as dead ends for number retention. Included so you do not waste money or time on them.</p>
 <table><thead><tr><th>Route</th><th>Market</th><th>Why not viable</th></tr></thead>
@@ -60,7 +66,7 @@ tr.hidden,section.hidden{display:none}
 <div class="dir-toolbar">
 <input id="dir-q" type="search" placeholder="Search brand, route or market…" aria-label="Search routes">
 <select id="dir-market" aria-label="Filter by market"><option value="">All markets</option>{markets.map((m) => <option value={m}>{m}</option>)}</select>
-<select id="dir-sort" aria-label="Sort"><option value="market">Group by market</option><option value="cny-asc">Cheapest first</option><option value="cny-desc">Most expensive first</option></select>
+<select id="dir-sort" aria-label="Sort"><option value="market">Group by market</option><option value="cny-asc">Lowest documented annual action cost</option><option value="cny-desc">Highest documented annual action cost</option></select>
 </div>
 <p class="dir-count" id="dir-count">Loading {visibleRoutes.length} comparison routes…</p>
 <div id="dir-list"><p class="dir-lead" id="dir-loading">Loading the lightweight comparison index…</p></div>
@@ -74,14 +80,14 @@ tr.hidden,section.hidden{display:none}
   const initialMarket=params.get('market');if(initialMarket&&[...mk.options].some(o=>o.value===initialMarket))mk.value=initialMarket;
   const initialQuery=params.get('q');if(initialQuery)q.value=initialQuery;
   let rows=[];
-  function routeName(r){return r.detailHref?`<a href="${esc(r.detailHref)}"><strong>${esc(r.brandName)}</strong></a>`:`<strong>${esc(r.brandName)}</strong>`;}
+  function routeName(r){const link=r.detailHref||`${location.origin}/tools/phone-number-survival-guide/?route=${encodeURIComponent(r.id)}`;return `<a href="${esc(link)}"><strong>${esc(r.brandName)}</strong></a>`;}
   function table(items){return `<table><thead><tr><th>Route</th><th>Status</th><th>Keep/yr</th><th>Interval</th><th>Verified</th></tr></thead><tbody>${items.map(r=>`<tr><td>${routeName(r)}</td><td>${esc(r.status)}</td><td>${esc(r.keepLabel)}</td><td>${esc(r.intervalLabel)}</td><td>${esc(r.verified)}</td></tr>`).join('')}</tbody></table>`;}
   function render(){
     const term=(q.value||'').trim().toLowerCase(),market=mk.value;
     let visible=rows.filter(r=>(!term||r.searchable.includes(term))&&(!market||r.market===market));
     if(so.value==='cny-asc'||so.value==='cny-desc'){
       const dir=so.value==='cny-asc'?1:-1;
-      visible=[...visible].sort((a,b)=>((a.cny??Infinity)-(b.cny??Infinity))*dir);
+      visible=[...visible].sort((a,b)=>{const aa=Number.isFinite(a.cny)?a.cny:null,bb=Number.isFinite(b.cny)?b.cny:null;if(aa===null)return bb===null?String(a.id).localeCompare(String(b.id)):1;if(bb===null)return -1;return dir*(aa-bb)||String(a.id).localeCompare(String(b.id))});
       list.innerHTML=`<section class="dir-market"><h2>Filtered routes <small>${visible.length}</small></h2>${table(visible)}</section>`;
     }else{
       const groups=new Map();for(const r of visible){if(!groups.has(r.market))groups.set(r.market,[]);groups.get(r.market).push(r);}
@@ -90,7 +96,27 @@ tr.hidden,section.hidden{display:none}
     count.textContent=`${visible.length} route${visible.length===1?'':'s'} shown · ${rows.length} comparison routes loaded`;
   }
   q.addEventListener('input',render);mk.addEventListener('change',render);so.addEventListener('change',render);
-  fetch('./comparison-index.json',{credentials:'same-origin'}).then(r=>{if(!r.ok)throw new Error('comparison index '+r.status);return r.json();}).then(payload=>{rows=payload.routes||[];render();}).catch(()=>{count.textContent='Comparison index unavailable';list.innerHTML='<p class="dir-lead">The comparison index could not be loaded. Use the Phone Radar hub and try again later.</p>';});
+  Promise.all([
+    fetch('./comparison-index.json',{credentials:'same-origin'}),
+    fetch('../phone-route-summaries.json',{credentials:'same-origin'})
+  ]).then(async ([oldResponse,currentResponse])=>{
+    if(!oldResponse.ok||!currentResponse.ok)throw new Error('Comparison or canonical data temporarily unavailable');
+    const [oldData,currentData]=await Promise.all([oldResponse.json(),currentResponse.json()]);
+    const current=new Map((currentData.routes||[]).map(r=>[r.id,r]));
+    rows=(oldData.routes||[]).map(row=>{
+      const now=current.get(row.id);
+      const m=now?.metrics||{};
+      const hasCost=Number.isFinite(m.keepYearCostOriginal)&&Number.isFinite(m.keepYearCostCny);
+      return {...row,
+        cny:hasCost?m.keepYearCostCny:null,
+        keepLabel:hasCost?`${m.keepCurrency} ${m.keepYearCostOriginal} / yr (modeled; conditions apply)`:'Not established',
+        intervalLabel:Number.isFinite(m.keepIntervalDays)?`${m.keepIntervalDays}d`:'Not established',
+        verified:now?.lastVerifiedAt||row.verified,
+        status:`${row.status} · ${now?.evidenceState||'not reconciled'}`
+      };
+    });
+    render();
+  }).catch(()=>{count.textContent='Comparison evidence unavailable';list.innerHTML='<p class="dir-lead">The current evidence index could not be loaded. Use the Phone Radar hub and try again later.</p>';});
 })();
 </script>
 </PhoneLayout>

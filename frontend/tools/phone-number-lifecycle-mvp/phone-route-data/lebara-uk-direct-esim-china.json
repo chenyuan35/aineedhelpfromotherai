@@ -21,7 +21,8 @@
       "src-337a1e0a1330",
       "src-aa91ae8faea1",
       "linuxdo-lebara-2815946-20260826",
-      "nodeseek-lebara-869053-20260811"
+      "nodeseek-lebara-869053-20260811",
+      "reddit-lebara-uk-new-esim-outside-uk-wifi-unusable-1rtwkoj-20260314"
     ]
   },
   "market": {
@@ -143,6 +144,13 @@
       "type": "first-hand-community-thread",
       "reportedAt": "2026-08-11",
       "label": "Mainland Lebara after Giffgaff port-in: intermittent roaming signal despite GBP5 plan and GBP5 PAYG; one original author"
+    },
+    {
+      "id": "reddit-lebara-uk-new-esim-outside-uk-wifi-unusable-1rtwkoj-20260314",
+      "url": "https://www.reddit.com/r/LebaraUK/comments/1rtwkoj/lebara/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-03-14",
+      "label": "Lebara UK eSIM purchaser Substantial_Heat1254 trying to activate outside UK; Wi-Fi Calling not functional, foreign-first activation unresolved. No proof of seven-day roaming condition or China geography."
     }
   ],
   "observations": [
@@ -218,6 +226,17 @@
       "scope": "first-hand original author after Giffgaff-to-Lebara port-in; additional replies same thread, not separate independent source",
       "outcome": "Author says they ported an existing Giffgaff UK number to Lebara while using it in mainland China, bought a GBP5 Lebara plan and added GBP5 PAYG credit, and only intermittently registered signal after repeatedly manually selecting China Unicom; switching eSIM lines often lost registration again. This is a post-port roaming-attach observation, not a verified new-number acquisition, UK-compliant first service activation, or Telegram/WhatsApp app OTP test. Another same-thread commenter reports stable automatic registration on their own line; no prevalence can be inferred.",
       "sourceId": "nodeseek-lebara-869053-20260811"
+    },
+    {
+      "id": "evt-lebara-1rtwkoj-substantialheat-new-esim-outside-uk-wifi-stalled",
+      "routeId": "lebara-uk-direct-esim-china",
+      "type": "foreign-first-esim-setup-wifi-calling-not-usable",
+      "reportedAt": "2026-03-14",
+      "authorHandle": "Substantial_Heat1254",
+      "productCohort": "Lebara UK eSIM, new/first installation sought outside United Kingdom; exact PAYG/monthly tariff, buyer payment/ID and physical foreign location unknown",
+      "scope": "Original author asked to activate a Lebara UK eSIM while already outside UK, then answered in the same original thread that Wi-Fi Calling was not working. No successful initial registration/final permanent failure established. Do not infer mainland-China first activation from unspecified foreign country.",
+      "outcome": "Original author reports they have a Lebara UK eSIM while outside the UK and cannot use Wi-Fi Calling during their activation attempt. They ask about obtaining first home-network contact and later repeat Wi-Fi Calling NOT working; final provider registration and any carrier/signal/OTP outcome remain UNVERIFIED. The same author says THEY WERE TOLD that seven days of UK use might be needed for roaming, but no first-party policy or tested seven-day lockout is shown. Other people suggest remote workarounds or make UK-first claims; not evidence that those succeeded for this buyer. Do NOT infer a passport requirement, physical SIM, specific monthly tariff, China country, refund or named Telegram/WhatsApp OTP from the thread.",
+      "sourceId": "reddit-lebara-uk-new-esim-outside-uk-wifi-unusable-1rtwkoj-20260314"
     }
   ],
   "snapshots": [

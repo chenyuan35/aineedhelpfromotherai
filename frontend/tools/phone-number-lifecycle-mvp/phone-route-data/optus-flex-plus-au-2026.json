@@ -11,12 +11,15 @@
     "form": "eSIM-or-physical",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-12",
     "acquireUrl": "https://optus.com.au/prepaidplans",
     "sourceIds": [
       "optus-activate-20260929",
+      "optus-flex-plus-au-price-20261012",
       "optus-longexpiry-20260818",
-      "optus-prepaidplans-20260929"
+      "optus-prepaidplans-20260929",
+      "reddit-optus-passport-port-identity-mismatch-1qbghav-20260113",
+      "reddit-optus-yearly-prepaid-samebrand-port-refund-1sczgck-20260405"
     ]
   },
   "market": {
@@ -37,13 +40,13 @@
   },
   "metrics": {
     "routeId": "optus-flex-plus-au-2026",
-    "checkedAt": "2026-09-29",
+    "checkedAt": "2026-10-12",
     "metricState": "current-profile",
     "acquisitionCurrency": "AUD",
-    "acquisitionCostOriginal": 199,
+    "acquisitionCostOriginal": 395,
     "acquisitionCostCny": null,
     "keepCurrency": "AUD",
-    "keepYearCostOriginal": 350,
+    "keepYearCostOriginal": 395,
     "keepYearCostCny": null,
     "keepIntervalDays": 365
   },
@@ -57,6 +60,12 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "optus-flex-plus-au-price-20261012",
+      "url": "https://www.optus.com.au/prepaid/sim-plans",
+      "type": "provider-official",
+      "reportedAt": "2026-10-12"
+    },
+    {
       "id": "optus-longexpiry-20260818",
       "url": "https://optus.com.au/connected/tech/long-expiry-prepaid-plans",
       "type": "provider-official",
@@ -67,6 +76,20 @@
       "url": "https://optus.com.au/prepaidplans",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "reddit-optus-passport-port-identity-mismatch-1qbghav-20260113",
+      "url": "https://www.reddit.com/r/AskAnAustralian/comments/1qbghav/optus_says_my_passport_number_is_already/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-01-13",
+      "label": "First-person Vodafone-to-Optus attempt blocked by identity/passport-account mismatch at online support and franchise store; exact current Flex Plus SKU and final resolution unknown"
+    },
+    {
+      "id": "reddit-optus-yearly-prepaid-samebrand-port-refund-1sczgck-20260405",
+      "url": "https://www.reddit.com/r/AskAnAustralian/comments/1sczgck/optus_refusing_porting_me_to_prepaid_service/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-04-05",
+      "label": "Original Optus postpaid-to-discounted yearly prepaid buyer reports manual activation friction, contradictory support and actual refund; exact Flex Plus tariff unverified"
     }
   ],
   "observations": [],
@@ -79,6 +102,28 @@
       "scope": "route",
       "outcome": "Legacy A$59/186-day and A$180/365-day retention economics are stale. Current official long-expiry options are A$180/186 days and A$350/365 days, while Optus states the 365-day A$350 price rises to A$395 on 2026-09-30.",
       "sourceId": "optus-prepaidplans-20260929"
+    },
+    {
+      "id": "evt-optus-discounted-annual-sameprovider-port-refund-1sczgck",
+      "routeId": "optus-flex-plus-au-2026",
+      "type": "adjacent-optus-yearly-prepaid-payment-port-refund",
+      "reportedAt": "2026-04-05",
+      "scope": "ONE Reddit OP bought discounted yearly Optus prepaid while holding EXISTING Optus postpaid number; exact current Flex Plus 365-day SKU, payment instrument and country unverified",
+      "outcome": "The OP reports purchasing a discounted annual prepaid SIM while already on Optus postpaid; the website required manual activation to retain the number, and agents gave contradictory statements during about three hours of support. Crucial SAME-AUTHOR EDIT: the buyer refunded the entire purchase instead of completing transfer. This is actual purchase then refund with an unsuccessful SAME-OPERATOR number-migration attempt, not a proven new-number activation failure, overseas first attachment, passport check, paid-offer price, or named-app OTP. No finding that all Optus long-expiry plans are incompatible with porting.",
+      "sourceId": "reddit-optus-yearly-prepaid-samebrand-port-refund-1sczgck-20260405",
+      "resolution": "same-author-purchase-refunded-no-successful-transition",
+      "authorHandle": "Long-Zombie-4411"
+    },
+    {
+      "id": "evt-optus-foreign-passport-identity-match-port-block-1qbghav",
+      "routeId": "optus-flex-plus-au-2026",
+      "type": "adjacent-optus-prepaid-onboarding-identity-port-failure",
+      "reportedAt": "2026-01-13",
+      "scope": "One Reddit original poster attempting to port an EXISTING Vodafone number to Optus with passport ID; specific prepaid/Flex Plus plan not identified; domestic support/store stage, location and nationality not verified",
+      "outcome": "The poster says an Optus identity system associated their passport number with a different name, preventing the Vodafone-to-Optus transfer. Online support reported the same mismatch; a franchise Optus store referred them to a company-owned store. No confirmed cause, security breach, identity fraud, resolution, successful activation, actual plan SKU, overseas-new-number checkout or named-app OTP. Do not retain identity document numbers or infer every foreign passport is rejected. This is an adjacent Optus onboarding friction report, NOT a verified current Flex Plus 365-day product failure.",
+      "sourceId": "reddit-optus-passport-port-identity-mismatch-1qbghav-20260113",
+      "resolution": "unresolved-poster-no-confirmed-completion",
+      "authorHandle": "AskOk2424"
     }
   ],
   "snapshots": [
@@ -131,6 +176,59 @@
           "optus-prepaidplans-20260929",
           "optus-activate-20260929",
           "optus-longexpiry-20260818"
+        ]
+      }
+    },
+    {
+      "id": "snap-optus-flex-plus-au-2026-current-profile-20261012",
+      "routeId": "optus-flex-plus-au-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-12",
+      "sourceDataset": "optus-official-current-flexplus-review-2026-10-12",
+      "data": {
+        "id": "optus-flex-plus-au-2026",
+        "brandId": "optus-au-direct",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "2026-10-12 Optus public online listing: Flex Plus 365-day starter/eSIM A$395 (350GB on activation and next two recharges, then 240GB); 186-day A$200. Prior A$199 starter promotion ended 2026-09-29 and A$350 standard 365-day rate ended 2026-09-29. This is a provider-listed price, NOT a completed checkout or a foreign-buyer eligibility test.",
+        "landedCost": {
+          "currency": "AUD",
+          "providerOrCommunityPrice": 395,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 395,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "2026-10-12-provider-listed-365-day-esim-quote-unverified-checkout"
+        },
+        "keep": {
+          "currency": "AUD",
+          "observedActionCost": 395,
+          "yearCostOriginal": 395,
+          "yearCostCny": null,
+          "action": "Current listed Flex Plus 365-day recharge is A$395, checked 2026-10-12; the 186-day alternative lists A$200. Previous A$350/365d and A$199 new-service promotion are historical September cohorts. Existing prepaid packs purchased before the increase may retain face-value activation price and a 90-day recharge discount only if activated before 2026-12-29, per Optus restrictions. NOT a general new-buyer A$199/A$350 option.",
+          "intervalDays": 365,
+          "state": "provider-current-listing-2026-10-12-purchased-old-packs-conditional"
+        },
+        "chinaActivation": "Optus offers eSIM and physical SIM, but activation requires a valid form of ID; remote/China-first completion is not established here.",
+        "kyc": "A valid form of ID is required for Optus prepaid activation.",
+        "payment": "Credit or debit card is required for online activation; broader foreign-card acceptance is not reconciled.",
+        "wifiCalling": "supported on compatible Optus services/devices; route-specific overseas behavior unverified",
+        "roamingSms": "International roaming behavior and incoming-SMS/OTP reliability are not reconciled for this route.",
+        "refund": "not reconciled",
+        "trend": "price-increase-effective-2026-09-30",
+        "guideEligible": false,
+        "holdReason": "New A$395/365d standard tariff is confirmed by provider listing, but payment method acceptance for non-Australian buyers, acceptable foreign ID, mainland-first activation and incoming overseas SMS/OTP remain unverified. Keep HOLD; older physical starter pack grandfathering is conditional and not a new-buyer price.",
+        "lastVerifiedAt": "2026-10-12",
+        "acquireUrl": "https://optus.com.au/prepaidplans",
+        "tariffSummary": "Checked 2026-10-12: A$395/365d Flex Plus (350GB for first 3 recharges, then 240GB) or A$200/186d. Prior A$199 introductory price and A$350 annual were historical; limited pre-change pack grace may apply.",
+        "sourceIds": [
+          "optus-prepaidplans-20260929",
+          "optus-activate-20260929",
+          "optus-longexpiry-20260818",
+          "optus-flex-plus-au-price-20261012"
         ]
       }
     }

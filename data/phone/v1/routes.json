@@ -19,7 +19,11 @@
       "official-1pmobile-join-current-20261006",
       "official-1pmobile-esim-current-20261006",
       "official-1pmobile-overseas-current-20261006",
-      "official-1pmobile-payment-current-20261006"
+      "official-1pmobile-payment-current-20261006",
+      "reddit-1pmobile-overseas-replacement-1vf663j-20260804",
+      "reddit-1pmobile-incoming-otp-1sxe5k1-20260427",
+      "reddit-1pmobile-postport-sms-delay-1wa0ole-20260908",
+      "reddit-1pmobile-smartyportrcv-recovery-1vs2kjd-20260818"
     ]
   },
   {
@@ -1022,14 +1026,20 @@
     "acquireUrl": "https://www.giffgaff.com/",
     "sourceIds": [
       "giffgaff-official-credit-2026-09-23",
+      "giffgaff-official-deleted-esim-recovery-20261013",
+      "giffgaff-official-new-esim-initial-plan-20261013",
       "linuxdo-giffgaff-1615582",
       "linuxdo-giffgaff-2244241",
       "linuxdo-giffgaff-2244241-p2",
       "linuxdo-giffgaff-2310901",
       "linuxdo-giffgaff-2322268",
+      "linuxdo-giffgaff-2322268-reply14",
       "linuxdo-giffgaff-2678340",
       "linuxdo-giffgaff-2773030",
       "linuxdo-giffgaff-2903412",
+      "reddit-giffgaff-1onzflv-esim-mfa-overseas-20251104",
+      "reddit-giffgaff-1qjxpv0-physical-esim-contrast-20260122",
+      "reddit-giffgaff-1tc9fy9-uk-paris-plan-20260513",
       "src-77b7a4afdd78",
       "src-7bc565362f29",
       "src-9e494ffc524e",
@@ -1508,7 +1518,8 @@
       "src-337a1e0a1330",
       "src-aa91ae8faea1",
       "linuxdo-lebara-2815946-20260826",
-      "nodeseek-lebara-869053-20260811"
+      "nodeseek-lebara-869053-20260811",
+      "reddit-lebara-uk-new-esim-outside-uk-wifi-unusable-1rtwkoj-20260314"
     ]
   },
   {
@@ -2084,12 +2095,15 @@
     "form": "eSIM-or-physical",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-12",
     "acquireUrl": "https://optus.com.au/prepaidplans",
     "sourceIds": [
       "optus-activate-20260929",
+      "optus-flex-plus-au-price-20261012",
       "optus-longexpiry-20260818",
-      "optus-prepaidplans-20260929"
+      "optus-prepaidplans-20260929",
+      "reddit-optus-passport-port-identity-mismatch-1qbghav-20260113",
+      "reddit-optus-yearly-prepaid-samebrand-port-refund-1sczgck-20260405"
     ]
   },
   {
@@ -2781,7 +2795,9 @@
       "linuxdo-tello-codex-sms-failure-20260612",
       "reddit-tello-sms-cut-abroad-20260925",
       "reddit-tello-signup-security-20260702",
-      "nodeseek-tello-payg-guide-20260928"
+      "nodeseek-tello-payg-guide-20260928",
+      "reddit-tello-china-new-esim-attempt-1tm4m9k-20260524",
+      "official-tello-number-expiry-20261012"
     ]
   },
   {
@@ -2801,7 +2817,14 @@
       "src-494ca2deb59b",
       "src-573da827b0ea",
       "src-ed3f565a3e3a",
-      "src-f2d3210589df"
+      "src-f2d3210589df",
+      "reddit-tello-chase-initial-app-vs-login-1u9225s",
+      "reddit-tello-korean-card-renewal-1p4bspo-20251123",
+      "reddit-tello-korea-foreign-esim-1wc8ej8-20260910",
+      "reddit-tello-number-expiry-autopay-1wx3k90-20261004",
+      "official-tello-number-expiry-20261012",
+      "reddit-tello-pixel9-foreign-registration-1utffrl-20260711",
+      "reddit-tello-china-new-esim-attempt-1tm4m9k-20260524"
     ]
   },
   {
@@ -3091,7 +3114,10 @@
       "youtube-didushan-ultramobile-telegram-20250221",
       "shuzijumin-ultramobile-telegram-20250307",
       "linuxdo-ultramobile-telegram-mixed-20250603",
-      "v2ex-ultramobile-telegram-mixed-20260404"
+      "v2ex-ultramobile-telegram-mixed-20260404",
+      "reddit-ultra-paygo-hk-invalid-act-1se5ggi-20260406",
+      "reddit-ultra-paygo-wallet-service-loss-1v0rabd-20260719",
+      "reddit-ultra-paygo-old-overseas-port-wallet-1h8yft0-20241207"
     ]
   },
   {

@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { gradeServiceEvidence } from './phone-evidence-grading.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -144,9 +145,22 @@ check('observed app rates cannot render before the five-observation gate', () =>
     groups.set(key, set);
   }
   for (const [key, set] of groups) assert(set.size < 5, `${key} unexpectedly reaches percentage gate`);
-  assert.match(html, /if\(n>=5&&mixed===0\)/);
-  assert.match(html, /\${success}\/\${n} · \${rate}% observed/);
-  assert.match(html, /report\${n===1\?'':'s'} · success/);
+  // Canonical operation-scoped grading, not duplicated in browser presentation.
+  const report = (i, original) => ({
+    sourceId: 'sample-'+i, originalDiscussionKey: original,
+    dedupeKey: 'sample-'+i, outcome: 'success'
+  });
+  const sameOriginal = gradeServiceEvidence(Array.from({length: 5}, (_,i) => report(i, 'one-original')));
+  assert.equal(sameOriginal.independentSourceCount, 1);
+  assert.equal(sameOriginal.percentageEligible, false);
+  assert.equal(sameOriginal.successRatePct, null);
+  const independent = gradeServiceEvidence(Array.from({length: 5}, (_,i) => report(i, 'original-'+i)));
+  assert.equal(independent.independentSourceCount, 5);
+  assert.equal(independent.percentageEligible, true);
+  assert.equal(independent.successRatePct, 100);
+  assert.match(html, /x\.percentageEligible&&Number\.isFinite\(x\.successRatePct\)/);
+  assert.match(html, /independent originals\$\{rate\}/);
+  assert.match(html, /observed, NOT a guarantee/);
 });
 
 check('UK pilot cost display is timestamped and never silently treats unknown as zero', () => {
@@ -157,14 +171,16 @@ check('UK pilot cost display is timestamped and never silently treats unknown as
   const giffgaff = ukPilot.routes.find(r => r.id === 'giffgaff-uk-direct-esim-payg');
   assert.equal(ukPilot.routes.find(r => r.id === 'voxi-uk-esim-payg-retention').landedCost.landedCny, 89.3);
   assert.equal(lebara.landedCost.landedCny, 58.05);
-  assert.equal(giffgaff.landedCost.landedCny, 89.3);
+  assert.equal(giffgaff.landedCost.landedCny, null, 'new eSIM first-plan checkout CNY total is not established');
+  assert.equal(giffgaff.landedCost.landedOriginal, null, 'do not substitute physical-PAYG £10 credit for first eSIM plan');
   assert.match(html, /Missing cost stays unknown/);
   assert.match(html, /<h3>Step by step<\/h3>/);
 });
 
 check('hold routes cannot expose an Acquire action', () => {
-  assert.match(html, /r\.guideEligible!==false&&r\.acquireUrl/);
-  assert.match(html, /r\.acquireUrl&&r\.guideEligible!==false/);
+  assert.match(html, /const eligible=!!canonical&&taskEligible\(canonical\)/);
+  assert.match(html, /canAcquire:eligible&&r\.guideEligible!==false&&!!r\.acquireUrl/);
+  assert.match(html, /return legacyCanonicalState\(r\)\.canAcquire\?/);
 });
 
 check('data cards use data metrics instead of OTP metrics', () => {

@@ -52,7 +52,7 @@ if (keepAliveHub.includes('RRULE:FREQ=DAILY;INTERVAL=') || keepAliveHub.includes
 
 // Directory must ship the leaderboard, avoid-list and client filter.
 const directory = readFileSync(join(guideDir, 'directory', 'index.html'), 'utf8');
-for (const marker of ['Cheapest keep-alive routes', 'Not viable for retention', 'id="dir-q"', 'comparison-index.json']) {
+for (const marker of ['Indicative low-cost retention options', 'Not viable for retention', 'id="dir-q"', 'comparison-index.json', 'phone-route-summaries.json', 'Research-only']) {
   if (!directory.includes(marker)) throw new Error(`Directory marker missing: ${marker}`);
 }
 

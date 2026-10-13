@@ -12453,5 +12453,153 @@
       ],
       "marketName": "Global"
     }
+  },
+  {
+    "id": "snap-optus-flex-plus-au-2026-current-profile-20261012",
+    "routeId": "optus-flex-plus-au-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-12",
+    "sourceDataset": "optus-official-current-flexplus-review-2026-10-12",
+    "data": {
+      "id": "optus-flex-plus-au-2026",
+      "brandId": "optus-au-direct",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "2026-10-12 Optus public online listing: Flex Plus 365-day starter/eSIM A$395 (350GB on activation and next two recharges, then 240GB); 186-day A$200. Prior A$199 starter promotion ended 2026-09-29 and A$350 standard 365-day rate ended 2026-09-29. This is a provider-listed price, NOT a completed checkout or a foreign-buyer eligibility test.",
+      "landedCost": {
+        "currency": "AUD",
+        "providerOrCommunityPrice": 395,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 395,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "2026-10-12-provider-listed-365-day-esim-quote-unverified-checkout"
+      },
+      "keep": {
+        "currency": "AUD",
+        "observedActionCost": 395,
+        "yearCostOriginal": 395,
+        "yearCostCny": null,
+        "action": "Current listed Flex Plus 365-day recharge is A$395, checked 2026-10-12; the 186-day alternative lists A$200. Previous A$350/365d and A$199 new-service promotion are historical September cohorts. Existing prepaid packs purchased before the increase may retain face-value activation price and a 90-day recharge discount only if activated before 2026-12-29, per Optus restrictions. NOT a general new-buyer A$199/A$350 option.",
+        "intervalDays": 365,
+        "state": "provider-current-listing-2026-10-12-purchased-old-packs-conditional"
+      },
+      "chinaActivation": "Optus offers eSIM and physical SIM, but activation requires a valid form of ID; remote/China-first completion is not established here.",
+      "kyc": "A valid form of ID is required for Optus prepaid activation.",
+      "payment": "Credit or debit card is required for online activation; broader foreign-card acceptance is not reconciled.",
+      "wifiCalling": "supported on compatible Optus services/devices; route-specific overseas behavior unverified",
+      "roamingSms": "International roaming behavior and incoming-SMS/OTP reliability are not reconciled for this route.",
+      "refund": "not reconciled",
+      "trend": "price-increase-effective-2026-09-30",
+      "guideEligible": false,
+      "holdReason": "New A$395/365d standard tariff is confirmed by provider listing, but payment method acceptance for non-Australian buyers, acceptable foreign ID, mainland-first activation and incoming overseas SMS/OTP remain unverified. Keep HOLD; older physical starter pack grandfathering is conditional and not a new-buyer price.",
+      "lastVerifiedAt": "2026-10-12",
+      "acquireUrl": "https://optus.com.au/prepaidplans",
+      "tariffSummary": "Checked 2026-10-12: A$395/365d Flex Plus (350GB for first 3 recharges, then 240GB) or A$200/186d. Prior A$199 introductory price and A$350 annual were historical; limited pre-change pack grace may apply.",
+      "sourceIds": [
+        "optus-prepaidplans-20260929",
+        "optus-activate-20260929",
+        "optus-longexpiry-20260818",
+        "optus-flex-plus-au-price-20261012"
+      ]
+    }
+  },
+  {
+    "id": "snap-tello-us-monthly-expiry-grace-20261012",
+    "routeId": "tello-us",
+    "kind": "number-expiry-grace",
+    "checkedAt": "2026-10-12",
+    "sourceId": "official-tello-number-expiry-20261012",
+    "data": {
+      "cohort": "Monthly Tello service at nonrenewal, without independently active other Tello service",
+      "graceDays": 12,
+      "safeKeepAction": "Renew or port out BEFORE deadline; no guaranteed recovery after expiration",
+      "summary": "Provider Help Center says monthly nonrenewal triggers a 12-day number expiration window. A separate unexpired PAYG balance is an active-service condition; saved backup cards are NOT confirmed to be automatically tried. Number recovery is not promised after final expiry. Community support agents gave conflicting interpretations of PAYG overlap. This is NOT a 12-day PAYG-only rule."
+    }
+  },
+  {
+    "id": "snap-tello-paygo-expiry-grace-20261012",
+    "routeId": "tello-paygo-credit-2026",
+    "kind": "number-expiry-grace",
+    "checkedAt": "2026-10-12",
+    "sourceId": "official-tello-number-expiry-20261012",
+    "data": {
+      "cohort": "Standalone PAYG with no monthly plan",
+      "creditLifetime": "3 months from last PAYG purchase",
+      "graceDays": 7,
+      "safeKeepAction": "Refresh PAYG before 90-day interval ends; 7-day grace is not a regular maintenance plan",
+      "summary": "Provider Help Center says standalone PAYG credit expires three months after last PAYG purchase, followed by a separate 7-day phone-number grace window. This is a last-chance rescue window, NOT a recommended 97-day routine refill interval. Monthly nonrenewal has a DIFFERENT 12-day grace. Restoration after final number expiry is not guaranteed."
+    }
+  },
+  {
+    "id": "snap-giffgaff-uk-direct-esim-payg-current-profile-20261013",
+    "routeId": "giffgaff-uk-direct-esim-payg",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-13",
+    "sourceDataset": "provider-esim-onboarding-reconciliation-2026-10-13",
+    "data": {
+      "id": "giffgaff-uk-direct-esim-payg",
+      "brandId": "giffgaff-uk",
+      "publishState": "candidate-with-prominent-continuity-warning",
+      "numberType": "real-mobile",
+      "simType": "eSIM-or-physical",
+      "acquisitionSummary": "New eSIM activation requires an initial paid plan, not credit-only PAYG activation. Physical-SIM credit activation is a separate checkout cohort. Exact new-eSIM checkout total and foreign-card/address eligibility are unverified.",
+      "landedCost": {
+        "currency": "GBP",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "new-esim-initial-plan-price-unknown"
+      },
+      "keep": {
+        "currency": "GBP",
+        "observedActionCost": 0.3,
+        "yearCostOriginal": 0.6,
+        "yearCostCny": 5.36,
+        "action": "Create a balance-changing activity within 180 days; SMS or small data usage are community-reproduced examples.",
+        "intervalDays": 180,
+        "state": "community-reproduced"
+      },
+      "chinaActivation": "eSIM download or isolated SMS anecdotes do not establish a compliant new China-first purchase, initial cellular activation, or specific-app OTP workflow.",
+      "kyc": "not fully normalized in this packet",
+      "payment": "A new eSIM requires purchasing an initial plan; credit-only PAYG activation is not offered for new eSIMs. Foreign-issued card acceptance, postcode/address eligibility and exact checkout total remain unverified.",
+      "wifiCalling": "Wi-Fi Calling is supported only within the UK where eligible; it is NOT supported abroad. Cellular roaming SMS is separate and service/app dependent.",
+      "roamingSms": "inbound verification SMS widely reported; service-specific behavior varies",
+      "refund": "mixed; multiple eventual successes after initial denial/delay observed Aug-Sep 2026",
+      "trend": "conflicting",
+      "guideEligible": true,
+      "lastVerifiedAt": "2026-10-13",
+      "acquireUrl": "https://www.giffgaff.com/",
+      "tariffSummary": "New eSIM: initial plan purchase required, exact buyer-specific price unverified. Physical SIM: separate credit/PAYG option subject to eligibility. This is not a £10 credit-only eSIM activation route.",
+      "sourceIds": [
+        "linuxdo-giffgaff-2244241",
+        "linuxdo-giffgaff-2244241-p2",
+        "linuxdo-giffgaff-2310901",
+        "linuxdo-giffgaff-2322268",
+        "linuxdo-giffgaff-1615582",
+        "linuxdo-giffgaff-2678340",
+        "linuxdo-giffgaff-2773030",
+        "linuxdo-giffgaff-2903412",
+        "giffgaff-official-credit-2026-09-23",
+        "giffgaff-official-new-esim-initial-plan-20261013",
+        "giffgaff-official-deleted-esim-recovery-20261013",
+        "src-7bc565362f29"
+      ],
+      "guideSteps": [
+        "For a new eSIM, check current plan options and pay for an initial plan; do not select a PAYG-credit-only activation path intended for physical SIMs.",
+        "Confirm the actual eligible checkout price, card country and any required address before purchase. Do not infer offshore activation from downloading an eSIM profile.",
+        "Once the number is working, test the exact verification service; roaming SMS and Wi-Fi Calling are different, and Wi-Fi Calling is not supported outside the UK.",
+        "Before deleting or swapping an existing eSIM, verify SMS-MFA access and the provider recovery path; if the old eSIM is lost, physical-SIM swap may be necessary and offshore access is not assured.",
+        "Create a qualifying activity before the 180-day inactivity limit, with a recovery/port-out plan given contradictory overseas continuity incidents."
+      ],
+      "onboardingSourceUrl": "https://help.giffgaff.com/en/articles/240912-getting-started-on-giffgaff"
+    }
   }
 ]

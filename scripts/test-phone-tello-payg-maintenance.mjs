@@ -17,14 +17,15 @@ for (const id of ids) { assert(route.sourceIds.includes(id)); assert(sources.som
 assert(events.some(x=>x.id==="evt-tello-payg-current-rules-20261005"));
 assert(events.some(x=>x.id==="evt-tello-overseas-sms-risk-20261005"));
 assert(events.some(x=>x.id==="evt-tello-account-security-risk-20261005"));
-assert.equal(observations.filter(x=>x.routeId===route.id).length,0);
+assert.equal(observations.filter(x=>x.routeId===route.id).length,0,"No unspecified-cohort named-app claims may contaminate the PAYG route");
 assert.equal(detail.serviceEvidence.length,0);
 assert(summary);
 assert.equal(summary.serviceEvidence.length,0);
-assert.equal(summary.decisionFacts.sourceCount,14);
+assert.equal(summary.decisionFacts.sourceCount,route.sourceIds.length);
+assert(route.sourceIds.length>=16);
 assert.equal(detail.metrics.keepYearCostOriginal,40);
 assert.equal(detail.metrics.keepIntervalDays,90);
-const latest=detail.snapshots.at(-1);
+const latest=detail.snapshots.filter(x=>x.kind==='current-profile').sort((a,b)=>String(b.checkedAt).localeCompare(String(a.checkedAt)))[0];
 assert.equal(latest.id,"snap-tello-paygo-credit-2026-current-profile-20261005");
 assert.equal(latest.data.keep.observedActionCost,10);
 assert.equal(latest.data.guideEligible,false);

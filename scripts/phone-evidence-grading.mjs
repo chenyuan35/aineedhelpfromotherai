@@ -6,7 +6,7 @@ export const gradeServiceEvidence = rows => {
   const failure = uniqueRows.filter(x => x.outcome === 'failure' || x.outcome === 'non-success').length;
   const mixed = uniqueRows.length - success - failure;
   const n = uniqueRows.length;
-  const independentSourceCount = new Set(uniqueRows.map(x => x.sourceId).filter(Boolean)).size;
+  const independentSourceCount = new Set(uniqueRows.map(x => x.originalDiscussionKey || x.sourceId).filter(Boolean)).size;
   let grade = 'insufficient', label = 'Not enough independently sourced data';
   if (n >= 5 && independentSourceCount >= 5 && success / n >= 0.8 && failure <= 1 && mixed === 0) {
     grade = 'A'; label = 'Strong';

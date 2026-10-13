@@ -1,0 +1,64 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const read=f=>JSON.parse(fs.readFileSync(path.join(root,f),'utf8'));
+const routes=read('data/phone/v1/routes.json');
+const sources=read('data/phone/v1/sources.json');
+const events=read('data/phone/v1/events.json');
+const observations=read('data/phone/v1/observations.json');
+const route=routes.find(x=>x.id==='tello-paygo-credit-2026');
+const generic=routes.find(x=>x.id==='tello-us');
+const originals=[
+  ['1tm4m9k','reddit-tello-china-new-esim-attempt-1tm4m9k-20260524',['AMKerschen','smacado']],
+  ['1utffrl','reddit-tello-pixel9-foreign-registration-1utffrl-20260711',['CraigInCambodia','Music_Fan76']],
+];
+assert(route&&generic&&generic.evidenceState==='needs-reconciliation');
+assert.equal(route.evidenceState,'admitted');
+assert.equal(route.surfaceState,'backstage-only');
+for(const [threadId,sourceId,authors] of originals){
+  const hits=sources.filter(x=>x.url?.includes('/comments/'+threadId+'/'));
+  assert.equal(hits.length,1,threadId+': one original thread, not two independent originals');
+  assert.equal(hits[0].id,sourceId);
+  assert.equal(hits[0].type,'first-hand-community-thread');
+  assert((threadId==='1tm4m9k'?route:generic).sourceIds.includes(sourceId),sourceId+' must be linked to scope-correct Tello route');
+  if(threadId==='1utffrl') assert(!route.sourceIds.includes(sourceId),'Pixel 9 Pro exact PAYG-only tariff not verified');
+  const reports=events.filter(x=>x.sourceId===sourceId);
+  assert.equal(reports.length,2,threadId+': each distinct reporter has a separately scoped non-app event');
+  assert.deepEqual(reports.map(x=>x.authorHandle).sort(),authors.slice().sort());
+  assert.equal(observations.filter(x=>x.sourceId===sourceId).length,0,'Unknown bank/sms OTP must not be converted to a named app operation');
+}
+const china=events.find(x=>x.authorHandle==='AMKerschen');
+assert.match(china.outcome,/first eSIM install\/provisioning failure/);
+assert.match(china.outcome,/final first-activation outcome unresolved/);
+assert.equal(china.routeId,route.id,'Explicit paid $20 PAYG OP remains in PAYG route');
+const old=events.find(x=>x.authorHandle==='smacado');
+assert.equal(old.routeId,generic.id,'Other user older Tello line SKU unknown');
+assert(generic.sourceIds.includes(old.sourceId),'Shared original thread linked to both relevant routes');
+assert.match(old.outcome,/different account cohorts/);
+const pixel=events.find(x=>x.authorHandle==='CraigInCambodia');
+assert.match(pixel.outcome,/unnamed financial institution/);
+assert.match(pixel.outcome,/physical location not independently confirmed|first tower/);
+assert.equal(pixel.routeId,generic.id,'Pixel 9 Pro unknown-SKU outcome never a PAYG-only confirmation');
+const helper=events.find(x=>x.authorHandle==='Music_Fan76');
+assert.equal(helper.routeId,generic.id,'Same unknown-SKU original stays scoped generic');
+assert.match(helper.outcome,/U.S.-assisted first activation/);
+assert.match(helper.outcome,/NOT a wholly overseas new-line activation/);
+const detail=read('frontend/tools/phone-number-lifecycle-mvp/phone-route-data/tello-paygo-credit-2026.json');
+const summary=read('frontend/tools/phone-number-lifecycle-mvp/phone-route-summaries.json').routes.find(x=>x.id===route.id);
+assert.equal(summary.decisionFacts.sourceCount,route.sourceIds.length,'Source counts must reflect normalized route links');
+assert(summary.decisionFacts.sourceCount>=16,'Previously reviewed Tello originals retained');
+assert.equal(summary.surfaceState,'backstage-only');
+assert.equal(summary.serviceEvidence.length,0,'PAYG-only source cohort has no verified named-app results');
+assert.equal(detail.events.filter(x=>originals.some(o=>o[1]===x.sourceId)).length,1,'Only explicit PAYG OP belongs on PAYG');
+assert.equal(detail.sources.filter(x=>originals.some(o=>o[1]===x.id)).length,1,'Only explicitly PAYG source remains PAYG');
+const genericDetail=read('frontend/tools/phone-number-lifecycle-mvp/phone-route-data/tello-us.json');
+assert.equal(genericDetail.events.filter(x=>originals.some(o=>o[1]===x.sourceId)).length,3,'Older/unknown cohort reports scoped generic');
+assert.equal(genericDetail.sources.filter(x=>originals.some(o=>o[1]===x.id)).length,2,'Same original linked across routes, not duplicate source');
+assert.equal(detail.observations.filter(x=>originals.some(o=>o[1]===x.sourceId)).length,0,'Earlier abroad original discussions still contain zero named app observations');
+const profiles=detail.snapshots.filter(x=>x.kind==='current-profile').sort((a,b)=>b.checkedAt.localeCompare(a.checkedAt));
+assert.equal(profiles[0].data.guideEligible,false);
+assert.match(profiles[0].data.chinaActivation,/United States/);
+assert.match(profiles[0].data.holdReason,/not a safe China-first recommendation/);
+console.log('Tello original cohort audit: one explicit PAYG failure, three unknown-SKU user outcomes moved/kept generic, 2 originals total, no invented bank verification — PASS');

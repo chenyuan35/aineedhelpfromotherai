@@ -6,6 +6,18 @@ This file is the durable execution log for external authority building, referral
 
 Use it before starting a new outreach/distribution round so we do not repeat contacts, lose follow-ups, or confuse planned work with completed work. Do not store private credentials or recipient email addresses here; use public site/author names and Gmail thread history for exact correspondence.
 
+## 2026-10-11 pre-release channel measurement gate (LOCAL/STAGED)
+
+Live pages expose a GA4 tag, but the connected GA4 property returned **zero rows of data**, not a verified zero visits. Therefore there is no first-party referral/conversion basis for declaring Threads, outreach or a forum campaign successful. GSC sees only tiny impressions/click counts for Phone pages; make no organic-trend claims from a day of reporting delay. Do not send more generic backlinks or promote unreleased changes. The staged lowest-cost-SIM guide now correctly separates annual activity spend, account eligibility, first activation, specific-app SMS and recovery; after verified deployment use that original-source difference to answer an existing relevant question where links are permitted, then measure attributable referrals separately from search.
+
+## 2026-10-10 release-freeze distribution readiness (STAGED; NOT sent)
+
+Read-only first-party GSC through Windsor showed 2026-10-01–08 **123 impressions / 2 clicks**, with Phone finder/guide pages near zero Google clicks; no basis for calling social exposure SEO growth. Metricool recheck showed the prior site-specific Threads Cursor and Claude tool posts about 60 and 111 views; referral sessions could not be verified because current GA4 connector returned no rows. Gmail confirmed exactly five targeted Cursor resource suggestions dated September 13/22 with no matched editorial replies; avoid duplicate contact. These are distinct Google-organic, social, referral and measurement categories.
+
+While release #487 is frozen: prefer one verifiable Phone user job and dated contradictory original evidence over generic carrier directories or product praise. Editorial candidate for after release: 1pMobile existing-line eSIM replacement abroad (reported successful with prerequisites), contrasting a newly joined eSIM inbound SMS failure and one *specific* American Express OTP-only failure alongside working other OTPs; all are user testimony, not service guarantees or proof that China-first onboarding works. Never describe future/staged functionality as online. Candidate independent context: competing long-form number-abroad guides exist, so meaningful advantage requires cross-provider contradictory reports, action-stage separation, cost uncertainty and reproducible sourced history — not a rewritten travel eSIM article.
+
+No new message, community post, outreach follow-up, backlink claim or ad purchase is authorized by this staging note. After one gated release and GA4 source segmentation, select one legitimate relevant discussion where these reported failure/mitigation facts materially answer the question; link only if allowed and helpful. Measure attributable community referral separately from Google impressions.
+
 ## Current objective
 
 Build authority around the already-indexed Cursor reset page before adding another broad batch of tools. The near-term test is whether a materially deeper, more trustworthy and shareable page can earn search impressions, citations, referrals and relevant external mentions.

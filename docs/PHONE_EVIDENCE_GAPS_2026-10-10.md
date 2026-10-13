@@ -7,17 +7,17 @@ Snapshot: generated from the checked-out canonical JSON data using: node scripts
 | Field | Count | Notes |
 | --- | ---: | --- |
 | Canonical routes | 160 | Internal model, not real-world demand denominator |
-| Sources | 904 | Source record count, not count of real-world buyers |
-| Lifecycle/incident events | 330 | Not equivalent to app OTP outcomes |
-| App-specific observations | 38 | Author-and-operation evidence, not independent original URLs |
-| Routes with any app observation | 8 | Might be positive, negative or mixed |
-| Routes without any app observation | 152 | App reliability unknown |
-| Routes without linked community-tagged source | 83 | Only a source-label proxy; review types before claiming missing testimony |
-| Acquisition price unknown in native currency | 72 | Missing numeric acquisition costs |
+| Sources | 927 | Source record count, not count of real-world buyers |
+| Lifecycle/incident events | 358 | Not equivalent to app OTP outcomes |
+| App-specific observations | 41 | Author-and-operation evidence, not independent original URLs |
+| Routes with any app observation | 10 | Might be positive, negative or mixed |
+| Routes without any app observation | 150 | App reliability unknown |
+| Routes without linked community-tagged source | 80 | Only a source-label proxy; review types before claiming missing testimony |
+| Acquisition price unknown in native currency | 73 | Missing numeric acquisition costs |
 | Annual keep cost unknown in native currency | 66 | Missing numeric annual costs |
-| Acquisition price missing comparable CNY figure | 131 | Native price may exist but vetted conversion missing |
+| Acquisition price missing comparable CNY figure | 132 | Native price may exist but vetted conversion missing |
 | Annual keep price missing comparable CNY figure | 138 | Do not rank unknown CNY costs as cheap |
-| KYC unknown or unclear | 34 | Unknown must not imply KYC-free |
+| KYC unknown or unclear | 92 | Unknown must not imply KYC-free |
 | Admitted / HOLD / reconciliation | 61 / 89 / 10 | Admitted does not imply user recommendation |
 
 ## Firsthand-source acquisition priorities (mechanical gap queue, not demand rank)
@@ -26,7 +26,6 @@ Each row below is admitted, has at least six source records, lacks a community-t
 
 | Route | Linked sources |
 | --- | ---: |
-| `1pmobile-uk-2026` | 7 |
 | `aldi-talk-activity-window-2026` | 7 |
 | `go-payasyougo-mt-2026` | 7 |
 | `kolbi-cr-2026` | 7 |

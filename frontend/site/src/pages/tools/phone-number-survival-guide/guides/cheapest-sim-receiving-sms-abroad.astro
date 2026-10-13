@@ -1,56 +1,82 @@
 ---
 import GuideArticle from '../../../../components/GuideArticle.astro';
-import { data, routeOf, brandOf, GUIDE_BASE, routeDetailHref, hasRouteDetail } from '../../../../data/phone.js';
+import { GUIDE_BASE, canonicalRouteSummaries, routeOf, brandOf, routeDetailHref } from '../../../../data/phone.js';
 
-const ranked = (data.routes as any[])
-  .filter((r) => Number.isFinite(r.keep?.yearCostCny) && r.publishState !== 'observation-hold' && !r.avoidRoute)
-  .sort((a, b) => a.keep.yearCostCny - b.keep.yearCostCny)
-  .slice(0, 15);
-
-const clubsim = routeOf('clubsim-sms-pack-6hkd-2026');
-const hotlink = routeOf('hotlink-pantas-365-pass-2026');
-const globe = routeOf('globe-prepaid-1yr-2026');
-const voxi = routeOf('voxi-uk-esim-payg-retention');
-
-const guideRouteHref = (r: any) => routeDetailHref(r) || `${GUIDE_BASE}directory/?q=${encodeURIComponent(r.id)}`;
-const keepAliveHref = (r: any) => hasRouteDetail(r) ? `${GUIDE_BASE}keep-alive/${r.id}/` : `${GUIDE_BASE}keep-alive/#${r.id}`;
+// Retention price is a different assertion from foreign activation / named-app
+// OTP. Never rank HOLD rows, VoIP/temporary/data-only products or missing costs.
+const candidates = canonicalRouteSummaries()
+  .filter((r: any) => r.family === 'long-term'
+    && r.numberClass === 'real-mobile'
+    && r.evidenceState === 'admitted'
+    && Number.isFinite(r.metrics?.keepYearCostOriginal)
+    && Number.isFinite(r.metrics?.keepYearCostCny)
+    && r.metrics.keepYearCostOriginal >= 0
+    && Number.isFinite(r.metrics?.keepIntervalDays))
+  .sort((a: any, b: any) => a.metrics.keepYearCostCny - b.metrics.keepYearCostCny
+    || String(a.id).localeCompare(String(b.id)))
+  .slice(0, 12);
+const researchedNotPublic = (r: any) => r.surfaceState === 'backstage-only';
+const currencyYear = (r: any) => `${r.metrics.keepCurrency} ${r.metrics.keepYearCostOriginal}`;
+const guideRouteHref = (r: any) => `${GUIDE_BASE}?route=${encodeURIComponent(r.id)}`;
+const condition = (r: any) => r.decisionFacts?.holdReason
+  ? 'Unresolved eligibility or real-world use restrictions'
+  : r.decisionFacts?.kycState === 'required'
+    ? 'Identity verification required; first activation not verified for your location'
+    : 'First activation, funding and incoming app SMS must be checked separately';
+const club = candidates.find((r: any) => r.id === 'clubsim-sms-pack-6hkd-2026')
+  || canonicalRouteSummaries().find((r: any) => r.id === 'clubsim-sms-pack-6hkd-2026');
+const hotlink = canonicalRouteSummaries().find((r: any) => r.id === 'hotlink-pantas-365-pass-2026');
+const tello = canonicalRouteSummaries().find((r: any) => r.id === 'tello-paygo-credit-2026');
 ---
+
 <GuideArticle slug="cheapest-sim-receiving-sms-abroad"
-  h1="Cheapest SIM cards for receiving SMS & OTP abroad"
-  title="Cheapest SIM cards for receiving SMS & OTP abroad (2026 ranking)"
-  desc="The definitive cost ranking of SIM routes that keep receiving SMS/OTP codes abroad — from ¥0.17/year, every entry verified against official terms or community evidence."
-  lead="Keeping a number alive for verification codes is a cost-optimization problem: you want the lowest annual keep-alive cost with SMS that actually arrives abroad. This ranking is computed live from our verified directory data — no affiliate rankings, no guesses.">
+  h1="Compare low-cost SIM retention and SMS evidence abroad"
+  title="Low-cost SIM retention abroad: price vs SMS evidence (2026)"
+  desc="Compare documented annual costs for keeping a real mobile number. See which requirements and overseas SMS/OTP results remain unverified before buying."
+  lead="There is no universal cheapest SIM proven to receive every bank or app code abroad. A cheap keep-alive rule is not proof that a new buyer can activate the SIM overseas, pass KYC, or receive a specific verification SMS. This comparison separates those decisions using source-backed route records.">
 
-<section class="gd-sec"><h2>The ranking</h2>
-<table class="gd-tbl"><thead><tr><th>#</th><th>Route</th><th>Keep/yr</th><th>≈CNY</th><th>Interval</th></tr></thead>
-<tbody>{ranked.map((r, i) => (
-<tr><td>#{i + 1}</td><td><a href={guideRouteHref(r)}><strong>{brandOf(r)?.name || r.id}</strong></a><br><small style="color:var(--muted)">{r.marketName || ''}</small></td><td>{r.keep.currency} {r.keep.yearCostOriginal}</td><td>≈¥{r.keep.yearCostCny}</td><td>{r.keep.intervalDays}d</td></tr>
-))}</tbody></table>
-<p style="color:var(--muted);font-size:.85rem">Ranking recomputed from the directory packet on every build (last check {data.checkedAt}). CNY figures use the packet reference rates.</p></section>
+<section class="gd-sec">
+  <h2>First check the task, not only the annual price</h2>
+  <p>Are you keeping a number you already activated, buying a new number from another country, or trying to receive a code from one named app? These have different evidence requirements. <a href={GUIDE_BASE}>Open Phone Radar's task finder</a> and choose your location, number origin and service. If it returns <strong>No verified matches</strong>, do not treat the research-only alternatives as purchase recommendations.</p>
+</section>
 
-<section class="gd-sec"><h2>How to read this table</h2>
-<ul>
-<li><strong>Keep/yr</strong> is the annual cost of the minimum keep-alive action — not the top-up amount. Topped-up credit stays yours.</li>
-<li><strong>Interval</strong> is how often you must act. Shorter = more chances to forget. Use the <a href={`${GUIDE_BASE}keep-alive/`}>Keep-Alive Assistant</a> to get a calendar reminder.</li>
-<li><strong>Acquisition matters more than retention.</strong> The world's cheapest retention (Beeline Kazakhstan, ¥0.17/yr) requires a local IIN number to buy — useless unless you have one. Check each route's acquisition section before optimizing for price.</li>
-</ul></section>
+<section class="gd-sec">
+  <h2>Indicative yearly keep costs for reviewed real-mobile routes</h2>
+  <p>This list is sorted by modeled retention cost in reference CNY, <strong>not by the probability of receiving SMS abroad</strong>. Every entry is only a researched route; a backstage-only record is not a verified purchase recommendation. Unresolved/HOLD records, virtual numbers and missing costs are excluded from this table, not declared impossible.</p>
+  <div style="overflow-x:auto">
+    <table class="gd-tbl">
+      <thead><tr><th>Route / number origin</th><th>Indicative keep / year</th><th>Activity window</th><th>Eligibility and evidence</th></tr></thead>
+      <tbody>{candidates.map((r: any) => (
+        <tr>
+          <td><a href={guideRouteHref(r)}><strong>{r.displayName || r.id}</strong></a><small style="display:block;color:var(--muted)">{r.marketName || 'Unknown origin'} · {r.form || 'form unverified'}</small></td>
+          <td>{currencyYear(r)}<small style="display:block;color:var(--muted)">≈ CNY {r.metrics.keepYearCostCny}, historical FX reference</small></td>
+          <td>{r.metrics.keepIntervalDays} days</td>
+          <td><strong>{researchedNotPublic(r) ? 'Research-only' : 'Reviewed route'}</strong><small style="display:block;color:var(--muted)">{condition(r)}. {r.decisionFacts?.sourceCount || 0} linked sources; last reviewed {r.lastVerifiedAt || 'unknown'}.</small></td>
+        </tr>
+      ))}</tbody>
+    </table>
+  </div>
+  <p style="color:var(--muted);font-size:.85rem">Indicative recurring action cost is not the same as the cash required to buy or top up a line. A conditional SMS top-up, retained credit, contract payment or validity pass cannot be assumed interchangeable. Currency conversions use historic reference rates, not today's exchange rate. Open each route for the exact terms and source records.</p>
+</section>
 
-<section class="gd-sec"><h2>The realistic shortlist for people outside the country</h2>
-<p>Filtering for routes you can actually acquire without local residency, the practical top tier is:</p>
-<ul>
-{clubsim && <li><a href={guideRouteHref(clubsim)}><strong>ClubSIM (Hong Kong)</strong></a> — ≈¥{clubsim.keep?.yearCostCny}/yr, eSIM, minimal KYC.</li>}
-{hotlink && <li><a href={guideRouteHref(hotlink)}><strong>{brandOf(hotlink)?.name}</strong></a> — ≈¥{hotlink.keep?.yearCostCny}/yr, one annual action.</li>}
-{globe && <li><a href={guideRouteHref(globe)}><strong>{brandOf(globe)?.name}</strong></a> — ≈¥{globe.keep?.yearCostCny}/yr, 1-year official validity.</li>}
-{voxi && <li><a href={guideRouteHref(voxi)}><strong>VOXI (UK)</strong></a> — ≈¥{voxi.keep?.yearCostCny}/yr with eSIM delivery.</li>}
-</ul></section>
+<section class="gd-sec">
+  <h2>Where the cheapest figure conceals a restriction</h2>
+  <ul>
+    {club && <li><strong>ClubSIM (Hong Kong):</strong> The modeled HKD {club.metrics?.keepYearCostOriginal} yearly pack route is research-only, not universally verified. Identity checks apply, and distinct original user reports of Telegram registration include success, failure and conditional outcomes. Incoming ordinary SMS cannot establish success with your bank.</li>}
+    {hotlink && <li><strong>Hotlink Pantas (Malaysia):</strong> The modeled MYR {hotlink.metrics?.keepYearCostOriginal} annual validity action is for an eligible non-tourist Pantas line. Tourist/passport eligibility and international network reachability remain constraints; do not infer it works for a first-time visitor.</li>}
+    {tello && <li><strong>Tello PAYG (United States):</strong> The USD {tello.metrics?.keepYearCostOriginal} annual path requires a working account-enabled SMS credit-top-up method; regular web PAYG purchases may cost around USD 80 per year instead. First activation or port-in must take place in the United States on the provider's network. Do not buy on the assumption that China-first activation works.</li>}
+  </ul>
+</section>
 
-<section class="gd-sec"><h2>Dead ends to skip</h2>
-<p>These are confirmed not viable — included so you do not waste money:</p>
-<ul>
-<li><strong>O2 Classic PAYG (UK)</strong> — closed to new customers in 2024–2026.</li>
-<li><strong>Singtel hi! (Singapore)</strong> — passport registration caps at 30 days.</li>
-<li><strong>Turkish tourist SIMs</strong> — 90-day block for non-residents.</li>
-<li><strong>Orange Holiday (France)</strong> — 7–30 day tourist product, not a retention route.</li>
-</ul>
-<p>Evidence for each is on its route page, linked from the <a href={`${GUIDE_BASE}directory/`}>directory avoid-list</a>.</p></section>
+<section class="gd-sec">
+  <h2>What must be checked before buying</h2>
+  <ol>
+    <li><strong>Purchase:</strong> Can someone in your actual country and identity/payment situation acquire this exact number product?</li>
+    <li><strong>Activation:</strong> Does its original activation require a domestic network attachment, in-person ID check, or supported device?</li>
+    <li><strong>Retention:</strong> Is the cheapest published annual figure a charge, a mandatory top-up, usable stored credit or a limited account-specific option?</li>
+    <li><strong>Named app:</strong> Is there a recent, independent report for the exact SMS operation, provider prefix and location? One successful code or a generic test text is not a universal guarantee.</li>
+    <li><strong>Recovery:</strong> Check disconnection, number recycling, grace period, porting and what happens if you lose access to the number.</li>
+  </ol>
+  <p>For a number you already have, the <a href={`${GUIDE_BASE}keep-alive/`}>Keep-Alive Assistant</a> calculates the next reminder from that route's documented action window. For a new purchase abroad, begin with <a href={GUIDE_BASE}>Phone Radar's task-first shortlist</a>.</p>
+</section>
 </GuideArticle>

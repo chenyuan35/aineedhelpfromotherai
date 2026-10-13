@@ -35,7 +35,7 @@ for (const routeId of routeIds) {
   for (const id of route.sourceIds) assert(sources.some((row) => row.id === id && /^https:\/\//.test(row.url)), `${routeId}: missing source ${id}`);
   const legacy = globalDirectory.routes.find((row) => row.id === routeId);
   assert(legacy, `legacy row missing: ${routeId}`);
-  assert.deepEqual(buildCanonicalComparisonRoute(canonical, routeId), legacy, `${routeId}: canonical adapter parity must be exact`);
+  assert.deepEqual(buildCanonicalComparisonRoute(canonical, routeId, {historical:true}), legacy, `${routeId}: canonical adapter parity must be exact`);
   assert.equal(policy.routeStates[routeId], undefined, `${routeId} must stay non-indexable`);
 }
 

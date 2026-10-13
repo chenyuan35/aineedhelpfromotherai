@@ -2,31 +2,67 @@
   {
     "id": "openai",
     "name": "ChatGPT / OpenAI",
-    "aliases": ["chatgpt", "openai", "codex", "openai codex"],
+    "aliases": [
+      "chatgpt",
+      "openai",
+      "codex",
+      "openai codex"
+    ],
     "category": "ai-account"
   },
   {
     "id": "telegram",
     "name": "Telegram",
-    "aliases": ["telegram", "tg"],
+    "aliases": [
+      "telegram",
+      "tg"
+    ],
     "category": "messaging"
   },
   {
     "id": "whatsapp",
     "name": "WhatsApp",
-    "aliases": ["whatsapp", "wa"],
+    "aliases": [
+      "whatsapp",
+      "wa"
+    ],
     "category": "messaging"
   },
   {
     "id": "google",
     "name": "Google",
-    "aliases": ["google", "gmail"],
+    "aliases": [
+      "google",
+      "gmail"
+    ],
     "category": "account"
   },
   {
     "id": "anthropic",
     "name": "Anthropic / Claude",
-    "aliases": ["anthropic", "claude", "claude code"],
+    "aliases": [
+      "anthropic",
+      "claude",
+      "claude code"
+    ],
     "category": "ai-account"
+  },
+  {
+    "id": "american-express",
+    "name": "American Express",
+    "aliases": [
+      "american express",
+      "amex"
+    ],
+    "category": "financial-account"
+  },
+  {
+    "id": "chase",
+    "name": "Chase",
+    "aliases": [
+      "chase",
+      "chase bank"
+    ],
+    "category": "financial-account"
   }
 ]

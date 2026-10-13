@@ -38,7 +38,10 @@ const haha = buildCanonicalComparisonRoute(canonical, 'fortress-hahasim-hk-2026'
 assert.equal(haha.keep.intervalDays, 365);
 assert.equal(haha.keep.observedActionCost, 10);
 assert.equal(haha.keep.yearCostOriginal, 10);
-assert.equal(haha.holdReason, null);
+// The intake originally had no explicit hold reason, but a later reviewed
+// report identified contradictory overseas OTP outcomes. Latest risk wins.
+assert.equal(buildCanonicalComparisonRoute(canonical,'fortress-hahasim-hk-2026',{historical:true}).holdReason, null);
+assert.match(haha.holdReason,/mainland|OTP|unverified/i);
 assert.match(haha.simType, /physical/i);
 assert.match(haha.kyc, /travel-document|real-name/i);
 assert.match(haha.roamingSms, /recycled|OTP|mainland/i);

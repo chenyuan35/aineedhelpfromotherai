@@ -1,0 +1,55 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {originalDiscussionKey} from './phone-original-discussion.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const read=f=>JSON.parse(fs.readFileSync(path.join(root,f),'utf8'));
+const routes=read('data/phone/v1/routes.json'), sources=read('data/phone/v1/sources.json');
+const observations=read('data/phone/v1/observations.json'), events=read('data/phone/v1/events.json');
+const services=read('data/phone/v1/services.json');
+const route=routes.find(x=>x.id==='tello-us');
+const payg=routes.find(x=>x.id==='tello-paygo-credit-2026');
+assert(route);assert(payg);assert.equal(route.surfaceState,'public-legacy');assert.equal(route.evidenceState,'needs-reconciliation');
+const matches=sources.filter(s=>s.url?.includes('/comments/1u9225s/'));
+assert.equal(matches.length,1,'Exactly ONE original discussion');
+const source=matches[0];assert(route.sourceIds.includes(source.id));
+assert(!payg.sourceIds.includes(source.id),'An unspecified Tello plan cannot be cited as PAYG-only evidence');
+assert.equal(source.reportedAt,undefined,'Do not invent exact publication date');
+assert.equal(source.reviewedAt,'2026-10-12');
+assert(services.some(s=>s.id==='chase'&&s.category==='financial-account'));
+const rows=observations.filter(o=>o.sourceId===source.id);
+assert.equal(rows.length,2,'Two different authors, same original');
+assert.deepEqual(new Set(rows.map(o=>o.authorHandle)),new Set(['ComfortableDonut1820','DrGruve']));
+assert.equal(new Set(rows.map(o=>o.dedupeKey)).size,2);
+assert(rows.every(o=>o.service==='Chase'&&o.reportedAt===undefined));
+assert(rows.every(o=>o.routeId===route.id && /unspecified|NOT specified/.test(o.productCohort)),'Source lacks named PAYG SKU; keep on generic unreconciled route');
+assert.deepEqual(Object.fromEntries(rows.map(o=>[o.operation,o.outcome])),{
+  'new-application-live-agent-sms-verification':'failure',
+  'existing-account-login-2fa':'success'
+});
+assert.equal(new Set(rows.map(o=>originalDiscussionKey(source))).size,1);
+assert.equal(events.filter(e=>e.sourceId===source.id).length,1,'Only one thread-level staged contrast event');
+assert.equal(observations.filter(o=>o.sourceId===source.id&&o.service==='T-Mobile').length,0,'Other carrier not misattributed as Tello named sample');
+const summary=read('frontend/tools/phone-number-lifecycle-mvp/phone-route-summaries.json').routes.find(x=>x.id===route.id);
+assert.equal(summary.surfaceState,'public-legacy');
+assert.equal(summary.evidenceState,'needs-reconciliation');assert.equal(summary.decisionFacts.sourceCount,route.sourceIds.length);
+const chase=summary.serviceEvidence.filter(x=>x.serviceId==='chase');
+assert.equal(chase.length,2,'Bank first application and existing login never pooled');
+for(const row of chase){assert.equal(row.sampleSize,1);assert.equal(row.independentSourceCount,1);assert.equal(row.successRatePct,null);assert.equal(row.lastObservedAt,null);assert.equal(row.confidence,'very-low');}
+assert.equal(chase.find(x=>x.operation==='new-application-live-agent-sms-verification').failureCount,1);
+assert.equal(chase.find(x=>x.operation==='existing-account-login-2fa').successCount,1);
+const html=fs.readFileSync(path.join(root,'frontend/tools/phone-number-lifecycle-mvp/index.html'),'utf8');
+assert.match(html,/function serviceOperationLabel\(operation\)/);
+assert.match(html,/First application — live-agent verification SMS/);
+assert.match(html,/Existing account — login 2FA/);
+assert.match(html,/esc\(serviceOperationLabel\(x.operation\)\)/,'Both service operations must be rendered on detail UI');
+const detail=read('frontend/tools/phone-number-lifecycle-mvp/phone-route-data/tello-us.json');
+assert(detail.sources.some(s=>s.id===source.id));
+assert.equal(detail.observations.filter(o=>o.sourceId===source.id).length,2);
+assert.equal(detail.events.filter(e=>e.sourceId===source.id).length,1);
+const paygDetail=read('frontend/tools/phone-number-lifecycle-mvp/phone-route-data/tello-paygo-credit-2026.json');
+assert.equal(paygDetail.observations.filter(o=>o.sourceId===source.id).length,0);
+assert.equal(paygDetail.serviceEvidence.filter(x=>x.serviceId==='chase').length,0);
+assert.match(paygDetail.snapshots.filter(x=>x.kind==='current-profile').sort((a,b)=>b.checkedAt.localeCompare(a.checkedAt))[0].data.chinaActivation,/United States/);
+console.log('Tello unspecified-SKU Chase: migrated to generic unreconciled route, 2 different operations, PAYG no contamination — PASS');

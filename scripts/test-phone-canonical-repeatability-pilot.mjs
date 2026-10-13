@@ -60,11 +60,20 @@ for (const routeId of routeIds) {
     assert.equal(revised.keep.yearCostOriginal, 74, 'Telstra Casual annual keep must use the revised current rate');
     assert.equal(revised.guideEligible, false);
   } else {
+    // Historical 2026-09-26 KPN admission must remain reproducible from its
+    // frozen review packet. Newer canonical profile may (and does) differ.
+    const historicalPacket = read('data/phone/review-packets/kpn-prepaid-6mo-2026.json');
     assert.deepEqual(
-      buildCanonicalComparisonRoute(canonical, routeId),
+      buildCanonicalComparisonRoute({
+        routes: [historicalPacket.route], markets: [historicalPacket.market],
+        snapshots: historicalPacket.snapshots,
+      }, routeId),
       legacy,
       `${routeId}: canonical adapter must reproduce legacy comparison row exactly`,
     );
+    const revised = buildCanonicalComparisonRoute(canonical, routeId);
+    assert.equal(revised.simType, 'physical SIM', 'Current KPN no longer offers the older eSIM assumption');
+    assert.equal(revised.keep.yearCostOriginal, 0.30, 'Current KPN tariff/recharge economics must not regress');
   }
   assert.equal(policy.routeStates[routeId], undefined, `${routeId} must not become detail-eligible/indexable`);
 }
@@ -77,4 +86,4 @@ assert.equal(
 assert(manifest.admittedBatches.includes('nl-au-directory-batch-g.json'));
 assert.equal(globalDirectory.routes.length, 135, 'must preserve 135-route comparison coverage');
 assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3, 'must preserve 3 indexable routes');
-console.log('Phone canonical repeatability passed: KPN current parity exact, Telstra historical parity intact and reviewed current correction accepted; 135 comparison routes and 3 indexable routes preserved.');
+console.log('Phone canonical repeatability passed: KPN/Telstra frozen historical parity intact and latest canonical reviews selected; 135 comparison routes and 3 indexable routes preserved.');

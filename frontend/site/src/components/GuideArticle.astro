@@ -26,6 +26,6 @@ const faq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: 
 <div class="gd-cta"><a class="primary" href={`${GUIDE_BASE}keep-alive/`}>Open Keep-Alive Assistant</a><a href={`${GUIDE_BASE}directory/`}>Browse {data.routes.length} routes</a></div>
 <slot />
 <div class="gd-cta"><a class="primary" href={`${GUIDE_BASE}keep-alive/`}>Set my retention reminder</a><a href={`${GUIDE_BASE}directory/`}>Full directory</a></div>
-<p class="gd-foot">Data verified {data.checkedAt}. Every number in this guide is interpolated live from the same evidence packet that powers the directory — if a route's terms change, this guide updates on the next build. Evidence status per route: <a href={`${GUIDE_BASE}directory/`}>directory</a>.</p>
+<p class="gd-foot">Directory snapshot dated {data.checkedAt}. Where newer normalized route evidence is available, this guide may distinguish it from older directory terms. Prices, eligibility, roaming and SMS outcomes can change; a build does not independently verify them. Evidence and constraints by route: <a href={`${GUIDE_BASE}directory/`}>directory</a>.</p>
 </main>
 </PhoneLayout>

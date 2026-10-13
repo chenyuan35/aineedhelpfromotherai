@@ -39,7 +39,7 @@ for (const [routeId, [marketId, brandId, networkId]] of Object.entries(expected)
     };
     assert.deepEqual(buildCanonicalComparisonRoute(historical, routeId), legacy, `${routeId}: immutable historical comparison parity required`);
   } else {
-    assert.deepEqual(buildCanonicalComparisonRoute(canonical, routeId), legacy, `${routeId}: exact adapter parity required`);
+    assert.deepEqual(buildCanonicalComparisonRoute(canonical, routeId, {historical:true}), legacy, `${routeId}: exact adapter parity required`);
   }
   assert.equal(policy.routeStates[routeId], undefined, `${routeId}: must stay non-indexable`);
 }

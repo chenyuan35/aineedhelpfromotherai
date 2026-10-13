@@ -33,7 +33,7 @@ assert.equal(sources.find((row) => row.id === 'cmhk-mysim-hk-community')?.url, '
 
 const legacy = globalDirectory.routes.find((row) => row.id === routeId);
 assert(legacy, 'legacy comparison row must remain present');
-assert.deepEqual(buildCanonicalComparisonRoute(canonical, routeId), legacy, 'canonical adapter must reproduce the current comparison row exactly');
+assert.deepEqual(buildCanonicalComparisonRoute(canonical, routeId, {historical:true}), legacy, 'canonical adapter must reproduce the current comparison row exactly');
 assert(manifest.admittedBatches.includes('hk2-depth-batch-u.json'), 'legacy manifest gate must remain in place during pilot');
 assert.equal(globalDirectory.routes.length, 135, 'pilot must preserve 135-route comparison coverage');
 assert.equal(policy.routeStates[routeId], undefined, 'pilot must not make the route explicitly detail-eligible/indexable');
