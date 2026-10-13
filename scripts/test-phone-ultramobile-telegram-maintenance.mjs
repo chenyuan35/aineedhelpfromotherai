@@ -31,7 +31,8 @@ const sag = summary.serviceEvidence.find(x => x.serviceId === 'telegram' && x.op
 assert(sag);
 assert.equal(sag.successRatePct, 60);
 assert.equal(sag.grade, 'C');
-assert.equal(summary.decisionFacts.sourceCount, 8);
+assert.equal(summary.decisionFacts.sourceCount,route.sourceIds.length);
+assert.equal(route.sourceIds.length,11,'Preserve 8 original anchors and 3 independently sourced buyer cases');
 assert.equal(route.surfaceState, 'backstage-only');
 assert.equal(route.evidenceState, 'admitted');
 console.log('Ultra Mobile Telegram evidence maintenance OK');

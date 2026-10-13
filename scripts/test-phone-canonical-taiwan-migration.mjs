@@ -40,7 +40,7 @@ for (const routeId of routeIds) {
   }
   const legacy = globalDirectory.routes.find((row) => row.id === routeId);
   assert(legacy, `legacy comparison row missing: ${routeId}`);
-  assert.deepEqual(buildCanonicalComparisonRoute(canonical, routeId), legacy, `${routeId}: canonical adapter parity must be exact`);
+  assert.deepEqual(buildCanonicalComparisonRoute(canonical, routeId, {historical:true}), legacy, `${routeId}: canonical adapter parity must be exact`);
   assert.equal(policy.routeStates[routeId], undefined, `${routeId} must not become detail-eligible/indexable`);
 }
 

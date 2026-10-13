@@ -61,4 +61,8 @@ if (process.argv.includes('--write')) {
   const file = path.join(root,'docs/PHONE_EVIDENCE_GAPS_2026-10-10.md');
   fs.writeFileSync(file, output + '\n');
   console.log('Wrote '+file);
+} else if (process.argv.includes('--check')) {
+  const file = path.join(root,'docs/PHONE_EVIDENCE_GAPS_2026-10-10.md');
+  if (fs.readFileSync(file,'utf8') !== output + '\n') throw new Error('Phone evidence gap audit stale: regenerate with --write');
+  console.log('Phone evidence gap audit reproducibility — PASS');
 } else console.log(output);

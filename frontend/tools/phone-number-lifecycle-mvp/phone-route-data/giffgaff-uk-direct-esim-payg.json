@@ -15,14 +15,20 @@
     "acquireUrl": "https://www.giffgaff.com/",
     "sourceIds": [
       "giffgaff-official-credit-2026-09-23",
+      "giffgaff-official-deleted-esim-recovery-20261013",
+      "giffgaff-official-new-esim-initial-plan-20261013",
       "linuxdo-giffgaff-1615582",
       "linuxdo-giffgaff-2244241",
       "linuxdo-giffgaff-2244241-p2",
       "linuxdo-giffgaff-2310901",
       "linuxdo-giffgaff-2322268",
+      "linuxdo-giffgaff-2322268-reply14",
       "linuxdo-giffgaff-2678340",
       "linuxdo-giffgaff-2773030",
       "linuxdo-giffgaff-2903412",
+      "reddit-giffgaff-1onzflv-esim-mfa-overseas-20251104",
+      "reddit-giffgaff-1qjxpv0-physical-esim-contrast-20260122",
+      "reddit-giffgaff-1tc9fy9-uk-paris-plan-20260513",
       "src-77b7a4afdd78",
       "src-7bc565362f29",
       "src-9e494ffc524e",
@@ -47,11 +53,11 @@
   },
   "metrics": {
     "routeId": "giffgaff-uk-direct-esim-payg",
-    "checkedAt": "2026-09-15",
+    "checkedAt": "2026-10-13",
     "metricState": "current-profile",
     "acquisitionCurrency": "GBP",
-    "acquisitionCostOriginal": 10,
-    "acquisitionCostCny": 89.3,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
     "keepCurrency": "GBP",
     "keepYearCostOriginal": 0.6,
     "keepYearCostCny": 5.36,
@@ -86,9 +92,9 @@
       "numberRangeId": null,
       "grade": "C",
       "label": "Mixed / weak",
-      "confidence": "low",
+      "confidence": "very-low",
       "sampleSize": 2,
-      "independentSourceCount": 2,
+      "independentSourceCount": 1,
       "successCount": 1,
       "failureCount": 0,
       "mixedCount": 1,
@@ -125,6 +131,18 @@
       "reportedAt": "2026-09-23"
     },
     {
+      "id": "giffgaff-official-deleted-esim-recovery-20261013",
+      "url": "https://help.giffgaff.com/en/articles/240403-what-to-do-if-you-delete-your-esim",
+      "type": "official",
+      "reportedAt": "2026-10-13"
+    },
+    {
+      "id": "giffgaff-official-new-esim-initial-plan-20261013",
+      "url": "https://help.giffgaff.com/en/articles/240912-getting-started-on-giffgaff",
+      "type": "official",
+      "reportedAt": "2026-10-13"
+    },
+    {
       "id": "linuxdo-giffgaff-1615582",
       "url": "https://linux.do/t/topic/1615582",
       "type": "first-hand-community-thread",
@@ -155,6 +173,12 @@
       "reportedAt": "2026-06-07"
     },
     {
+      "id": "linuxdo-giffgaff-2322268-reply14",
+      "url": "https://linux.do/t/topic/2322268/14",
+      "type": "first-hand-community-reply",
+      "reportedAt": "2026-06-07"
+    },
+    {
       "id": "linuxdo-giffgaff-2678340",
       "url": "https://linux.do/t/topic/2678340",
       "type": "community-incident-thread",
@@ -171,6 +195,27 @@
       "url": "https://linux.do/t/topic/2903412",
       "type": "first-hand-community-thread",
       "reportedAt": "2026-09-15"
+    },
+    {
+      "id": "reddit-giffgaff-1onzflv-esim-mfa-overseas-20251104",
+      "url": "https://www.reddit.com/r/giffgaff/comments/1onzflv/anyone_else_locked_out_after_giffgaff_removed/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2025-11-04",
+      "label": "Giffgaff existing eSIM overseas phone change SMS-MFA lockout versus another commenter physical SIM number-restoration"
+    },
+    {
+      "id": "reddit-giffgaff-1qjxpv0-physical-esim-contrast-20260122",
+      "url": "https://www.reddit.com/r/giffgaff/comments/1qjxpv0/esim_uk_activation_does_not_work/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-01-22",
+      "label": "Giffgaff existing physical to eSIM move: OP without installed profile/network after 24h; different commenter reports successful overseas conversion"
+    },
+    {
+      "id": "reddit-giffgaff-1tc9fy9-uk-paris-plan-20260513",
+      "url": "https://www.reddit.com/r/NoContract/comments/1tc9fy9/uk_paris_trip_giffgaff_esim_worked_surprisingly/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-05-13",
+      "label": "Giffgaff purchaser: £10 initial eSIM one-month plan; UK-first mobile service + Paris roaming, not China-first or named OTP"
     },
     {
       "id": "src-77b7a4afdd78",
@@ -279,6 +324,61 @@
       "scope": "multiple-observations",
       "outcome": "multiple eventual refund successes observed after delays or earlier denials; outcome remains mixed",
       "sourceId": "linuxdo-giffgaff-2903412"
+    },
+    {
+      "id": "evt-giffgaff-1tc9fy9-ny10990-plan-uk-paris",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "initial-paid-esim-plan-purchase-uk-first-roaming-success",
+      "reportedAt": "2026-05-13",
+      "authorHandle": "NY10990",
+      "productCohort": "New Giffgaff eSIM one-month paid PLAN, author reports £10 / UK 15GB + 5GB Europe allowance; not credit-only PAYG SIM activation",
+      "scope": "One author original trip with multiple travelers; bought online pre-Heathrow then first actual cellular use reported after landing in UK, later Paris travel; no service-specific OTP",
+      "outcome": "Original buyer reports online purchase of an initial £10 one-month eSIM plan before Heathrow arrival, UK city coverage and roaming in Paris, with no Wi-Fi Calling. This is a paid-plan/UK-first successful-use case and does NOT establish £10 as universal checkout price, supported Wi-Fi Calling abroad, foreign-issued payment eligibility, China-first cellular attach, bank/Telegram/WhatsApp code receipt, identity/passport clearance or long-term keep.",
+      "sourceId": "reddit-giffgaff-1tc9fy9-uk-paris-plan-20260513"
+    },
+    {
+      "id": "evt-giffgaff-1qjxpv0-imaginaryad-existing-sim-conversion-failure",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "physical-to-esim-transfer-no-signal-not-installed",
+      "reportedAt": "2026-01-22",
+      "authorHandle": "Imaginary-Ad-1456",
+      "productCohort": "Existing £10 Giffgaff plan on PHYSICAL SIM moved to eSIM; this is not first-time new eSIM purchase",
+      "scope": "One OP 24 hours after physical-to-eSIM transfer: no eSIM Install option shown, no signal; UK vs foreign physical location not confirmed",
+      "outcome": "OP reports after migrating an existing giffgaff physical SIM, 24 hours later eSIM not installed/visible and Giffgaff number had no signal. They later confirm no Install eSIM button and expected logged-in username. Neither successful eSIM installation, definite provisioning root cause, permanent outage, bank OTP result, UK location nor exact post-report restoration established.",
+      "sourceId": "reddit-giffgaff-1qjxpv0-physical-esim-contrast-20260122"
+    },
+    {
+      "id": "evt-giffgaff-1qjxpv0-jontravel-abroad-esim-conversion-success",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "existing-number-physical-to-esim-switch-overseas-success",
+      "reportedAt": "2026-01-22",
+      "authorHandle": "JonTravel",
+      "productCohort": "EXISTING UK Giffgaff number converted from physical SIM to eSIM, outside the UK; not new-number initial activation",
+      "scope": "Different author same original Reddit discussion 1qjxpv0; reports own actual overseas existing-number conversion functioning",
+      "outcome": "Commenter reports personally converting an already working physical Giffgaff SIM into eSIM while outside UK and says it is working. This is opposite to OP failed conversion within the SAME original thread, not independent source-count growth or proof of new eSIM new-number activation, initial overseas cellular attach, universal roaming, purchaser card/KYC or any named service OTP.",
+      "sourceId": "reddit-giffgaff-1qjxpv0-physical-esim-contrast-20260122"
+    },
+    {
+      "id": "evt-giffgaff-1onzflv-graspmore-abroad-esim-mfa-lockout",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "existing-esim-overseas-phone-move-sms-mfa-lockout",
+      "reportedAt": "2025-11-04",
+      "authorHandle": "graspmore",
+      "productCohort": "Existing Giffgaff eSIM/UK mobile number, overseas move to another phone; old working line unavailable for receiving verification SMS",
+      "scope": "One original OP overseas phone move, unable to receive required eSIM-transfer SMS code for >one week; banking app/WhatsApp access affected, no app SMS registration test",
+      "outcome": "Existing eSIM owner abroad reports prior phone swaps using email 2FA but newer attempt had SMS-only MFA, and the old number could not receive texts. They lost access to the mobile number for over a week, affecting banking apps and WhatsApp account access. This is carrier eSIM re-provision MFA failure, NOT bank/WhatsApp verification-SMS filtering, not new foreign-first activation and not proof permanent loss. Support explanation reported by OP; provider deleted-eSIM policy separately describes SMS-only recovery constraint.",
+      "sourceId": "reddit-giffgaff-1onzflv-esim-mfa-overseas-20251104"
+    },
+    {
+      "id": "evt-giffgaff-1onzflv-knownisopod-physical-recovery",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "existing-esim-overseas-replacement-physical-sim-recovery",
+      "reportedAt": "2025-11-05",
+      "authorHandle": "Known-Isopod-7240",
+      "productCohort": "Existing Giffgaff eSIM UK number, formerly swapped while overseas; physical SIM used for recovery on later attempted overseas phone upgrade",
+      "scope": "Different commenter, same original 1onzflv; own failure of new eSIM email-MFA followed by obtaining replacement physical SIM and restoring UK number, geography/cost not fully documented",
+      "outcome": "Another user reports their formerly working overseas eSIM phone swaps stopped when email validation was no longer available. They obtained a physical replacement SIM and recovered service on their existing UK number. Do not interpret this as proof physical SIM delivery or eSIM recovery is available for every overseas buyer, that the specific phone activation completed abroad, or that WhatsApp/bank OTP registration works.",
+      "sourceId": "reddit-giffgaff-1onzflv-esim-mfa-overseas-20251104"
     }
   ],
   "snapshots": [
@@ -587,6 +687,74 @@
           "summary": "Take a qualifying giffgaff keep-alive action",
           "description": "Complete a documented qualifying action before the six-month inactivity deadline. The calendar event is placed 30 days early as a product-side buffer."
         }
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-current-profile-20261013",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-13",
+      "sourceDataset": "provider-esim-onboarding-reconciliation-2026-10-13",
+      "data": {
+        "id": "giffgaff-uk-direct-esim-payg",
+        "brandId": "giffgaff-uk",
+        "publishState": "candidate-with-prominent-continuity-warning",
+        "numberType": "real-mobile",
+        "simType": "eSIM-or-physical",
+        "acquisitionSummary": "New eSIM activation requires an initial paid plan, not credit-only PAYG activation. Physical-SIM credit activation is a separate checkout cohort. Exact new-eSIM checkout total and foreign-card/address eligibility are unverified.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "new-esim-initial-plan-price-unknown"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.3,
+          "yearCostOriginal": 0.6,
+          "yearCostCny": 5.36,
+          "action": "Create a balance-changing activity within 180 days; SMS or small data usage are community-reproduced examples.",
+          "intervalDays": 180,
+          "state": "community-reproduced"
+        },
+        "chinaActivation": "eSIM download or isolated SMS anecdotes do not establish a compliant new China-first purchase, initial cellular activation, or specific-app OTP workflow.",
+        "kyc": "not fully normalized in this packet",
+        "payment": "A new eSIM requires purchasing an initial plan; credit-only PAYG activation is not offered for new eSIMs. Foreign-issued card acceptance, postcode/address eligibility and exact checkout total remain unverified.",
+        "wifiCalling": "Wi-Fi Calling is supported only within the UK where eligible; it is NOT supported abroad. Cellular roaming SMS is separate and service/app dependent.",
+        "roamingSms": "inbound verification SMS widely reported; service-specific behavior varies",
+        "refund": "mixed; multiple eventual successes after initial denial/delay observed Aug-Sep 2026",
+        "trend": "conflicting",
+        "guideEligible": true,
+        "lastVerifiedAt": "2026-10-13",
+        "acquireUrl": "https://www.giffgaff.com/",
+        "tariffSummary": "New eSIM: initial plan purchase required, exact buyer-specific price unverified. Physical SIM: separate credit/PAYG option subject to eligibility. This is not a £10 credit-only eSIM activation route.",
+        "sourceIds": [
+          "linuxdo-giffgaff-2244241",
+          "linuxdo-giffgaff-2244241-p2",
+          "linuxdo-giffgaff-2310901",
+          "linuxdo-giffgaff-2322268",
+          "linuxdo-giffgaff-1615582",
+          "linuxdo-giffgaff-2678340",
+          "linuxdo-giffgaff-2773030",
+          "linuxdo-giffgaff-2903412",
+          "giffgaff-official-credit-2026-09-23",
+          "giffgaff-official-new-esim-initial-plan-20261013",
+          "giffgaff-official-deleted-esim-recovery-20261013",
+          "src-7bc565362f29"
+        ],
+        "guideSteps": [
+          "For a new eSIM, check current plan options and pay for an initial plan; do not select a PAYG-credit-only activation path intended for physical SIMs.",
+          "Confirm the actual eligible checkout price, card country and any required address before purchase. Do not infer offshore activation from downloading an eSIM profile.",
+          "Once the number is working, test the exact verification service; roaming SMS and Wi-Fi Calling are different, and Wi-Fi Calling is not supported outside the UK.",
+          "Before deleting or swapping an existing eSIM, verify SMS-MFA access and the provider recovery path; if the old eSIM is lost, physical-SIM swap may be necessary and offshore access is not assured.",
+          "Create a qualifying activity before the 180-day inactivity limit, with a recovery/port-out plan given contradictory overseas continuity incidents."
+        ],
+        "onboardingSourceUrl": "https://help.giffgaff.com/en/articles/240912-getting-started-on-giffgaff"
       }
     }
   ]

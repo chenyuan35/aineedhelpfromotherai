@@ -30,6 +30,14 @@ export const comparisonRoutes = () => (data.routes || []).filter(isComparisonVis
 export const brandOf = (r) => data.brands.find((b) => b.id === r.brandId);
 export const networkOf = (r) => data.networks.find((n) => n.id === brandOf(r)?.networkId);
 export const routeOf = (id) => data.routes.find((r) => r.id === id);
+// Latest normalized canonical decision metrics (separate from the legacy public
+// global-directory packet). Newer Phone evidence must not be overwritten by
+// stale legacy annual-cost assumptions in an evergreen guide.
+const canonicalSummaryPath = join(process.cwd(), '..', 'tools', 'phone-number-lifecycle-mvp', 'phone-route-summaries.json');
+const canonicalSummary = JSON.parse(readFileSync(canonicalSummaryPath, 'utf8'));
+export const canonicalRouteSummaryOf = (id) => canonicalSummary.routes.find((r) => r.id === id);
+export const canonicalRouteSummaries = () => canonicalSummary.routes;
+
 
 export const money = (value, currency = '') =>
   Number.isFinite(value) ? `${currency} ${Number(value).toLocaleString('en-GB', { maximumFractionDigits: 2 })}` : 'Not established';

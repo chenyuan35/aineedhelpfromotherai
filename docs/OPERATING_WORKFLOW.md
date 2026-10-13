@@ -2,6 +2,26 @@
 
 This is the default execution loop for `aineedhelpfromotherai.com`.
 
+## Identity-document/registration evidence gate (Phone Radar)
+
+- Distinguish legally required SIM/subscriber registration, government photo-ID upload, passport acceptability for the exact new-number product and channel, local residence/visa/address requirements, biometric checks, payment/anti-fraud review, replacement/port-in verification, and EU roaming-benefit registration. They are not interchangeable.
+- A phrase such as "no credit check", "no passport needed", "does not state KYC", "a replacement SIM accepts passport", or "passport on a different tourist plan" is **not evidence that this route permits anonymous or universal no-document new-line registration**. Do not infer national/purchase eligibility from identity document names appearing in a paragraph.
+- Model every identity claim as required / narrowly reported no-photo-ID path / unverified / unknown, with a separate passport scope and untruncated source text. A no-photo-ID report remains explicitly caveated; unverified/unknown stay queryable but must not become a positive search recommendation.
+- Review claims against the same SKU, buyer nationality/location, date and operation. Provider/regulator statements govern official requirements; independent buyer reports establish real-world acceptance or rejection. Display both where they conflict. Preserve passport and other ID specificity only when a documented channel supports it; no unverified Chinese-passport or remote-first signup assurances.
+- Regression test identity metadata for all 160 source routes and preempt negative/disclaimer keyword traps. Keep the per-route KYC coverage audit internal; do not publish near-duplicate SEO pages for passport keyword variants.
+
+## Provider-quota-aware batch release (stable policy)
+
+When the deployed host's free build/deployment quota blocks ordinary CI/Preview or production updates, **do not consume one build attempt per small evidence fix, documentation edit or UI change**. The no-op failed deployment must not become a reason to stop doing useful work.
+
+- **Prepare in one local, isolated, auditable batch.** Start from verified GitHub main plus any already-reviewed stacked release dependency. Review bounded community sources, normalize conflicts, repair data/UI issues, regenerate assets, and run the complete available local DB/frontend/public QA suite continuously. Reuse one fresh worktree rather than creating many overlapping generated-data PRs. An existing approved PR remains a dependency, not a reason to spawn five more.
+- **Write down work immediately without releasing it.** Record source URLs, author/operation scope, tests, confirmed defects, expected counts, blockers and the next gate in a dated GitHub issue and the daily journal. Changes to code/plans stay labeled LOCAL/STAGED until accepted. A disposable observer/worktree must never be the *only* surviving copy of valuable results: preserve a reconstructible GitHub evidence ledger and approved durable copy before host expiry.
+- **Reduce preview attempts, not review rigor.** A change batch can contain several independently tested fixes, but must still preserve unit/regression, responsive browser, data consistency, privacy/security, accessibility and release-policy gates. Do not merge untested generated JSON or duplicate sources; no false live status.
+- **Use one deliberate release window after normal capacity returns.** Freeze exact source SHA, reconcile stacked branches and generated artifacts, run local tests first, then one normal exact-head CI/Eval/Preview candidate. If quota still blocks it, stop retrying and return to offline work. Once all gates pass, merge dependencies correctly and perform one planned production deployment followed by independent apex/www, JSON, mobile UX, sitemap/indexability, fail-closed and rollback checks.
+- **Keep marketing active but evidence-bound.** Research relevant user questions, check previous outreach replies, compare independent alternatives and prepare truthful, genuinely useful contributions while waiting. Never advertise unshipped site claims, duplicate outreach, buy links, spam communities or count referral views as Google organic wins.
+
+This mode is activated by verified quota/production mismatch in the current execution queue or release issue, not permanently by an old chat or a guessed provider reset. Link the dated state in `PROJECT_CONTEXT.md`, `docs/CURRENT_EXECUTION_QUEUE.md` and the issue; do not put quota numbers or old commits into this stable policy.
+
 ## Task-list-first execution cadence
 
 Before a non-trivial work round, create a bounded checklist from the current GitHub facts and execution queue. The checklist should state the intended actions, verification steps, blockers/triggers and stop conditions.

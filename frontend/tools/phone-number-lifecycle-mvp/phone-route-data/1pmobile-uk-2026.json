@@ -20,7 +20,11 @@
       "official-1pmobile-join-current-20261006",
       "official-1pmobile-esim-current-20261006",
       "official-1pmobile-overseas-current-20261006",
-      "official-1pmobile-payment-current-20261006"
+      "official-1pmobile-payment-current-20261006",
+      "reddit-1pmobile-overseas-replacement-1vf663j-20260804",
+      "reddit-1pmobile-incoming-otp-1sxe5k1-20260427",
+      "reddit-1pmobile-postport-sms-delay-1wa0ole-20260908",
+      "reddit-1pmobile-smartyportrcv-recovery-1vs2kjd-20260818"
     ]
   },
   "market": {
@@ -52,7 +56,27 @@
     "keepIntervalDays": 90
   },
   "numberRanges": [],
-  "serviceEvidence": [],
+  "serviceEvidence": [
+    {
+      "id": "svcagg-1pmobile-uk-2026-american-express-sms-verification",
+      "routeId": "1pmobile-uk-2026",
+      "serviceId": "american-express",
+      "operation": "sms-verification",
+      "numberRangeId": null,
+      "grade": "C",
+      "label": "One negative/mixed report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "independentSourceCount": 1,
+      "successCount": 0,
+      "failureCount": 1,
+      "mixedCount": 0,
+      "percentageEligible": false,
+      "successRatePct": null,
+      "firstObservedAt": "2026-05-17",
+      "lastObservedAt": "2026-05-17"
+    }
+  ],
   "sources": [
     {
       "id": "1pmobile-terms-20260929",
@@ -95,9 +119,50 @@
       "url": "https://www.1pmobile.com/ask-penny?cprefs=agree&question=What-payment-methods-do-you-accept%3F",
       "type": "provider-official",
       "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "reddit-1pmobile-overseas-replacement-1vf663j-20260804",
+      "url": "https://www.reddit.com/r/1pmobile/comments/1vf663j/replace_esim_while_being_abroad/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-04"
+    },
+    {
+      "id": "reddit-1pmobile-incoming-otp-1sxe5k1-20260427",
+      "url": "https://www.reddit.com/r/1pmobile/comments/1sxe5k1/no_sms_or_otp_being_received_since_joining_esim/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-04-27"
+    },
+    {
+      "id": "reddit-1pmobile-postport-sms-delay-1wa0ole-20260908",
+      "url": "https://www.reddit.com/r/1pmobile/comments/1wa0ole/what_time_do_1p_mobile_port_numbers_in/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-09-08",
+      "label": "One original number-port thread: Three-to-1p third-party SMS delay, distinct Vodafone-to-1p OP; possible later OTP backfill has unverified author continuity"
+    },
+    {
+      "id": "reddit-1pmobile-smartyportrcv-recovery-1vs2kjd-20260818",
+      "url": "https://www.reddit.com/r/1pmobile/comments/1vs2kjd/how_long_does_porting_takes/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-18",
+      "label": "One SMARTY-to-1pMobile port author reports temporary incoming SMS/unnamed OTP failure and later recovery; RCS still broken"
     }
   ],
-  "observations": [],
+  "observations": [
+    {
+      "id": "obs-1pmobile-1sxe5k1-jackoboy9-amex-20260517",
+      "routeId": "1pmobile-uk-2026",
+      "service": "American Express",
+      "operation": "sms-verification",
+      "outcome": "failure",
+      "reportedAt": "2026-05-17",
+      "geography": "unspecified",
+      "sourceId": "reddit-1pmobile-incoming-otp-1sxe5k1-20260427",
+      "dedupeKey": "1pmobile-1sxe5k1-jackoboy9-amex-specific-sms",
+      "authorHandle": "jackoboy9",
+      "prefixBands": [],
+      "reviewNote": "One distinct commenter says Amex verification texts stopped the prior week while OTHER ordinary texts and other verification codes continued to work; voice calls worked. The commenter wondered if this was an American Express-specific issue. Not a global inbound-SMS failure, not proof that 1pMobile blocks Amex, and no recovery date, country, new purchase, identity/first activation or full bank-login outcome established."
+    }
+  ],
   "events": [
     {
       "id": "evt-1pmobile-uk-2026-db-c3-review-20260929",
@@ -152,6 +217,46 @@
       "scope": "route",
       "outcome": "1pMobile currently documents Visa, MasterCard and PayPal as accepted payment methods and excludes American Express. The reviewed page does not establish universal acceptance of every non-UK-issued card, so foreign-card acceptance is not generalized beyond the named methods.",
       "sourceId": "official-1pmobile-payment-current-20261006"
+    },
+    {
+      "id": "evt-1pmobile-existing-esim-replacement-eu-20260804",
+      "routeId": "1pmobile-uk-2026",
+      "type": "independent-overseas-replacement-esim-activation-with-friction",
+      "reportedAt": "2026-08-04",
+      "scope": "one Reddit OP moving an EXISTING 1pMobile eSIM from one handset to another while in the EU; exact country/device and first-new-number acquisition not stated",
+      "outcome": "Original author reports successful activation of a replacement eSIM while in the EU after selecting SIM Swapped in the 1pMobile web account, with connection around five minutes afterward; account funds reportedly took about six hours to become usable before requesting replacement. Same thread contains both overseas success comments and an opposed assertion that activation abroad cannot work; not a guarantee of replacement abroad, a new account, China-first activation, payment eligibility, or named-app OTP.",
+      "sourceId": "reddit-1pmobile-overseas-replacement-1vf663j-20260804"
+    },
+    {
+      "id": "evt-1pmobile-esim-incoming-sms-voice-failure-20260427",
+      "routeId": "1pmobile-uk-2026",
+      "type": "independent-newly-joined-esim-inbound-sms-and-call-failure",
+      "reportedAt": "2026-04-27",
+      "scope": "one Reddit OP says 1pMobile eSIM used for a few weeks, incoming generic SMS/OTP and cross-network calls unavailable, old provider O2 worked; location, device, porting and app identity unconfirmed",
+      "outcome": "OP reports no incoming standard SMS or unnamed OTP after joining 1pMobile eSIM and later also failures receiving voice calls from other networks, despite troubleshooting with customer service. OP later reported returning to O2 by 2026-05-17 without a confirmed 1pMobile fix; a reply speculates about partial port, which is not a confirmed diagnosis. This is NOT an Amex-specific failure by the OP and is not evidence of a universal 1pMobile outage.",
+      "sourceId": "reddit-1pmobile-incoming-otp-1sxe5k1-20260427"
+    },
+    {
+      "id": "evt-1pmobile-three-port-inbound-sms-delay-1wa0ole-20260912",
+      "routeId": "1pmobile-uk-2026",
+      "type": "independent-postport-inbound-sms-delay",
+      "reportedAt": "2026-09-12",
+      "scope": "One commenter fursty_ferret reported post-port external inbound-SMS delivery failure after Three-to-1p port; thread spans Sep 8–12, 2026. Original OP palacepaulse25 describes separate Vodafone-to-1p port; do not merge authors.",
+      "outcome": "The Three-to-1p commenter described a completed number port around 1pm, with only 1pMobile internal balance/account texts arriving roughly two days later while external inbound SMS remained absent. The thread later discusses a batch of delayed OTPs arriving, but exact recovery-reply author linkage is unverified; do NOT credit this commenter with confirmed recovery or claim any reliable 48-hour recovery window. Named bank/app service, number prefix, handset, payment, identity and mainland first activation are unknown. The original Vodafone-to-1p OP did NOT report their own OTP test. ONE original thread, not a separate source per commenter.",
+      "sourceId": "reddit-1pmobile-postport-sms-delay-1wa0ole-20260908",
+      "authorHandle": "fursty_ferret",
+      "resolution": "unverified-author-linkage"
+    },
+    {
+      "id": "evt-1pmobile-smarty-postport-inbound-recovery-20260819",
+      "routeId": "1pmobile-uk-2026",
+      "type": "independent-postport-inbound-sms-temporary-failure-then-recovery",
+      "reportedAt": "2026-08-19",
+      "scope": "SAME original poster COBHC95 on an EXISTING SMARTY number ported to 1pMobile UK; unknown handset, country, purchase/payment/ID, bank/app OTP recipient and mainland first activation",
+      "outcome": "OP COBHC95 initially reported that a completed SMARTY-to-1pMobile port allowed voice calls and outbound texts but inbound SMS and unspecified OTP did not arrive, including checks with a second device. The SAME author later confirmed incoming SMS and OTP resumed on 2026-08-19 while RCS remained broken. One reporter, one incident timeline and one original thread (NOT two independent reports, NOT a named-app success). Provider advice to allow 24–48 hours was not a guaranteed restoration SLA; no country-specific overseas activation outcome is established.",
+      "sourceId": "reddit-1pmobile-smartyportrcv-recovery-1vs2kjd-20260818",
+      "authorHandle": "COBHC95",
+      "resolution": "same-author-inbound-sms-and-unspecified-otp-recovered-2026-08-19"
     }
   ],
   "snapshots": [

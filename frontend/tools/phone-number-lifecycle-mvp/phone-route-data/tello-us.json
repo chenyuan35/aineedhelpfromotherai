@@ -17,7 +17,14 @@
       "src-494ca2deb59b",
       "src-573da827b0ea",
       "src-ed3f565a3e3a",
-      "src-f2d3210589df"
+      "src-f2d3210589df",
+      "reddit-tello-chase-initial-app-vs-login-1u9225s",
+      "reddit-tello-korean-card-renewal-1p4bspo-20251123",
+      "reddit-tello-korea-foreign-esim-1wc8ej8-20260910",
+      "reddit-tello-number-expiry-autopay-1wx3k90-20261004",
+      "official-tello-number-expiry-20261012",
+      "reddit-tello-pixel9-foreign-registration-1utffrl-20260711",
+      "reddit-tello-china-new-esim-attempt-1tm4m9k-20260524"
     ]
   },
   "market": {
@@ -45,7 +52,46 @@
     "keepIntervalDays": null
   },
   "numberRanges": [],
-  "serviceEvidence": [],
+  "serviceEvidence": [
+    {
+      "id": "svcagg-tello-us-chase-new-application-live-agent-sms-verification",
+      "routeId": "tello-us",
+      "serviceId": "chase",
+      "operation": "new-application-live-agent-sms-verification",
+      "numberRangeId": null,
+      "grade": "C",
+      "label": "One negative/mixed report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "independentSourceCount": 1,
+      "successCount": 0,
+      "failureCount": 1,
+      "mixedCount": 0,
+      "percentageEligible": false,
+      "successRatePct": null,
+      "firstObservedAt": null,
+      "lastObservedAt": null
+    },
+    {
+      "id": "svcagg-tello-us-chase-existing-account-login-2fa",
+      "routeId": "tello-us",
+      "serviceId": "chase",
+      "operation": "existing-account-login-2fa",
+      "numberRangeId": null,
+      "grade": "insufficient",
+      "label": "One positive report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "independentSourceCount": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "percentageEligible": false,
+      "successRatePct": null,
+      "firstObservedAt": null,
+      "lastObservedAt": null
+    }
+  ],
   "sources": [
     {
       "id": "src-494ca2deb59b",
@@ -70,10 +116,217 @@
       "url": "https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur",
       "type": "official",
       "label": "Tello — When do autopay & plan renewal occur?"
+    },
+    {
+      "id": "reddit-tello-chase-initial-app-vs-login-1u9225s",
+      "url": "https://www.reddit.com/r/Tello/comments/1u9225s/chase_otp_not_reaching_abroad_failed_on_both/",
+      "type": "first-hand-community-thread",
+      "reviewedAt": "2026-10-12",
+      "label": "Two different Tello users in one original discussion: Chase new-application live-agent SMS nonarrival versus Chase existing-account login 2FA success after later US travel; ORIGINAL post calendar day not confirmed, deliberately no reportedAt"
+    },
+    {
+      "id": "reddit-tello-korean-card-renewal-1p4bspo-20251123",
+      "url": "https://www.reddit.com/r/Tello/comments/1p4bspo/payment_failure_on_card/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2025-11-23",
+      "label": "Tello existing billed plan: overseas expat author Korean Mastercard recurring payment failed after a year of successful use; US card added, later capture unconfirmed; reply author reports 3 separate PayPal-funded accounts (not foreign-card confirmation)"
+    },
+    {
+      "id": "reddit-tello-korea-foreign-esim-1wc8ej8-20260910",
+      "url": "https://www.reddit.com/r/Tello/comments/1wc8ej8/successfully_activated_new_tello_line_from_korea/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-09-10",
+      "label": "Korea firsthand Tello $5 MONTHLY new-line purchase plus $20 PAYG roaming addon; first-US-tower international-roaming gate rejected, Wi-Fi SMS/call partially functional despite activation conflict; distinct same-discussion commenters report non-PAYG Wi-Fi success and provisioning failure/refund"
+    },
+    {
+      "id": "reddit-tello-number-expiry-autopay-1wx3k90-20261004",
+      "url": "https://www.reddit.com/r/Tello/comments/1wx3k90/tellos_12day_numberretention_policy_is/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-10-04",
+      "label": "Existing Tello customer stefpix sought written monthly billing, backup card, number loss guidance; other commenter reports conflicting PAYG-active phone support. No experienced number loss."
+    },
+    {
+      "id": "official-tello-number-expiry-20261012",
+      "url": "https://tello.com/help_center/account-payments/when-will-my-phone-number-expire",
+      "type": "provider-official",
+      "reportedAt": "2026-10-12",
+      "label": "Tello official Phone Number Expiration checked Oct 12: monthly nonrenewal 12-day grace versus PAYG-only 3-month balance validity plus 7-day post-credit-expiry grace; no guaranteed recovery."
+    },
+    {
+      "id": "reddit-tello-pixel9-foreign-registration-1utffrl-20260711",
+      "url": "https://www.reddit.com/r/Tello/comments/1utffrl/pixel_9_pro_activation_outside_the_us/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-07-11",
+      "label": "Pixel 9 Pro owner reports usable incoming/outgoing SMS abroad including unnamed financial service; separate commenter needed US-assisted first activation and later overseas replacement"
+    },
+    {
+      "id": "reddit-tello-china-new-esim-attempt-1tm4m9k-20260524",
+      "url": "https://www.reddit.com/r/Tello/comments/1tm4m9k/activate_in_china/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-05-24",
+      "label": "China attempt: Tello eSIM first activation failed despite purchased PAYG/account setup; separate prior-cohort success and newer US-first limitation described by other author"
     }
   ],
-  "observations": [],
-  "events": [],
+  "observations": [
+    {
+      "id": "obs-tello-chase-1u9225s-comfortabledonut-first-application",
+      "routeId": "tello-us",
+      "service": "Chase",
+      "operation": "new-application-live-agent-sms-verification",
+      "outcome": "failure",
+      "geography": "outside-US-country-unspecified",
+      "sourceId": "reddit-tello-chase-initial-app-vs-login-1u9225s",
+      "dedupeKey": "tello-1u9225s-ComfortableDonut1820-Chase-first-application",
+      "authorHandle": "ComfortableDonut1820",
+      "prefixBands": [],
+      "reviewNote": "Same original poster reports a Chase FIRST application/manual-agent phone verification SMS did not arrive on a Tello eSIM while outside the US. They also report T-Mobile Prepaid failed that same Chase step, but other providers’ automated texts/OTPs worked on both lines. OP says Tello number owned for more than one year, never ported, and Chase account/online phone registration NOT yet established. This is NOT a new Tello purchase or all-bank-SMS failure; no cause attribution, first US network attachment proof, actual Chase account approval, exact foreign country, payment/KYC or verified report-day. Unknown date deliberately omitted. Product cohort: Tello account/plan NOT specified, therefore grouped under generic unreconciled Tello route, NOT PAYG-credit SKU.",
+      "productCohort": "Tello eSIM account, purchased plan/SKU unspecified; PAYG-only not established"
+    },
+    {
+      "id": "obs-tello-chase-1u9225s-drgruve-existing-login",
+      "routeId": "tello-us",
+      "service": "Chase",
+      "operation": "existing-account-login-2fa",
+      "outcome": "success",
+      "geography": "Australia",
+      "sourceId": "reddit-tello-chase-initial-app-vs-login-1u9225s",
+      "dedupeKey": "tello-1u9225s-DrGruve-Chase-existing-login",
+      "authorHandle": "DrGruve",
+      "prefixBands": [],
+      "reviewNote": "Separate commenter reports their Tello eSIM originally activated in Australia over a year earlier, then US visits afterward; claims regular Chase (also Bank of America) established-account LOGIN 2FA SMS received from Australia, including a recent login. This is a DIFFERENT customer and operation from the first applicant who failed, NOT independent original-thread confirmation or current compliant new-line foreign activation. Date exact/first tower not verified. One original discussion shared with opposite case; no service-wide success percentage. Product cohort: Tello account/plan NOT specified, therefore grouped under generic unreconciled Tello route, NOT PAYG-credit SKU.",
+      "productCohort": "Tello eSIM account, purchased plan/SKU unspecified; PAYG-only not established"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-tello-china-old-cohort-other-user-vs-wife-us-first-1tm4m9k",
+      "routeId": "tello-us",
+      "type": "independent-overseas-first-activation-cohort-conflict",
+      "reportedAt": "2026-05-24",
+      "scope": "One other author smacado compares older self-use activation from China and later distinct line belonging to wife; not the original OP",
+      "outcome": "Commenter reports their own earlier Tello activation in China succeeded, whereas a more recent new line for their wife needed an initial U.S. visit after first-network requirements changed. These are different account cohorts, not proof current new-number activation works in China. Same commenter = one original thread, not two independent provider confirmations. Physical first-network and precise dates of older success not independently verified.",
+      "sourceId": "reddit-tello-china-new-esim-attempt-1tm4m9k-20260524",
+      "authorHandle": "smacado",
+      "resolution": "mixed-cohorts-not-current-first-China-guarantee",
+      "productCohort": "Different other author: older own Tello line and later wife new line; SKU and PAYG-only unknown"
+    },
+    {
+      "id": "evt-tello-pixel9-new-esim-abroad-and-unnamed-financial-sms-1utffrl",
+      "routeId": "tello-us",
+      "type": "independent-overseas-esim-registration-and-unnamed-bank-sms-report",
+      "reportedAt": "2026-07-11",
+      "scope": "Original poster CraigInCambodia, Pixel 9 Pro; says first eSIM became usable abroad, physical location not independently confirmed as Cambodia",
+      "outcome": "OP claims an overseas new Tello eSIM registration/usable line with sent and received SMS, including an unnamed financial institution. A chatbot-generated setup sequence is not firsthand proof; only OP personally reported tested send/receive. The bank identity, account-login-vs-2FA transaction, actual first tower, buyer ID/payment country, immigration status and any mainland-China scenario are not established. Conflicts with official U.S.-first activation requirement; not a repeatable endorsed work-around or service-specific bank success rate.",
+      "sourceId": "reddit-tello-pixel9-foreign-registration-1utffrl-20260711",
+      "authorHandle": "CraigInCambodia",
+      "resolution": "claimed-overseas-SMS-operation-first-tower-unverified",
+      "productCohort": "Tello eSIM/plan type NOT specified in original 1utffrl; standalone PAYG-only unverified"
+    },
+    {
+      "id": "evt-tello-pixel9-second-user-us-assisted-activation-1utffrl",
+      "routeId": "tello-us",
+      "type": "independent-overseas-first-activation-requiring-us-helper",
+      "reportedAt": "2026-07-23",
+      "scope": "Different commenter Music_Fan76 initially attempted to activate new Tello eSIM outside U.S.; later used U.S.-based contact for initial attach, replacement eSIM and SMS-over-Wi-Fi",
+      "outcome": "Different author says initial direct outside-U.S. line activation and roaming did not work because Tello needed U.S.-tower registration; contact in the United States first activated the line, and only later replacement eSIM and Wi-Fi SMS worked abroad. Early backup calling remained unavailable. This is a U.S.-assisted first activation followed by overseas replacement, NOT a wholly overseas new-line activation, and no named-bank/app OTP or China-specific result is verified.",
+      "sourceId": "reddit-tello-pixel9-foreign-registration-1utffrl-20260711",
+      "authorHandle": "Music_Fan76",
+      "resolution": "us-assisted-first-registration-then-overseas-use",
+      "productCohort": "Tello eSIM/plan type NOT specified in original 1utffrl; standalone PAYG-only unverified"
+    },
+    {
+      "id": "evt-tello-chase-initial-application-versus-existing-login-1u9225s",
+      "routeId": "tello-us",
+      "type": "independent-exact-bank-operation-stage-conflict",
+      "scope": "ONE Reddit original discussion: ComfortableDonut1820 vs DrGruve, differing bank verification stage and account history; separate provider T-Mobile Prepaid mentioned without validated T-Mobile tariff/route",
+      "outcome": "OP reports both Tello and T-Mobile Prepaid acquired/activated while abroad without a US tower, and Chase manual FIRST-APPLICATION code missing on BOTH despite unrelated US SMS codes arriving. OP also states they owned Tello line more than a year without port and lack an established Chase account. Different commenter reports Chase ongoing login 2FA success in Australia after owning Tello for over a year and subsequently traveling to the US. Contradictory firsthand stories and different operations are not a common success/failure denominator. Tello published US-first requirement remains controlling for recommendations; initial network attach, customer eligibility, document KYC, payment, exact bank blocking cause, country of original purchase, Chase onboarding completion, and original calendar posting date are unverified. No 2026-10-12 event date invented.",
+      "sourceId": "reddit-tello-chase-initial-app-vs-login-1u9225s",
+      "productCohort": "Tello plan/SKU unspecified; not verified PAYG credit"
+    },
+    {
+      "id": "evt-tello-1p4bspo-jerichoi224-korean-renewal-failure",
+      "routeId": "tello-us",
+      "type": "existing-plan-foreign-card-recurring-payment-failure",
+      "reportedAt": "2025-11-23",
+      "authorHandle": "jerichoi224",
+      "productCohort": "Existing billed Tello plan >1 year, exact plan/SKU unspecified; NOT PAYG-only first purchase",
+      "scope": "OP in expat context, Korean-issued Mastercard with foreign transactions, earlier Tello billing successful, later renewal payment failed",
+      "outcome": "OP says a Korean Mastercard previously worked for more than a year on Tello recurring bills, then one bill failed; a second card could not be added, while a US card was added successfully. The next US-card CHARGE was only pending/unknown, not verified captured; no evidence Tello broadly refuses all foreign cards. Account suspension was an EMAIL WARNING if further payment fails, not a documented actual suspension. Initial account signup method, user citizenship, exact plan, payment-processor cause, China first activation and OTP unknown.",
+      "sourceId": "reddit-tello-korean-card-renewal-1p4bspo-20251123"
+    },
+    {
+      "id": "evt-tello-1p4bspo-objectnotidentified-paypal-accounts",
+      "routeId": "tello-us",
+      "type": "existing-accounts-paypal-payment-report",
+      "authorHandle": "ObjectNotIdentified",
+      "productCohort": "Three existing Tello accounts, plan/SKU and funding card countries unknown",
+      "scope": "ONE different commenter in same original discussion, own three PayPal-linked accounts; no independently confirmed foreign-card checkout",
+      "outcome": "Commenter states three Tello accounts are linked to their PayPal as payment and Tello taxes still apply. Does NOT prove a Korean/foreign bank card can pay via PayPal, that OP resolved failed billing, or that new foreign applicants pass merchant checks. Posted exact day not verified, so no reportedAt.",
+      "sourceId": "reddit-tello-korean-card-renewal-1p4bspo-20251123"
+    },
+    {
+      "id": "evt-tello-1wc8ej8-pilotboiz-korea-new-monthly-payg-addon",
+      "routeId": "tello-us",
+      "type": "monthly-new-line-korea-first-wifi-working-roaming-blocked",
+      "reportedAt": "2026-09-10",
+      "authorHandle": "pilotboiz",
+      "productCohort": "New $5 Tello MONTHLY plan + $3 eSIM fee + approx $2 tax + separate $20 PAYG credit; NOT standalone PAYG-only",
+      "scope": "OP in Korea with reported US-issued card, US billing address, VPN; first activation attempts from Korea; no verified US first tower",
+      "outcome": "OP paid $5 monthly plan, $3 eSIM, some tax and $20 PAYG, while in Korea; enabling international roaming explicitly rejected as line not yet used in US. After stuck activation and E911/Wi-Fi Calling toggles, Tello SMS appeared and a call to a Korean phone succeeded, but iPhone also emitted an activation-failed notification and the carrier international roaming toggle still could not be enabled. OP had NOT yet ported Verizon number, only hoped to do so. OP did NOT report a named-bank/app OTP test, nor carrier-tower roaming first registration. Provider US-first rule is not overturned.",
+      "sourceId": "reddit-tello-korea-foreign-esim-1wc8ej8-20260910"
+    },
+    {
+      "id": "evt-tello-1wc8ej8-reasonablenessdude-wifi-no-payg",
+      "routeId": "tello-us",
+      "type": "outside-us-new-line-wifi-calling-claim",
+      "authorHandle": "ReasonablenessDude",
+      "productCohort": "Another new Tello line, claimed WITHOUT $20 PAYG add-on; plan/SKU and payment unknown",
+      "scope": "Different commenter in same Sept 2026 original discussion, outside-US first eSIM Wi-Fi activation claim",
+      "outcome": "Commenter says they activated a new Tello line outside US in early September 2026 with Wi-Fi, airplane mode and US VPN; they said $20 PAYG was NOT needed and outgoing Wi-Fi call worked, but International Roaming was disabled/unavailable. Independent location/tower, native mobile roaming, buyer payment/KYC and named bank OTP unknown. This is not the OP pilotboiz cohort or an independently sourced second original thread. Comment posting day unverified.",
+      "sourceId": "reddit-tello-korea-foreign-esim-1wc8ej8-20260910"
+    },
+    {
+      "id": "evt-tello-1wc8ej8-imshanejaz-provisioning-refund",
+      "routeId": "tello-us",
+      "type": "esim-provisioning-failure-and-reported-refund",
+      "authorHandle": "imshanejaz",
+      "productCohort": "Tello eSIM copied attempt from OP discussion, exact plan/PAYG payment and location unknown",
+      "scope": "Different same-thread commenter self-report of attempting the steps and refunded unsuccessful service",
+      "outcome": "Commenter initially asks whether to attempt same approach, then reports it did not work, citing SIM not provisioned, and says they received a refund. Payment authorization/captured amount, device, geography and whether PAYG/plan refunded unverified. Not evidence that OP failed, no named-app OTP test, not a third original discussion. Exact comment day unverified.",
+      "sourceId": "reddit-tello-korea-foreign-esim-1wc8ej8-20260910"
+    },
+    {
+      "id": "evt-tello-1wx3k90-stefpix-monthly-auto-fallback-support",
+      "routeId": "tello-us",
+      "type": "monthly-number-loss-and-payment-fallback-user-research",
+      "reportedAt": "2026-10-04",
+      "authorHandle": "stefpix",
+      "productCohort": "Existing Tello secondary number; possible future MONTHLY primary-line port, no actual number loss or PAYG-only",
+      "scope": "OP reviewed current official 12-day monthly nonrenewal rule, sought written support reply on backup cards and PAYG grace; no actual missed-payment disconnection",
+      "outcome": "OP is an existing Tello SECONDARY-line customer considering moving a 20-year T-Mobile number, not someone who actually lost their number. Quotes support email saying Tello does NOT automatically fall back across saved cards, and PAYG credit does not EXTEND the monthly grace clock. Provider Help Center independently says active service may be MONTHLY or unexpired PAYG, so the agent wording is NOT proof that active PAYG never preserves a line. No firsthand autopay failure, user number loss, tested payment fallback, or new-plan checkout.",
+      "sourceId": "reddit-tello-number-expiry-autopay-1wx3k90-20261004"
+    },
+    {
+      "id": "evt-tello-1wx3k90-luckiestcorner-payg-phone-support",
+      "routeId": "tello-us",
+      "type": "monthly-payg-overlap-provider-support-conflict",
+      "authorHandle": "Luckiest_Corner",
+      "productCohort": "Monthly plan expires with PAYG balance possibly still valid; different author relaying phone support, NOT firsthand recovered-number test",
+      "scope": "Different commenter of SAME original discussion reports phone support said unexpired PAYG can maintain active service after monthly expiry; conflicts with OP support wording",
+      "outcome": "Commenter says Tello phone support told them a live unexpired PAYG balance can keep a phone line active after monthly-plan deactivation, but original 90-day credit clock may already have passed. This is a report of agent guidance, not a personally tested missed-payment recovery, verified policy change or second independently originated thread. Official Help Center separately names 12-day monthly grace and 7-day post-PAYG-expiry grace. Do not claim 12+90 days blanket protection. Exact commenter post day unverified.",
+      "sourceId": "reddit-tello-number-expiry-autopay-1wx3k90-20261004"
+    },
+    {
+      "id": "evt-tello-1wx3k90-spacecasesixtytenv2-expired-number-recovery-exception",
+      "routeId": "tello-us",
+      "type": "expired-number-recovery-anecdote-and-outside-us-reactivation-failure",
+      "authorHandle": "SpaceCaseSixtyTenV2",
+      "productCohort": "Tello old expired number later exceptionally reassigned, new eSIM replacement after recovery; previous plan/PAYG cohort unknown",
+      "scope": "Same ORIGINAL Reddit discussion 1wx3k90, third distinct commenter, claims rare post-expiry recovery after about a month followed by overseas eSIM first registration problem and eventual refund; NOT official restoration policy",
+      "outcome": "One commenter claims Tello support brought back their previous number after it had been expired around a MONTH. The same commenter says a subsequent eSIM activation attempt while abroad failed because US network registration was now required, so they eventually cancelled and received a refund. No documentary recovery guarantee, proof exact restoration date, initial source SKU, roaming tower location, refund amount or verified successful new abroad activation. This personal exceptional outcome CONTRADICTS the categorical wording of the current provider no-recovery warning but must NOT be recommended as a repeatable rescue method; timing/date unverified.",
+      "sourceId": "reddit-tello-number-expiry-autopay-1wx3k90-20261004"
+    }
+  ],
   "snapshots": [
     {
       "id": "snap-tello-us-capabilities-bb2150",
@@ -322,6 +575,19 @@
           "summary": "Check Tello plan renewal",
           "description": "Verify the paid plan renews successfully before the 30-day service boundary. The calendar event is placed 3 days early as a product-side buffer."
         }
+      }
+    },
+    {
+      "id": "snap-tello-us-monthly-expiry-grace-20261012",
+      "routeId": "tello-us",
+      "kind": "number-expiry-grace",
+      "checkedAt": "2026-10-12",
+      "sourceId": "official-tello-number-expiry-20261012",
+      "data": {
+        "cohort": "Monthly Tello service at nonrenewal, without independently active other Tello service",
+        "graceDays": 12,
+        "safeKeepAction": "Renew or port out BEFORE deadline; no guaranteed recovery after expiration",
+        "summary": "Provider Help Center says monthly nonrenewal triggers a 12-day number expiration window. A separate unexpired PAYG balance is an active-service condition; saved backup cards are NOT confirmed to be automatically tried. Number recovery is not promised after final expiry. Community support agents gave conflicting interpretations of PAYG overlap. This is NOT a 12-day PAYG-only rule."
       }
     }
   ]

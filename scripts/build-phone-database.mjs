@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gradeServiceEvidence } from './phone-evidence-grading.mjs';
+import { classifyIdentity } from './phone-identity-requirements.mjs';
+import { originalDiscussionKey } from './phone-original-discussion.mjs';
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const src = path.join(repo, 'data/phone/v1');
@@ -40,6 +42,7 @@ const networkIds = unique(networks, 'networks');
 const brandIds = unique(brands, 'brands');
 const routeIds = unique(routes, 'routes');
 const sourceIds = unique(sources, 'sources');
+const sourceById = new Map(sources.map(row => [row.id, row]));
 const serviceIds = unique(services, 'services');
 const rangeIds = unique(numberRanges, 'number-ranges');
 unique(observations, 'observations'); unique(events, 'events'); unique(snapshots, 'snapshots');
@@ -56,6 +59,14 @@ for (const r of routes) {
 }
 for (const row of [...observations, ...events, ...snapshots]) if (!routeIds.has(row.routeId)) throw new Error(`${row.id}: missing route ${row.routeId}`);
 for (const row of [...observations, ...events]) if (row.sourceId && !sourceIds.has(row.sourceId)) throw new Error(`${row.id}: missing source ${row.sourceId}`);
+// Route incident citations must also be part of the route-linked source list.
+const routeById = new Map(routes.map(r => [r.id, r]));
+for (const row of [...observations, ...events]) {
+  if (row.sourceId && !routeById.get(row.routeId)?.sourceIds?.includes(row.sourceId)) {
+    throw new Error(row.id + ': cited source ' + row.sourceId + ' missing from route ' + row.routeId);
+  }
+}
+
 for (const a of aliases) if (!routeIds.has(a.routeId)) throw new Error(`alias ${a.aliasId}: missing route ${a.routeId}`);
 for (const r of numberRanges) { if (!marketIds.has(r.marketId)) throw new Error(`number range ${r.id}: missing market ${r.marketId}`); if (r.networkId && !networkIds.has(r.networkId)) throw new Error(`number range ${r.id}: missing network ${r.networkId}`); if (r.sourceId && !sourceIds.has(r.sourceId)) throw new Error(`number range ${r.id}: missing source ${r.sourceId}`); }
 
@@ -96,12 +107,18 @@ for (const route of routes) {
     const serviceId = observationServiceId(o); if (!serviceId) continue;
     const key = `${serviceId}|${o.operation || 'unspecified'}|${o.numberRangeId || ''}`;
     if (!grouped.has(key)) grouped.set(key, { serviceId, operation: o.operation || 'unspecified', numberRangeId: o.numberRangeId || null, rows: [] });
-    grouped.get(key).rows.push(o);
+    grouped.get(key).rows.push({ ...o, originalDiscussionKey: originalDiscussionKey(sourceById.get(o.sourceId)) });
   }
   for (const g of grouped.values()) serviceAggregates.push({ id: `svcagg-${slug(route.id)}-${slug(g.serviceId)}-${slug(g.operation)}${g.numberRangeId ? `-${slug(g.numberRangeId)}` : ''}`, routeId: route.id, serviceId: g.serviceId, operation: g.operation, numberRangeId: g.numberRangeId, ...gradeServiceEvidence(g.rows) });
 }
 
-const currentProfileByRoute = new Map(snapshots.filter(x => x.kind === 'current-profile').map(x => [x.routeId, x]));
+// A route can retain several dated current-profile snapshots. Choose the most
+// recent checkedAt rather than first/last array position so rebuilds are stable.
+const currentProfileByRoute = new Map();
+for (const snap of snapshots.filter(x => x.kind === 'current-profile')) {
+  const prior = currentProfileByRoute.get(snap.routeId);
+  if (!prior || String(snap.checkedAt || '') > String(prior.checkedAt || '') || (String(snap.checkedAt || '') === String(prior.checkedAt || '') && String(snap.id || '') > String(prior.id || ''))) currentProfileByRoute.set(snap.routeId, snap);
+}
 const routeMetrics = routes.map(route => {
   const snap = currentProfileByRoute.get(route.id); const d = snap?.data || {}; const landed = d.landedCost || {}; const keep = d.keep || {};
   return {
@@ -125,15 +142,6 @@ const compactText = (value, max = 180) => {
   const text = String(value || '').replace(/\s+/g, ' ').trim();
   if (!text) return null;
   return text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text;
-};
-const classifyKyc = value => {
-  const text = normalize(value);
-  if (!text) return 'unknown';
-  // An explicit evidence gap or disclaimer must beat a substring such as "no-KYC" inside "do not market as no-KYC".
-  if (/do not market.{0,100}\b(?:no kyc|without kyc)\b/.test(text)) return 'unknown';
-  if (/not required|no kyc|without kyc|no identity/.test(text)) return 'not-required';
-  if (/required|real name|passport|identity|kyc/.test(text)) return 'required';
-  return 'unclear';
 };
 const continuityRiskPattern = /(number[- ]?loss|closure|termination|terminated|suspension|cancel(?:lation|led)?|deactivat|recycl|service[- ]activation[- ]friction|operational[- ]failure|incident)/i;
 
@@ -171,7 +179,8 @@ const searchIndex = routes.map(r => {
     serviceEvidence: (serviceAggByRoute.get(r.id) || []).map(x => ({ serviceId: x.serviceId, serviceName: serviceNameById.get(x.serviceId) || x.serviceId, operation: x.operation, grade: x.grade, label: x.label, confidence: x.confidence, sampleSize: x.sampleSize, independentSourceCount: x.independentSourceCount, successCount: x.successCount, failureCount: x.failureCount, mixedCount: x.mixedCount, percentageEligible: x.percentageEligible, successRatePct: x.successRatePct, lastObservedAt: x.lastObservedAt })),
     decisionFacts: {
       sourceCount: (r.sourceIds || []).length,
-      kycState: classifyKyc(profile.kyc),
+      kycState: (()=>{const i=classifyIdentity(r.id,profile.kyc);return i.status==='required'?'required':i.status==='unknown'?'unknown':'unclear'})(),
+      identity: classifyIdentity(r.id,profile.kyc),
       keepAction: compactText(profile.keep?.action),
       roamingSms: compactText(profile.roamingSms),
       holdReason: compactText(profile.holdReason),

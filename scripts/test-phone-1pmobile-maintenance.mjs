@@ -38,11 +38,16 @@ for (const id of [
   "evt-1pmobile-current-payment-methods-20261006",
 ]) assert(events.some((x) => x.id === id));
 
-assert.equal(observations.filter((x) => x.routeId === routeId).length, 0);
-assert.equal(detail.serviceEvidence.length, 0);
+// New original users are separate from current 1pMobile provider tariff facts:
+ // one named Amex-only failure, not a broad bank/SMS eligibility promise.
+assert.equal(observations.filter((x) => x.routeId === routeId).length, 1);
+assert.equal(detail.serviceEvidence.length, 1);
 assert(summary);
-assert.equal(summary.serviceEvidence.length, 0);
-assert.equal(summary.decisionFacts.sourceCount, 7);
+assert.equal(summary.serviceEvidence.length, 1);
+assert.equal(summary.serviceEvidence[0].serviceId, "american-express");
+assert.equal(summary.serviceEvidence[0].grade, "C");
+assert.equal(summary.serviceEvidence[0].successRatePct, null);
+assert.equal(summary.decisionFacts.sourceCount, 11);
 assert.equal(detail.metrics.acquisitionCostOriginal, 10);
 assert.equal(detail.metrics.keepYearCostOriginal, 40);
 assert.equal(detail.metrics.keepIntervalDays, 90);

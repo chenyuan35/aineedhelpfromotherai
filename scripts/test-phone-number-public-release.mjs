@@ -39,6 +39,9 @@ assert.match(page, /id="route-search"/);
 assert.match(page, /<script src="\.\/phone-search-core\.js"><\/script>/, 'browser search script must precede Phone initialization');
 const shippedSearch=fs.readFileSync(path.join(publicDir,'phone-search-core.js'),'utf8');
 assert.match(shippedSearch,/globalThis\.PhoneSearch = Object\.freeze\(\{ searchPhoneRoutes \}\)/);
+assert.match(page, /<script src="\.\/phone-evidence-core\.js"><\/script>/, 'browser source-priority script must ship');
+const shippedEvidence=fs.readFileSync(path.join(publicDir,'phone-evidence-core.js'),'utf8');
+assert.match(shippedEvidence,/globalThis\.PhoneEvidence = Object\.freeze/);
 assert.match(page, /Global long-term number finder\./);
 assert.match(page, /Top decision shortcuts/);
 assert.match(page, /Lowest setup cost/);
@@ -144,6 +147,7 @@ const dom = new JSDOM(page, {
     window.matchMedia = () => ({ matches:false, addEventListener(){}, removeEventListener(){} });
     // JSDOM does not load external classic scripts by default; evaluate the actual shipped browser core.
     window.eval(shippedSearch);
+    window.eval(shippedEvidence);
     window.HTMLElement.prototype.scrollIntoView = () => {};
     window.fetch = async (input) => {
       const rel = String(input).replace(/^\.\//, '').split('?')[0];

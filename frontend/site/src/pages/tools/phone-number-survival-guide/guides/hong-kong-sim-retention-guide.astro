@@ -1,35 +1,35 @@
 ---
 import GuideArticle from '../../../../components/GuideArticle.astro';
-import { routeOf, GUIDE_BASE, routeDetailHref, hasRouteDetail } from '../../../../data/phone.js';
+import { routeOf, GUIDE_BASE, routeDetailHref, hasRouteDetail, canonicalRouteSummaryOf } from '../../../../data/phone.js';
 
 const club = routeOf('clubsim-sms-pack-6hkd-2026');
 const sosim = routeOf('sosim-recharge-ladder-2026');
+const clubCurrent = canonicalRouteSummaryOf('clubsim-sms-pack-6hkd-2026');
+const sosimCurrent = canonicalRouteSummaryOf('sosim-recharge-ladder-2026');
 
-const guideRouteHref = (r: any) => routeDetailHref(r) || `${GUIDE_BASE}directory/?q=${encodeURIComponent(r.id)}`;
+const guideRouteHref = (r: any) => routeDetailHref(r) || `${GUIDE_BASE}?route=${encodeURIComponent(r.id)}`;
 const keepAliveHref = (r: any) => hasRouteDetail(r) ? `${GUIDE_BASE}keep-alive/${r.id}/` : `${GUIDE_BASE}keep-alive/#${r.id}`;
 ---
 <GuideArticle slug="hong-kong-sim-retention-guide"
   h1="Hong Kong SIM retention guide"
-  title="Hong Kong SIM retention guide: ClubSIM, SoSIM and the HK$6/year route (2026)"
-  desc="Hong Kong prepaid SIMs are the easiest foreign numbers for Chinese speakers to maintain. ClubSIM verified at HK$6/year with 365-day window; SoSIM compared."
-  lead="Hong Kong is the path of least resistance for an overseas-capable number: real-name registration is simple with a mainland ID or passport, eSIMs are available, and keep-alive costs are among the world's lowest. Here is what we verified.">
+  title="Hong Kong SIM retention: ClubSIM, SoSIM and eligibility (2026)"
+  desc="Compare ClubSIM and SoSIM retention options, current pack eligibility, KYC and contradictory Telegram verification reports; no overseas OTP guarantee."
+  lead="Hong Kong real-mobile SIMs can look inexpensive to keep, but acquiring one, passing real-name registration, preserving the line and receiving a named-app code abroad are different requirements. Check source-backed caveats before choosing a product.">
 
-{club && <section class="gd-sec"><h2>ClubSIM — the HK$6/year answer</h2>
+{club && <section class="gd-sec"><h2>ClubSIM — conditional HKD 6 retention research</h2>
 <p>{club.acquisitionSummary || 'ClubSIM (HKT) prepaid with eSIM option.'}</p>
 <ul>
 <li><strong>Keep-alive:</strong> {club.keep?.action || ''}</li>
-<li><strong>Annual cost:</strong> {club.keep ? `${club.keep.currency} ${club.keep.yearCostOriginal}` : ''}/yr ≈ ¥{club.keep?.yearCostCny} — the cheapest verified route you can realistically acquire as a visitor.</li>
-<li><strong>Window:</strong> {club.keep?.intervalDays} days.</li>
+<li><strong>Annual cost model:</strong> HKD {clubCurrent?.metrics?.keepYearCostOriginal} for the reported 365-day service-pack clock, when eligible. The current official web offer also advertises an HKD 6/30-day SMS pack; the historic yearly model is not a universal plan price or guaranteed checkout path.</li>
+<li><strong>Window:</strong> {clubCurrent?.metrics?.keepIntervalDays} days for the documented service-pack purchase-clock interpretation; confirm exact account eligibility.</li>
 </ul>
-<p>Evidence and steps: <a href={guideRouteHref(club)}>ClubSIM route page</a>. Deadline tool: <a href={keepAliveHref(club)}>deadline calculator</a>.</p></section>}
+<p>Real-name KYC is required. Telegram registration reports are mixed across independent originals; neither generic incoming SMS nor one successful verification is a universal guarantee. This is a <strong>research-only</strong> route, not a mainland-first purchase recommendation. <a href={guideRouteHref(club)}>Inspect ClubSIM sources</a> and use the <a href={keepAliveHref(club)}>deadline calculator</a> only after checking your account’s real renewal method.</p></section>}
 
 {sosim && <section class="gd-sec"><h2>SoSIM — the convenience-store alternative</h2>
 <p>{sosim.acquisitionSummary || 'SoSIM (3HK) sold in ParknShop/Watsons.'}</p>
-{sosim.keep?.action
-  ? <p>Retention: {sosim.keep.action}</p>
-  : <p>Retention terms still being verified — see the route page for current status.</p>}
+<p>The normalized record models {sosimCurrent?.metrics?.keepCurrency} {sosimCurrent?.metrics?.keepYearCostOriginal} per year under specific recharge assumptions. Verify real-name registration, which validity tier applies, first activation and overseas SMS reachability; do not infer app OTP compatibility from a store purchase.</p>
 <p><a href={guideRouteHref(sosim)}>SoSIM route page</a></p></section>}
 
 <section class="gd-sec"><h2>Which should you pick?</h2>
-<p>If you want eSIM delivery without visiting Hong Kong, ClubSIM is the default answer. If you are transiting through HK anyway, SoSIM's store availability is convenient. Either way, set the reminder the day you activate — the {club?.keep?.intervalDays || 365}-day window is generous but a lapsed number is gone.</p></section>
+<p>Neither product is an automatic winner for someone who cannot complete the exact identity, purchase and first-activation requirements. ClubSIM may be cheaper to keep for eligible accounts, while SoSIM may be easier to find through retailers. Confirm the number type, eligibility, named-app SMS evidence and expiry/recovery conditions; then set your reminder for the <em>verified</em> active product.</p></section>
 </GuideArticle>

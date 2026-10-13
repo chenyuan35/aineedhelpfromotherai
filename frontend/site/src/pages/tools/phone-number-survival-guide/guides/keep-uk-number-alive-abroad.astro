@@ -10,23 +10,23 @@ const ee = routeOf('ee-uk-payg-180d-2026');
 const o2Classic = routeOf('o2-uk-classic-payg-6mo-2026')!;
 const vodafoneHold = routeOf('vodafone-uk-zero-esim-2026')!;
 
-const guideRouteHref = (r: any) => routeDetailHref(r) || `${GUIDE_BASE}directory/?q=${encodeURIComponent(r.id)}`;
+const guideRouteHref = (r: any) => routeDetailHref(r) || `${GUIDE_BASE}?route=${encodeURIComponent(r.id)}`;
 const keepAliveHref = (r: any) => hasRouteDetail(r) ? `${GUIDE_BASE}keep-alive/${r.id}/` : `${GUIDE_BASE}keep-alive/#${r.id}`;
 ---
 <GuideArticle slug="keep-uk-number-alive-abroad"
   h1="How to keep a UK phone number active while abroad"
   title="How to keep a UK phone number active while abroad (2026)"
-  desc="VOXI, giffgaff, Lebara, Three and EE UK retention rules verified: 180-day windows, real costs from £0.16/yr, and why O2 Classic PAYG is no longer an option."
-  lead="UK prepaid SIMs are among the cheapest in the world to keep alive — if you pick the right network. We verified each route against official terms and community reports. One important 2026 change: O2 Classic PAYG is closed to new customers.">
+  desc="Compare UK number keep-alive actions, first activation and overseas SMS uncertainty for VOXI, giffgaff, Lebara, Three, EE and legacy O2 Classic."
+  lead="Keeping an already-activated UK number abroad is different from buying and activating one overseas. Provider rules, observed balance-changing actions, roaming reachability and app-specific verification outcomes can disagree; a cheap keep-alive action is not proof that first activation or incoming codes will work.">
 
 <section class="gd-sec"><h2>The short answer</h2>
-<p><strong><a href={guideRouteHref(voxi)}>VOXI</a></strong> is the community-verified winner: one 8p roaming SMS per {voxi.keep?.intervalDays} days ≈ £{voxi.keep?.yearCostOriginal}/yr (≈¥{voxi.keep?.yearCostCny}). <strong><a href={guideRouteHref(giff)}>giffgaff</a></strong> is the gentlest on boarding friction at ≈¥{giff.keep?.yearCostCny}/yr. <a href={guideRouteHref(leb)}>Lebara UK</a> has the shortest window ({leb.keep?.intervalDays} days) but works from China per community reports.</p></section>
+<p>For an <strong>existing, already usable</strong> line, <a href={guideRouteHref(voxi)}>VOXI</a> has a documented {voxi.keep?.intervalDays}-day balance-activity window and one dated small-charge example. <a href={guideRouteHref(giff)}>giffgaff</a> has a {giff.keep?.intervalDays}-day window but firsthand overseas accounts include both line survival and unexpected closure. <a href={guideRouteHref(leb)}>Lebara UK</a> has a {leb.keep?.intervalDays}-day keep window; a mainland-China incoming-SMS account conflicts with a separate no-signal/refund report, while provider instructions require UK service activation. None is a verified first-time-from-China checkout or named-bank OTP guarantee.</p></section>
 
-<section class="gd-sec"><h2>The three proven routes</h2>
+<section class="gd-sec"><h2>Three studied UK routes — different constraints</h2>
 <ul>
-<li><strong>VOXI</strong> — {voxi.keep?.intervalDays}-day window; a roaming SMS from abroad counts. {voxi.keep?.action || ''}</li>
-<li><strong>giffgaff</strong> — {giff.keep?.intervalDays}-day window; community practice is one small action per window. {giff.keep?.action || ''}</li>
-<li><strong>Lebara UK</strong> — {leb.keep?.intervalDays}-day window; act by day 70–75 per community buffer. {leb.keep?.action || ''}</li>
+<li><strong>VOXI</strong> — {voxi.keep?.intervalDays}-day window; chargeable activity is required; a roaming SMS has been reported to count, but price/roaming and first activation remain location-specific. {voxi.keep?.action || ''}</li>
+<li><strong>giffgaff</strong> — {giff.keep?.intervalDays}-day window; maintain evidenced activity but retain a recovery/port-out plan in view of conflicting closure reports. {giff.keep?.action || ''}</li>
+<li><strong>Lebara UK</strong> — {leb.keep?.intervalDays}-day window for qualifying paid activity. Some community accounts recommend acting before the deadline; incoming codes, service activation and signal reception are different assertions. {leb.keep?.action || ''}</li>
 </ul>
 <p>Each route page carries the source evidence: <a href={guideRouteHref(voxi)}>VOXI</a> · <a href={guideRouteHref(giff)}>giffgaff</a> · <a href={guideRouteHref(leb)}>Lebara UK</a>.</p></section>
 
@@ -40,5 +40,5 @@ const keepAliveHref = (r: any) => hasRouteDetail(r) ? `${GUIDE_BASE}keep-alive/$
 <p><a href={guideRouteHref(vodafoneHold)}>Vodafone UK PAYG</a>: no clean durable retention path is established. We show the hold reason instead of inventing a rule.</p></section>
 
 <section class="gd-sec"><h2>Never miss the window</h2>
-<p>Each route has a <a href={keepAliveHref(voxi)}>deadline calculator</a> — record your last keep-alive action and export the calendar reminder. A lapsed UK number is usually unrecoverable after the grace period.</p></section>
+<p>For a route you already control, use its <a href={keepAliveHref(voxi)}>deadline calculator</a> after verifying the last qualifying action and any grace/recovery rule. A missed window can lead to suspension or number loss; individual recovery options are not guaranteed.</p></section>
 </GuideArticle>

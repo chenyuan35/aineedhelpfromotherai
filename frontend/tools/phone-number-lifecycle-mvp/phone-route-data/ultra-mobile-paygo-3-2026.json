@@ -21,7 +21,10 @@
       "youtube-didushan-ultramobile-telegram-20250221",
       "shuzijumin-ultramobile-telegram-20250307",
       "linuxdo-ultramobile-telegram-mixed-20250603",
-      "v2ex-ultramobile-telegram-mixed-20260404"
+      "v2ex-ultramobile-telegram-mixed-20260404",
+      "reddit-ultra-paygo-hk-invalid-act-1se5ggi-20260406",
+      "reddit-ultra-paygo-wallet-service-loss-1v0rabd-20260719",
+      "reddit-ultra-paygo-old-overseas-port-wallet-1h8yft0-20241207"
     ]
   },
   "market": {
@@ -122,6 +125,27 @@
       "url": "https://www.v2ex.com/t/1203564",
       "type": "community-report",
       "reportedAt": "2026-04-04"
+    },
+    {
+      "id": "reddit-ultra-paygo-hk-invalid-act-1se5ggi-20260406",
+      "url": "https://www.reddit.com/r/NoContract/comments/1se5ggi/day_6_stuck_in_ultra_paygo_activation_loop/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-04-06",
+      "label": "Ultra PayGo first buyer at Yoho Hong Kong: new physical SIM invalid ACT, call-only verification bottleneck, refund contemplated but not confirmed"
+    },
+    {
+      "id": "reddit-ultra-paygo-wallet-service-loss-1v0rabd-20260719",
+      "url": "https://www.reddit.com/r/ultramobile/comments/1v0rabd/ultra_paygo_sim_lost_service_cant_log_in_and_cant/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-07-19",
+      "label": "Ultra PayGo user: $45 wallet load February, line off several months, July no service or web login; cancellation/refund unverified"
+    },
+    {
+      "id": "reddit-ultra-paygo-old-overseas-port-wallet-1h8yft0-20241207",
+      "url": "https://www.reddit.com/r/NoContract/comments/1h8yft0/i_use_the_ultramobile_paygo_3_having_2_accounts/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2024-12-07",
+      "label": "Older Ultra PayGo $3/month owner: foreign WiFi activation of ported Mint/AT&T numbers (not new-line first attach), with wallet missing funds and support dispute"
     }
   ],
   "observations": [
@@ -190,6 +214,39 @@
       "scope": "five-distinct-community-sources",
       "outcome": "Five distinct dated public community/demonstration sources now support an Ultra Mobile PayGo Telegram registration-verification aggregate. Three report successful registration and two are mixed; number provenance and subsequent Telegram account state remain variable, so this is bounded evidence rather than a universal carrier probability.",
       "sourceId": "v2ex-ultramobile-telegram-mixed-20260404"
+    },
+    {
+      "id": "evt-ultra-paygo-1se5ggi-newbieyang-hk-buyer-invalid-act",
+      "routeId": "ultra-mobile-paygo-3-2026",
+      "type": "bought-physical-sim-overseas-invalid-activation-code",
+      "reportedAt": "2026-04-06",
+      "authorHandle": "Newbie_yang",
+      "productCohort": "Ultra Mobile $3 PayGo physical SIM, purchased from Yoho Hong Kong reseller; exact SIM channel entitlement unverified",
+      "scope": "One 2026 Hong Kong retail receipt dated March 30, actual attempted new physical PayGo activation April 1-6 outside United States; not a named bank OTP test",
+      "outcome": "Original buyer reports they purchased an Ultra Mobile PayGo PHYSICAL SIM in Hong Kong (receipt March 30), then from outside the US entered an ACT code that the online system rejected as invalid. Repeated live chats referred them to a verification phone line; they called for >16 minutes with no answer and sent a photo/receipt to support. No verified activation resolution or refund. Commenters hypothesize missing retail till/card activation or expired ACT, but neither is diagnosed, and no evidence carrier-ID/passport approval or first cellular-tower abroad. Do NOT turn third-party payment/retail registration theories into established cause.",
+      "sourceId": "reddit-ultra-paygo-hk-invalid-act-1se5ggi-20260406"
+    },
+    {
+      "id": "evt-ultra-paygo-1v0rabd-wolandor-wallet-access-loss",
+      "routeId": "ultra-mobile-paygo-3-2026",
+      "type": "post-topup-no-service-account-login-verification-department",
+      "reportedAt": "2026-07-19",
+      "authorHandle": "Wolandor",
+      "productCohort": "Existing Ultra Mobile $3 PayGo PHYSICAL SIM and Pixel 9; new activation succeeded initially, loaded PayGo Wallet $45 February 28; location outside US at least during support, first tower unverified",
+      "scope": "Same OP: initial SIM bought/activated, Feb 28 funded PayGo balance, device SIM OFF early March–early July; July 5 line dead, account web/app login inaccessible, verification department calls unanswered",
+      "outcome": "Original poster bought Ultra PayGo physical SIM and says initial activation was successful. They added $45 wallet February 28. After leaving the SIM off for around four months, July 5 reinsertion showed no network service, both website and app login were inaccessible, and reactivation produced Invalid ACT/ICCID. Repeated support referrals to Verification Department failed; seller thought the number MIGHT be canceled but could not verify it. $45 balance expiry, actual cancellation, fraud/roaming cause and refund are NOT established. OP noticed historical four 443 voicemail calls in phone history and explicitly did not know if related; do not claim causality. They say this number had NOT been bound to any bank/app login. Other commenter reports own wallet deductions, but distinct person, not proof same cause.",
+      "sourceId": "reddit-ultra-paygo-wallet-service-loss-1v0rabd-20260719"
+    },
+    {
+      "id": "evt-ultra-paygo-1h8yft0-creativelet-overseas-port-and-wallet-mixed",
+      "routeId": "ultra-mobile-paygo-3-2026",
+      "type": "historical-overseas-port-wifi-success-and-wallet-topup-dispute",
+      "reportedAt": "2024-12-07",
+      "authorHandle": "CreativeLet",
+      "productCohort": "Ultra Mobile $3 PayGo, two accounts, Mint/AT&T port-ins NOT new-number foreign first activation, historical 2024",
+      "scope": "Single 2024 OP reports working WiFi Calling and overseas SIM setup of ported existing numbers, while app/web login and initial wallet topup posting disputed",
+      "outcome": "Owner of TWO Ultra Mobile $3/month PayGo accounts reports overseas SIM activation via Wi-Fi for previously held Mint/AT&T PORTED numbers (NOT new US number first-cellular-tower registration). Wi-Fi calling works for this person; iPhone behaves differently from their Pixel 7a for outgoing Wi-Fi-under-data calls. The SAME author reports early top-up payments absent from wallet ledger and account login problems, later claiming a manager helped resolve a missing-top-up case; whether payment reversal/bank card issuer is unknown. They believed in 2024 that PayGo did not support cellular international roaming, which CONFLICTS with current 2026 provider PayGo official roaming support and rates; preserve as dated author belief, NOT current official policy. No exact foreign location, buyer passport/KYC or named app OTP. One OP/one original thread/one mixed author lifecycle, not two independent success and failure confirmations.",
+      "sourceId": "reddit-ultra-paygo-old-overseas-port-wallet-1h8yft0-20241207"
     }
   ],
   "snapshots": [

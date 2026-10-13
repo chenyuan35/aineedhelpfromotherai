@@ -1993,7 +1993,11 @@
         "official-1pmobile-join-current-20261006",
         "official-1pmobile-esim-current-20261006",
         "official-1pmobile-overseas-current-20261006",
-        "official-1pmobile-payment-current-20261006"
+        "official-1pmobile-payment-current-20261006",
+        "reddit-1pmobile-overseas-replacement-1vf663j-20260804",
+        "reddit-1pmobile-incoming-otp-1sxe5k1-20260427",
+        "reddit-1pmobile-postport-sms-delay-1wa0ole-20260908",
+        "reddit-1pmobile-smartyportrcv-recovery-1vs2kjd-20260818"
       ]
     },
     {
@@ -2996,14 +3000,20 @@
       "acquireUrl": "https://www.giffgaff.com/",
       "sourceIds": [
         "giffgaff-official-credit-2026-09-23",
+        "giffgaff-official-deleted-esim-recovery-20261013",
+        "giffgaff-official-new-esim-initial-plan-20261013",
         "linuxdo-giffgaff-1615582",
         "linuxdo-giffgaff-2244241",
         "linuxdo-giffgaff-2244241-p2",
         "linuxdo-giffgaff-2310901",
         "linuxdo-giffgaff-2322268",
+        "linuxdo-giffgaff-2322268-reply14",
         "linuxdo-giffgaff-2678340",
         "linuxdo-giffgaff-2773030",
         "linuxdo-giffgaff-2903412",
+        "reddit-giffgaff-1onzflv-esim-mfa-overseas-20251104",
+        "reddit-giffgaff-1qjxpv0-physical-esim-contrast-20260122",
+        "reddit-giffgaff-1tc9fy9-uk-paris-plan-20260513",
         "src-77b7a4afdd78",
         "src-7bc565362f29",
         "src-9e494ffc524e",
@@ -3482,7 +3492,8 @@
         "src-337a1e0a1330",
         "src-aa91ae8faea1",
         "linuxdo-lebara-2815946-20260826",
-        "nodeseek-lebara-869053-20260811"
+        "nodeseek-lebara-869053-20260811",
+        "reddit-lebara-uk-new-esim-outside-uk-wifi-unusable-1rtwkoj-20260314"
       ]
     },
     {
@@ -4058,12 +4069,15 @@
       "form": "eSIM-or-physical",
       "surfaceState": "backstage-only",
       "evidenceState": "hold",
-      "lastVerifiedAt": "2026-09-29",
+      "lastVerifiedAt": "2026-10-12",
       "acquireUrl": "https://optus.com.au/prepaidplans",
       "sourceIds": [
         "optus-activate-20260929",
+        "optus-flex-plus-au-price-20261012",
         "optus-longexpiry-20260818",
-        "optus-prepaidplans-20260929"
+        "optus-prepaidplans-20260929",
+        "reddit-optus-passport-port-identity-mismatch-1qbghav-20260113",
+        "reddit-optus-yearly-prepaid-samebrand-port-refund-1sczgck-20260405"
       ]
     },
     {
@@ -4755,7 +4769,9 @@
         "linuxdo-tello-codex-sms-failure-20260612",
         "reddit-tello-sms-cut-abroad-20260925",
         "reddit-tello-signup-security-20260702",
-        "nodeseek-tello-payg-guide-20260928"
+        "nodeseek-tello-payg-guide-20260928",
+        "reddit-tello-china-new-esim-attempt-1tm4m9k-20260524",
+        "official-tello-number-expiry-20261012"
       ]
     },
     {
@@ -4775,7 +4791,14 @@
         "src-494ca2deb59b",
         "src-573da827b0ea",
         "src-ed3f565a3e3a",
-        "src-f2d3210589df"
+        "src-f2d3210589df",
+        "reddit-tello-chase-initial-app-vs-login-1u9225s",
+        "reddit-tello-korean-card-renewal-1p4bspo-20251123",
+        "reddit-tello-korea-foreign-esim-1wc8ej8-20260910",
+        "reddit-tello-number-expiry-autopay-1wx3k90-20261004",
+        "official-tello-number-expiry-20261012",
+        "reddit-tello-pixel9-foreign-registration-1utffrl-20260711",
+        "reddit-tello-china-new-esim-attempt-1tm4m9k-20260524"
       ]
     },
     {
@@ -5065,7 +5088,10 @@
         "youtube-didushan-ultramobile-telegram-20250221",
         "shuzijumin-ultramobile-telegram-20250307",
         "linuxdo-ultramobile-telegram-mixed-20250603",
-        "v2ex-ultramobile-telegram-mixed-20260404"
+        "v2ex-ultramobile-telegram-mixed-20260404",
+        "reddit-ultra-paygo-hk-invalid-act-1se5ggi-20260406",
+        "reddit-ultra-paygo-wallet-service-loss-1v0rabd-20260719",
+        "reddit-ultra-paygo-old-overseas-port-wallet-1h8yft0-20241207"
       ]
     },
     {
@@ -9453,6 +9479,18 @@
       "reportedAt": "2026-09-30"
     },
     {
+      "id": "reddit-1pmobile-incoming-otp-1sxe5k1-20260427",
+      "url": "https://www.reddit.com/r/1pmobile/comments/1sxe5k1/no_sms_or_otp_being_received_since_joining_esim/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-04-27"
+    },
+    {
+      "id": "reddit-1pmobile-overseas-replacement-1vf663j-20260804",
+      "url": "https://www.reddit.com/r/1pmobile/comments/1vf663j/replace_esim_while_being_abroad/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-04"
+    },
+    {
       "id": "reddit-etisalat-wasel-roaming-otp-20231119",
       "url": "https://www.reddit.com/r/dubai/comments/17you9n/cheap_uae_phone_plan_for_receiving_sms_messages/",
       "type": "independent-community",
@@ -10877,6 +10915,150 @@
       "url": "https://www.kw.zain.com/en/shop/roaming",
       "type": "provider-official",
       "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "optus-flex-plus-au-price-20261012",
+      "url": "https://www.optus.com.au/prepaid/sim-plans",
+      "type": "provider-official",
+      "reportedAt": "2026-10-12"
+    },
+    {
+      "id": "reddit-1pmobile-postport-sms-delay-1wa0ole-20260908",
+      "url": "https://www.reddit.com/r/1pmobile/comments/1wa0ole/what_time_do_1p_mobile_port_numbers_in/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-09-08",
+      "label": "One original number-port thread: Three-to-1p third-party SMS delay, distinct Vodafone-to-1p OP; possible later OTP backfill has unverified author continuity"
+    },
+    {
+      "id": "reddit-1pmobile-smartyportrcv-recovery-1vs2kjd-20260818",
+      "url": "https://www.reddit.com/r/1pmobile/comments/1vs2kjd/how_long_does_porting_takes/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-18",
+      "label": "One SMARTY-to-1pMobile port author reports temporary incoming SMS/unnamed OTP failure and later recovery; RCS still broken"
+    },
+    {
+      "id": "reddit-tello-china-new-esim-attempt-1tm4m9k-20260524",
+      "url": "https://www.reddit.com/r/Tello/comments/1tm4m9k/activate_in_china/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-05-24",
+      "label": "China attempt: Tello eSIM first activation failed despite purchased PAYG/account setup; separate prior-cohort success and newer US-first limitation described by other author"
+    },
+    {
+      "id": "reddit-tello-pixel9-foreign-registration-1utffrl-20260711",
+      "url": "https://www.reddit.com/r/Tello/comments/1utffrl/pixel_9_pro_activation_outside_the_us/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-07-11",
+      "label": "Pixel 9 Pro owner reports usable incoming/outgoing SMS abroad including unnamed financial service; separate commenter needed US-assisted first activation and later overseas replacement"
+    },
+    {
+      "id": "reddit-optus-passport-port-identity-mismatch-1qbghav-20260113",
+      "url": "https://www.reddit.com/r/AskAnAustralian/comments/1qbghav/optus_says_my_passport_number_is_already/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-01-13",
+      "label": "First-person Vodafone-to-Optus attempt blocked by identity/passport-account mismatch at online support and franchise store; exact current Flex Plus SKU and final resolution unknown"
+    },
+    {
+      "id": "reddit-optus-yearly-prepaid-samebrand-port-refund-1sczgck-20260405",
+      "url": "https://www.reddit.com/r/AskAnAustralian/comments/1sczgck/optus_refusing_porting_me_to_prepaid_service/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-04-05",
+      "label": "Original Optus postpaid-to-discounted yearly prepaid buyer reports manual activation friction, contradictory support and actual refund; exact Flex Plus tariff unverified"
+    },
+    {
+      "id": "reddit-tello-chase-initial-app-vs-login-1u9225s",
+      "url": "https://www.reddit.com/r/Tello/comments/1u9225s/chase_otp_not_reaching_abroad_failed_on_both/",
+      "type": "first-hand-community-thread",
+      "reviewedAt": "2026-10-12",
+      "label": "Two different Tello users in one original discussion: Chase new-application live-agent SMS nonarrival versus Chase existing-account login 2FA success after later US travel; ORIGINAL post calendar day not confirmed, deliberately no reportedAt"
+    },
+    {
+      "id": "reddit-tello-korean-card-renewal-1p4bspo-20251123",
+      "url": "https://www.reddit.com/r/Tello/comments/1p4bspo/payment_failure_on_card/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2025-11-23",
+      "label": "Tello existing billed plan: overseas expat author Korean Mastercard recurring payment failed after a year of successful use; US card added, later capture unconfirmed; reply author reports 3 separate PayPal-funded accounts (not foreign-card confirmation)"
+    },
+    {
+      "id": "reddit-tello-korea-foreign-esim-1wc8ej8-20260910",
+      "url": "https://www.reddit.com/r/Tello/comments/1wc8ej8/successfully_activated_new_tello_line_from_korea/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-09-10",
+      "label": "Korea firsthand Tello $5 MONTHLY new-line purchase plus $20 PAYG roaming addon; first-US-tower international-roaming gate rejected, Wi-Fi SMS/call partially functional despite activation conflict; distinct same-discussion commenters report non-PAYG Wi-Fi success and provisioning failure/refund"
+    },
+    {
+      "id": "reddit-tello-number-expiry-autopay-1wx3k90-20261004",
+      "url": "https://www.reddit.com/r/Tello/comments/1wx3k90/tellos_12day_numberretention_policy_is/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-10-04",
+      "label": "Existing Tello customer stefpix sought written monthly billing, backup card, number loss guidance; other commenter reports conflicting PAYG-active phone support. No experienced number loss."
+    },
+    {
+      "id": "official-tello-number-expiry-20261012",
+      "url": "https://tello.com/help_center/account-payments/when-will-my-phone-number-expire",
+      "type": "provider-official",
+      "reportedAt": "2026-10-12",
+      "label": "Tello official Phone Number Expiration checked Oct 12: monthly nonrenewal 12-day grace versus PAYG-only 3-month balance validity plus 7-day post-credit-expiry grace; no guaranteed recovery."
+    },
+    {
+      "id": "reddit-ultra-paygo-hk-invalid-act-1se5ggi-20260406",
+      "url": "https://www.reddit.com/r/NoContract/comments/1se5ggi/day_6_stuck_in_ultra_paygo_activation_loop/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-04-06",
+      "label": "Ultra PayGo first buyer at Yoho Hong Kong: new physical SIM invalid ACT, call-only verification bottleneck, refund contemplated but not confirmed"
+    },
+    {
+      "id": "reddit-ultra-paygo-wallet-service-loss-1v0rabd-20260719",
+      "url": "https://www.reddit.com/r/ultramobile/comments/1v0rabd/ultra_paygo_sim_lost_service_cant_log_in_and_cant/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-07-19",
+      "label": "Ultra PayGo user: $45 wallet load February, line off several months, July no service or web login; cancellation/refund unverified"
+    },
+    {
+      "id": "reddit-ultra-paygo-old-overseas-port-wallet-1h8yft0-20241207",
+      "url": "https://www.reddit.com/r/NoContract/comments/1h8yft0/i_use_the_ultramobile_paygo_3_having_2_accounts/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2024-12-07",
+      "label": "Older Ultra PayGo $3/month owner: foreign WiFi activation of ported Mint/AT&T numbers (not new-line first attach), with wallet missing funds and support dispute"
+    },
+    {
+      "id": "reddit-lebara-uk-new-esim-outside-uk-wifi-unusable-1rtwkoj-20260314",
+      "url": "https://www.reddit.com/r/LebaraUK/comments/1rtwkoj/lebara/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-03-14",
+      "label": "Lebara UK eSIM purchaser Substantial_Heat1254 trying to activate outside UK; Wi-Fi Calling not functional, foreign-first activation unresolved. No proof of seven-day roaming condition or China geography."
+    },
+    {
+      "id": "giffgaff-official-new-esim-initial-plan-20261013",
+      "url": "https://help.giffgaff.com/en/articles/240912-getting-started-on-giffgaff",
+      "type": "official",
+      "reportedAt": "2026-10-13"
+    },
+    {
+      "id": "giffgaff-official-deleted-esim-recovery-20261013",
+      "url": "https://help.giffgaff.com/en/articles/240403-what-to-do-if-you-delete-your-esim",
+      "type": "official",
+      "reportedAt": "2026-10-13"
+    },
+    {
+      "id": "reddit-giffgaff-1tc9fy9-uk-paris-plan-20260513",
+      "url": "https://www.reddit.com/r/NoContract/comments/1tc9fy9/uk_paris_trip_giffgaff_esim_worked_surprisingly/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-05-13",
+      "label": "Giffgaff purchaser: £10 initial eSIM one-month plan; UK-first mobile service + Paris roaming, not China-first or named OTP"
+    },
+    {
+      "id": "reddit-giffgaff-1qjxpv0-physical-esim-contrast-20260122",
+      "url": "https://www.reddit.com/r/giffgaff/comments/1qjxpv0/esim_uk_activation_does_not_work/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-01-22",
+      "label": "Giffgaff existing physical to eSIM move: OP without installed profile/network after 24h; different commenter reports successful overseas conversion"
+    },
+    {
+      "id": "reddit-giffgaff-1onzflv-esim-mfa-overseas-20251104",
+      "url": "https://www.reddit.com/r/giffgaff/comments/1onzflv/anyone_else_locked_out_after_giffgaff_removed/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2025-11-04",
+      "label": "Giffgaff existing eSIM overseas phone change SMS-MFA lockout versus another commenter physical SIM number-restoration"
     }
   ],
   "observations": [
@@ -11362,6 +11544,48 @@
         "5317"
       ],
       "reviewNote": "Author reports their 5317 eSIM.gg (乌龟卡) receives Codex and similar verification codes. Not proof of signup completion, buyer eligibility, KYC, location, first activation, or all 5317 lines. Later this author reports unspecified eSIM numbers rejected by Discord; do NOT infer the specific provider/prefix or map that to an eSIM.gg Discord failure."
+    },
+    {
+      "id": "obs-1pmobile-1sxe5k1-jackoboy9-amex-20260517",
+      "routeId": "1pmobile-uk-2026",
+      "service": "American Express",
+      "operation": "sms-verification",
+      "outcome": "failure",
+      "reportedAt": "2026-05-17",
+      "geography": "unspecified",
+      "sourceId": "reddit-1pmobile-incoming-otp-1sxe5k1-20260427",
+      "dedupeKey": "1pmobile-1sxe5k1-jackoboy9-amex-specific-sms",
+      "authorHandle": "jackoboy9",
+      "prefixBands": [],
+      "reviewNote": "One distinct commenter says Amex verification texts stopped the prior week while OTHER ordinary texts and other verification codes continued to work; voice calls worked. The commenter wondered if this was an American Express-specific issue. Not a global inbound-SMS failure, not proof that 1pMobile blocks Amex, and no recovery date, country, new purchase, identity/first activation or full bank-login outcome established."
+    },
+    {
+      "id": "obs-tello-chase-1u9225s-comfortabledonut-first-application",
+      "routeId": "tello-us",
+      "service": "Chase",
+      "operation": "new-application-live-agent-sms-verification",
+      "outcome": "failure",
+      "geography": "outside-US-country-unspecified",
+      "sourceId": "reddit-tello-chase-initial-app-vs-login-1u9225s",
+      "dedupeKey": "tello-1u9225s-ComfortableDonut1820-Chase-first-application",
+      "authorHandle": "ComfortableDonut1820",
+      "prefixBands": [],
+      "reviewNote": "Same original poster reports a Chase FIRST application/manual-agent phone verification SMS did not arrive on a Tello eSIM while outside the US. They also report T-Mobile Prepaid failed that same Chase step, but other providers’ automated texts/OTPs worked on both lines. OP says Tello number owned for more than one year, never ported, and Chase account/online phone registration NOT yet established. This is NOT a new Tello purchase or all-bank-SMS failure; no cause attribution, first US network attachment proof, actual Chase account approval, exact foreign country, payment/KYC or verified report-day. Unknown date deliberately omitted. Product cohort: Tello account/plan NOT specified, therefore grouped under generic unreconciled Tello route, NOT PAYG-credit SKU.",
+      "productCohort": "Tello eSIM account, purchased plan/SKU unspecified; PAYG-only not established"
+    },
+    {
+      "id": "obs-tello-chase-1u9225s-drgruve-existing-login",
+      "routeId": "tello-us",
+      "service": "Chase",
+      "operation": "existing-account-login-2fa",
+      "outcome": "success",
+      "geography": "Australia",
+      "sourceId": "reddit-tello-chase-initial-app-vs-login-1u9225s",
+      "dedupeKey": "tello-1u9225s-DrGruve-Chase-existing-login",
+      "authorHandle": "DrGruve",
+      "prefixBands": [],
+      "reviewNote": "Separate commenter reports their Tello eSIM originally activated in Australia over a year earlier, then US visits afterward; claims regular Chase (also Bank of America) established-account LOGIN 2FA SMS received from Australia, including a recent login. This is a DIFFERENT customer and operation from the first applicant who failed, NOT independent original-thread confirmation or current compliant new-line foreign activation. Date exact/first tower not verified. One original discussion shared with opposite case; no service-wide success percentage. Product cohort: Tello account/plan NOT specified, therefore grouped under generic unreconciled Tello route, NOT PAYG-credit SKU.",
+      "productCohort": "Tello eSIM account, purchased plan/SKU unspecified; PAYG-only not established"
     }
   ],
   "events": [
@@ -12497,7 +12721,8 @@
       "reportedAt": "2026-10-05",
       "scope": "route",
       "outcome": "2026 community evidence is mixed for overseas SMS continuity: one Tello tutorial thread reports Codex verification SMS not arriving, while a separate long-running overseas user reports SMS/2FA abruptly stopping after months of Wi-Fi Calling. These reports do not isolate PAYG-only plan state tightly enough for a service aggregate, so preserve them as route-level risk evidence rather than manufacturing an app success rate.",
-      "sourceId": "reddit-tello-sms-cut-abroad-20260925"
+      "sourceId": "reddit-tello-sms-cut-abroad-20260925",
+      "productCohort": "Tello-wide community reports from plans not established as standalone PAYG; cautionary cross-SKU risk, NOT PAYG-only app evidence"
     },
     {
       "id": "evt-tello-account-security-risk-20261005",
@@ -12506,7 +12731,8 @@
       "reportedAt": "2026-10-05",
       "scope": "route",
       "outcome": "Tello publicly acknowledges automated and human fraud-prevention checks can decline orders; community replies in the same provider-moderated thread describe account suspensions and concern about preserving long-held numbers. This is a continuity risk signal, not a quantified suspension probability.",
-      "sourceId": "reddit-tello-signup-security-20260702"
+      "sourceId": "reddit-tello-signup-security-20260702",
+      "productCohort": "Tello signup/payment/antifraud concerns across unspecified plan cohorts; not proven PAYG-only buyer failure"
     },
     {
       "id": "evt-redpocket-ebay-30-product-20261005",
@@ -14334,6 +14560,306 @@
       "scope": "one original-thread commenter Mountainvole comparing own foreigner-registered SIM with spouse Filipino-registered SIM on a trip abroad; country and exact app state unspecified",
       "outcome": "During an overseas trip about a month earlier, commenter reports their foreigner-registered Globe SIM could no longer buy a promo using existing load in the app and could only manage top-up through SMS. Spouse's Filipino-registered Globe SIM still worked in the app; after returning to the Philippines the commenter used phone SMS menus to buy a promo and the app worked again the following week. This is one paired firsthand account, not proof of an official nationality-based rule, SMS OTP failure or permanent service loss.",
       "sourceId": "reddit-globe-prepaid-keeping-abroad-20260402"
+    },
+    {
+      "id": "evt-1pmobile-existing-esim-replacement-eu-20260804",
+      "routeId": "1pmobile-uk-2026",
+      "type": "independent-overseas-replacement-esim-activation-with-friction",
+      "reportedAt": "2026-08-04",
+      "scope": "one Reddit OP moving an EXISTING 1pMobile eSIM from one handset to another while in the EU; exact country/device and first-new-number acquisition not stated",
+      "outcome": "Original author reports successful activation of a replacement eSIM while in the EU after selecting SIM Swapped in the 1pMobile web account, with connection around five minutes afterward; account funds reportedly took about six hours to become usable before requesting replacement. Same thread contains both overseas success comments and an opposed assertion that activation abroad cannot work; not a guarantee of replacement abroad, a new account, China-first activation, payment eligibility, or named-app OTP.",
+      "sourceId": "reddit-1pmobile-overseas-replacement-1vf663j-20260804"
+    },
+    {
+      "id": "evt-1pmobile-esim-incoming-sms-voice-failure-20260427",
+      "routeId": "1pmobile-uk-2026",
+      "type": "independent-newly-joined-esim-inbound-sms-and-call-failure",
+      "reportedAt": "2026-04-27",
+      "scope": "one Reddit OP says 1pMobile eSIM used for a few weeks, incoming generic SMS/OTP and cross-network calls unavailable, old provider O2 worked; location, device, porting and app identity unconfirmed",
+      "outcome": "OP reports no incoming standard SMS or unnamed OTP after joining 1pMobile eSIM and later also failures receiving voice calls from other networks, despite troubleshooting with customer service. OP later reported returning to O2 by 2026-05-17 without a confirmed 1pMobile fix; a reply speculates about partial port, which is not a confirmed diagnosis. This is NOT an Amex-specific failure by the OP and is not evidence of a universal 1pMobile outage.",
+      "sourceId": "reddit-1pmobile-incoming-otp-1sxe5k1-20260427"
+    },
+    {
+      "id": "evt-1pmobile-three-port-inbound-sms-delay-1wa0ole-20260912",
+      "routeId": "1pmobile-uk-2026",
+      "type": "independent-postport-inbound-sms-delay",
+      "reportedAt": "2026-09-12",
+      "scope": "One commenter fursty_ferret reported post-port external inbound-SMS delivery failure after Three-to-1p port; thread spans Sep 8–12, 2026. Original OP palacepaulse25 describes separate Vodafone-to-1p port; do not merge authors.",
+      "outcome": "The Three-to-1p commenter described a completed number port around 1pm, with only 1pMobile internal balance/account texts arriving roughly two days later while external inbound SMS remained absent. The thread later discusses a batch of delayed OTPs arriving, but exact recovery-reply author linkage is unverified; do NOT credit this commenter with confirmed recovery or claim any reliable 48-hour recovery window. Named bank/app service, number prefix, handset, payment, identity and mainland first activation are unknown. The original Vodafone-to-1p OP did NOT report their own OTP test. ONE original thread, not a separate source per commenter.",
+      "sourceId": "reddit-1pmobile-postport-sms-delay-1wa0ole-20260908",
+      "authorHandle": "fursty_ferret",
+      "resolution": "unverified-author-linkage"
+    },
+    {
+      "id": "evt-1pmobile-smarty-postport-inbound-recovery-20260819",
+      "routeId": "1pmobile-uk-2026",
+      "type": "independent-postport-inbound-sms-temporary-failure-then-recovery",
+      "reportedAt": "2026-08-19",
+      "scope": "SAME original poster COBHC95 on an EXISTING SMARTY number ported to 1pMobile UK; unknown handset, country, purchase/payment/ID, bank/app OTP recipient and mainland first activation",
+      "outcome": "OP COBHC95 initially reported that a completed SMARTY-to-1pMobile port allowed voice calls and outbound texts but inbound SMS and unspecified OTP did not arrive, including checks with a second device. The SAME author later confirmed incoming SMS and OTP resumed on 2026-08-19 while RCS remained broken. One reporter, one incident timeline and one original thread (NOT two independent reports, NOT a named-app success). Provider advice to allow 24–48 hours was not a guaranteed restoration SLA; no country-specific overseas activation outcome is established.",
+      "sourceId": "reddit-1pmobile-smartyportrcv-recovery-1vs2kjd-20260818",
+      "authorHandle": "COBHC95",
+      "resolution": "same-author-inbound-sms-and-unspecified-otp-recovered-2026-08-19"
+    },
+    {
+      "id": "evt-tello-china-paid-new-esim-first-install-fail-1tm4m9k",
+      "routeId": "tello-paygo-credit-2026",
+      "type": "independent-overseas-new-esim-activation-failure",
+      "reportedAt": "2026-05-24",
+      "scope": "One original OP AMKerschen in mainland China after Tello PAYG purchase/funding; unlocked handset, Wi-Fi, Wi-Fi Calling and E911 setup reported",
+      "outcome": "OP reports an already purchased/funded $20 PAYG Tello account and new eSIM, but eSIM download/activation failed in mainland China with carrier-contact error despite Wi-Fi/renewed QR and attempted VPN connections. This is first eSIM install/provisioning failure, NOT bank OTP failure or proof no number was purchased. A later thread reply reports eventual activation but its author, geography, method/US helper and actual registered first network are not securely linked to this OP: final first-activation outcome unresolved. No claim that VPN can legitimately bypass first-US network requirements.",
+      "sourceId": "reddit-tello-china-new-esim-attempt-1tm4m9k-20260524",
+      "authorHandle": "AMKerschen",
+      "resolution": "later-thread-success-reporter-or-network-unverified"
+    },
+    {
+      "id": "evt-tello-china-old-cohort-other-user-vs-wife-us-first-1tm4m9k",
+      "routeId": "tello-us",
+      "type": "independent-overseas-first-activation-cohort-conflict",
+      "reportedAt": "2026-05-24",
+      "scope": "One other author smacado compares older self-use activation from China and later distinct line belonging to wife; not the original OP",
+      "outcome": "Commenter reports their own earlier Tello activation in China succeeded, whereas a more recent new line for their wife needed an initial U.S. visit after first-network requirements changed. These are different account cohorts, not proof current new-number activation works in China. Same commenter = one original thread, not two independent provider confirmations. Physical first-network and precise dates of older success not independently verified.",
+      "sourceId": "reddit-tello-china-new-esim-attempt-1tm4m9k-20260524",
+      "authorHandle": "smacado",
+      "resolution": "mixed-cohorts-not-current-first-China-guarantee",
+      "productCohort": "Different other author: older own Tello line and later wife new line; SKU and PAYG-only unknown"
+    },
+    {
+      "id": "evt-tello-pixel9-new-esim-abroad-and-unnamed-financial-sms-1utffrl",
+      "routeId": "tello-us",
+      "type": "independent-overseas-esim-registration-and-unnamed-bank-sms-report",
+      "reportedAt": "2026-07-11",
+      "scope": "Original poster CraigInCambodia, Pixel 9 Pro; says first eSIM became usable abroad, physical location not independently confirmed as Cambodia",
+      "outcome": "OP claims an overseas new Tello eSIM registration/usable line with sent and received SMS, including an unnamed financial institution. A chatbot-generated setup sequence is not firsthand proof; only OP personally reported tested send/receive. The bank identity, account-login-vs-2FA transaction, actual first tower, buyer ID/payment country, immigration status and any mainland-China scenario are not established. Conflicts with official U.S.-first activation requirement; not a repeatable endorsed work-around or service-specific bank success rate.",
+      "sourceId": "reddit-tello-pixel9-foreign-registration-1utffrl-20260711",
+      "authorHandle": "CraigInCambodia",
+      "resolution": "claimed-overseas-SMS-operation-first-tower-unverified",
+      "productCohort": "Tello eSIM/plan type NOT specified in original 1utffrl; standalone PAYG-only unverified"
+    },
+    {
+      "id": "evt-tello-pixel9-second-user-us-assisted-activation-1utffrl",
+      "routeId": "tello-us",
+      "type": "independent-overseas-first-activation-requiring-us-helper",
+      "reportedAt": "2026-07-23",
+      "scope": "Different commenter Music_Fan76 initially attempted to activate new Tello eSIM outside U.S.; later used U.S.-based contact for initial attach, replacement eSIM and SMS-over-Wi-Fi",
+      "outcome": "Different author says initial direct outside-U.S. line activation and roaming did not work because Tello needed U.S.-tower registration; contact in the United States first activated the line, and only later replacement eSIM and Wi-Fi SMS worked abroad. Early backup calling remained unavailable. This is a U.S.-assisted first activation followed by overseas replacement, NOT a wholly overseas new-line activation, and no named-bank/app OTP or China-specific result is verified.",
+      "sourceId": "reddit-tello-pixel9-foreign-registration-1utffrl-20260711",
+      "authorHandle": "Music_Fan76",
+      "resolution": "us-assisted-first-registration-then-overseas-use",
+      "productCohort": "Tello eSIM/plan type NOT specified in original 1utffrl; standalone PAYG-only unverified"
+    },
+    {
+      "id": "evt-optus-discounted-annual-sameprovider-port-refund-1sczgck",
+      "routeId": "optus-flex-plus-au-2026",
+      "type": "adjacent-optus-yearly-prepaid-payment-port-refund",
+      "reportedAt": "2026-04-05",
+      "scope": "ONE Reddit OP bought discounted yearly Optus prepaid while holding EXISTING Optus postpaid number; exact current Flex Plus 365-day SKU, payment instrument and country unverified",
+      "outcome": "The OP reports purchasing a discounted annual prepaid SIM while already on Optus postpaid; the website required manual activation to retain the number, and agents gave contradictory statements during about three hours of support. Crucial SAME-AUTHOR EDIT: the buyer refunded the entire purchase instead of completing transfer. This is actual purchase then refund with an unsuccessful SAME-OPERATOR number-migration attempt, not a proven new-number activation failure, overseas first attachment, passport check, paid-offer price, or named-app OTP. No finding that all Optus long-expiry plans are incompatible with porting.",
+      "sourceId": "reddit-optus-yearly-prepaid-samebrand-port-refund-1sczgck-20260405",
+      "resolution": "same-author-purchase-refunded-no-successful-transition",
+      "authorHandle": "Long-Zombie-4411"
+    },
+    {
+      "id": "evt-optus-foreign-passport-identity-match-port-block-1qbghav",
+      "routeId": "optus-flex-plus-au-2026",
+      "type": "adjacent-optus-prepaid-onboarding-identity-port-failure",
+      "reportedAt": "2026-01-13",
+      "scope": "One Reddit original poster attempting to port an EXISTING Vodafone number to Optus with passport ID; specific prepaid/Flex Plus plan not identified; domestic support/store stage, location and nationality not verified",
+      "outcome": "The poster says an Optus identity system associated their passport number with a different name, preventing the Vodafone-to-Optus transfer. Online support reported the same mismatch; a franchise Optus store referred them to a company-owned store. No confirmed cause, security breach, identity fraud, resolution, successful activation, actual plan SKU, overseas-new-number checkout or named-app OTP. Do not retain identity document numbers or infer every foreign passport is rejected. This is an adjacent Optus onboarding friction report, NOT a verified current Flex Plus 365-day product failure.",
+      "sourceId": "reddit-optus-passport-port-identity-mismatch-1qbghav-20260113",
+      "resolution": "unresolved-poster-no-confirmed-completion",
+      "authorHandle": "AskOk2424"
+    },
+    {
+      "id": "evt-tello-chase-initial-application-versus-existing-login-1u9225s",
+      "routeId": "tello-us",
+      "type": "independent-exact-bank-operation-stage-conflict",
+      "scope": "ONE Reddit original discussion: ComfortableDonut1820 vs DrGruve, differing bank verification stage and account history; separate provider T-Mobile Prepaid mentioned without validated T-Mobile tariff/route",
+      "outcome": "OP reports both Tello and T-Mobile Prepaid acquired/activated while abroad without a US tower, and Chase manual FIRST-APPLICATION code missing on BOTH despite unrelated US SMS codes arriving. OP also states they owned Tello line more than a year without port and lack an established Chase account. Different commenter reports Chase ongoing login 2FA success in Australia after owning Tello for over a year and subsequently traveling to the US. Contradictory firsthand stories and different operations are not a common success/failure denominator. Tello published US-first requirement remains controlling for recommendations; initial network attach, customer eligibility, document KYC, payment, exact bank blocking cause, country of original purchase, Chase onboarding completion, and original calendar posting date are unverified. No 2026-10-12 event date invented.",
+      "sourceId": "reddit-tello-chase-initial-app-vs-login-1u9225s",
+      "productCohort": "Tello plan/SKU unspecified; not verified PAYG credit"
+    },
+    {
+      "id": "evt-tello-1p4bspo-jerichoi224-korean-renewal-failure",
+      "routeId": "tello-us",
+      "type": "existing-plan-foreign-card-recurring-payment-failure",
+      "reportedAt": "2025-11-23",
+      "authorHandle": "jerichoi224",
+      "productCohort": "Existing billed Tello plan >1 year, exact plan/SKU unspecified; NOT PAYG-only first purchase",
+      "scope": "OP in expat context, Korean-issued Mastercard with foreign transactions, earlier Tello billing successful, later renewal payment failed",
+      "outcome": "OP says a Korean Mastercard previously worked for more than a year on Tello recurring bills, then one bill failed; a second card could not be added, while a US card was added successfully. The next US-card CHARGE was only pending/unknown, not verified captured; no evidence Tello broadly refuses all foreign cards. Account suspension was an EMAIL WARNING if further payment fails, not a documented actual suspension. Initial account signup method, user citizenship, exact plan, payment-processor cause, China first activation and OTP unknown.",
+      "sourceId": "reddit-tello-korean-card-renewal-1p4bspo-20251123"
+    },
+    {
+      "id": "evt-tello-1p4bspo-objectnotidentified-paypal-accounts",
+      "routeId": "tello-us",
+      "type": "existing-accounts-paypal-payment-report",
+      "authorHandle": "ObjectNotIdentified",
+      "productCohort": "Three existing Tello accounts, plan/SKU and funding card countries unknown",
+      "scope": "ONE different commenter in same original discussion, own three PayPal-linked accounts; no independently confirmed foreign-card checkout",
+      "outcome": "Commenter states three Tello accounts are linked to their PayPal as payment and Tello taxes still apply. Does NOT prove a Korean/foreign bank card can pay via PayPal, that OP resolved failed billing, or that new foreign applicants pass merchant checks. Posted exact day not verified, so no reportedAt.",
+      "sourceId": "reddit-tello-korean-card-renewal-1p4bspo-20251123"
+    },
+    {
+      "id": "evt-tello-1wc8ej8-pilotboiz-korea-new-monthly-payg-addon",
+      "routeId": "tello-us",
+      "type": "monthly-new-line-korea-first-wifi-working-roaming-blocked",
+      "reportedAt": "2026-09-10",
+      "authorHandle": "pilotboiz",
+      "productCohort": "New $5 Tello MONTHLY plan + $3 eSIM fee + approx $2 tax + separate $20 PAYG credit; NOT standalone PAYG-only",
+      "scope": "OP in Korea with reported US-issued card, US billing address, VPN; first activation attempts from Korea; no verified US first tower",
+      "outcome": "OP paid $5 monthly plan, $3 eSIM, some tax and $20 PAYG, while in Korea; enabling international roaming explicitly rejected as line not yet used in US. After stuck activation and E911/Wi-Fi Calling toggles, Tello SMS appeared and a call to a Korean phone succeeded, but iPhone also emitted an activation-failed notification and the carrier international roaming toggle still could not be enabled. OP had NOT yet ported Verizon number, only hoped to do so. OP did NOT report a named-bank/app OTP test, nor carrier-tower roaming first registration. Provider US-first rule is not overturned.",
+      "sourceId": "reddit-tello-korea-foreign-esim-1wc8ej8-20260910"
+    },
+    {
+      "id": "evt-tello-1wc8ej8-reasonablenessdude-wifi-no-payg",
+      "routeId": "tello-us",
+      "type": "outside-us-new-line-wifi-calling-claim",
+      "authorHandle": "ReasonablenessDude",
+      "productCohort": "Another new Tello line, claimed WITHOUT $20 PAYG add-on; plan/SKU and payment unknown",
+      "scope": "Different commenter in same Sept 2026 original discussion, outside-US first eSIM Wi-Fi activation claim",
+      "outcome": "Commenter says they activated a new Tello line outside US in early September 2026 with Wi-Fi, airplane mode and US VPN; they said $20 PAYG was NOT needed and outgoing Wi-Fi call worked, but International Roaming was disabled/unavailable. Independent location/tower, native mobile roaming, buyer payment/KYC and named bank OTP unknown. This is not the OP pilotboiz cohort or an independently sourced second original thread. Comment posting day unverified.",
+      "sourceId": "reddit-tello-korea-foreign-esim-1wc8ej8-20260910"
+    },
+    {
+      "id": "evt-tello-1wc8ej8-imshanejaz-provisioning-refund",
+      "routeId": "tello-us",
+      "type": "esim-provisioning-failure-and-reported-refund",
+      "authorHandle": "imshanejaz",
+      "productCohort": "Tello eSIM copied attempt from OP discussion, exact plan/PAYG payment and location unknown",
+      "scope": "Different same-thread commenter self-report of attempting the steps and refunded unsuccessful service",
+      "outcome": "Commenter initially asks whether to attempt same approach, then reports it did not work, citing SIM not provisioned, and says they received a refund. Payment authorization/captured amount, device, geography and whether PAYG/plan refunded unverified. Not evidence that OP failed, no named-app OTP test, not a third original discussion. Exact comment day unverified.",
+      "sourceId": "reddit-tello-korea-foreign-esim-1wc8ej8-20260910"
+    },
+    {
+      "id": "evt-tello-1wx3k90-stefpix-monthly-auto-fallback-support",
+      "routeId": "tello-us",
+      "type": "monthly-number-loss-and-payment-fallback-user-research",
+      "reportedAt": "2026-10-04",
+      "authorHandle": "stefpix",
+      "productCohort": "Existing Tello secondary number; possible future MONTHLY primary-line port, no actual number loss or PAYG-only",
+      "scope": "OP reviewed current official 12-day monthly nonrenewal rule, sought written support reply on backup cards and PAYG grace; no actual missed-payment disconnection",
+      "outcome": "OP is an existing Tello SECONDARY-line customer considering moving a 20-year T-Mobile number, not someone who actually lost their number. Quotes support email saying Tello does NOT automatically fall back across saved cards, and PAYG credit does not EXTEND the monthly grace clock. Provider Help Center independently says active service may be MONTHLY or unexpired PAYG, so the agent wording is NOT proof that active PAYG never preserves a line. No firsthand autopay failure, user number loss, tested payment fallback, or new-plan checkout.",
+      "sourceId": "reddit-tello-number-expiry-autopay-1wx3k90-20261004"
+    },
+    {
+      "id": "evt-tello-1wx3k90-luckiestcorner-payg-phone-support",
+      "routeId": "tello-us",
+      "type": "monthly-payg-overlap-provider-support-conflict",
+      "authorHandle": "Luckiest_Corner",
+      "productCohort": "Monthly plan expires with PAYG balance possibly still valid; different author relaying phone support, NOT firsthand recovered-number test",
+      "scope": "Different commenter of SAME original discussion reports phone support said unexpired PAYG can maintain active service after monthly expiry; conflicts with OP support wording",
+      "outcome": "Commenter says Tello phone support told them a live unexpired PAYG balance can keep a phone line active after monthly-plan deactivation, but original 90-day credit clock may already have passed. This is a report of agent guidance, not a personally tested missed-payment recovery, verified policy change or second independently originated thread. Official Help Center separately names 12-day monthly grace and 7-day post-PAYG-expiry grace. Do not claim 12+90 days blanket protection. Exact commenter post day unverified.",
+      "sourceId": "reddit-tello-number-expiry-autopay-1wx3k90-20261004"
+    },
+    {
+      "id": "evt-tello-1wx3k90-spacecasesixtytenv2-expired-number-recovery-exception",
+      "routeId": "tello-us",
+      "type": "expired-number-recovery-anecdote-and-outside-us-reactivation-failure",
+      "authorHandle": "SpaceCaseSixtyTenV2",
+      "productCohort": "Tello old expired number later exceptionally reassigned, new eSIM replacement after recovery; previous plan/PAYG cohort unknown",
+      "scope": "Same ORIGINAL Reddit discussion 1wx3k90, third distinct commenter, claims rare post-expiry recovery after about a month followed by overseas eSIM first registration problem and eventual refund; NOT official restoration policy",
+      "outcome": "One commenter claims Tello support brought back their previous number after it had been expired around a MONTH. The same commenter says a subsequent eSIM activation attempt while abroad failed because US network registration was now required, so they eventually cancelled and received a refund. No documentary recovery guarantee, proof exact restoration date, initial source SKU, roaming tower location, refund amount or verified successful new abroad activation. This personal exceptional outcome CONTRADICTS the categorical wording of the current provider no-recovery warning but must NOT be recommended as a repeatable rescue method; timing/date unverified.",
+      "sourceId": "reddit-tello-number-expiry-autopay-1wx3k90-20261004"
+    },
+    {
+      "id": "evt-ultra-paygo-1se5ggi-newbieyang-hk-buyer-invalid-act",
+      "routeId": "ultra-mobile-paygo-3-2026",
+      "type": "bought-physical-sim-overseas-invalid-activation-code",
+      "reportedAt": "2026-04-06",
+      "authorHandle": "Newbie_yang",
+      "productCohort": "Ultra Mobile $3 PayGo physical SIM, purchased from Yoho Hong Kong reseller; exact SIM channel entitlement unverified",
+      "scope": "One 2026 Hong Kong retail receipt dated March 30, actual attempted new physical PayGo activation April 1-6 outside United States; not a named bank OTP test",
+      "outcome": "Original buyer reports they purchased an Ultra Mobile PayGo PHYSICAL SIM in Hong Kong (receipt March 30), then from outside the US entered an ACT code that the online system rejected as invalid. Repeated live chats referred them to a verification phone line; they called for >16 minutes with no answer and sent a photo/receipt to support. No verified activation resolution or refund. Commenters hypothesize missing retail till/card activation or expired ACT, but neither is diagnosed, and no evidence carrier-ID/passport approval or first cellular-tower abroad. Do NOT turn third-party payment/retail registration theories into established cause.",
+      "sourceId": "reddit-ultra-paygo-hk-invalid-act-1se5ggi-20260406"
+    },
+    {
+      "id": "evt-ultra-paygo-1v0rabd-wolandor-wallet-access-loss",
+      "routeId": "ultra-mobile-paygo-3-2026",
+      "type": "post-topup-no-service-account-login-verification-department",
+      "reportedAt": "2026-07-19",
+      "authorHandle": "Wolandor",
+      "productCohort": "Existing Ultra Mobile $3 PayGo PHYSICAL SIM and Pixel 9; new activation succeeded initially, loaded PayGo Wallet $45 February 28; location outside US at least during support, first tower unverified",
+      "scope": "Same OP: initial SIM bought/activated, Feb 28 funded PayGo balance, device SIM OFF early March–early July; July 5 line dead, account web/app login inaccessible, verification department calls unanswered",
+      "outcome": "Original poster bought Ultra PayGo physical SIM and says initial activation was successful. They added $45 wallet February 28. After leaving the SIM off for around four months, July 5 reinsertion showed no network service, both website and app login were inaccessible, and reactivation produced Invalid ACT/ICCID. Repeated support referrals to Verification Department failed; seller thought the number MIGHT be canceled but could not verify it. $45 balance expiry, actual cancellation, fraud/roaming cause and refund are NOT established. OP noticed historical four 443 voicemail calls in phone history and explicitly did not know if related; do not claim causality. They say this number had NOT been bound to any bank/app login. Other commenter reports own wallet deductions, but distinct person, not proof same cause.",
+      "sourceId": "reddit-ultra-paygo-wallet-service-loss-1v0rabd-20260719"
+    },
+    {
+      "id": "evt-ultra-paygo-1h8yft0-creativelet-overseas-port-and-wallet-mixed",
+      "routeId": "ultra-mobile-paygo-3-2026",
+      "type": "historical-overseas-port-wifi-success-and-wallet-topup-dispute",
+      "reportedAt": "2024-12-07",
+      "authorHandle": "CreativeLet",
+      "productCohort": "Ultra Mobile $3 PayGo, two accounts, Mint/AT&T port-ins NOT new-number foreign first activation, historical 2024",
+      "scope": "Single 2024 OP reports working WiFi Calling and overseas SIM setup of ported existing numbers, while app/web login and initial wallet topup posting disputed",
+      "outcome": "Owner of TWO Ultra Mobile $3/month PayGo accounts reports overseas SIM activation via Wi-Fi for previously held Mint/AT&T PORTED numbers (NOT new US number first-cellular-tower registration). Wi-Fi calling works for this person; iPhone behaves differently from their Pixel 7a for outgoing Wi-Fi-under-data calls. The SAME author reports early top-up payments absent from wallet ledger and account login problems, later claiming a manager helped resolve a missing-top-up case; whether payment reversal/bank card issuer is unknown. They believed in 2024 that PayGo did not support cellular international roaming, which CONFLICTS with current 2026 provider PayGo official roaming support and rates; preserve as dated author belief, NOT current official policy. No exact foreign location, buyer passport/KYC or named app OTP. One OP/one original thread/one mixed author lifecycle, not two independent success and failure confirmations.",
+      "sourceId": "reddit-ultra-paygo-old-overseas-port-wallet-1h8yft0-20241207"
+    },
+    {
+      "id": "evt-lebara-1rtwkoj-substantialheat-new-esim-outside-uk-wifi-stalled",
+      "routeId": "lebara-uk-direct-esim-china",
+      "type": "foreign-first-esim-setup-wifi-calling-not-usable",
+      "reportedAt": "2026-03-14",
+      "authorHandle": "Substantial_Heat1254",
+      "productCohort": "Lebara UK eSIM, new/first installation sought outside United Kingdom; exact PAYG/monthly tariff, buyer payment/ID and physical foreign location unknown",
+      "scope": "Original author asked to activate a Lebara UK eSIM while already outside UK, then answered in the same original thread that Wi-Fi Calling was not working. No successful initial registration/final permanent failure established. Do not infer mainland-China first activation from unspecified foreign country.",
+      "outcome": "Original author reports they have a Lebara UK eSIM while outside the UK and cannot use Wi-Fi Calling during their activation attempt. They ask about obtaining first home-network contact and later repeat Wi-Fi Calling NOT working; final provider registration and any carrier/signal/OTP outcome remain UNVERIFIED. The same author says THEY WERE TOLD that seven days of UK use might be needed for roaming, but no first-party policy or tested seven-day lockout is shown. Other people suggest remote workarounds or make UK-first claims; not evidence that those succeeded for this buyer. Do NOT infer a passport requirement, physical SIM, specific monthly tariff, China country, refund or named Telegram/WhatsApp OTP from the thread.",
+      "sourceId": "reddit-lebara-uk-new-esim-outside-uk-wifi-unusable-1rtwkoj-20260314"
+    },
+    {
+      "id": "evt-giffgaff-1tc9fy9-ny10990-plan-uk-paris",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "initial-paid-esim-plan-purchase-uk-first-roaming-success",
+      "reportedAt": "2026-05-13",
+      "authorHandle": "NY10990",
+      "productCohort": "New Giffgaff eSIM one-month paid PLAN, author reports £10 / UK 15GB + 5GB Europe allowance; not credit-only PAYG SIM activation",
+      "scope": "One author original trip with multiple travelers; bought online pre-Heathrow then first actual cellular use reported after landing in UK, later Paris travel; no service-specific OTP",
+      "outcome": "Original buyer reports online purchase of an initial £10 one-month eSIM plan before Heathrow arrival, UK city coverage and roaming in Paris, with no Wi-Fi Calling. This is a paid-plan/UK-first successful-use case and does NOT establish £10 as universal checkout price, supported Wi-Fi Calling abroad, foreign-issued payment eligibility, China-first cellular attach, bank/Telegram/WhatsApp code receipt, identity/passport clearance or long-term keep.",
+      "sourceId": "reddit-giffgaff-1tc9fy9-uk-paris-plan-20260513"
+    },
+    {
+      "id": "evt-giffgaff-1qjxpv0-imaginaryad-existing-sim-conversion-failure",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "physical-to-esim-transfer-no-signal-not-installed",
+      "reportedAt": "2026-01-22",
+      "authorHandle": "Imaginary-Ad-1456",
+      "productCohort": "Existing £10 Giffgaff plan on PHYSICAL SIM moved to eSIM; this is not first-time new eSIM purchase",
+      "scope": "One OP 24 hours after physical-to-eSIM transfer: no eSIM Install option shown, no signal; UK vs foreign physical location not confirmed",
+      "outcome": "OP reports after migrating an existing giffgaff physical SIM, 24 hours later eSIM not installed/visible and Giffgaff number had no signal. They later confirm no Install eSIM button and expected logged-in username. Neither successful eSIM installation, definite provisioning root cause, permanent outage, bank OTP result, UK location nor exact post-report restoration established.",
+      "sourceId": "reddit-giffgaff-1qjxpv0-physical-esim-contrast-20260122"
+    },
+    {
+      "id": "evt-giffgaff-1qjxpv0-jontravel-abroad-esim-conversion-success",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "existing-number-physical-to-esim-switch-overseas-success",
+      "reportedAt": "2026-01-22",
+      "authorHandle": "JonTravel",
+      "productCohort": "EXISTING UK Giffgaff number converted from physical SIM to eSIM, outside the UK; not new-number initial activation",
+      "scope": "Different author same original Reddit discussion 1qjxpv0; reports own actual overseas existing-number conversion functioning",
+      "outcome": "Commenter reports personally converting an already working physical Giffgaff SIM into eSIM while outside UK and says it is working. This is opposite to OP failed conversion within the SAME original thread, not independent source-count growth or proof of new eSIM new-number activation, initial overseas cellular attach, universal roaming, purchaser card/KYC or any named service OTP.",
+      "sourceId": "reddit-giffgaff-1qjxpv0-physical-esim-contrast-20260122"
+    },
+    {
+      "id": "evt-giffgaff-1onzflv-graspmore-abroad-esim-mfa-lockout",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "existing-esim-overseas-phone-move-sms-mfa-lockout",
+      "reportedAt": "2025-11-04",
+      "authorHandle": "graspmore",
+      "productCohort": "Existing Giffgaff eSIM/UK mobile number, overseas move to another phone; old working line unavailable for receiving verification SMS",
+      "scope": "One original OP overseas phone move, unable to receive required eSIM-transfer SMS code for >one week; banking app/WhatsApp access affected, no app SMS registration test",
+      "outcome": "Existing eSIM owner abroad reports prior phone swaps using email 2FA but newer attempt had SMS-only MFA, and the old number could not receive texts. They lost access to the mobile number for over a week, affecting banking apps and WhatsApp account access. This is carrier eSIM re-provision MFA failure, NOT bank/WhatsApp verification-SMS filtering, not new foreign-first activation and not proof permanent loss. Support explanation reported by OP; provider deleted-eSIM policy separately describes SMS-only recovery constraint.",
+      "sourceId": "reddit-giffgaff-1onzflv-esim-mfa-overseas-20251104"
+    },
+    {
+      "id": "evt-giffgaff-1onzflv-knownisopod-physical-recovery",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "existing-esim-overseas-replacement-physical-sim-recovery",
+      "reportedAt": "2025-11-05",
+      "authorHandle": "Known-Isopod-7240",
+      "productCohort": "Existing Giffgaff eSIM UK number, formerly swapped while overseas; physical SIM used for recovery on later attempted overseas phone upgrade",
+      "scope": "Different commenter, same original 1onzflv; own failure of new eSIM email-MFA followed by obtaining replacement physical SIM and restoring UK number, geography/cost not fully documented",
+      "outcome": "Another user reports their formerly working overseas eSIM phone swaps stopped when email validation was no longer available. They obtained a physical replacement SIM and recovered service on their existing UK number. Do not interpret this as proof physical SIM delivery or eSIM recovery is available for every overseas buyer, that the specific phone activation completed abroad, or that WhatsApp/bank OTP registration works.",
+      "sourceId": "reddit-giffgaff-1onzflv-esim-mfa-overseas-20251104"
     }
   ],
   "snapshots": [
@@ -26791,6 +27317,154 @@
         ],
         "marketName": "Global"
       }
+    },
+    {
+      "id": "snap-optus-flex-plus-au-2026-current-profile-20261012",
+      "routeId": "optus-flex-plus-au-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-12",
+      "sourceDataset": "optus-official-current-flexplus-review-2026-10-12",
+      "data": {
+        "id": "optus-flex-plus-au-2026",
+        "brandId": "optus-au-direct",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "2026-10-12 Optus public online listing: Flex Plus 365-day starter/eSIM A$395 (350GB on activation and next two recharges, then 240GB); 186-day A$200. Prior A$199 starter promotion ended 2026-09-29 and A$350 standard 365-day rate ended 2026-09-29. This is a provider-listed price, NOT a completed checkout or a foreign-buyer eligibility test.",
+        "landedCost": {
+          "currency": "AUD",
+          "providerOrCommunityPrice": 395,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 395,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "2026-10-12-provider-listed-365-day-esim-quote-unverified-checkout"
+        },
+        "keep": {
+          "currency": "AUD",
+          "observedActionCost": 395,
+          "yearCostOriginal": 395,
+          "yearCostCny": null,
+          "action": "Current listed Flex Plus 365-day recharge is A$395, checked 2026-10-12; the 186-day alternative lists A$200. Previous A$350/365d and A$199 new-service promotion are historical September cohorts. Existing prepaid packs purchased before the increase may retain face-value activation price and a 90-day recharge discount only if activated before 2026-12-29, per Optus restrictions. NOT a general new-buyer A$199/A$350 option.",
+          "intervalDays": 365,
+          "state": "provider-current-listing-2026-10-12-purchased-old-packs-conditional"
+        },
+        "chinaActivation": "Optus offers eSIM and physical SIM, but activation requires a valid form of ID; remote/China-first completion is not established here.",
+        "kyc": "A valid form of ID is required for Optus prepaid activation.",
+        "payment": "Credit or debit card is required for online activation; broader foreign-card acceptance is not reconciled.",
+        "wifiCalling": "supported on compatible Optus services/devices; route-specific overseas behavior unverified",
+        "roamingSms": "International roaming behavior and incoming-SMS/OTP reliability are not reconciled for this route.",
+        "refund": "not reconciled",
+        "trend": "price-increase-effective-2026-09-30",
+        "guideEligible": false,
+        "holdReason": "New A$395/365d standard tariff is confirmed by provider listing, but payment method acceptance for non-Australian buyers, acceptable foreign ID, mainland-first activation and incoming overseas SMS/OTP remain unverified. Keep HOLD; older physical starter pack grandfathering is conditional and not a new-buyer price.",
+        "lastVerifiedAt": "2026-10-12",
+        "acquireUrl": "https://optus.com.au/prepaidplans",
+        "tariffSummary": "Checked 2026-10-12: A$395/365d Flex Plus (350GB for first 3 recharges, then 240GB) or A$200/186d. Prior A$199 introductory price and A$350 annual were historical; limited pre-change pack grace may apply.",
+        "sourceIds": [
+          "optus-prepaidplans-20260929",
+          "optus-activate-20260929",
+          "optus-longexpiry-20260818",
+          "optus-flex-plus-au-price-20261012"
+        ]
+      }
+    },
+    {
+      "id": "snap-tello-us-monthly-expiry-grace-20261012",
+      "routeId": "tello-us",
+      "kind": "number-expiry-grace",
+      "checkedAt": "2026-10-12",
+      "sourceId": "official-tello-number-expiry-20261012",
+      "data": {
+        "cohort": "Monthly Tello service at nonrenewal, without independently active other Tello service",
+        "graceDays": 12,
+        "safeKeepAction": "Renew or port out BEFORE deadline; no guaranteed recovery after expiration",
+        "summary": "Provider Help Center says monthly nonrenewal triggers a 12-day number expiration window. A separate unexpired PAYG balance is an active-service condition; saved backup cards are NOT confirmed to be automatically tried. Number recovery is not promised after final expiry. Community support agents gave conflicting interpretations of PAYG overlap. This is NOT a 12-day PAYG-only rule."
+      }
+    },
+    {
+      "id": "snap-tello-paygo-expiry-grace-20261012",
+      "routeId": "tello-paygo-credit-2026",
+      "kind": "number-expiry-grace",
+      "checkedAt": "2026-10-12",
+      "sourceId": "official-tello-number-expiry-20261012",
+      "data": {
+        "cohort": "Standalone PAYG with no monthly plan",
+        "creditLifetime": "3 months from last PAYG purchase",
+        "graceDays": 7,
+        "safeKeepAction": "Refresh PAYG before 90-day interval ends; 7-day grace is not a regular maintenance plan",
+        "summary": "Provider Help Center says standalone PAYG credit expires three months after last PAYG purchase, followed by a separate 7-day phone-number grace window. This is a last-chance rescue window, NOT a recommended 97-day routine refill interval. Monthly nonrenewal has a DIFFERENT 12-day grace. Restoration after final number expiry is not guaranteed."
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-current-profile-20261013",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-13",
+      "sourceDataset": "provider-esim-onboarding-reconciliation-2026-10-13",
+      "data": {
+        "id": "giffgaff-uk-direct-esim-payg",
+        "brandId": "giffgaff-uk",
+        "publishState": "candidate-with-prominent-continuity-warning",
+        "numberType": "real-mobile",
+        "simType": "eSIM-or-physical",
+        "acquisitionSummary": "New eSIM activation requires an initial paid plan, not credit-only PAYG activation. Physical-SIM credit activation is a separate checkout cohort. Exact new-eSIM checkout total and foreign-card/address eligibility are unverified.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "new-esim-initial-plan-price-unknown"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.3,
+          "yearCostOriginal": 0.6,
+          "yearCostCny": 5.36,
+          "action": "Create a balance-changing activity within 180 days; SMS or small data usage are community-reproduced examples.",
+          "intervalDays": 180,
+          "state": "community-reproduced"
+        },
+        "chinaActivation": "eSIM download or isolated SMS anecdotes do not establish a compliant new China-first purchase, initial cellular activation, or specific-app OTP workflow.",
+        "kyc": "not fully normalized in this packet",
+        "payment": "A new eSIM requires purchasing an initial plan; credit-only PAYG activation is not offered for new eSIMs. Foreign-issued card acceptance, postcode/address eligibility and exact checkout total remain unverified.",
+        "wifiCalling": "Wi-Fi Calling is supported only within the UK where eligible; it is NOT supported abroad. Cellular roaming SMS is separate and service/app dependent.",
+        "roamingSms": "inbound verification SMS widely reported; service-specific behavior varies",
+        "refund": "mixed; multiple eventual successes after initial denial/delay observed Aug-Sep 2026",
+        "trend": "conflicting",
+        "guideEligible": true,
+        "lastVerifiedAt": "2026-10-13",
+        "acquireUrl": "https://www.giffgaff.com/",
+        "tariffSummary": "New eSIM: initial plan purchase required, exact buyer-specific price unverified. Physical SIM: separate credit/PAYG option subject to eligibility. This is not a £10 credit-only eSIM activation route.",
+        "sourceIds": [
+          "linuxdo-giffgaff-2244241",
+          "linuxdo-giffgaff-2244241-p2",
+          "linuxdo-giffgaff-2310901",
+          "linuxdo-giffgaff-2322268",
+          "linuxdo-giffgaff-1615582",
+          "linuxdo-giffgaff-2678340",
+          "linuxdo-giffgaff-2773030",
+          "linuxdo-giffgaff-2903412",
+          "giffgaff-official-credit-2026-09-23",
+          "giffgaff-official-new-esim-initial-plan-20261013",
+          "giffgaff-official-deleted-esim-recovery-20261013",
+          "src-7bc565362f29"
+        ],
+        "guideSteps": [
+          "For a new eSIM, check current plan options and pay for an initial plan; do not select a PAYG-credit-only activation path intended for physical SIMs.",
+          "Confirm the actual eligible checkout price, card country and any required address before purchase. Do not infer offshore activation from downloading an eSIM profile.",
+          "Once the number is working, test the exact verification service; roaming SMS and Wi-Fi Calling are different, and Wi-Fi Calling is not supported outside the UK.",
+          "Before deleting or swapping an existing eSIM, verify SMS-MFA access and the provider recovery path; if the old eSIM is lost, physical-SIM swap may be necessary and offshore access is not assured.",
+          "Create a qualifying activity before the 180-day inactivity limit, with a recovery/port-out plan given contradictory overseas continuity incidents."
+        ],
+        "onboardingSourceUrl": "https://help.giffgaff.com/en/articles/240912-getting-started-on-giffgaff"
+      }
     }
   ],
   "aliases": [
@@ -26853,10 +27527,47 @@
         "claude code"
       ],
       "category": "ai-account"
+    },
+    {
+      "id": "american-express",
+      "name": "American Express",
+      "aliases": [
+        "american express",
+        "amex"
+      ],
+      "category": "financial-account"
+    },
+    {
+      "id": "chase",
+      "name": "Chase",
+      "aliases": [
+        "chase",
+        "chase bank"
+      ],
+      "category": "financial-account"
     }
   ],
   "numberRanges": [],
   "serviceAggregates": [
+    {
+      "id": "svcagg-1pmobile-uk-2026-american-express-sms-verification",
+      "routeId": "1pmobile-uk-2026",
+      "serviceId": "american-express",
+      "operation": "sms-verification",
+      "numberRangeId": null,
+      "grade": "C",
+      "label": "One negative/mixed report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "independentSourceCount": 1,
+      "successCount": 0,
+      "failureCount": 1,
+      "mixedCount": 0,
+      "percentageEligible": false,
+      "successRatePct": null,
+      "firstObservedAt": "2026-05-17",
+      "lastObservedAt": "2026-05-17"
+    },
     {
       "id": "svcagg-clubsim-sms-pack-6hkd-2026-telegram-registration-verification",
       "routeId": "clubsim-sms-pack-6hkd-2026",
@@ -26998,9 +27709,9 @@
       "numberRangeId": null,
       "grade": "C",
       "label": "Mixed / weak",
-      "confidence": "low",
+      "confidence": "very-low",
       "sampleSize": 2,
-      "independentSourceCount": 2,
+      "independentSourceCount": 1,
       "successCount": 1,
       "failureCount": 0,
       "mixedCount": 1,
@@ -27084,6 +27795,44 @@
       "successRatePct": null,
       "firstObservedAt": "2026-08-15",
       "lastObservedAt": "2026-08-15"
+    },
+    {
+      "id": "svcagg-tello-us-chase-new-application-live-agent-sms-verification",
+      "routeId": "tello-us",
+      "serviceId": "chase",
+      "operation": "new-application-live-agent-sms-verification",
+      "numberRangeId": null,
+      "grade": "C",
+      "label": "One negative/mixed report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "independentSourceCount": 1,
+      "successCount": 0,
+      "failureCount": 1,
+      "mixedCount": 0,
+      "percentageEligible": false,
+      "successRatePct": null,
+      "firstObservedAt": null,
+      "lastObservedAt": null
+    },
+    {
+      "id": "svcagg-tello-us-chase-existing-account-login-2fa",
+      "routeId": "tello-us",
+      "serviceId": "chase",
+      "operation": "existing-account-login-2fa",
+      "numberRangeId": null,
+      "grade": "insufficient",
+      "label": "One positive report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "independentSourceCount": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "percentageEligible": false,
+      "successRatePct": null,
+      "firstObservedAt": null,
+      "lastObservedAt": null
     },
     {
       "id": "svcagg-ultra-mobile-paygo-3-2026-telegram-registration-verification",
@@ -27660,11 +28409,11 @@
     },
     {
       "routeId": "giffgaff-uk-direct-esim-payg",
-      "checkedAt": "2026-09-15",
+      "checkedAt": "2026-10-13",
       "metricState": "current-profile",
       "acquisitionCurrency": "GBP",
-      "acquisitionCostOriginal": 10,
-      "acquisitionCostCny": 89.3,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
       "keepCurrency": "GBP",
       "keepYearCostOriginal": 0.6,
       "keepYearCostCny": 5.36,
@@ -28248,13 +28997,13 @@
     },
     {
       "routeId": "optus-flex-plus-au-2026",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-12",
       "metricState": "current-profile",
       "acquisitionCurrency": "AUD",
-      "acquisitionCostOriginal": 199,
+      "acquisitionCostOriginal": 395,
       "acquisitionCostCny": null,
       "keepCurrency": "AUD",
-      "keepYearCostOriginal": 350,
+      "keepYearCostOriginal": 395,
       "keepYearCostCny": null,
       "keepIntervalDays": 365
     },

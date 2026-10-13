@@ -481,5 +481,47 @@
       "5317"
     ],
     "reviewNote": "Author reports their 5317 eSIM.gg (乌龟卡) receives Codex and similar verification codes. Not proof of signup completion, buyer eligibility, KYC, location, first activation, or all 5317 lines. Later this author reports unspecified eSIM numbers rejected by Discord; do NOT infer the specific provider/prefix or map that to an eSIM.gg Discord failure."
+  },
+  {
+    "id": "obs-1pmobile-1sxe5k1-jackoboy9-amex-20260517",
+    "routeId": "1pmobile-uk-2026",
+    "service": "American Express",
+    "operation": "sms-verification",
+    "outcome": "failure",
+    "reportedAt": "2026-05-17",
+    "geography": "unspecified",
+    "sourceId": "reddit-1pmobile-incoming-otp-1sxe5k1-20260427",
+    "dedupeKey": "1pmobile-1sxe5k1-jackoboy9-amex-specific-sms",
+    "authorHandle": "jackoboy9",
+    "prefixBands": [],
+    "reviewNote": "One distinct commenter says Amex verification texts stopped the prior week while OTHER ordinary texts and other verification codes continued to work; voice calls worked. The commenter wondered if this was an American Express-specific issue. Not a global inbound-SMS failure, not proof that 1pMobile blocks Amex, and no recovery date, country, new purchase, identity/first activation or full bank-login outcome established."
+  },
+  {
+    "id": "obs-tello-chase-1u9225s-comfortabledonut-first-application",
+    "routeId": "tello-us",
+    "service": "Chase",
+    "operation": "new-application-live-agent-sms-verification",
+    "outcome": "failure",
+    "geography": "outside-US-country-unspecified",
+    "sourceId": "reddit-tello-chase-initial-app-vs-login-1u9225s",
+    "dedupeKey": "tello-1u9225s-ComfortableDonut1820-Chase-first-application",
+    "authorHandle": "ComfortableDonut1820",
+    "prefixBands": [],
+    "reviewNote": "Same original poster reports a Chase FIRST application/manual-agent phone verification SMS did not arrive on a Tello eSIM while outside the US. They also report T-Mobile Prepaid failed that same Chase step, but other providers’ automated texts/OTPs worked on both lines. OP says Tello number owned for more than one year, never ported, and Chase account/online phone registration NOT yet established. This is NOT a new Tello purchase or all-bank-SMS failure; no cause attribution, first US network attachment proof, actual Chase account approval, exact foreign country, payment/KYC or verified report-day. Unknown date deliberately omitted. Product cohort: Tello account/plan NOT specified, therefore grouped under generic unreconciled Tello route, NOT PAYG-credit SKU.",
+    "productCohort": "Tello eSIM account, purchased plan/SKU unspecified; PAYG-only not established"
+  },
+  {
+    "id": "obs-tello-chase-1u9225s-drgruve-existing-login",
+    "routeId": "tello-us",
+    "service": "Chase",
+    "operation": "existing-account-login-2fa",
+    "outcome": "success",
+    "geography": "Australia",
+    "sourceId": "reddit-tello-chase-initial-app-vs-login-1u9225s",
+    "dedupeKey": "tello-1u9225s-DrGruve-Chase-existing-login",
+    "authorHandle": "DrGruve",
+    "prefixBands": [],
+    "reviewNote": "Separate commenter reports their Tello eSIM originally activated in Australia over a year earlier, then US visits afterward; claims regular Chase (also Bank of America) established-account LOGIN 2FA SMS received from Australia, including a recent login. This is a DIFFERENT customer and operation from the first applicant who failed, NOT independent original-thread confirmation or current compliant new-line foreign activation. Date exact/first tower not verified. One original discussion shared with opposite case; no service-wide success percentage. Product cohort: Tello account/plan NOT specified, therefore grouped under generic unreconciled Tello route, NOT PAYG-credit SKU.",
+    "productCohort": "Tello eSIM account, purchased plan/SKU unspecified; PAYG-only not established"
   }
 ]
