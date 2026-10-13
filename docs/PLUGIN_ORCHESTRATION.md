@@ -1,99 +1,144 @@
 # Plugin Orchestration Workflow
 
-Last updated: 2026-09-22
+Last updated: 2026-09-27
 
-This document defines how ChatGPT plugins/connectors are used around `aineedhelpfromotherai.com` without creating competing sources of truth or scope creep.
+This document defines durable rules for using ChatGPT plugins/connectors around `aineedhelpfromotherai.com`.
 
 ## Core rule
 
-Plugins are specialized workers, not independent roadmaps.
+Plugins are specialized tools, not project fact sources, roadmaps, or product managers.
 
-**GitHub main + verified production state remain final truth.** A plugin result can inform a decision, but accepted project state, blockers, next steps and durable conclusions must be recorded back into the appropriate GitHub fact source in the same work round.
+**GitHub `main` + verified production state remain authoritative.** Plugin results can supply live data, execute authorized actions, or reduce manual work, but accepted conclusions, blockers, and durable project state must be recorded in the appropriate GitHub fact/task source.
 
-Do not adopt a plugin merely because it exists. A plugin must reduce manual work, improve evidence quality, unlock a missing capability, or replace maintenance/infrastructure cost.
+Do not install or use a plugin merely because it exists. A plugin must materially improve evidence quality, reduce manual work, unlock a missing capability, or lower maintenance cost.
 
-## Bootstrap and source-of-truth roles
+## Source precedence
 
-- **Notion Skill** — role-entry/bootstrap instructions only. It should make a new session enter the correct operating mode quickly, then require reading GitHub main in the mandated order.
-- **Google Docs Daily Project Journal** — human-readable chronological execution diary. Append one dated entry per project workday with the task checklist, actual completed work, verification, blockers/holds and next trigger. It is not a roadmap, queue or source of truth; GitHub `main` plus verified production wins on conflict.
-- **GitHub** — canonical code, `PROJECT_CONTEXT.md`, `MASTER_PLAN.md`, operating workflow, task-specific ledgers, issues, PRs and release history.
-- **Mem** — research notebook / signal inbox for rough ideas, competitor notes, forum findings, screenshots and provisional synthesis. Mem is not a project-state source. Promote only validated conclusions into GitHub.
-- **Linear** — optional execution queue for already-approved work. It may mirror actionable tasks from the GitHub plan, but must not become a second roadmap. GitHub wins on conflict.
+1. GitHub `main` canonical project facts/plans.
+2. Verified production/runtime state.
+3. First-party connected data for the exact question.
+4. Specialized external datasets/research tools.
+5. General web/community evidence.
 
-## Measurement and discovery roles
+A plugin never overrides a higher-precedence source merely because its output is newer or more convenient.
 
-- **Windsor.ai Search Console connector** — current preferred in-chat path for first-party Google Search Console Search Analytics. It was verified on 2026-09-22 against `sc-domain:aineedhelpfromotherai.com` for date/page/query/clicks/impressions/CTR/position reads. Treat Windsor as an access bridge, not a source of truth; its current account plan is trial/not paid, so availability or quota failure is a provider/access blocker rather than a site-data conclusion.
-- **Google Search Console official API/export** — durable fallback for first-party search data if Windsor becomes quota/auth limited. Prefer official data over third-party keyword estimates. Do not create throwaway accounts to extend trials.
-- **GSC Wizard — deprecated for this project.** Its current free/trial quota is exhausted and it is no longer the preferred measurement path. Historical GSC Wizard evidence remains valid for the dates it recorded, but do not depend on new GSC Wizard calls or upgrade billing without explicit authorization.
-- **SE Ranking / Ahrefs / Semrush / Ubersuggest** — external keyword, SERP and competitor estimates. Use whichever current account/quota can answer the question. Never invent data when a provider is blocked and never upgrade billing without explicit approval.
-- **Exa / Tavily / normal web search** — external discovery, source finding, competitor research and AI-retrieval tests. Provider quota/auth/cache failures must be recorded as provider blockers, not site-discovery failures.
-- **Firecrawl, if connected and usable within current/free quota** — bounded competitor/content extraction or page-change monitoring when it replaces manual browsing or custom crawler work. Do not duplicate an existing watcher or crawl broadly without a concrete evidence gap.
+## Dynamic state does not belong here
 
-## Distribution and communication roles
+Do not store temporary provider/account state in this durable workflow, including:
 
-- **Metricool** — social publishing and social analytics for connected accounts. Keep social/referral traffic separate from Google organic results.
-- **Gmail** — outreach, replies and authority follow-up when `docs/AUTHORITY_AND_AI_DISCOVERY.md` authorizes the action. Material outcomes must be recorded back into that ledger.
-- **Google Drive / Docs** — working artifacts, the daily chronological project journal, and human-readable research when useful. They do not replace GitHub fact sources. Notion may still be read for historical/bootstrap context when available, but it is no longer the writable daily journal.
+- current trial/subscription status;
+- remaining quota/credits;
+- transient auth failures;
+- current connected-account inventory;
+- current provider outages;
+- one-off API errors.
+
+Record those in the current task-specific GitHub fact source when they materially affect execution. Re-check live availability before depending on any provider.
+
+## Role map
+
+### Project control and release
+
+- **GitHub** — code, canonical facts, plans, task ledgers, PRs, CI and release history.
+- **Vercel** — deployment state, preview/production verification, build/runtime logs and hosting diagnostics.
+- **Google Drive / Docs** — human-readable daily journal or working artifacts only; never a competing roadmap.
+- **Mem / Notion / Linear / task managers** — optional working memory or execution aids only; they never override GitHub.
+
+### Search and traffic measurement
+
+- **Google Search Console data** — primary source for Google organic impressions, clicks, CTR, query/page visibility and average position.
+- Use the strongest currently connected read path for Search Console; a connector is an access bridge, not the data authority.
+- Prefer official/first-party Search Console data over third-party keyword estimates when measuring this site.
+- **Google Analytics 4** — primary source for actual site sessions/users, channels, landing pages, engagement and site events when the production tag and a readable connector are available.
+- Keep Google organic, direct, referral/social, AI referral and other channels separate.
+- Never equate `0 GSC clicks` with `0 total site visitors`.
+
+### SEO and competitor research
+
+- **SE Ranking / Semrush / Ahrefs / Ubersuggest** — keyword, SERP, backlink and competitor estimates when the connected account can answer the exact question.
+- **Firecrawl** — bounded extraction/change monitoring when it replaces manual work and does not duplicate an existing watcher.
+- **Exa / Tavily / normal web search** — discovery, source finding, competitor research and AI-native retrieval tests.
+
+Third-party SEO numbers are estimates. Do not invent missing volume/CPC/difficulty when providers are blocked.
+
+### Distribution and communication
+
+- **Metricool** — social publishing/analytics when authorized; keep social/referral performance separate from organic search.
+- **Gmail** — outreach and follow-up only when the authority/outreach ledger authorizes it.
 
 ## Standard orchestration loop
 
-For any non-trivial project task, use the smallest useful chain:
+For a non-trivial project task:
 
-1. **Bootstrap** — load the Notion Project Operating Skill if useful, then read GitHub main in the mandatory order: `AGENTS.md` → `PROJECT_CONTEXT.md` checkpoint → `docs/MASTER_PLAN.md` → `docs/OPERATING_WORKFLOW.md`.
-2. **Route** — read the task-specific GitHub document required by the current job.
-3. **Observe** — select the strongest first-party or specialized plugin for the question.
-4. **Research** — add only the minimum external tools needed to close a specific evidence gap.
-5. **Synthesize** — keep tentative findings in chat/Mem/working notes and clearly separate evidence from interpretation.
-6. **Decide** — apply the current GitHub plan's gate, scope lock and stop criteria. Plugin availability does not create new work by itself.
-7. **Execute** — use the GitHub branch/PR workflow for project changes; use action plugins only when the user/project rules authorize the action.
-8. **Record** — write accepted result, blocker, next step and stop/narrow condition into the correct GitHub fact source, task ledger or issue in the same work round.
-9. **Journal** — append the day's actual checklist/results/verification/blockers/next trigger to the Google Docs Daily Project Journal. Keep it concise and chronological; never let it become a competing state database.
+1. Read the required GitHub startup chain.
+2. Read the relevant task-specific methodology/ledger.
+3. Choose the smallest plugin/tool chain that can answer the question.
+4. Prefer first-party data for site performance and provider-controlled facts.
+5. Add external research only to close a specific evidence gap.
+6. Distinguish raw evidence, interpretation and accepted project fact.
+7. Execute only authorized/reversible actions.
+8. Persist material conclusions/blockers to the correct GitHub fact source.
+9. Verify user-visible or production-affecting changes independently.
 
-## Cost and quota guard
+## Measurement routing
 
-A plugin being installable in ChatGPT does **not** mean its underlying service, API, data tier or action quota is free or unlimited.
+When the question is `Is traffic growing?`:
 
-Before adopting a plugin into the regular workflow:
+- Search Console → organic impressions, clicks, CTR, positions, queries/pages.
+- GA4 → actual sessions/users, channel mix, landing pages, engagement and events.
+- Social connector → social reach/referral activity.
+- AI-referral capable analytics → identifiable AI assistant referrals.
 
-- test the exact required action under the current connected account;
-- note whether quota/auth/billing blocks it;
-- prefer already-connected tools with usable current capacity;
-- do not buy, upgrade or change billing without explicit user approval;
-- do not rotate throwaway accounts merely to extend a trial or bypass a provider's quota;
-- do not make a production dependency on a temporary free tier unless there is a migration/disable path.
+Do not combine these into one undifferentiated traffic number.
+
+When the question is `Why are impressions not becoming visits?`:
+
+1. inspect query/page/position in Search Console;
+2. inspect title/meta/first-screen intent match;
+3. use GA4 only after a click/visit exists to inspect landing-page behavior;
+4. do not redesign from tiny samples.
+
+When the question is `Are users actually using a tool?`:
+
+- prefer GA4 page/event data or another already-approved site analytics source;
+- measure concrete actions rather than pageviews alone when instrumentation exists;
+- do not add a second analytics product until the existing measurement layer is proven insufficient.
+
+## Cost and authorization guard
+
+Before making a plugin part of the regular workflow:
+
+- verify the exact required action under the currently connected account;
+- verify current quota/cost/access live;
+- prefer already-connected tools that satisfy the job;
+- do not buy, upgrade, rotate trial accounts, or change billing without explicit user approval;
+- do not make production depend on a temporary free tier without a fallback/disable path.
+
+Connecting/installing an external account still requires the user's explicit action when the provider presents an authorization flow.
 
 ## Duplication guard
 
-Do not run several tools that answer the same question merely because they are available.
-
-Use a second source when cross-checking materially improves a decision, such as:
-
-- first-party GSC vs third-party keyword estimates;
-- official documentation vs community failure reports;
-- one SEO database vs another when a new/low-volume query may be missing;
-- known-URL extraction vs semantic discovery in AI retrieval benchmarks.
+Use a second tool only when cross-checking materially improves the decision.
 
 Do not duplicate:
 
-- project-state databases across GitHub, Google Docs, Notion, Linear and Mem;
+- project state across GitHub/Docs/Notion/Linear/Mem;
+- multiple analytics stacks for the same small-site measurement job;
 - uptime/source watchers that already have a verified owner;
-- the same outreach record in multiple systems;
-- the same task in several trackers unless one is explicitly a read-only/mirrored view.
+- identical SEO databases without a concrete evidence gap;
+- outreach records across several systems.
 
-## Current preferred project stack
+## Default project stack
 
-Use this as a default routing map, not a mandate to call every tool:
+Use this routing map as a default, not as a mandate to call every tool:
 
-- Role/bootstrap: Notion Skill when readable/useful; GitHub sources remain mandatory
-- Code/facts/roadmap/history: GitHub
-- Daily chronological journal: Google Docs
-- Working research memory: Mem
-- Search performance: Windsor.ai Search Console connector while available; official Google Search Console API/export as fallback; GSC Wizard deprecated
-- Keyword/SERP estimates: SE Ranking first when usable; Ahrefs/Semrush/Ubersuggest only when current quota permits
-- General/AI-native research: Web/Exa; Tavily only when executable under current quota
-- Social: Metricool
-- Outreach: Gmail
-- Optional execution queue: Linear
-- Optional bounded crawl/monitoring: Firecrawl only after connection and quota check
+- project truth/code/release: GitHub + Vercel;
+- Google organic performance: current first-party Search Console connection;
+- actual site traffic/behavior: GA4 when readable;
+- keyword/SERP/backlinks: one currently usable SEO provider, with a second only for material cross-checking;
+- public research/extraction: Web/Exa/Firecrawl as needed;
+- social: Metricool;
+- outreach: Gmail;
+- working journal/artifacts: Google Drive/Docs.
 
-The workflow should remain useful if any one external plugin disappears. GitHub facts and the product itself must not depend on a connector's continued availability.
+The project must remain operable if any one external connector disappears.
