@@ -12,8 +12,8 @@
 ## Passport path scope (independent dimension; not an extra 160 routes)
 
 - `documented-for-described-flow`: **32**
-- `mentioned-only`: **43**
-- `not-established`: **85**
+- `mentioned-only`: **44**
+- `not-established`: **84**
 
 **Definitions:** `required` means reviewed text explicitly describes an identity-registration/check; exact national eligibility can still be unresolved. `no-photo-id-reported` means one particular prepaid path is reported to omit an ID-photo check, **not** that all account/purchase/recovery paths are anonymous or KYC-free. `unverified` means reviewed materials did not settle a new-line document requirement, including items about credit checks and different operations. `unknown` means no directly qualifying current route KYC record or negative disclaimer. `documented-for-described-flow` means the reviewed specific operation mentions an accepted passport; it does not prove an arbitrary Chinese/foreign passport works online abroad. `mentioned-only` means passport was referenced without proved applicability to NEW number registration. `not-established` must never be advertised as passport prohibited or no ID needed.
 
@@ -67,7 +67,7 @@ These provider links are **related references already associated with the route*
 | `cosmote-frog-13mo-2026` | Greece | required | not-established | not documented | [Source](https://www.frogmobile.gr/en/content/general-terms-prepaid) |
 | `cricket-us-2026` | United States | unverified | not-established | not documented | [Source](https://www.cricketwireless.com/manageautopay) |
 | `csl-711-prepaid-hk-2026` | Hong Kong | required | documented-for-described-flow | passport | [Source](https://www.hkcsl.com/en/7_eleven_prepaid_sim) |
-| `ctexcel-uk-2026` | United Kingdom | unverified | not-established | not documented | [Source](https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ) |
+| `ctexcel-uk-2026` | United Kingdom | unverified | mentioned-only | passport | [Source](https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ) |
 | `cyta-soeasy-cy-2026` | Cyprus | required | documented-for-described-flow | passport | [Source](https://www.cyta.com.cy/faq-soeasy/en) |
 | `dialog-lk-365d-2026` | Sri Lanka | required | documented-for-described-flow | passport | [Source](https://dialog.lk/number-recycling-process) |
 | `digi-reload-validity-my-2026` | Malaysia | required | documented-for-described-flow | passport, national-or-local-ID, biometric-or-face-check, visa-or-stay-conditions | [Source](https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-) |

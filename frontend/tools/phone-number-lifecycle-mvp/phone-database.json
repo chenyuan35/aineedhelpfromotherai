@@ -2677,7 +2677,7 @@
       "form": "physical + eSIM",
       "surfaceState": "backstage-only",
       "evidenceState": "hold",
-      "lastVerifiedAt": "2026-10-03",
+      "lastVerifiedAt": "2026-10-14",
       "acquireUrl": "https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ",
       "sourceIds": [
         "ctexcel-uk-current-site-20261003",
@@ -2685,7 +2685,10 @@
         "linuxdo-ctexcel-2844702-20260902",
         "naixi-ctexcel-10558-20260301",
         "naixi-ctexcel-14169-20260804",
-        "nodeloc-ctexcel-101793-20260802"
+        "nodeloc-ctexcel-101793-20260802",
+        "nodeseek-ctexcel-847511-esim-first-attach-20260729",
+        "nodeseek-ctexcel-867442-physical-wifi-20260810",
+        "nodeseek-ctexcel-869829-esim-dispute-20260812"
       ]
     },
     {
@@ -11059,6 +11062,27 @@
       "type": "first-hand-community-thread",
       "reportedAt": "2025-11-04",
       "label": "Giffgaff existing eSIM overseas phone change SMS-MFA lockout versus another commenter physical SIM number-restoration"
+    },
+    {
+      "id": "nodeseek-ctexcel-847511-esim-first-attach-20260729",
+      "url": "https://www.nodeseek.com/post-847511-1",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-07-29",
+      "label": "CTExcel UK annual eSIM: paid buyer in China received QR/downloaded profile; first activation failed, reported refused refund and passport-only reissue support requirement"
+    },
+    {
+      "id": "nodeseek-ctexcel-867442-physical-wifi-20260810",
+      "url": "https://www.nodeseek.com/post-867442-1",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-10",
+      "label": "CTExcel UK £1 physical SIM: one author describes non-provider-supported Wi-Fi Calling based mainland setup; not a new eSIM success or named OTP outcome"
+    },
+    {
+      "id": "nodeseek-ctexcel-869829-esim-dispute-20260812",
+      "url": "https://www.nodeseek.com/post-869829-1",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-12",
+      "label": "CTExcel UK annual eSIM: separate buyer reports activation failure and filed bank payment dispute; final refund/dispute outcome unknown"
     }
   ],
   "observations": [
@@ -14860,6 +14884,39 @@
       "scope": "Different commenter, same original 1onzflv; own failure of new eSIM email-MFA followed by obtaining replacement physical SIM and restoring UK number, geography/cost not fully documented",
       "outcome": "Another user reports their formerly working overseas eSIM phone swaps stopped when email validation was no longer available. They obtained a physical replacement SIM and recovered service on their existing UK number. Do not interpret this as proof physical SIM delivery or eSIM recovery is available for every overseas buyer, that the specific phone activation completed abroad, or that WhatsApp/bank OTP registration works.",
       "sourceId": "reddit-giffgaff-1onzflv-esim-mfa-overseas-20251104"
+    },
+    {
+      "id": "evt-ctexcel-847511-new-annual-esim-first-attach-failed",
+      "routeId": "ctexcel-uk-2026",
+      "type": "new-esim-overseas-first-activation-failure",
+      "reportedAt": "2026-07-29",
+      "authorHandle": "wyk335858575",
+      "productCohort": "New CTExcel UK £11 promotional annual eSIM purchased online; United States-model iPhone; China-side first setup",
+      "scope": "OP paid, received QR, downloaded eSIM profile but failed cellular first activation while physically in China; eSIM later deleted; no target-app SMS test",
+      "outcome": "One buyer reports eSIM profile/phone number downloaded, activation failed, customer service denied refund citing China location and requested UK passport and selfie for a reissue. These are OP-reported support conditions for this reissue, NOT universal initial KYC, a verified provider-wide refund rule, or proof any bank OTP failed.",
+      "sourceId": "nodeseek-ctexcel-847511-esim-first-attach-20260729"
+    },
+    {
+      "id": "evt-ctexcel-867442-physical-wifi-first-setup-claimed",
+      "routeId": "ctexcel-uk-2026",
+      "type": "physical-sim-overseas-unofficial-setup-claim",
+      "reportedAt": "2026-08-10",
+      "authorHandle": "Liu2011",
+      "productCohort": "New CTExcel UK £1 physical SIM on Android with Windows Wi-Fi network preparation, not a new annual eSIM",
+      "scope": "Self-described mainland physical-SIM setup using non-provider-authorized UK-network conditions and Wi-Fi Calling; article is partly tutorial/reports earlier sources; no independently named-app OTP receipt",
+      "outcome": "OP claims physical SIM Wi-Fi Calling-led activation was possible after manually preparing a UK-like network environment. OP expressly says this is not an official mainland activation path. This does not establish legal/compliant first tower attach for a new eSIM, guaranteed China activation, or Telegram/WhatsApp/bank verification SMS.",
+      "sourceId": "nodeseek-ctexcel-867442-physical-wifi-20260810"
+    },
+    {
+      "id": "evt-ctexcel-869829-annual-esim-dispute-pending",
+      "routeId": "ctexcel-uk-2026",
+      "type": "new-esim-overseas-activation-failure-dispute-pending",
+      "reportedAt": "2026-08-12",
+      "authorHandle": "spaceET",
+      "productCohort": "CTExcel UK annual eSIM purchased online, buyer abroad, dispute channel HSBC HK",
+      "scope": "Buyer reports eSIM activation failure, an unanswered merchant refund email, then started payment dispute; no verified dispute conclusion, first tower attach or target service SMS result",
+      "outcome": "A separate author reports failed annual eSIM activation and filing a Hong Kong bank payment dispute. Their original thread explains steps and a 6–8 week expectation, but does NOT establish actual recovered funds or a universal legal cancellation entitlement.",
+      "sourceId": "nodeseek-ctexcel-869829-esim-dispute-20260812"
     }
   ],
   "snapshots": [
@@ -27465,6 +27522,71 @@
         ],
         "onboardingSourceUrl": "https://help.giffgaff.com/en/articles/240912-getting-started-on-giffgaff"
       }
+    },
+    {
+      "id": "snap-ctexcel-uk-2026-current-profile-20261014",
+      "routeId": "ctexcel-uk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-14",
+      "sourceDataset": "three-original-ctexcel-cohort-reconciliation-2026-10-14",
+      "data": {
+        "id": "ctexcel-uk-2026",
+        "brandId": "ctexcel-uk",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "CTExcel UK offers physical SIM and annual eSIM products. A £1 physical-SIM user reports China-side setup only using an unofficial Wi-Fi Calling/network workaround; TWO independent new-annual-eSIM buyers report paid QR delivery or order receipt but overseas first activation failed. A downloaded eSIM profile is not successful cellular registration. New foreign-first buyer eligibility remains unverified.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-product-price-not-cleanly-extracted"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Provider currently exposes a Back to China SIM Retention Plan. Community evidence conflicts: some users report roughly 90-day activity for no-plan accounts while plan users follow plan-specific retention. Exact eligibility, current price and post-plan clock are not cleanly provider-reconciled, so no universal interval or annual cost is modeled.",
+          "intervalDays": null,
+          "state": "current-retention-product-with-unresolved-mechanics"
+        },
+        "chinaActivation": "Do NOT infer China-first activation reliability across CTExcel products. One community author describes a £1 physical-SIM Wi-Fi Calling setup using a provider-unsupported network workaround; distinct new annual-eSIM buyers report first activation failed abroad (one in China). No provider-authorized foreign-first tower registration or named-app SMS on a newly bought eSIM has been verified.",
+        "kyc": "Unknown for new purchase. One failed new annual-eSIM owner says support demanded UK passport and selfie for replacement/reissue after failed overseas activation; this is a single disputed recovery-stage report, NOT proof every purchaser needs a UK passport or that Chinese passports are universally rejected.",
+        "payment": "One original purchaser self-reports paying £11 for a promotional annual eSIM; separate annual-eSIM buyer reports starting a bank payment dispute through HSBC Hong Kong. Neither establishes universal checkout pricing, card-country acceptance or buyer residence eligibility. Keep acquisition cost unknown.",
+        "wifiCalling": "One physical-SIM author claims Wi-Fi Calling-based mainland setup only with non-provider-supported network conditions. This is not an approved general China-first eSIM activation route.",
+        "roamingSms": "One physical-SIM setup tutorial claims later mainland cellular signal and general SMS conditional on successful activation. New annual-eSIM buyers report failed first activation; no new eSIM named-app/bank OTP outcome or repeatable success rate is verified.",
+        "refund": "One failed annual-eSIM buyer self-reports support refused a refund and conditioned reissue on UK-passport proof. A second independent annual-eSIM buyer says they opened a bank dispute; final result unreported. These are distinct outcomes, not a proven universal refund policy or successful chargeback.",
+        "trend": "current-operational-route-retention-mechanics-conflicted",
+        "guideEligible": false,
+        "holdReason": "HOLD: retention-plan eligibility and 90-day behavior remain unresolved. Two independent new annual-eSIM buyers report overseas first-activation failures; one unofficial physical-SIM Wi-Fi Calling claim is a different cohort. New overseas checkout/KYC, authorized first attach, refunds and named-app OTP are not verified.",
+        "lastVerifiedAt": "2026-10-14",
+        "acquireUrl": "https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ",
+        "tariffSummary": "Current UK-China plans and retention service exist, but this review intentionally does not publish a single annual keep cost or universal 90-day lifecycle.",
+        "guideSteps": [
+          "Confirm physical SIM versus new annual eSIM product and current authorized first cellular registration country before purchase.",
+          "Treat a downloaded eSIM QR/profile as provisioned only; do not infer successful first cellular activation.",
+          "Do not rely on unofficial network/geography workarounds as proof of eligible mainland activation.",
+          "Check lawful identity, payment and refund/reissue requirements for the exact buyer/channel; one denied-refund and one pending-dispute story are not universal terms.",
+          "Keep target service SMS/OTP and long-term renewal reliability unknown until separately verified by independent originals."
+        ],
+        "sourceIds": [
+          "ctexcel-uk-current-site-20261003",
+          "ctexcel-uk-retention-landing-20261003",
+          "linuxdo-ctexcel-2844702-20260902",
+          "naixi-ctexcel-10558-20260301",
+          "naixi-ctexcel-14169-20260804",
+          "nodeloc-ctexcel-101793-20260802",
+          "nodeseek-ctexcel-847511-esim-first-attach-20260729",
+          "nodeseek-ctexcel-867442-physical-wifi-20260810",
+          "nodeseek-ctexcel-869829-esim-dispute-20260812"
+        ]
+      }
     }
   ],
   "aliases": [
@@ -28241,7 +28363,7 @@
     },
     {
       "routeId": "ctexcel-uk-2026",
-      "checkedAt": "2026-10-03",
+      "checkedAt": "2026-10-14",
       "metricState": "current-profile",
       "acquisitionCurrency": "GBP",
       "acquisitionCostOriginal": null,

@@ -703,7 +703,7 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-10-03",
+    "lastVerifiedAt": "2026-10-14",
     "acquireUrl": "https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ",
     "sourceIds": [
       "ctexcel-uk-current-site-20261003",
@@ -711,7 +711,10 @@
       "linuxdo-ctexcel-2844702-20260902",
       "naixi-ctexcel-10558-20260301",
       "naixi-ctexcel-14169-20260804",
-      "nodeloc-ctexcel-101793-20260802"
+      "nodeloc-ctexcel-101793-20260802",
+      "nodeseek-ctexcel-847511-esim-first-attach-20260729",
+      "nodeseek-ctexcel-867442-physical-wifi-20260810",
+      "nodeseek-ctexcel-869829-esim-dispute-20260812"
     ]
   },
   {

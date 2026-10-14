@@ -7,8 +7,8 @@ Snapshot: generated from the checked-out canonical JSON data using: node scripts
 | Field | Count | Notes |
 | --- | ---: | --- |
 | Canonical routes | 160 | Internal model, not real-world demand denominator |
-| Sources | 927 | Source record count, not count of real-world buyers |
-| Lifecycle/incident events | 358 | Not equivalent to app OTP outcomes |
+| Sources | 930 | Source record count, not count of real-world buyers |
+| Lifecycle/incident events | 361 | Not equivalent to app OTP outcomes |
 | App-specific observations | 41 | Author-and-operation evidence, not independent original URLs |
 | Routes with any app observation | 10 | Might be positive, negative or mixed |
 | Routes without any app observation | 150 | App reliability unknown |

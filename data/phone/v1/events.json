@@ -3270,5 +3270,38 @@
     "scope": "Different commenter, same original 1onzflv; own failure of new eSIM email-MFA followed by obtaining replacement physical SIM and restoring UK number, geography/cost not fully documented",
     "outcome": "Another user reports their formerly working overseas eSIM phone swaps stopped when email validation was no longer available. They obtained a physical replacement SIM and recovered service on their existing UK number. Do not interpret this as proof physical SIM delivery or eSIM recovery is available for every overseas buyer, that the specific phone activation completed abroad, or that WhatsApp/bank OTP registration works.",
     "sourceId": "reddit-giffgaff-1onzflv-esim-mfa-overseas-20251104"
+  },
+  {
+    "id": "evt-ctexcel-847511-new-annual-esim-first-attach-failed",
+    "routeId": "ctexcel-uk-2026",
+    "type": "new-esim-overseas-first-activation-failure",
+    "reportedAt": "2026-07-29",
+    "authorHandle": "wyk335858575",
+    "productCohort": "New CTExcel UK £11 promotional annual eSIM purchased online; United States-model iPhone; China-side first setup",
+    "scope": "OP paid, received QR, downloaded eSIM profile but failed cellular first activation while physically in China; eSIM later deleted; no target-app SMS test",
+    "outcome": "One buyer reports eSIM profile/phone number downloaded, activation failed, customer service denied refund citing China location and requested UK passport and selfie for a reissue. These are OP-reported support conditions for this reissue, NOT universal initial KYC, a verified provider-wide refund rule, or proof any bank OTP failed.",
+    "sourceId": "nodeseek-ctexcel-847511-esim-first-attach-20260729"
+  },
+  {
+    "id": "evt-ctexcel-867442-physical-wifi-first-setup-claimed",
+    "routeId": "ctexcel-uk-2026",
+    "type": "physical-sim-overseas-unofficial-setup-claim",
+    "reportedAt": "2026-08-10",
+    "authorHandle": "Liu2011",
+    "productCohort": "New CTExcel UK £1 physical SIM on Android with Windows Wi-Fi network preparation, not a new annual eSIM",
+    "scope": "Self-described mainland physical-SIM setup using non-provider-authorized UK-network conditions and Wi-Fi Calling; article is partly tutorial/reports earlier sources; no independently named-app OTP receipt",
+    "outcome": "OP claims physical SIM Wi-Fi Calling-led activation was possible after manually preparing a UK-like network environment. OP expressly says this is not an official mainland activation path. This does not establish legal/compliant first tower attach for a new eSIM, guaranteed China activation, or Telegram/WhatsApp/bank verification SMS.",
+    "sourceId": "nodeseek-ctexcel-867442-physical-wifi-20260810"
+  },
+  {
+    "id": "evt-ctexcel-869829-annual-esim-dispute-pending",
+    "routeId": "ctexcel-uk-2026",
+    "type": "new-esim-overseas-activation-failure-dispute-pending",
+    "reportedAt": "2026-08-12",
+    "authorHandle": "spaceET",
+    "productCohort": "CTExcel UK annual eSIM purchased online, buyer abroad, dispute channel HSBC HK",
+    "scope": "Buyer reports eSIM activation failure, an unanswered merchant refund email, then started payment dispute; no verified dispute conclusion, first tower attach or target service SMS result",
+    "outcome": "A separate author reports failed annual eSIM activation and filing a Hong Kong bank payment dispute. Their original thread explains steps and a 6–8 week expectation, but does NOT establish actual recovered funds or a universal legal cancellation entitlement.",
+    "sourceId": "nodeseek-ctexcel-869829-esim-dispute-20260812"
   }
 ]
