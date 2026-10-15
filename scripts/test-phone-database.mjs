@@ -138,8 +138,8 @@ assert(lebaraSource && lebaraEvent && lebaraRoute && lebaraIndex,'Lebara failure
 assert.equal(lebaraEvent.sourceId,lebaraSource.id);
 assert.equal(lebaraRoute.sourceIds.filter(x=>x===lebaraSource.id).length,1);
 assert.equal(lebaraIndex.decisionFacts.sourceCount,lebaraRoute.sourceIds.length);
-assert.equal(lebaraRoute.sourceIds.length,9);
-assert.equal(lebaraIndex.eventCount,4);
+assert.equal(lebaraRoute.sourceIds.length,11);
+assert.equal(lebaraIndex.eventCount,8);
 assert(!db.observations.some(x=>x.sourceId===lebaraSource.id),'a failed network attach is not a named-app OTP failure');
 const lebaraTelegramEvidence=lebaraIndex.serviceEvidence.find(x=>/Telegram/i.test(x.serviceName));
 const lebaraWhatsappEvidence=lebaraIndex.serviceEvidence.find(x=>/WhatsApp/i.test(x.serviceName));

@@ -10257,7 +10257,7 @@
       "evidenceState": "admitted",
       "lastVerifiedAt": "2026-09-12",
       "observationCount": 4,
-      "eventCount": 4,
+      "eventCount": 8,
       "services": [
         "Telegram",
         "WhatsApp"
@@ -10300,7 +10300,7 @@
         }
       ],
       "decisionFacts": {
-        "sourceCount": 9,
+        "sourceCount": 11,
         "kycState": "unclear",
         "identity": {
           "status": "unverified",
@@ -10313,8 +10313,8 @@
         "keepAction": "Generate confirmed chargeable activity and verify it appears in usage history; one account/support interaction confirmed a 90-day reset.",
         "roamingSms": "inbound SMS reproduced in mainland China",
         "holdReason": null,
-        "continuityRiskSignalCount": 0,
-        "lastContinuityRiskSignalAt": null
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-08-08"
       },
       "metrics": {
         "routeId": "lebara-uk-direct-esim-china",
