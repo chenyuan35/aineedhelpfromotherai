@@ -5613,5 +5613,19 @@
     "type": "first-hand-community-thread",
     "reportedAt": "2026-08-12",
     "label": "CTExcel UK annual eSIM: separate buyer reports activation failure and filed bank payment dispute; final refund/dispute outcome unknown"
+  },
+  {
+    "id": "nodeseek-lebara-uk-863917-paid-activation-contradiction-20260808",
+    "url": "https://www.nodeseek.com/post-863917-1",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2026-08-08",
+    "label": "Buyer ddgg: £5 Lebara UK 5GB monthly eSIM paid/QR/incoming SMS, support states line inactive, alleged previous-user account history; refund requested but unverified"
+  },
+  {
+    "id": "nodeseek-lebara-uk-874249-mainland-wfc-contrasts-20260814",
+    "url": "https://www.nodeseek.com/post-874249-1",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2026-08-14",
+    "label": "Mainland UK Lebara eSIM firsthand Wi-Fi Calling/SMS/device/roaming contradictions; lzd original technical report, other users opposing personal recoveries in same thread"
   }
 ]
