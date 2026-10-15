@@ -3303,5 +3303,49 @@
     "scope": "Buyer reports eSIM activation failure, an unanswered merchant refund email, then started payment dispute; no verified dispute conclusion, first tower attach or target service SMS result",
     "outcome": "A separate author reports failed annual eSIM activation and filing a Hong Kong bank payment dispute. Their original thread explains steps and a 6–8 week expectation, but does NOT establish actual recovered funds or a universal legal cancellation entitlement.",
     "sourceId": "nodeseek-ctexcel-869829-esim-dispute-20260812"
+  },
+  {
+    "id": "evt-lebara-uk-863917-ddgg-paid-esim-account-status-20260808",
+    "routeId": "lebara-uk-direct-esim-china",
+    "type": "new-paid-esim-status-conflict-prior-user-history-incident",
+    "reportedAt": "2026-08-08",
+    "authorHandle": "ddgg",
+    "productCohort": "NEW Lebara UK eSIM £5 5GB Monthly Plan paid purchase; not a physical SIM/port-in or verified universal current plan price",
+    "scope": "One original purchaser on NodeSeek 863917; indexed original text accessible, direct website challenges; mainland location not independently confirmed by cell-tower logs; identity/payment issuer/first UK tower unknown",
+    "outcome": "Author says £5 checkout succeeded, received eSIM QR email, installed profile and received carrier SMS assigning a number. Account allegedly displayed an EXPIRED former 50GB MSE plan and previous user's calls/SMS history; privacy/account-recycling allegation UNVERIFIED and no personal logs reproduced. Lebara support reportedly said line NOT ACTIVATED and UK-side phone call to 5588 required. Buyer requested a refund but completion is UNKNOWN. Incoming carrier SMS is NOT proof of lawfully completed foreign-first new-subscriber registration, activated account, or Telegram/WhatsApp/bank OTP.",
+    "sourceId": "nodeseek-lebara-uk-863917-paid-activation-contradiction-20260808"
+  },
+  {
+    "id": "evt-lebara-uk-874249-lzd-mainland-ims-friction-20260814",
+    "routeId": "lebara-uk-direct-esim-china",
+    "type": "mainland-roaming-incoming-sms-outgoing-wfc-ims-friction",
+    "reportedAt": "2026-08-14",
+    "authorHandle": "lzd",
+    "productCohort": "Lebara UK eSIM tested on rooted Redmi K20 Pro/eUICC adapter and subsequently foreign iPhone in mainland China; actual tariff/identity/UK-first activation unknown",
+    "scope": "One OP, one independent original discussion NodeSeek 874249; different handset and eSIM carrier-profile states; incoming/outgoing SMS, IMS/Wi-Fi Calling, network attach distinct",
+    "outcome": "On China Unicom cellular roaming author received ordinary SMS but outgoing SMS and Wi-Fi Calling did not work on rooted Android, with IMS authentication failure. The same author later temporarily saw iPhone Wi-Fi Calling under a UK-simulated setup and sent one ordinary outbound Chinese SMS (reported about £0.25), but UK voice failed; after returning to cellular roaming a different outgoing SMS worked (~£0.49), then Wi-Fi Calling stopped again. This is NOT a generally supported workaround, unconditional overseas first activation, or a named-app OTP receipt.",
+    "sourceId": "nodeseek-lebara-uk-874249-mainland-wfc-contrasts-20260814"
+  },
+  {
+    "id": "evt-lebara-uk-874249-chevis-wfc-temporary-success-20260814",
+    "routeId": "lebara-uk-direct-esim-china",
+    "type": "same-thread-mainland-wfc-temporary-success",
+    "reportedAt": "2026-08-14",
+    "authorHandle": "chevis",
+    "productCohort": "Different commenter with Lebara UK eSIM and mainland cellular roaming/flight-mode switching; exact tariff/device/identity unknown",
+    "scope": "Same original NodeSeek discussion 874249; distinct author but NOT an independent original source URL; followup Aug23 mentions contact with Chinese cellular tower before second profile install",
+    "outcome": "Commenter reports Wi-Fi Calling worked for a UK call and an outgoing SMS after about one hour of profile setup while remaining in flight mode. After mainland cellular attach, reported losing the ability to resume WFC without profile changes. PERSONAL TEMPORARY SUCCESS contrary to other same-thread failures, NOT permanent supported behavior, lawful foreign-first activation proof or named-app OTP.",
+    "sourceId": "nodeseek-lebara-uk-874249-mainland-wfc-contrasts-20260814"
+  },
+  {
+    "id": "evt-lebara-uk-874249-starsakura-wfc-retry-20260823",
+    "routeId": "lebara-uk-direct-esim-china",
+    "type": "same-thread-android-wfc-retry-after-failure",
+    "reportedAt": "2026-08-23",
+    "authorHandle": "starsakura",
+    "productCohort": "Lebara UK eSIM with China Unicom 4G roaming; Android device, exact model/plan and paid first activation unknown",
+    "scope": "Same original NodeSeek 874249; the SAME author first reports failed WFC then Aug23 later retry succeeds, one author not two independent confirmations",
+    "outcome": "Initially described Android WFC NOT WORKING despite China Unicom 4G roaming and outgoing short-code SMS tests. On later retry, after reinstalling eSIM and toggling Wi-Fi Calling, author reported IMS registered and WFC working. SAME-AUTHOR FAILURE-THEN-RECOVERY, not reliable repeatability, independent sample growth, full KYC/first-cell attach proof, or named app OTP.",
+    "sourceId": "nodeseek-lebara-uk-874249-mainland-wfc-contrasts-20260814"
   }
 ]
