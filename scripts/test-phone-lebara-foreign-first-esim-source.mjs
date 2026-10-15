@@ -29,3 +29,32 @@ const detail=get('frontend/tools/phone-number-lifecycle-mvp/phone-route-data/'+r
 assert(detail.sources.some(x=>x.id===original.id));assert(detail.events.some(x=>x.id===e.id));
 assert.equal(detail.observations.filter(x=>x.sourceId===original.id).length,0);
 console.log('Lebara UK eSIM actual abroad WiFi Calling failed, unspecified geography, one OP/one original, no China/OTP/payment/KYC fabrications PASS');
+
+const originalNodeSeekIds=[
+  'nodeseek-lebara-uk-863917-paid-activation-contradiction-20260808',
+  'nodeseek-lebara-uk-874249-mainland-wfc-contrasts-20260814'
+];
+const newlyReviewedEvents=events.filter(e=>originalNodeSeekIds.includes(e.sourceId));
+assert.equal(newlyReviewedEvents.length,4,'Four author-level incidents, but exactly two independent original discussions');
+assert.equal(new Set(newlyReviewedEvents.map(e=>e.authorHandle)).size,4,'Distinct individual reporters within each original');
+assert.equal(new Set(newlyReviewedEvents.map(e=>e.sourceId)).size,2,'Same-thread replies must not become extra independent original URLs');
+for(const sid of originalNodeSeekIds){
+  const src=sources.find(s=>s.id===sid);
+  assert(src&&src.type==='first-hand-community-thread'&&route.sourceIds.includes(sid));
+  assert(detail.sources.some(x=>x.id===sid));
+}
+assert.equal(detail.events.filter(e=>originalNodeSeekIds.includes(e.sourceId)).length,4);
+assert.equal(obs.filter(o=>originalNodeSeekIds.includes(o.sourceId)).length,0,'No independently tested named app OTP on these originals');
+const buyer=newlyReviewedEvents.find(e=>e.authorHandle==='ddgg');
+assert(buyer&&/NOT ACTIVATED/.test(buyer.outcome)&&/UNKNOWN/.test(buyer.outcome));
+assert(/UNVERIFIED/.test(buyer.outcome)&&/previous user's calls/.test(buyer.outcome));
+assert(newlyReviewedEvents.some(e=>e.authorHandle==='lzd'&&/NOT a generally supported workaround/.test(e.outcome)));
+assert(newlyReviewedEvents.some(e=>e.authorHandle==='chevis'&&/PERSONAL TEMPORARY SUCCESS/.test(e.outcome)));
+assert(newlyReviewedEvents.some(e=>e.authorHandle==='starsakura'&&/SAME-AUTHOR FAILURE-THEN-RECOVERY/.test(e.outcome)));
+assert.equal(summary.eventCount,events.filter(e=>e.routeId===route.id).length);
+assert.equal(summary.eventCount,8);
+assert.equal(summary.decisionFacts.sourceCount,route.sourceIds.length);
+assert.equal(summary.decisionFacts.sourceCount,11);
+assert.equal(summary.decisionFacts.continuityRiskSignalCount,1);
+assert.equal(summary.decisionFacts.lastContinuityRiskSignalAt,'2026-08-08');
+console.log('Lebara UK paid buyer, alleged prior-user account history, WFC opposites: two original URLs/four scoped reports/zero named OTP PASS');
