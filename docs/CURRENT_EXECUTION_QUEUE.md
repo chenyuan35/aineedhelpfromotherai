@@ -1,10 +1,21 @@
 # Current Execution Queue
 
-Last updated: 2026-10-13
+Last updated: 2026-10-15
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is the short atomic queue.
 
 ## Current decision
+
+**CURRENT — 2026-10-15 VERIFIED #493 PRODUCTION, KEEP-ALIVE REPAIR BRANCH PENDING RELEASE:** Actual main `4318efa9f244f9ba2b1fcbe59686cff4d30b2acb` and exact-Vercel production `dpl_aDKJCsJhpQyMy2ZoZsqbKZ6Afkj3` were independently matched and READY. Baseline **160 routes / 87 markets / 930 sources / 361 events / 41 app observations / 225 snapshots**, public **135 comparison / 3 indexable details / 31 sitemap**, first-party settled GSC sitewide **749/5** and Phone **40/0** through Oct 12; no verified actual GA4 sessions. China/foreign new-number payment/KYC/first-network-attach/named-app OTP remains **No verified matches**. The historical current labels for #491 and 927/358 or 35/0 further below are superseded.
+
+**ORDERED REPAIR AND RELEASE GATES:**
+1. **P0 existing-page correctness — ACTIVE ON FRESH BRANCH, NOT DEPLOYED:** `fix/phone-keepalive-canonical-gate-20261015` suppresses old Keep-Alive reminders when same-route canonical evidence is HOLD/missing or current cost, currency or interval differs. 86 legacy cards analyzed, 43 canonical HOLD and 34 cost/interval conflicts; simulated **25 permitted / 61 gated**. Run final built `scripts/test-phone-number-public-release.mjs` plus full CI/Eval; only if free Preview is READY and user-visible QA passes merge and verify exact production. No other production change until this correction is safely gated. Bundle the checkpoint/plan/queue corrections in this batch, not a standalone documentation deployment.
+2. **Next independently eligible product work:** review one NEW genuine buyer original with matching SKU, nationality/payment/KYC/first attach/named-app OTP and opposing evidence; no forced normalization if proof incomplete.
+3. **Blocked infra:** identify approved Phone observer host/timer/current fingerprint and persistence before any #469 watcher installation. No yuan, hermes, unknown disposable host or dirty production worktree.
+4. **Measurement gate:** GA4 stream mapping needs read-only authorized Admin evidence; Windsor GA4 empty arrays are not zero visits. GSC only after settled rows beyond Oct 12, separate Google organic from direct/social/AI referral. No new SEO URL or AdSense optimization from Phone 40/0.
+
+**PENDING RELEASE NOTE:** The statements above are an as-of audit and proposed branch state. After actual merge/production QA, replace this with the exact merged SHA and verified release status; do not call code staged on a branch live.
+
 
 **CURRENT — 2026-10-13 POST-#491 VERIFIED RELEASE:** GitHub main code head `01cc46587ed91e842dab8a06a1d7b42d5357cdb0` after PR [#489](https://github.com/chenyuan35/aineedhelpfromotherai/pull/489) (unified community/Giffgaff correction) and PR [#491](https://github.com/chenyuan35/aineedhelpfromotherai/pull/491) (incoming hash route detail repair). Production exact-SHA `dpl_CYXMDZSgxSETjKvEr91GwWzucaxK` READY. Apex/www Phone HTTP 200; summaries HTTP 200/160; sitemap HTTP 200/31. Live real Chromium 320/375/390/1280px inbound hash detail and Giffgaff official initial-plan evidence PASS. #490 CLOSED; #480/#481/#483/#484/#485 previously closed unmerged, do not reopen or merge by default. Current normalized baseline **160 routes / 87 markets / 927 sources / 358 events / 41 app observations / 224 snapshots**. Public **135 comparison / 3 explicit route indexables / 31 sitemap**. Main Giffgaff **new eSIM requires an initial paid plan; exact eligible initial checkout price remains unknown/null**; do not reinstate £10 credit-only or overseas Wi-Fi Calling. China/foreign first activation + bank/app OTP remains **No verified matches**, not a sale lead. Earlier dated sections below are **historical release/evidence ledgers** and their “NEXT” directives are superseded by this current queue.
 
