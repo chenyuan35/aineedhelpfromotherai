@@ -364,4 +364,39 @@ search.value = 'Turkcell Tourist'; search.dispatchEvent(new dom.window.Event('in
 await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('Turkcell Tourist SIM'), 'temporary-family canonical search');
 dom.window.close();
 
+
+// Public keep-alive reminders must not use historic prices/intervals once
+// the current canonical review says HOLD or has different cost/interval fields.
+const keepAliveHtml = fs.readFileSync(path.join(dist, 'tools', 'phone-number-survival-guide', 'keep-alive', 'index.html'), 'utf8');
+const legacyDirectory = JSON.parse(fs.readFileSync(path.join(source, 'global-directory.json'), 'utf8'));
+const currentById = new Map(canonicalIndex.routes.map(r => [r.id, r]));
+const comparisonStates = new Set(['comparison-visible','detail-eligible','indexable']);
+let checkedKeepRoutes = 0;
+let gatedKeepRoutes = 0;
+for (const old of legacyDirectory.routes) {
+  const publicationState = publication.routeStates?.[old.id] || publication.defaultRouteState || 'database-only';
+  if (!comparisonStates.has(publicationState) || !Number.isFinite(old.keep?.intervalDays) || !old.keep?.action || old.publishState === 'observation-hold') continue;
+  checkedKeepRoutes++;
+  const current = currentById.get(old.id);
+  const metric = current?.metrics;
+  const oldAnnual = Number.isFinite(old.keep.yearCostOriginal) ? old.keep.yearCostOriginal : null;
+  const currentAnnual = Number.isFinite(metric?.keepYearCostOriginal) ? metric.keepYearCostOriginal : null;
+  const expectedHold = !current || current.evidenceState !== 'admitted' || !metric
+    || metric.keepIntervalDays !== old.keep.intervalDays
+    || metric.keepCurrency !== (old.keep.currency || 'GBP')
+    || currentAnnual !== oldAnnual;
+  if (expectedHold) gatedKeepRoutes++;
+  const start = keepAliveHtml.indexOf(`id="ka-panel-${old.id}"`);
+  assert(start > 0, old.id + ': keep-alive panel missing');
+  const nextPanel = keepAliveHtml.indexOf('<section class="ka-brand-panel"', start + 1);
+  const end = nextPanel < 0 ? keepAliveHtml.indexOf('<section class="ka-discipline"', start + 1) : nextPanel;
+  assert(end > start, old.id + ': keep-alive panel delimiter missing');
+  const html = keepAliveHtml.slice(start, end);
+  assert.equal(html.includes('class="ka-date-input"'), !expectedHold, old.id + ': legacy reminder must obey current canonical gate');
+  if (expectedHold) assert.match(html, /On hold — no calculator offered/, old.id + ': old values must not remain actionable');
+}
+assert(checkedKeepRoutes > 0, 'keep-alive regression must cover the public legacy cohort');
+assert(gatedKeepRoutes > 0, 'fixture should include at least one unsafe legacy reminder');
+assert.match(keepAliveHtml, /Current evidence gate:/, 'current evidence warning must be visible');
+
 console.log('phone-radar public release audit: PASS');
