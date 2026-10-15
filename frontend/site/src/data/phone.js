@@ -143,7 +143,28 @@ export function keepAliveModels() {
       const brand = brandOf(r) || {};
       const keep = r.keep || {};
       const interval = Number.isFinite(keep.intervalDays) ? keep.intervalDays : null;
-      const hold = r.publishState === 'observation-hold' || !interval;
+      // This legacy comparison packet is not the current Phone decision source.
+      // Fail closed when current canonical evidence is HOLD, missing, or differs
+      // on the reminder interval/annual cost/currency. Never emit a countdown
+      // from a superseded historic route profile.
+      const canonical = canonicalRouteSummaryOf(r.id);
+      const metrics = canonical?.metrics;
+      const oldAnnual = Number.isFinite(keep.yearCostOriginal) ? keep.yearCostOriginal : null;
+      const currentAnnual = Number.isFinite(metrics?.keepYearCostOriginal) ? metrics.keepYearCostOriginal : null;
+      const metricsConflict = !metrics
+        || metrics.keepIntervalDays !== interval
+        || metrics.keepCurrency !== (keep.currency || 'GBP')
+        || currentAnnual !== oldAnnual;
+      const evidenceHeld = !canonical || canonical.evidenceState !== 'admitted';
+      const hold = r.publishState === 'observation-hold' || !interval || evidenceHeld || metricsConflict;
+      const gateReason = !canonical
+        ? 'This legacy route has no matching current canonical record; no reliable reminder can be calculated.'
+        : evidenceHeld
+          ? 'Current Phone Radar evidence is HOLD or unresolved. Historical keep-alive figures are not verified as a safe reminder.'
+          : metricsConflict
+            ? 'The legacy cost or keep-alive interval conflicts with newer normalized route evidence. A reminder based on the old values is disabled.'
+            : '';
+      const newerEvidence = Boolean(metrics?.checkedAt && r.lastVerifiedAt && metrics.checkedAt > r.lastVerifiedAt);
       let safe = null;
       let bufferNote = '';
       if (interval) {
@@ -172,7 +193,8 @@ export function keepAliveModels() {
         keepAliveDetailHref: hasRouteDetail(r) ? `${GUIDE_BASE}keep-alive/${r.id}/` : null,
         hasEvidenceBuffer: Boolean(interval && safe < interval),
         hold,
-        holdReason: r.holdReason || 'Current durable retention is not established.',
+        holdReason: gateReason || r.holdReason || 'Current durable retention is not established.',
+        currentEvidenceHref: `${GUIDE_BASE}#route/${encodeURIComponent(r.id)}`,
         action: keep.action || '',
         interval,
         safe,
@@ -180,11 +202,11 @@ export function keepAliveModels() {
         bufferNote,
         perAction: Number.isFinite(keep.observedActionCost) ? keep.observedActionCost : null,
         yearOriginal: Number.isFinite(keep.yearCostOriginal) ? keep.yearCostOriginal : null,
-        yearCny: Number.isFinite(keep.yearCostCny) ? keep.yearCostCny : null,
+        yearCny: Number.isFinite(metrics?.keepYearCostCny) ? metrics.keepYearCostCny : null,
         currency: keep.currency || 'GBP',
         stateLabel: stateLabels[keep.state] || keep.state || 'Unknown',
         lastVerifiedAt: r.lastVerifiedAt || 'unknown',
-        stale: verifiedDaysAgo !== null && verifiedDaysAgo > 90,
+        stale: newerEvidence || (verifiedDaysAgo !== null && verifiedDaysAgo > 90),
         steps: stepsByRoute[r.id] || (interval && keep.action ? [
           'Perform the keep-alive action described above, exactly as sourced.',
           'Verify the action registered with the operator (usage history, credit change or validity extension).',
