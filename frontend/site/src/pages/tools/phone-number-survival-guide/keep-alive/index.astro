@@ -82,20 +82,21 @@ function perYearLabel(m: any) {
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href={GUIDE_BASE}>Phone Radar</a><span>›</span><span>Keep-Alive Assistant</span></nav>
 <p class="eyebrow">Phone Radar · Global</p>
 <h1>Keep-Alive Assistant</h1>
-<p class="ka-lead">Pick your SIM and get the documented retention action, cost, window and next deadline — then export a one-time calendar reminder. An earlier reminder is shown only when current evidence supports one; routes without an established rule are excluded rather than guessed.</p>
+<p class="ka-lead">Check a route's documented keep-alive action and calculate a personal reminder only when the current reviewed evidence still supports its cost and retention window.</p>
+<div class="ka-warnbox"><strong>Current evidence gate:</strong> This page includes historical comparison records. When the latest Phone Radar evidence is HOLD, unavailable or inconsistent with an older price or deadline, the calculator is disabled. <a href={GUIDE_BASE}>Check current Phone Radar evidence →</a></div>
 <input id="ka-q" type="search" placeholder="Filter routes by brand or market..." aria-label="Filter routes" style="width:100%;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:inherit;font:inherit;margin:14px 0 4px">
 <div class="ka-sel">{models.map((m) => (
-<button type="button" class="ka-sel-btn" data-route={m.id} data-q={`${m.brandName} ${m.marketName}`.toLowerCase()}><strong>{m.brandName}</strong><small>{m.marketName} · {m.interval}-day window · {moneyShort(m.yearOriginal, m.currency)}/yr</small></button>
+<button type="button" class="ka-sel-btn" data-route={m.id} data-q={`${m.brandName} ${m.marketName}`.toLowerCase()}><strong>{m.brandName}</strong><small>{m.marketName} · {m.hold ? 'Review required · no reminder' : `${m.interval}-day window · ${moneyShort(m.yearOriginal, m.currency)}/yr`}</small></button>
 ))}</div>
 {models.map((m) => (
 <section class="ka-brand-panel" id={`ka-panel-${m.id}`} aria-label={m.brandName}>
 <h2>{m.brandName}</h2>
-<div style="margin:10px 0"><span class="ka-pill">{m.stateLabel}</span><span class="ka-pill">Verified {m.lastVerifiedAt}</span>{m.stale && <span class="ka-pill ka-stale">Re-verification due</span>}</div>
+<div style="margin:10px 0"><span class="ka-pill">{m.stateLabel}</span><span class="ka-pill">Legacy record checked {m.lastVerifiedAt}</span>{m.stale && <span class="ka-pill ka-stale">Newer evidence or recheck needed</span>}</div>
 {m.hold ? (
 <>
 <div class="ka-hold"><strong>On hold — no calculator offered.</strong><br>{m.holdReason}</div>
 <p class="ka-note">This tool only computes deadlines where a durable retention rule is established on current evidence. {m.brandName} does not currently qualify, so no date math is shown rather than a guessed one.</p>
-<div class="ka-links">{m.routeDetailHref && <a href={m.routeDetailHref}>Full {m.brandName} route evidence →</a>}<a href={`${GUIDE_BASE}directory/?q=${encodeURIComponent(m.brandName)}`}>Find in directory →</a></div>
+<div class="ka-links"><a href={m.currentEvidenceHref}>View current normalized evidence →</a>{m.routeDetailHref && <a href={m.routeDetailHref}>Historical {m.brandName} route guide →</a>}<a href={`${GUIDE_BASE}directory/?q=${encodeURIComponent(m.brandName)}`}>Find in directory →</a></div>
 </>
 ) : (
 <>
@@ -121,9 +122,9 @@ function perYearLabel(m: any) {
 ))}
 <section class="ka-discipline"><h2>How this tool treats evidence</h2>
 <ul>
-<li>All rules come from the same normalized global directory packet that backs the Phone Radar route guides (packet checked {data.checkedAt}).</li>
-<li>Costs are community-measured action costs; any balance you top up remains yours.</li>
-<li>CNY figures use the packet reference rates captured on {data.checkedAt}; your card FX may differ.</li>
+<li>The historical comparison packet was checked {data.checkedAt}. A calculator is available only when the current normalized Phone Radar record is admitted and its annual cost, currency and retention window agree.</li>
+<li>Displayed action costs are historic reported or provider-specified estimates, not universal prices. Credit may expire or be consumed; confirm the exact current terms before acting.</li>
+<li>CNY approximations come from the current normalized route metrics when available, not outdated legacy conversion figures.</li>
 <li>Reminders are generated locally in your browser (.ics download or Google Calendar link). No account, no backend; your date is stored only in this browser.</li>
 <li>Where a route lacks an established retention rule, no calculator is offered — missing rules stay missing rather than becoming guesses.</li>
 </ul></section>
