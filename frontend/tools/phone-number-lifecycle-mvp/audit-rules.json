@@ -185,6 +185,60 @@
           "type": "official-commercial"
         }
       ]
+    },
+    {
+      "id": "cmlink-52-country-365d",
+      "name": "CMLink 52-country 365-day data eSIM",
+      "provider": "CMLink via MeSIM",
+      "country": "Global / 52 regions",
+      "numberClass": "data-only",
+      "form": "eSIM · data only · 10GB high-speed then 1–512 Kbps",
+      "bestFor": [
+        "long-duration-data",
+        "multi-country-data",
+        "backup-data",
+        "esim",
+        "ai-burst-data"
+      ],
+      "purchaseUrl": "https://mesimgo.com/en/products/cmlink-52-country-unlimited-10gb-19",
+      "cost": {
+        "purchase": "Current seller page lists USD 12.50 for the exact CMLink 52-country eSIM: 10GB high-speed data shared across 52 countries/regions, then unlimited low-speed data at 1–512 Kbps, valid for 365 days after activation.",
+        "recurring": "One 365-day package. The exact seller SKU is currently listed as non-top-up and non-reinstall; buy a replacement before expiry or before you need a fresh high-speed allowance.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "This is a long-duration data package, not a phone-number retention route.",
+        "recovery": "Keep a separate SMS-capable line for account recovery. Do not delete this eSIM expecting to reinstall the same SKU later."
+      },
+      "friction": {
+        "identity": "The exact seller page does not present a phone-number identity/KYC requirement; payment method and transaction fees depend on checkout.",
+        "location": "The package lists 52 supported countries/regions, including mainland China, Japan, South Korea, Singapore, the United States and many European destinations.",
+        "device": "Use an unlocked eSIM-compatible device and enable data roaming. 4G/5G availability depends on the local network.",
+        "ongoing": "Recent first-hand community use reports Hong Kong landing IP with a Singapore path and good value for AI/daily backup. Provider reliability reports vary by plan, so test connectivity before depending on it."
+      },
+      "evidence": [
+        {
+          "label": "NodeSeek — recent first-hand eSIM usage roundup",
+          "url": "https://www.nodeseek.com/post-932285-1",
+          "type": "community"
+        },
+        {
+          "label": "MeSIM — current CMLink 52-country 10GB / 365-day seller SKU",
+          "url": "https://mesimgo.com/en/products/cmlink-52-country-unlimited-10gb-19",
+          "type": "seller-commercial"
+        },
+        {
+          "label": "NodeSeek — seller post for the CMLink 52-country annual SKU",
+          "url": "https://www.nodeseek.com/post-837784-1",
+          "type": "seller-community"
+        },
+        {
+          "label": "CMLink — global data service brand page",
+          "url": "https://global.cmlink.com/",
+          "type": "official-brand"
+        }
+      ]
     }
   ],
   "locationConstraintOverrides": {
@@ -213,6 +267,14 @@
       "summary": "Recent community evidence reproduced first activation outside Croatia using the eSIM path; A1 does not currently publish that remote activation as a guaranteed workflow.",
       "outsideHomeNote": "Remote activation is a current community-reproduced route, not an official promise. Be prepared for manual network selection and do not depend on it for an emergency deadline.",
       "sourceUrl": "https://www.nodeloc.com/t/topic/81137"
+    },
+    "cmlink-52-country-365d": {
+      "mode": "multi-region-data",
+      "hardBlock": false,
+      "requiredLocations": [],
+      "summary": "The exact seller SKU lists 52 supported countries/regions. Coverage is a package property, not a promise that every local network performs identically.",
+      "outsideHomeNote": "Install on a compatible device, enable data roaming and test connectivity in the first destination before relying on it.",
+      "sourceUrl": "https://mesimgo.com/en/products/cmlink-52-country-unlimited-10gb-19"
     }
   },
   "additionalCapabilities": {
@@ -296,6 +358,33 @@
         "state": "recovery-unverified",
         "label": "Do not assume recovery after expiry",
         "note": "The same-number recovery window after prepaid expiry is not verified. Top up early and move critical account recovery before any lapse."
+      }
+    },
+    "cmlink-52-country-365d": {
+      "evidenceClass": {
+        "state": "community-first-with-current-seller-sku",
+        "label": "Recent first-hand use + exact current seller SKU",
+        "note": "Operational impressions come from recent first-hand community use. Price, allowance, validity, coverage and data-only properties come from the exact current seller SKU; the CMLink brand page is context only and is not used to overwrite SKU-specific terms."
+      },
+      "roamingSms": {
+        "state": "not-supported-on-route",
+        "label": "Data only — no phone number or SMS",
+        "note": "The exact 52-country seller SKU is data-only and does not support voice calls or sending/receiving SMS."
+      },
+      "numberDuration": {
+        "state": "data-package",
+        "label": "365-day data package",
+        "note": "This is package validity, not ownership of a phone number. The 10GB high-speed allowance is shared across all 52 covered regions."
+      },
+      "termination": {
+        "state": "package-expiry-no-reinstall",
+        "label": "Replace before expiry or deletion",
+        "note": "The exact seller SKU is currently listed as non-top-up and non-reinstall. Buy a replacement before expiry or before deleting the installed eSIM if continuity matters."
+      },
+      "incidentSeparation": {
+        "state": "different-product-incident",
+        "label": "Do not conflate a separate MeSIM Singapore failure with this CMLink SKU",
+        "note": "A July 2026 seller/community post describes widespread mainland-China failure for a different MeSIM Singapore eSIM, then separately lists the CMLink 52-country annual card and says CMLink can be used. Keep the products and incidents separate."
       }
     }
   }
