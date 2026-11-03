@@ -1,46 +1,101 @@
-#!/bin/bash
-# Health check for aineedhelpfromotherai.com
-# Usage: bash scripts/health-check.sh [--alert]
-# Add to cron: */5 * * * * /opt/aineedhelpfromotherai/scripts/health-check.sh
+#!/usr/bin/env bash
+# External end-to-end check; run from an approved persistent monitor only.
+# Example cron: */5 * * * * /path/to/scripts/health-check.sh --alert
+set -u
+umask 077
 
-set -e
+if [[ $# -gt 1 || ( $# -eq 1 && "$1" != '--alert' ) ]]; then
+  echo 'Usage: health-check.sh [--alert]' >&2
+  exit 2
+fi
 
-SITE_URL="https://aineedhelpfromotherai.com"
-API_URL="https://api.aineedhelpfromotherai.com/api/health"
-LOG="/var/log/aineedhelp-health.log"
+SITE_URL="${SITE_URL:-https://aineedhelpfromotherai.com/}"
+# Check the PUBLIC rewrite, not a historical direct API hostname.
+API_URL="${API_URL:-https://aineedhelpfromotherai.com/api/health}"
+HEALTH_LOG="${HEALTH_LOG:-/var/log/aineedhelp-health.log}"
+HEALTH_STATE_FILE="${HEALTH_STATE_FILE:-/var/tmp/aineedhelp-health.state}"
+FAIL_THRESHOLD="${FAIL_THRESHOLD:-2}"
+if ! [[ "$FAIL_THRESHOLD" =~ ^([1-9]|10)$ ]]; then
+  echo 'FAIL_THRESHOLD must be an integer from 1 to 10' >&2
+  exit 2
+fi
 
-check() {
-  local url="$1"
-  local label="$2"
-  local status_code
-  status_code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$url" 2>/dev/null)
-  if [ "$status_code" != "200" ]; then
-    echo "[$(date -u +"%Y-%m-%dT%H:%M:%SZ")] FAIL $label — HTTP $status_code" >> "$LOG"
-    return 1
-  fi
-  echo "[$(date -u +"%Y-%m-%dT%H:%M:%SZ")] OK $label — $status_code" >> "$LOG"
-  return 0
+log() {
+  local line
+  line="[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] $*"
+  printf '%s\n' "$line" >> "$HEALTH_LOG" 2>/dev/null || printf '%s\n' "$line" >&2
 }
 
-# Truncate log to last 1000 lines
-[ -f "$LOG" ] && tail -n 1000 "$LOG" > "$LOG.tmp" && mv "$LOG.tmp" "$LOG"
-
-SITE_OK=true
-API_OK=true
-
-check "$SITE_URL" "site" || SITE_OK=false
-check "$API_URL" "api" || API_OK=false
-
-if [ "$SITE_OK" = false ] || [ "$API_OK" = false ]; then
-  echo "[$(date -u +"%Y-%m-%dT%H:%M:%SZ")] ALERT: site=$SITE_OK api=$API_OK" >> "$LOG"
-  if [ "$1" = "--alert" ]; then
-    # Simple alert via curl to a webhook (set ALERT_URL env var)
-    if [ -n "$ALERT_URL" ]; then
-      curl -s -X POST "$ALERT_URL" \
-        -H "Content-Type: application/json" \
-        -d "{\"text\":\"aineedhelp alert: site=$SITE_OK api=$API_OK\"}" > /dev/null 2>&1
+probe() {
+  local kind="$1" url="$2" body code valid=1
+  body="$(mktemp)" || { log "FAIL $kind: temp-file unavailable"; return 1; }
+  code="$(curl -sS -L --connect-timeout 5 --max-time 10 -o "$body" -w '%{http_code}' "$url" 2>/dev/null)"
+  if [[ $? -eq 0 && "$code" == 200 ]]; then
+    if [[ "$kind" == site ]]; then
+      grep -qi '<html' "$body" && grep -Fq 'Phone Radar' "$body" && valid=0
+    else
+      node - "$body" >/dev/null 2>&1 <<'JS'
+const fs = require('fs');
+try {
+  const data = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
+  if (data.status !== 'ok' || data.runtime !== 'express') process.exitCode = 1;
+} catch (_) { process.exitCode = 1; }
+JS
+      valid=$?
     fi
   fi
-  exit 1
+  rm -f "$body"
+  if (( valid != 0 )); then
+    log "FAIL $kind: HTTP ${code:-000} or unexpected response"
+    return 1
+  fi
+  log "OK $kind: HTTP 200 and content verified"
+}
+
+send_alert() {
+  [[ "${1:-}" == '' ]] && return 0
+  [[ "${ALERT_URL:-}" == '' || "${2:-}" != --alert ]] && return 0
+  local payload
+  payload="$(printf '{"text":"aineedhelp %s: site=%s api=%s"}' "$1" "$site_state" "$api_state")"
+  curl -fsS --connect-timeout 5 --max-time 10 -X POST \
+    -H 'Content-Type: application/json' --data "$payload" "$ALERT_URL" >/dev/null 2>&1 || log "WARN alert delivery failed"
+}
+
+prev=ok
+fail_count=0
+if [[ -f "$HEALTH_STATE_FILE" ]]; then
+  read -r prev fail_count < "$HEALTH_STATE_FILE" || true
+  [[ "$prev" =~ ^(ok|pending|down)$ ]] || prev=ok
+  [[ "$fail_count" =~ ^[0-9]+$ ]] || fail_count=0
 fi
-exit 0
+save_state() {
+  local tmp="${HEALTH_STATE_FILE}.$$"
+  if printf '%s %s\n' "$1" "$2" > "$tmp" && mv -f "$tmp" "$HEALTH_STATE_FILE"; then
+    return 0
+  fi
+  rm -f "$tmp"
+  log "WARN cannot persist health state"
+}
+
+site_state=ok
+api_state=ok
+probe site "$SITE_URL" || site_state=fail
+probe api "$API_URL" || api_state=fail
+if [[ "$site_state" == ok && "$api_state" == ok ]]; then
+  [[ "$prev" == down ]] && { log 'RECOVERED site and API'; send_alert RECOVERED "${1:-}"; }
+  save_state ok 0
+  exit 0
+fi
+
+if (( fail_count < FAIL_THRESHOLD )); then fail_count=$((fail_count + 1)); fi
+if (( fail_count >= FAIL_THRESHOLD )); then
+  if [[ "$prev" != down ]]; then
+    log "DOWN site=$site_state api=$api_state"
+    send_alert DOWN "${1:-}"
+  fi
+  save_state down "$fail_count"
+else
+  log "PENDING failure $fail_count/$FAIL_THRESHOLD site=$site_state api=$api_state"
+  save_state pending "$fail_count"
+fi
+exit 1
