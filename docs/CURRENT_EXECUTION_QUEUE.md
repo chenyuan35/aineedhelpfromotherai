@@ -17,9 +17,10 @@ Last updated: 2026-11-03
 
 **Verified protected archive:** `/home/hatch/workspace/aineedhelp-db-recovery/2026-11-03-github-recovered.sqlite` on persistent Btrfs, mode 0600, 2,398 records, SQLite quick_check OK, SHA256 `554b384d0a2682f8a3d6e2740536ddc77b32778bc6e79d65f298f587f3c64843`. This is an immutable file-backed archive, not a live Express database; do not import historical, demo or expired task seeds as active users/tasks.
 
-**Protected state / do-not-do:** Muse checkout is stale at `ac9d8238b3481195421ad8551f7676b87678c01e` and has dirty files `M data/resolve-cache.json`, `?? backend-keepalive.log`, `?? keepalive.sh`; preserve them. Do not reset/fetch/overwrite the production worktree. Do not use yuan or hermes. QwenPaw worker devices are offline; no authorized parallel lane is running. No alternate VPS backend, paid service, DNS, account, billing, Cloudflare, tunnel or proxy changes. The user-approved architecture remains Vercel public entry + Muse Express/database.
+**Protected state / do-not-do:** Muse checkout is stale at `ac9d8238b3481195421ad8551f7676b87678c01e` and has dirty files `M data/resolve-cache.json`, `?? backend-keepalive.log`, `?? keepalive.sh`; preserve them. Do not reset, clean, checkout over, or overwrite the production worktree. Do not use yuan or hermes. QwenPaw worker devices are offline; no authorized parallel lane is running. No alternate VPS backend, paid service, DNS, account, billing, Cloudflare, tunnel or proxy changes. The user-approved architecture remains Vercel public entry + Muse Express/database.
 
 **Definition of done:** package and public ingress are officially supported; PGlite survives process and VM restart on Btrfs; live backup restore passes; Vercel-to-Muse APIs return expected responses externally; production rollback is documented and tested. Until then label the API/backend DOWN and keep the static site unchanged.
+All dated CURRENT/SESSION-CURRENT queue entries below this 2026-11-03 decision are historical and must not be executed unless reselected by a newer current queue.
 
 
 
