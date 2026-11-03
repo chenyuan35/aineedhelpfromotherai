@@ -12,6 +12,8 @@ on:
       - '.github/workflows/ci.yml'
       - 'ops/relay-observer-backup/**'
       - 'scripts/test-relay-observer-backup-transport.sh'
+      - 'scripts/health-check.sh'
+      - 'scripts/test-health-check.sh'
   pull_request:
     branches: [main]
     paths:
@@ -23,6 +25,8 @@ on:
       - 'Dockerfile'
       - 'ops/relay-observer-backup/**'
       - 'scripts/test-relay-observer-backup-transport.sh'
+      - 'scripts/health-check.sh'
+      - 'scripts/test-health-check.sh'
       - '.github/workflows/ci.yml'
 
 env:
@@ -107,5 +111,9 @@ jobs:
   health-check:
     runs-on: ubuntu-latest
     steps:
-      - run: curl -sI https://api.aineedhelpfromotherai.com/api/health | head -1
-        continue-on-error: true
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: External monitor response and alert-state regression
+        run: bash scripts/test-health-check.sh
