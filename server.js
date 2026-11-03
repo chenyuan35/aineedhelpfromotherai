@@ -2052,12 +2052,17 @@ process.on('unhandledRejection', (reason) => {
   logger.error('[FATAL] unhandledRejection:', reason);
 });
 
-function shutdown(signal) {
+async function shutdown(signal) {
   console.log(`[${signal}] shutting down gracefully...`);
-  server.close(() => {
+  server.close(async () => {
     const { closePool } = require('./lib/db');
-    closePool();
-    process.exit(0);
+    try {
+      await closePool();
+      process.exit(0);
+    } catch (err) {
+      logger.error('[shutdown] Database close failed:', err.message);
+      process.exit(1);
+    }
   });
   setTimeout(() => process.exit(1), 10000);
 }
