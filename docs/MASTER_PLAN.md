@@ -25,6 +25,8 @@ PR #498 is merged at main `06a65c06ae48f7b3865cad306bba4c62cbc3d758`; exact-main
 
 Until all gates pass, keep the dynamic API marked DOWN, preserve the existing archive and dirty Muse production worktree, and do not import historical/example/expired task records as live user or execution history. This infrastructure work does not authorize new Phone routes, SEO URLs, paid services, or account/DNS changes.
 
+The older dated P6/Phone status blocks below are historical release records; they do not override this 2026-11-03 infrastructure track or select the current next task.
+
 ## Strategic correction — 2026-09-23
 
 Product selection requires two substitution tests before search volume, SEO opportunity or implementation effort matter:
