@@ -1,12 +1,29 @@
 # Master Plan — Traffic Utility Site
 
-Last updated: 2026-10-15
+Last updated: 2026-11-03
 
 This is the project-wide progress board. `PROJECT_CONTEXT.md` answers what is true now; this file answers where the project is going and what comes next. `docs/OPERATING_WORKFLOW.md` defines execution.
 
 ## North-star goal
 
 Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small, stable AdSense revenue from organic traffic. The business floor is enough useful traffic/revenue to cover the annual domain cost; the first practical monetization target remains about RMB 100/month, then scale only what proves demand and defensible user value.
+
+## Current infrastructure recovery track — 2026-11-03
+
+**User-approved architecture:** Vercel remains the public entry; Muse remains the Express backend and database host. Do not silently move the backend to another VPS or replace this target with a different architecture.
+
+PR #498 is merged at main `06a65c06ae48f7b3865cad306bba4c62cbc3d758`; exact-main Vercel production `dpl_HiwAHK65hfYMJdno1YtJTQSsJCeU` is READY. This is a code release only: the PGlite 0.5.14 backend is opt-in and has **not** been installed or activated on Muse. Public homepage is HTTP 200; public API endpoints still return HTTP 530 through the disconnected Cloudflare Tunnel. On Muse, Express health is 200 but DB readiness is HTTP 500 because local PostgreSQL on 127.0.0.1:5432 is absent.
+
+**Blocking platform gates:** Muse has no npm-compatible package manager or verified outbound HTTPS to GitHub/npm; PGlite is not installed. Muse's own artifact contract permits publishing static artifacts only; interactive apps cannot be published publicly. No supported public inbound HTTP route for the Muse Express process is documented or verified. The old PostgreSQL installation lived on ephemeral storage and disappeared after reprovision. A private SQLite archive on persistent Btrfs is integrity-checked but is not the live application DB. User-systemd/service auto-recovery and live-DB backup/restore are not verified.
+
+**Exit gates before claiming restoration:**
+1. Obtain a Muse-supported, policy-compliant package install/transfer path; install pinned PGlite only in an isolated clean worktree and verify the existing `pg.Pool` interface and application schema.
+2. Activate only after tests pass, using a persistent `/home/hatch` Btrfs data directory; verify process restart and full Muse VM reboot persistence.
+3. Establish a supported process supervisor/recovery mechanism and a real backup/restore test for the live DB.
+4. Establish an explicitly supported Muse public HTTP ingress for Vercel; do not reconnect Cloudflare Tunnel, create a reverse proxy, or change DNS without separate platform support and authorization.
+5. Verify external Vercel-to-Muse health, readiness, diagnostics and application APIs, plus rollback. Vercel READY alone is not API reachability.
+
+Until all gates pass, keep the dynamic API marked DOWN, preserve the existing archive and dirty Muse production worktree, and do not import historical/example/expired task records as live user or execution history. This infrastructure work does not authorize new Phone routes, SEO URLs, paid services, or account/DNS changes.
 
 ## Strategic correction — 2026-09-23
 
