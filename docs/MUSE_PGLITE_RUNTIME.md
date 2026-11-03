@@ -4,6 +4,18 @@
 
 This is an opt-in PostgreSQL-compatible database embedded in the Muse-hosted Express process. It avoids an OS-level PostgreSQL service whose binaries and data directory live under Muse's disposable `/var` overlay. PGlite stores its database files in the configured Node filesystem directory under `/home/hatch`.
 
+## Current verified state — 2026-11-03
+
+PR #498 is merged at main `06a65c06ae48f7b3865cad306bba4c62cbc3d758`; exact-SHA Vercel production is READY. The PGlite code path is opt-in and has not been activated on Muse.
+
+Muse has Node v24.22.1 but no npm, npx, corepack, pnpm, yarn or bun executable; `@electric-sql/pglite` is not installed. Bounded HTTPS requests from the Muse container to GitHub, npm and the site apex time out. No approved package transfer/install path is currently verified. Do not bypass the platform network policy with a proxy or tunnel.
+
+The local Express process is running. `GET /api/health` returns 200, while DB-dependent `GET /api/status` returns 500 with `ECONNREFUSED 127.0.0.1:5432`. `DB_DRIVER` and `PGLITE_DATA_DIR` are unset; no production environment configuration has been changed. The local user systemd manager is unavailable (`systemctl --user` reports `No medium found`), so process auto-recovery is unverified.
+
+The platform documentation at `/home/hatch/docs/artifacts.md` says only static artifacts can be published and interactive apps cannot be public. No Muse-sanctioned dynamic inbound HTTP endpoint or port-forwarding contract for this Express service has been found. Third-party UseAPI documentation describes a Muse `type=web` public share as a single HTML file; this does not expose the running Express process or its database API (https://useapi.net/docs/api-muse-v1/get-muse-assets). The Vercel production API routes still target the disconnected Cloudflare Tunnel and return HTTP 530. Do not reconnect that tunnel or add an alternate reverse proxy without documented platform support and explicit authorization.
+
+The protected SQLite archive at `/home/hatch/workspace/aineedhelp-db-recovery/2026-11-03-github-recovered.sqlite` remains separate from the live app DB. It is on persistent Btrfs and passed `PRAGMA quick_check`; it is not a PostgreSQL dump or a restored Qwen execution database. Do not import its historical/demo/expired task rows as live activity.
+
 ## Explicit configuration
 
 Set these variables in the Muse runtime only:
