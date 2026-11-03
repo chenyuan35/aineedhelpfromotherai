@@ -6,7 +6,7 @@ Last updated: 2026-11-03
 
 ## Current decision
 
-**2026-11-03 CURRENT — #498 CODE MERGED; MUSE RUNTIME AND PUBLIC API STILL DOWN.** Main `06a65c06ae48f7b3865cad306bba4c62cbc3d758`; exact-SHA Vercel production `dpl_HiwAHK65hfYMJdno1YtJTQSsJCeU` READY. Public homepage HTTP 200; apex `/api/health`, `/api/status` and api-subdomain `/api/health` HTTP 530 through the disconnected Cloudflare Tunnel. Muse local Express `/api/health` 200, DB-dependent `/api/status` 500 (`ECONNREFUSED 127.0.0.1:5432`). PR #498 added opt-in PGlite 0.5.14 adapter and restart regression; **it did not activate or install PGlite**.
+**2026-11-03 CURRENT — #498/#500 CODE MERGED; MUSE RUNTIME AND PUBLIC API STILL DOWN.** Latest main `b1c406006784a29194c71eb6dd5cb9e12effc71a`; current Vercel production `dpl_5fBiutA7Q4MjeU9cJNoutZepwNTb` READY on exact SHA. Public homepage HTTP 200; apex `/api/health` and `/api/status` HTTP 530 through the disconnected Cloudflare Tunnel. Muse local Express `/api/health` 200, DB-dependent `/api/status` 500 (`ECONNREFUSED 127.0.0.1:5432`). PR #498 added opt-in PGlite 0.5.14 adapter and restart regression; **it did not activate or install PGlite**. PR #500 fixed the external monitor to check both `/api/health` and `/api/status` (`alive: true` required; CI #366 and Eval #1396 PASS), but no monitor process, timer, cron or alert channel is installed.
 
 **Ordered next gates:**
 1. **Package install — BLOCKED:** Muse has Node v24.22.1 but no npm/npx/corepack/pnpm/yarn/bun, PGlite is absent, and outbound HTTPS to GitHub/npm times out. Obtain a Muse-supported package transfer/install path. Do not bypass network/security restrictions or improvise a proxy.
