@@ -1,5 +1,9 @@
 # Muse embedded database runtime
 
+## Current priority correction — 2026-11-04
+
+This page documents a previously merged **inactive fallback**. Muse's current working database path has changed: PostgreSQL 16.15 runs directly from persistent Btrfs `/home/hatch/workspace/aineedhelp-db-runtime/pgdata`, local Express `/api/status` returns HTTP 200 with `alive:true`, and a PostgreSQL logical backup was restored successfully into a scratch test database. The six live application tables are empty; no Qwen private data was recovered. The PGlite adapter remains opt-in, uninstalled and disabled. **Do not activate PGlite or repeat package-install experiments as the next task.** Outstanding gates are VM/reprovision persistence, guaranteed boot recovery, off-host backup and officially supported public ingress; the existing Vercel API still returns HTTP 530. Current operations: `docs/MUSE_POSTGRESQL_RECOVERY_2026-11-04.md` and issue #496. The 2026-11-03 section below is historical.
+
 ## Purpose
 
 This is an opt-in PostgreSQL-compatible database embedded in the Muse-hosted Express process. It avoids an OS-level PostgreSQL service whose binaries and data directory live under Muse's disposable `/var` overlay. PGlite stores its database files in the configured Node filesystem directory under `/home/hatch`.
