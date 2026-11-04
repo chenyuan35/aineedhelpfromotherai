@@ -1,8 +1,25 @@
 # Current Execution Queue
 
-Last updated: 2026-11-03
+Last updated: 2026-11-04
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is the short atomic queue.
+
+## Current decision — 2026-11-04
+
+**Muse local DB/runtime recovered; public dynamic API not recovered.** GitHub main `07489c87e3d3380a998c3b50df5dd15def2b313c`; Vercel READY on exact main but public `/api/*` endpoints still HTTP **530**. Muse PostgreSQL 16.15 now uses Btrfs `/home/hatch/workspace/aineedhelp-db-runtime/pgdata`, verified by `SHOW data_directory`; local Express `/api/health` **200**, DB-backed `/api/status` **200/alive:true**. Six business tables have zero rows: no Qwen data recovery. Private PostgreSQL logical backup plus **scratch-database restore** passed; original 2,398-row SQLite archive remains separate. PGlite remains opt-in and unused.
+
+**Verified active local mechanisms:** `aineedhelp-backend.service` systemd process handoff and readiness passed; `aineedhelp-backend-ensure.timer` every five minutes and `aineedhelp-postgres-backup.timer` daily 03:27 UTC were enabled+active. Daily unattended fire, full VM reboot/reprovision after PGDATA migration and off-host backups remain unverified. Hatchable External Watch v2 restarted its hourly scheduled check, recording 7 passing non-API targets and 4 failing API targets (530), with no alert delivery.
+
+**NEXT — strictly ordered:**
+1. **Safe read-only status reconciliation:** Remote Desktop Commander timed out during a subsequent managed-process recovery test. Check the process, service, PGDATA, timers and local API before any other side-effecting remote invocation. Report this test **UNKNOWN** until observed.
+2. **Consolidate durable recovery code + facts:** commit tested, secret-free recovery templates/runbook to a fresh GitHub branch and complete PR, CI/Eval/Preview, release and verification gates. Dirty Muse checkout must remain untouched. Update canonical checkpoint, plan and this queue in that same batch.
+3. **Restart and data durability:** verify independent service restart, next unattended daily backup, read-only backup verification, and full Muse VM reprovision recovery; preserve PostgreSQL data, .env and historical archive. Verify an independent off-host backup mechanism only after privacy/account authorization.
+4. **Public ingress BLOCKED:** obtain specific platform evidence for a supported inbound Muse Express HTTP endpoint; existing static artifact share is not suitable. No unauthorized Cloudflare tunnel, proxy, account/DNS/billing changes or VPS substitution. Public API DOWN.
+5. **Public E2E BLOCKED until 4:** externally verify Vercel `/api/health`, `/api/status`, `/api/diagnostics`, real Relay Risk, monitoring and rollback; only then reopen product/SEO growth work.
+
+**Do not do:** treat local health as public restoration, import expired/static archive records as live app use, install PGlite by default, reset dirty checkout, create a new SEO page, or rerun an unresolved side-effecting command. See `docs/MUSE_POSTGRESQL_RECOVERY_2026-11-04.md` and issue #496.
+
+The 2026-11-03 `## Current decision` section below is an **older historical checkpoint**.
 
 ## Current decision
 
