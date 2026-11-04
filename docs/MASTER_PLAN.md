@@ -1,12 +1,30 @@
 # Master Plan — Traffic Utility Site
 
-Last updated: 2026-11-03
+Last updated: 2026-11-04
 
 This is the project-wide progress board. `PROJECT_CONTEXT.md` answers what is true now; this file answers where the project is going and what comes next. `docs/OPERATING_WORKFLOW.md` defines execution.
 
 ## North-star goal
 
 Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small, stable AdSense revenue from organic traffic. The business floor is enough useful traffic/revenue to cover the annual domain cost; the first practical monetization target remains about RMB 100/month, then scale only what proves demand and defensible user value.
+
+## Current infrastructure recovery track — 2026-11-04
+
+**Fixed architecture:** Vercel serves public pages; Muse must host Express and the live database. The public API is still down (Cloudflare Tunnel 530), despite local recovery. No alternative VPS, unauthorized reverse proxy/tunnel or DNS/billing change.
+
+**Completed and independently verified:**
+- **Live database local:** PostgreSQL 16.15 is running from a persistent Btrfs directory `/home/hatch/workspace/aineedhelp-db-runtime/pgdata`. Exact table counts are six application tables with zero rows; this is not Qwen history and is separate from the 2,398-record protected archive. Backup before/after migration, and restore into a separate scratch DB, passed.
+- **Local runtime:** Express was handed off to root systemd and returned `/api/health` 200, `/api/status` 200 with `alive:true`. A 5-minute fail-closed local recovery timer and daily PG dump timer are enabled; daily unattended backup, full VM reprovision and subsequent cold start are not yet proven.
+- **Independent external observation:** Hatchable External Watch v2 has an active hourly schedule. It now records 11 checks (seven non-API pass, four public API fail HTTP 530) while returning HTTP 200 for the completed observer run. It has no notification channel.
+
+**Next ordered gates (do not replace with general planning):**
+1. Read-only re-inspection of systemd, PostgreSQL PGDATA, local API and timers after the Remote Desktop Commander timeout. Treat the interrupted process recovery test as **UNKNOWN**, not PASS. Re-run a controlled test only if evidence shows it is needed and safe.
+2. Preserve the recovery scripts/commands in GitHub via a new branch, tests, PR/CI/Eval/Preview and an exact-status checkpoint; preserve dirty Muse production checkout. Confirm unattended daily backup and actual VM reprovision persistence, including `/etc` re-creation, before claiming always-on reliability. Provide an independent secure/off-host backup plan only after privacy/account authorization.
+3. Verify an **officially supported Muse dynamic inbound HTTP** contract for Vercel; do not force Cloudflare, build a proxy, change DNS or publish an interactive Muse artifact. Until proven, the public API **remains unavailable**.
+4. Only if 1–3 pass: controlled Vercel-to-Muse `/api/health`, `/api/status`, `/api/diagnostics`, Relay Risk real API, rollback and external monitor evidence.
+5. Once the dynamic site is genuinely available: assess Search Console and user benefit on existing URLs; do not expand pages/Phone routes or infer AdSense progress from the static-site 200 or from external monitor probes.
+
+**PGlite decision:** The merged opt-in PGlite adapter (#498) is an unused alternative, not the live driver. The working PostgreSQL/Btrfs solution supersedes the prior package-install priority; do not install PGlite merely to recreate a solved local database task. The 2026-11-03 recovery section below is historical. See `docs/MUSE_POSTGRESQL_RECOVERY_2026-11-04.md` and GitHub issue #496.
 
 ## Current infrastructure recovery track — 2026-11-03
 
