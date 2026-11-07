@@ -4,7 +4,6 @@ set -Eeuo pipefail
 umask 077
 
 ROOT="${AINEEDHELP_RECOVERY_ROOT:-/home/hatch/workspace/aineedhelp-db-recovery}"
-REPO="${AINEEDHELP_REPO_ROOT:-/home/hatch/workspace/aineedhelpfromotherai}"
 SERVICE="${AINEEDHELP_BACKEND_SERVICE:-aineedhelp-backend.service}"
 LOG="${AINEEDHELP_BACKEND_LOG:-$ROOT/backend-ensure.log}"
 HEALTH_URL="http://127.0.0.1:3000/api/health"
@@ -34,8 +33,9 @@ unit_state() {
   systemctl show -p ActiveState --value "$SERVICE" 2>/dev/null || true
 }
 
-# Return a PID only when exactly one unmanaged process is demonstrably this
-# project's root-owned "node server.js" in the expected checkout.
+# The Muse terminal runner restricts /proc cwd/exe inspection. Identify the
+# one permitted handoff candidate by exact argv, root UID, tool-session cgroup,
+# sole node-server count and a healthy listener on port 3000.
 safe_unmanaged_pid() {
   local -a pids=()
   mapfile -t pids < <(pgrep -f '(^|/)node server\.js$' || true)
@@ -45,18 +45,19 @@ safe_unmanaged_pid() {
   fi
 
   local pid="${pids[0]}"
-  local cwd exe uid cmdline
-  cwd="$(readlink -f "/proc/$pid/cwd" 2>/dev/null || true)"
-  exe="$(readlink -f "/proc/$pid/exe" 2>/dev/null || true)"
+  local uid cmdline cgroup
   uid="$(awk '/^Uid:/ {print $2}' "/proc/$pid/status" 2>/dev/null || true)"
   cmdline="$(tr '\0' ' ' < "/proc/$pid/cmdline" 2>/dev/null | sed 's/[[:space:]]*$//')"
+  cgroup="$(cat "/proc/$pid/cgroup" 2>/dev/null || true)"
   local -a argv=()
   read -r -a argv <<< "$cmdline"
 
-  if [[ "$cwd" != "$REPO" || "$exe" != "/usr/bin/node" || "$uid" != "0" ]] ||
+  if [[ "$uid" != "0" ]] ||
      (("${#argv[@]}" != 2)) ||
-     [[ "$(basename "${argv[0]:-}")" != "node" || "${argv[1]:-}" != "server.js" ]]; then
-    log "Healthy unmanaged API is not the exact expected project process; refusing handoff (pid=$pid cwd=$cwd exe=$exe uid=$uid)"
+     [[ "$(basename "${argv[0]:-}")" != "node" || "${argv[1]:-}" != "server.js" ]] ||
+     ! grep -q '^0::/init\.scope/hatch-tool-prepared-' <<< "$cgroup" ||
+     ! port_busy; then
+    log "Port 3000 listener is not the exact verified tool-session node server; refusing handoff (pid=$pid uid=$uid cgroup=$cgroup argv=$cmdline)"
     return 1
   fi
 
@@ -70,12 +71,16 @@ handoff_unmanaged() {
   kill -TERM "$pid"
 
   for _ in {1..20}; do
-    if ! kill -0 "$pid" 2>/dev/null || ! port_busy; then break; fi
+    if ! kill -0 "$pid" 2>/dev/null; then break; fi
     sleep 1
   done
 
+  if kill -0 "$pid" 2>/dev/null; then
+    log "Unmanaged backend pid=$pid did not exit after SIGTERM; refusing force-kill or duplicate start"
+    return 1
+  fi
   if port_busy; then
-    log "Unmanaged backend pid=$pid did not release port 3000 after SIGTERM; refusing force-kill or duplicate start"
+    log "Port 3000 remains occupied after unmanaged backend exit; refusing duplicate start"
     return 1
   fi
 }
