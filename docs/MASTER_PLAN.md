@@ -1,6 +1,6 @@
 # Master Plan — Traffic Utility Site
 
-Last updated: 2026-11-03
+Last updated: 2026-11-07
 
 This is the project-wide progress board. `PROJECT_CONTEXT.md` answers what is true now; this file answers where the project is going and what comes next. `docs/OPERATING_WORKFLOW.md` defines execution.
 
