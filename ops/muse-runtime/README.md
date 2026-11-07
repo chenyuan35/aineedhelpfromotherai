@@ -17,7 +17,7 @@ The ensure script verifies both HTTP liveness/readiness and systemd ownership. A
 
 If one exact root-owned node server.js process is found on port 3000 in the known Desktop Commander tool-session cgroup while the service unit is inactive, ensure-backend.sh sends SIGTERM, waits for the PID to exit and for port 3000 to be released, then starts the systemd unit. It never uses SIGKILL and refuses unidentified or multiple processes. Procfs cwd/exe inspection is restricted in this Muse runtime, so the handoff gate uses exact argv, UID, cgroup, port occupancy and successful API health/readiness.
 
-verify-runtime.sh checks the default.target boot links, service cgroup, exact process argv, Btrfs PGDATA and local API readiness.
+verify-runtime.sh checks the default.target boot links, service cgroup, exact process argv, Btrfs PGDATA and local API readiness. Muse exposes OverlayFS stacked over the persistent Btrfs mount; validate PGDATA with both statfs and df filesystem type, and require a Btrfs layer in findmnt output rather than requiring the first findmnt row to equal btrfs.
 
 ## Installed paths
 
