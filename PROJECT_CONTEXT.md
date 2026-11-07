@@ -1,12 +1,12 @@
 # aineedhelpfromotherai.com — Durable Project Context
 
-Last updated: 2026-11-03
+Last updated: 2026-11-07
 
 This file is the compact current-facts source for the project. Historical execution detail belongs in task-specific docs, PRs, Git history and the Google Docs journal. If anything here conflicts with GitHub `main` plus verified production, GitHub `main` and verified production win.
 
 ## Current progress checkpoint
 
-**2026-11-07 LOCAL MUSE BACKEND ACTIVE; PUBLIC API STILL DOWN:** Latest GitHub main commit is docs-only `07489c87e3d3380a998c3b50df5dd15def2b313c` (PR #501); the last recorded production code SHA is `b1c406006784a29194c71eb6dd5cb9e12effc71a` on Vercel deployment `dpl_5fBiutA7Q4MjeU9cJNoutZepwNTb`. On the connected Muse `htch-runtime`, the Express backend was gracefully handed to `aineedhelp-backend.service`, now **active and enabled** under systemd. Local `/api/health` is **200** and DB-backed `/api/status` is **200** with `alive: true`. PostgreSQL 16 is active at `/home/hatch/workspace/aineedhelp-db-runtime/pgdata`, verified on persistent Btrfs. `aineedhelp-backend-ensure.timer` is active with five-minute checks; `aineedhelp-postgres-backup.timer` is active daily. This is a recovered local runtime, not a restored public API.
+**2026-11-07 LOCAL MUSE BACKEND ACTIVE; PUBLIC API STILL DOWN:** The last code-changing main SHA remains `b1c406006784a29194c71eb6dd5cb9e12effc71a` (PR #500); docs-only PR #501 advanced the documentation base to `07489c87e3d3380a998c3b50df5dd15def2b313c`. The last recorded production deployment is `b1c406006784a29194c71eb6dd5cb9e12effc71a` on Vercel deployment `dpl_5fBiutA7Q4MjeU9cJNoutZepwNTb`. On the connected Muse `htch-runtime`, the Express backend was gracefully handed to `aineedhelp-backend.service`, now **active and enabled** under systemd. Local `/api/health` is **200** and DB-backed `/api/status` is **200** with `alive: true`. PostgreSQL 16 is active at `/home/hatch/workspace/aineedhelp-db-runtime/pgdata`, verified on persistent Btrfs. `aineedhelp-backend-ensure.timer` is active with five-minute checks; `aineedhelp-postgres-backup.timer` is active daily. This is a recovered local runtime, not a restored public API.
 
 **Live PostgreSQL contents are empty:** the six core application tables (`posts`, `reasoning_objects`, `execution_history`, `task_lifecycle`, `agent_registry`, `agent_tokens`) each contain **0 rows**; `/api/status` reports 0 tasks, agents and reasoning objects. A fresh local logical backup was created at `2026-11-07T08:06:12Z`; a disposable restore test passed with **6 tables / 0 application rows**, and the production database remained unchanged. This verifies schema-only backup/restore on the same Btrfs volume, not recovery of business data or an off-host backup. Full Muse VM reboot persistence remains unverified.
 
