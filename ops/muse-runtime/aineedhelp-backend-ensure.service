@@ -1,0 +1,11 @@
+[Unit]
+Description=Check and recover AI Need Help backend
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+ExecStart=/usr/bin/bash /home/hatch/workspace/aineedhelp-db-recovery/ensure-backend.sh
+TimeoutStartSec=45
+NoNewPrivileges=true
