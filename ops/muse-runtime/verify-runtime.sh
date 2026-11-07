@@ -18,7 +18,11 @@ done
 pg_isready -h 127.0.0.1 -p 5432 -t 3 >/dev/null
 active_pgdata="$(setpriv --reuid=postgres --regid=postgres --init-groups psql -X -qAt -U postgres -d postgres -c 'SHOW data_directory')"
 [[ "$active_pgdata" == "$PGDATA" ]] || { echo "FAIL: PostgreSQL data_directory=$active_pgdata"; exit 1; }
-[[ "$(findmnt -n -T "$PGDATA" -o FSTYPE)" == "btrfs" ]] || { echo "FAIL: PGDATA is not on Btrfs"; exit 1; }
+pgdata_statfs="$(stat -f -c '%T' "$PGDATA")"
+pgdata_df_type="$(df -PT "$PGDATA" | awk 'NR==2 {print $2}')"
+pgdata_mount_layers="$(findmnt -n -T "$PGDATA" -o FSTYPE)"
+[[ "$pgdata_statfs" == "btrfs" && "$pgdata_df_type" == "btrfs" ]] || { echo "FAIL: PGDATA backing filesystem is not Btrfs (statfs=$pgdata_statfs df=$pgdata_df_type)"; exit 1; }
+grep -qx 'btrfs' <<< "$pgdata_mount_layers" || { echo "FAIL: no Btrfs mount layer for PGDATA (layers=$pgdata_mount_layers)"; exit 1; }
 
 pid="$(systemctl show -p MainPID --value "$SERVICE")"
 [[ "$pid" =~ ^[1-9][0-9]*$ ]] || { echo "FAIL: backend MainPID is not set"; exit 1; }
@@ -32,4 +36,4 @@ grep -q "/system.slice/$SERVICE" <<< "$cgroup" || { echo "FAIL: backend PID is n
 curl -fsS --max-time 5 http://127.0.0.1:3000/api/health | /usr/bin/node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{try{const d=JSON.parse(s);process.exit(d.status==="ok"&&d.runtime==="express"?0:1)}catch{process.exit(1)}})'
 curl -fsS --max-time 5 http://127.0.0.1:3000/api/status | /usr/bin/node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{try{const d=JSON.parse(s);process.exit(d.alive===true?0:1)}catch{process.exit(1)}})'
 
-printf 'PASS: systemd-managed Express pid=%s; default.target boot links; PostgreSQL PGDATA=%s (Btrfs); liveness/readiness=200\n' "$pid" "$active_pgdata"
+printf 'PASS: systemd-managed Express pid=%s; default.target boot links; PostgreSQL PGDATA=%s (statfs/df Btrfs); liveness/readiness=200\n' "$pid" "$active_pgdata"
