@@ -1,28 +1,28 @@
 # Current Execution Queue
 
-Last updated: 2026-11-03
+Last updated: 2026-11-07
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is the short atomic queue.
 
 ## Current decision
 
-**2026-11-03 CURRENT — #498/#500 CODE MERGED; MUSE RUNTIME AND PUBLIC API STILL DOWN.** Latest main `b1c406006784a29194c71eb6dd5cb9e12effc71a`; current Vercel production `dpl_5fBiutA7Q4MjeU9cJNoutZepwNTb` READY on exact SHA. Public homepage HTTP 200; apex `/api/health` and `/api/status` HTTP 530 through the disconnected Cloudflare Tunnel. Muse local Express `/api/health` 200, DB-dependent `/api/status` 500 (`ECONNREFUSED 127.0.0.1:5432`). PR #498 added opt-in PGlite 0.5.14 adapter and restart regression; **it did not activate or install PGlite**. PR #500 fixed the external monitor to check both `/api/health` and `/api/status` (`alive: true` required; CI #366 and Eval #1396 PASS), but no monitor process, timer, cron or alert channel is installed.
+**2026-11-07 CURRENT — MUSE LOCAL BACKEND RECOVERED; PUBLIC API STILL HTTP 530.** Last code-changing main SHA is `b1c406006784a29194c71eb6dd5cb9e12effc71a` (PR #500); docs-only PR #501 advanced the documentation base to `07489c87e3d3380a998c3b50df5dd15def2b313c`. Muse `htch-runtime`: `aineedhelp-backend.service` is active+enabled; local `/api/health` **200**, `/api/status` **200 / alive:true**. PostgreSQL 16 is active on persistent Btrfs PGDATA `/home/hatch/workspace/aineedhelp-db-runtime/pgdata`. The five-minute backend ensure timer and daily PostgreSQL backup timer are active. A fresh Btrfs logical backup was created and a disposable restore test passed (**6 tables / 0 application rows**).
+
+**Data state:** all six core application tables (`posts`, `reasoning_objects`, `execution_history`, `task_lifecycle`, `agent_registry`, `agent_tokens`) contain **0 rows**. The database is operational but empty; this is not historical business-data recovery. The protected SQLite archive and file-backed event log remain separate. Do not import historical/example/expired task seeds as active users or tasks. Off-host backup and full VM reboot persistence remain unverified.
+
+**Public state:** external apex `/api/health`, `/api/status` and `/api/diagnostics` each return **HTTP 530** through the disconnected `api-tunnel.aineedhelpfromotherai.com`. Muse's own `docs/artifacts.md` says only static artifacts can be published and interactive apps cannot be public. No supported Muse dynamic inbound HTTP endpoint is documented. Do not reconnect Cloudflare Tunnel, create a reverse proxy, or change DNS. The public API remains DOWN.
+
+**Protected runtime:** active service still runs from stale Muse checkout `ac9d8238b3481195421ad8551f7676b87678c01e`, with dirty files `M data/resolve-cache.json`, `?? backend-keepalive.log`, `?? keepalive.sh`. Preserve them; never reset, clean or overwrite. Do not use `yuan` or `hermes`. No alternate VPS, paid service, tunnel, proxy, DNS, billing or account changes. Current approved architecture remains Vercel public entry + Muse runtime.
 
 **Ordered next gates:**
-1. **Package install — BLOCKED:** Muse has Node v24.22.1 but no npm/npx/corepack/pnpm/yarn/bun, PGlite is absent, and outbound HTTPS to GitHub/npm times out. Obtain a Muse-supported package transfer/install path. Do not bypass network/security restrictions or improvise a proxy.
-2. **Public ingress — BLOCKED:** Muse platform docs inspected state that only static artifacts can be published and interactive apps cannot be public; no documented Muse-sanctioned dynamic inbound HTTP endpoint for Express was found. Third-party UseAPI docs describe public `type=web` shares as single HTML files, not a live server endpoint (https://useapi.net/docs/api-muse-v1/get-muse-assets). Existing Vercel rewrites target `api-tunnel.aineedhelpfromotherai.com` and return 530. Do not reconnect Cloudflare Tunnel, deploy a reverse proxy, or change DNS without explicit platform support and authorization.
-3. **Persistent DB — NOT STARTED:** after an approved package path exists, install/test PGlite in an isolated worktree and use `/home/hatch/workspace/aineedhelp-db-runtime/pglite` on persistent Btrfs. Verify schema, adapter, API status, graceful process restart and full VM reboot before activation. Keep the existing SQLite archive separate.
-4. **Process recovery and backups — NOT VERIFIED:** `systemctl --user` returns `No medium found`; process auto-start is unproven. Establish a supported supervisor and a tested live-DB backup/restore before readiness claims.
-5. **End-to-end — NOT VERIFIED:** after 1–4 pass, test Vercel public health/readiness/diagnostics and real API operations against Muse, then rollback behavior.
+1. **Public ingress / architecture decision — BLOCKED:** wait for official Muse dynamic-ingress support or explicit user authorization to move the backend to an approved durable public host while retaining Vercel frontend. Do not bypass Muse restrictions with a tunnel or proxy.
+2. **Data recovery classification — read-only only:** review the separate SQLite archive and file-backed event log, define provenance and an exact allowlist. No import into the empty live database until historical/demo/expired rows are separated from genuine live records and a rollback backup exists.
+3. **Durability verification:** verify full Muse VM reboot recovery for PostgreSQL and Express; run a post-reboot backup/restore check. Current local backup restore passed, but no off-host copy is verified.
+4. **Runtime code alignment — deferred until ingress decision:** current service runs stale checkout `ac9d823`; use a fresh worktree from GitHub main and normal tests/release process. Do not sync over the dirty production checkout.
+5. **End-to-end public QA:** after a supported ingress path exists, verify external Vercel health/readiness/diagnostics and real API operations, then test rollback.
 
-**Verified protected archive:** `/home/hatch/workspace/aineedhelp-db-recovery/2026-11-03-github-recovered.sqlite` on persistent Btrfs, mode 0600, 2,398 records, SQLite quick_check OK, SHA256 `554b384d0a2682f8a3d6e2740536ddc77b32778bc6e79d65f298f587f3c64843`. This is an immutable file-backed archive, not a live Express database; do not import historical, demo or expired task seeds as active users/tasks.
-
-**Protected state / do-not-do:** Muse checkout is stale at `ac9d8238b3481195421ad8551f7676b87678c01e` and has dirty files `M data/resolve-cache.json`, `?? backend-keepalive.log`, `?? keepalive.sh`; preserve them. Do not reset, clean, checkout over, or overwrite the production worktree. Do not use yuan or hermes. QwenPaw worker devices are offline; no authorized parallel lane is running. No alternate VPS backend, paid service, DNS, account, billing, Cloudflare, tunnel or proxy changes. The user-approved architecture remains Vercel public entry + Muse Express/database.
-
-**Definition of done:** package and public ingress are officially supported; PGlite survives process and VM restart on Btrfs; live backup restore passes; Vercel-to-Muse APIs return expected responses externally; production rollback is documented and tested. Until then label the API/backend DOWN and keep the static site unchanged.
-All dated CURRENT/SESSION-CURRENT queue entries below this 2026-11-03 decision are historical and must not be executed unless reselected by a newer current queue.
-
-
+**Definition of done:** local service remains systemd-managed and DB-backed; data recovery is provenance-safe; reboot and backup recovery pass; a supported public ingress exists; Vercel-to-backend endpoints and real API operations pass externally; rollback is verified. Until then label local runtime ACTIVE and public API DOWN.
+All dated CURRENT/SESSION-CURRENT queue entries below this 2026-11-07 decision are historical and must not be executed unless reselected by a newer current queue.
 
 **CURRENT — 2026-10-15 VERIFIED #493 PRODUCTION, KEEP-ALIVE REPAIR BRANCH PENDING RELEASE:** Actual main `4318efa9f244f9ba2b1fcbe59686cff4d30b2acb` and exact-Vercel production `dpl_aDKJCsJhpQyMy2ZoZsqbKZ6Afkj3` were independently matched and READY. Baseline **160 routes / 87 markets / 930 sources / 361 events / 41 app observations / 225 snapshots**, public **135 comparison / 3 indexable details / 31 sitemap**, first-party settled GSC sitewide **749/5** and Phone **40/0** through Oct 12; no verified actual GA4 sessions. China/foreign new-number payment/KYC/first-network-attach/named-app OTP remains **No verified matches**. The historical current labels for #491 and 927/358 or 35/0 further below are superseded.
 
