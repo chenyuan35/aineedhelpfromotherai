@@ -1,0 +1,29 @@
+[Unit]
+Description=AI Need Help Express backend
+After=network-online.target postgresql@16-main.service
+Wants=network-online.target
+Requires=postgresql@16-main.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/home/hatch/workspace/aineedhelpfromotherai
+Environment=PORT=3000
+ExecStartPre=/usr/bin/pg_isready -h 127.0.0.1 -p 5432 -t 10
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+KillSignal=SIGTERM
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=full
+PrivateTmp=true
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
