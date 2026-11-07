@@ -16,7 +16,9 @@ The active systemd service still runs from the stale Muse checkout `ac9d8238b348
 
 External apex `/api/health`, `/api/status` and `/api/diagnostics` currently return HTTP 530 through `api-tunnel.aineedhelpfromotherai.com`. Muse's own `/home/hatch/docs/artifacts.md` says only static artifacts can be published and interactive apps cannot be public. No supported Muse dynamic public ingress is documented. Do not reconnect Cloudflare Tunnel, create a reverse proxy, or change DNS. Local runtime ACTIVE does not mean public API restored.
 
-The protected SQLite archive at `/home/hatch/workspace/aineedhelp-db-recovery/2026-11-03-github-recovered.sqlite` remains separate from the live PostgreSQL DB. It passed `PRAGMA quick_check` and contains 2,398 file-backed records, but includes historical/task/aggregation seeds and is not a restored private Qwen runtime database. Do not import it into live tables without a reviewed provenance allowlist and a separate rollback backup.## Explicit configuration
+The protected SQLite archive at `/home/hatch/workspace/aineedhelp-db-recovery/2026-11-03-github-recovered.sqlite` remains separate from the live PostgreSQL DB. It passed `PRAGMA quick_check` and contains 2,398 file-backed records, but includes historical/task/aggregation seeds and is not a restored private Qwen runtime database. Do not import it into live tables without a reviewed provenance allowlist and a separate rollback backup.
+
+## Explicit configuration
 
 Set these variables in the Muse runtime only:
 
