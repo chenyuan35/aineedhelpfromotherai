@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic local AI Need Help backend recovery check
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=30s
+Unit=aineedhelp-backend-ensure.service
+
+[Install]
+WantedBy=default.target
