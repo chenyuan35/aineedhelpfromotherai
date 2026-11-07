@@ -25,7 +25,9 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 4. Align runtime code with current GitHub main using a fresh worktree, tests and a controlled service restart; never overwrite the dirty runtime checkout.
 5. Verify external Vercel `/api/health`, `/api/status`, `/api/diagnostics` and real API operations, plus rollback, from outside Muse.
 
-Until the public-ingress and data-recovery gates pass, describe the local service as **ACTIVE** and the public API as **DOWN**. No alternate host, paid service, DNS, account, tunnel, proxy, Phone route, SEO URL or AdSense change is authorized by this infrastructure work.## Strategic correction — 2026-09-23
+Until the public-ingress and data-recovery gates pass, describe the local service as **ACTIVE** and the public API as **DOWN**. No alternate host, paid service, DNS, account, tunnel, proxy, Phone route, SEO URL or AdSense change is authorized by this infrastructure work.
+
+## Strategic correction — 2026-09-23
 
 Product selection requires two substitution tests before search volume, SEO opportunity or implementation effort matter:
 
