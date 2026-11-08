@@ -1,6 +1,6 @@
 # Master Plan — Traffic Utility Site
 
-Last updated: 2026-11-07
+Last updated: 2026-11-08
 
 This is the project-wide progress board. `PROJECT_CONTEXT.md` answers what is true now; this file answers where the project is going and what comes next. `docs/OPERATING_WORKFLOW.md` defines execution.
 
@@ -8,24 +8,27 @@ This is the project-wide progress board. `PROJECT_CONTEXT.md` answers what is tr
 
 Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small, stable AdSense revenue from organic traffic. The business floor is enough useful traffic/revenue to cover the annual domain cost; the first practical monetization target remains about RMB 100/month, then scale only what proves demand and defensible user value.
 
-## Current infrastructure recovery track — 2026-11-07
+## Current infrastructure recovery track — 2026-11-08
 
-**Architecture constraint:** the approved target remains Vercel public entry + Muse Express/database. Muse's own artifact contract currently permits only static artifact publishing; interactive apps cannot be made public. No supported Muse dynamic inbound HTTP endpoint has been verified. Do not reconnect Cloudflare Tunnel, add a reverse proxy, or change DNS. The current public API therefore remains DOWN even though the local runtime has been recovered.
+**Architecture constraint:** the approved target remains Vercel public entry + Muse runtime. Muse's own artifact contract currently permits static artifact publishing only; no supported dynamic inbound HTTP endpoint is documented. Do not reconnect Cloudflare Tunnel, add a reverse proxy, change DNS or move to a paid host without explicit authorization.
 
-**Local runtime recovered 2026-11-07:** Muse `htch-runtime` now runs `aineedhelp-backend.service` as an active, enabled systemd service. PostgreSQL 16 is active on persistent Btrfs PGDATA `/home/hatch/workspace/aineedhelp-db-runtime/pgdata`. Local `/api/health` returns 200 and DB-backed `/api/status` returns 200 with `alive: true`. The five-minute `aineedhelp-backend-ensure.timer` and daily `aineedhelp-postgres-backup.timer` are active. A fresh local logical backup was created and a disposable restore test passed (`tables=6`, `app_rows=0`). Full VM reboot persistence and off-host backup remain unverified.
+**Current local runtime is not recovered:** the 2026-11-08 live check found `aineedhelp-backend.service` inactive/disabled, PostgreSQL 16's systemd unit missing, both recovery/backup timers inactive/disabled, and no response on port 5432. An unmanaged Express process still returns local `/api/health` 200, but database-backed `/api/status` returns 500 / `alive:false`. The 2026-11-07 ACTIVE checkpoint is superseded.
 
-**Database/data boundary:** all six core application tables currently contain zero rows; the status API reports zero tasks, agents and reasoning objects. The successful backup/restore test therefore proves an empty application schema is recoverable, not that historical business data has been restored. The protected SQLite archive and file-backed event log remain separate; do not import historical, demo or expired records as active users/tasks without a reviewed allowlist.
+**Storage durability is the immediate P0:** `/home/hatch` currently resolves through OverlayFS with an upperdir under tmpfs `/run` and `fsync=volatile`; PGDATA and backup files are inside this overlay rather than a dedicated Btrfs mount. The underlying Btrfs volume is not sufficient proof that writes use a persistent layer. The recovery script's Btrfs grep can match the underlying entry, while the stricter runtime verifier fails. Do not start PostgreSQL, select PGlite or import data until a supported durable storage path is proven.
 
-**Code/runtime boundary:** the running service still uses the stale, dirty Muse checkout `ac9d8238b3481195421ad8551f7676b87678c01e` (`M data/resolve-cache.json`, `?? backend-keepalive.log`, `?? keepalive.sh`). Preserve it. Do not reset or sync over it. The current GitHub code release remains PR #500 / code SHA `b1c406006784a29194c71eb6dd5cb9e12effc71a`; runtime alignment must use a fresh worktree and normal tests/release gates.
+**Data boundary:** the last verified live PostgreSQL state (2026-11-07) was six core tables with zero rows; current DB contents are unavailable while PostgreSQL is down. The 2026-11-08 logical dump passes archive listing but is not restore-tested and is stored under the same overlay. The 2026-11-07 restore test covered only an empty schema. The SQLite archive contains 2,398 repository-derived records, including historical, seed, external and expired task data; the file-backed commit log contains only empty-payload cache-decay events and duplicate sequence values. Neither source is a recovered private Qwen runtime database or approved live import.
+
+**Code/runtime boundary:** latest main is `3684d508aeabebe3a9e97b8ee194f996eabb0207` (PR #503 runtime supervision files); latest application-code release remains PR #500 / `b1c406006784a29194c71eb6dd5cb9e12effc71a`. Preserve stale/dirty Muse checkout `ac9d8238b3481195421ad8551f7676b87678c01e`; do not reset or sync over it. Runtime alignment requires a fresh worktree and controlled release.
 
 **Exit gates before claiming public restoration:**
-1. Obtain documented Muse-supported dynamic public ingress, or obtain explicit user authorization to move only the backend to an approved durable public host while retaining the Vercel frontend.
-2. Classify the protected SQLite archive and file-backed event log; define a narrow import allowlist and verify provenance before any data import. Keep the current live DB and archive separate until then.
-3. Verify full Muse VM reboot recovery for PostgreSQL and Express; verify a real backup/restore after reboot and arrange an off-host backup if the platform permits it.
-4. Align runtime code with current GitHub main using a fresh worktree, tests and a controlled service restart; never overwrite the dirty runtime checkout.
-5. Verify external Vercel `/api/health`, `/api/status`, `/api/diagnostics` and real API operations, plus rollback, from outside Muse.
+1. Prove the exact persistent write path and correct the mount verification against the real Muse storage contract.
+2. Recover PostgreSQL or evaluate the already-implemented PGlite adapter only after storage durability is established; verify systemd ownership, default.target links, database-backed readiness and timer behavior.
+3. Restore the newest logical backup into a disposable DB; establish an approved off-host backup and schedule a separate full Muse restart test.
+4. Keep the SQLite archive, commit log and resolve cache separate; define provenance and a narrow allowlist before any data import.
+5. Obtain documented Muse-supported dynamic public ingress or explicit user authorization to move only the backend to an approved durable public host while retaining Vercel.
+6. Align runtime code with current GitHub main using a fresh worktree, tests and controlled release; then verify external Vercel API operations and rollback.
 
-Until the public-ingress and data-recovery gates pass, describe the local service as **ACTIVE** and the public API as **DOWN**. No alternate host, paid service, DNS, account, tunnel, proxy, Phone route, SEO URL or AdSense change is authorized by this infrastructure work.
+Until all gates pass, label the local backend **INACTIVE/UNVERIFIED** and the public API **DOWN (last confirmed HTTP 530)**.
 
 ## Strategic correction — 2026-09-23
 
