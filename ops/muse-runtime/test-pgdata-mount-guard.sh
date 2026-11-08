@@ -39,7 +39,7 @@ run_guard() {
 }
 
 # Current Muse stack: OverlayFS is topmost even though Btrfs exists below it.
-run_guard fail MOCK_FINDMNT_TOP=overlay MOCK_FINDMNT_STACK='overlay\\nbtrfs'
+run_guard fail MOCK_FINDMNT_TOP=overlay MOCK_FINDMNT_STACK='overlay\nbtrfs'
 # A genuinely topmost Btrfs mount is accepted.
 run_guard pass MOCK_FINDMNT_TOP=btrfs MOCK_FINDMNT_STACK=btrfs
 # An unknown mount lookup must fail closed.
