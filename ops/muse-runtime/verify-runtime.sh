@@ -2,6 +2,8 @@
 # Read-only verification of the Muse backend's boot links, systemd ownership and DB.
 set -Eeuo pipefail
 
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
 PGDATA="${AINEEDHELP_PGDATA:-/home/hatch/workspace/aineedhelp-db-runtime/pgdata}"
 SERVICE="${AINEEDHELP_BACKEND_SERVICE:-aineedhelp-backend.service}"
 WANTS=/etc/systemd/system/default.target.wants
@@ -18,7 +20,7 @@ done
 pg_isready -h 127.0.0.1 -p 5432 -t 3 >/dev/null
 active_pgdata="$(setpriv --reuid=postgres --regid=postgres --init-groups psql -X -qAt -U postgres -d postgres -c 'SHOW data_directory')"
 [[ "$active_pgdata" == "$PGDATA" ]] || { echo "FAIL: PostgreSQL data_directory=$active_pgdata"; exit 1; }
-[[ "$(findmnt -n -T "$PGDATA" -o FSTYPE)" == "btrfs" ]] || { echo "FAIL: PGDATA is not on Btrfs"; exit 1; }
+AINEEDHELP_PGDATA="$PGDATA" /usr/bin/bash "$SCRIPT_DIR/check-pgdata-mount.sh"
 
 pid="$(systemctl show -p MainPID --value "$SERVICE")"
 [[ "$pid" =~ ^[1-9][0-9]*$ ]] || { echo "FAIL: backend MainPID is not set"; exit 1; }
