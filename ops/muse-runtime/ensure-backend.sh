@@ -4,6 +4,7 @@ set -Eeuo pipefail
 umask 077
 
 ROOT="${AINEEDHELP_RECOVERY_ROOT:-/home/hatch/workspace/aineedhelp-db-recovery}"
+PGDATA="${AINEEDHELP_PGDATA:-/home/hatch/workspace/aineedhelp-db-runtime/pgdata}"
 SERVICE="${AINEEDHELP_BACKEND_SERVICE:-aineedhelp-backend.service}"
 LOG="${AINEEDHELP_BACKEND_LOG:-$ROOT/backend-ensure.log}"
 HEALTH_URL="http://127.0.0.1:3000/api/health"
@@ -83,6 +84,13 @@ handoff_unmanaged() {
     log "Port 3000 remains occupied after unmanaged backend exit; refusing duplicate start"
     return 1
   fi
+}
+
+# Check the topmost mount before calling the legacy recovery helper. A Btrfs
+# mount stacked beneath OverlayFS must never satisfy the persistent-PGDATA gate.
+AINEEDHELP_PGDATA="$PGDATA" /usr/bin/bash "$ROOT/check-pgdata-mount.sh" || {
+  log "PGDATA topmost mount is not persistent Btrfs; refusing backend recovery"
+  exit 1
 }
 
 # Always verify the actual PGDATA first. Never accept a healthy empty fallback
