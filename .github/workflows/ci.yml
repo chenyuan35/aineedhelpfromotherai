@@ -11,6 +11,7 @@ on:
       - 'Dockerfile'
       - '.github/workflows/ci.yml'
       - 'ops/relay-observer-backup/**'
+      - 'ops/muse-runtime/**'
       - 'scripts/test-relay-observer-backup-transport.sh'
       - 'scripts/health-check.sh'
       - 'scripts/test-health-check.sh'
@@ -25,6 +26,7 @@ on:
       - 'package.json'
       - 'Dockerfile'
       - 'ops/relay-observer-backup/**'
+      - 'ops/muse-runtime/**'
       - 'scripts/test-relay-observer-backup-transport.sh'
       - 'scripts/health-check.sh'
       - 'scripts/test-health-check.sh'
@@ -45,6 +47,9 @@ jobs:
       - run: npm ci || npm install --omit=dev
       - name: PGlite schema, pg adapter, and restart persistence regression
         run: npm run test:pglite
+
+      - name: Muse PGDATA topmost-mount guard regression
+        run: bash ops/muse-runtime/test-pgdata-mount-guard.sh
 
       - name: Relay observer backup transport
         run: bash scripts/test-relay-observer-backup-transport.sh
