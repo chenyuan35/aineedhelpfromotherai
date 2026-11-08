@@ -4,23 +4,35 @@
 
 This is an opt-in PostgreSQL-compatible database embedded in the Muse-hosted Express process. It avoids an OS-level PostgreSQL service whose binaries and data directory live under Muse's disposable `/var` overlay. PGlite stores its database files in the configured Node filesystem directory under `/home/hatch`.
 
-## Current verified state — 2026-11-07
+## Current verified state — 2026-11-08
 
-PR #498 added the opt-in PGlite 0.5.14 adapter at code SHA `06a65c06ae48f7b3865cad306bba4c62cbc3d758`; PR #500's health-readiness fix remains in the deployed code release `b1c406006784a29194c71eb6dd5cb9e12effc71a`. PGlite is still **not installed or selected**. The active Muse runtime currently uses PostgreSQL 16 through the existing `pg.Pool` path (`DB_DRIVER` and `PGLITE_DATA_DIR` are unset; the runtime's `DATABASE_URL` value is private and must not be printed).
+PR #498 added the opt-in PGlite 0.5.14 adapter at code SHA `06a65c06ae48f7b3865cad306bba4c62cbc3d758`; PR #500's health-readiness fix remains in application-code release `b1c406006784a29194c71eb6dd5cb9e12effc71a`. Current GitHub main is `3684d508aeabebe3a9e97b8ee194f996eabb0207` (PR #503 adds Muse runtime supervision files). PGlite has not been selected as the active driver. Do not infer that selecting PGlite would solve persistence: its configured data directory is still under `/home/hatch`, whose current top-level mount is OverlayFS.
 
-The connected Muse `htch-runtime` now has `aineedhelp-backend.service` **active and enabled** under systemd. The service was handed over gracefully from the prior unmanaged Node process. Local `GET /api/health` returns 200 and DB-backed `GET /api/status` returns 200 with `alive: true`. PostgreSQL 16 is active at `/home/hatch/workspace/aineedhelp-db-runtime/pgdata`, and `findmnt` confirms this directory is on persistent Btrfs. `aineedhelp-backend-ensure.timer` is active with five-minute checks; `aineedhelp-postgres-backup.timer` is active daily.
+The 2026-11-08 live Muse check supersedes the 2026-11-07 ACTIVE checkpoint. `aineedhelp-backend.service` is inactive/disabled; `postgresql@16-main.service` is not found; the backend ensure and PostgreSQL backup timers are inactive/disabled; `pg_isready` on 127.0.0.1:5432 returns no response. A single unmanaged root-owned `node server.js` process remains on port 3000: local `GET /api/health` returns 200, but DB-backed `GET /api/status` returns 500 with `alive:false`. This is not a recovered backend. A pre-existing package-recovery process was observed running `apt-get update` for over an hour; do not duplicate or terminate it without identifying its owner.
 
-The six core application tables (`posts`, `reasoning_objects`, `execution_history`, `task_lifecycle`, `agent_registry`, `agent_tokens`) each currently contain **zero rows**. A fresh logical backup was created at `2026-11-07T08:06:12Z`; the disposable restore test passed with `tables=6 app_rows=0`, and the production DB remained unchanged. This proves schema-only local backup/restore on the same Btrfs volume, not business-data recovery or off-host backup. Full Muse VM reboot persistence is not yet tested.
+The six core PostgreSQL table counts were last verified as zero on 2026-11-07. Current live counts cannot be queried while PostgreSQL is unavailable. The 2026-11-07 disposable restore test passed with six tables and zero application rows. The newer `aineedhelp-20261108T032718Z.dump` (26,584 bytes; SHA256 `cd9f42f9ac299f89bc0a18533fb957e64cf6e2c914289ed0d61fef77766cfd49`) passes `pg_restore -l`, but has not been restored in a disposable DB. Its paired roles dump is 799 bytes. Both files are under the same Muse overlay path and are not an off-host or verified durable backup.
 
-The active systemd service still runs from the stale Muse checkout `ac9d8238b3481195421ad8551f7676b87678c01e`, which has dirty files `M data/resolve-cache.json`, `?? backend-keepalive.log`, and `?? keepalive.sh`. Preserve them; do not reset, clean, sync over or overwrite the production worktree. Runtime code alignment must use a fresh worktree and controlled release.
+The protected SQLite archive `/home/hatch/workspace/aineedhelp-db-recovery/2026-11-03-github-recovered.sqlite` still passes `PRAGMA quick_check`; SHA256 remains `554b384d0a2682f8a3d6e2740536ddc77b32778bc6e79d65f298f587f3c64843`. Its 2,398 records classify as 2,084 Phone-canonical records, 22 historical case records, 163 external task seeds, 50 seed tasks and 79 expired tasks. The rebuild script reads repository datasets; this is not recovered private Qwen runtime history. Do not import it wholesale.
 
-External apex `/api/health`, `/api/status` and `/api/diagnostics` currently return HTTP 530 through `api-tunnel.aineedhelpfromotherai.com`. Muse's own `/home/hatch/docs/artifacts.md` says only static artifacts can be published and interactive apps cannot be public. No supported Muse dynamic public ingress is documented. Do not reconnect Cloudflare Tunnel, create a reverse proxy, or change DNS. Local runtime ACTIVE does not mean public API restored.
+The runtime worktree remains stale at `ac9d8238b3481195421ad8551f7676b87678c01e` with dirty `M data/resolve-cache.json`, `?? backend-keepalive.log` and `?? keepalive.sh`. Preserve these files; do not reset, clean, sync over or overwrite the worktree.
 
-The protected SQLite archive at `/home/hatch/workspace/aineedhelp-db-recovery/2026-11-03-github-recovered.sqlite` remains separate from the live PostgreSQL DB. It passed `PRAGMA quick_check` and contains 2,398 file-backed records, but includes historical/task/aggregation seeds and is not a restored private Qwen runtime database. Do not import it into live tables without a reviewed provenance allowlist and a separate rollback backup.
+## Storage durability recheck — 2026-11-08
 
-## Explicit configuration
+`findmnt` shows `/home/hatch` is currently mounted as OverlayFS with `upperdir=/run/hatch/overlay/upper`; `/run` is tmpfs and the overlay mount uses `fsync=volatile`. The PostgreSQL PGDATA, logical backups, SQLite archive, repository worktree and file-backed cache/log paths are all inside `/home/hatch`. The underlying `/dev/mapper/rv` Btrfs volume is visible beneath the overlay, but that does not prove writes to these paths reach the persistent Btrfs layer. `statfs=btrfs` and `df` output alone are not sufficient evidence.
 
-Set these variables in the Muse runtime only:
+The runtime `ensure-postgres-btrfs.sh` currently checks `findmnt -n -T "$TARGET" -o FSTYPE | grep -qx btrfs`; because the mount query can return both the top OverlayFS entry and underlying Btrfs entry, this check can accept the lower entry. The stricter `verify-runtime.sh` exact comparison currently fails with `PGDATA is not on Btrfs`. Treat PostgreSQL, PGlite and file-backed state durability across restart as **unverified** until a dedicated persistent mount or an official Muse persistence guarantee is demonstrated. Do not run the PostgreSQL recovery script or start either DB engine on the current unverified path.
+
+The file-backed commit log is `data/commit-log.jsonl`. The current 399 valid lines are all `resolve_cache/decay` events from `resolve-cache`, with empty payloads; sequence values 1, 316 and 317 each occur twice. The file is Git-ignored and lies under the overlay. No `data/snapshots` directory exists. This log cannot reconstruct the 274-entry cache. The tracked-but-dirty `data/resolve-cache.json` currently contains 274 hints, all with status `blacklisted`; their last hint-update timestamps are 2026-05-26 through 2026-05-27. Preserve it, but do not treat it as active user/task data.
+
+## Public ingress boundary
+
+The last confirmed external apex API result remains HTTP 530 from 2026-11-07. The public homepage remained fetchable on 2026-11-08, but no new external API HTTP status was verified this round. Muse's artifact contract still documents static publishing only and no supported dynamic public ingress. Do not reconnect Cloudflare Tunnel, create a reverse proxy, or change DNS. Local Express liveness does not imply DB readiness or public API availability.
+
+
+
+## Candidate configuration — NOT ACTIVE
+
+Do not apply these variables until the exact data directory is proven to use a durable Muse-supported storage layer. If that gate passes, configure them in the Muse runtime only:
 
 ```dotenv
 DB_DRIVER=pglite
