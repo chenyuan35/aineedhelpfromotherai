@@ -17,7 +17,7 @@ The ensure script verifies both HTTP liveness/readiness and systemd ownership. A
 
 If one exact root-owned node server.js process is found on port 3000 in the known Desktop Commander tool-session cgroup while the service unit is inactive, ensure-backend.sh sends SIGTERM, waits for the PID to exit and for port 3000 to be released, then starts the systemd unit. It never uses SIGKILL and refuses unidentified or multiple processes. Procfs cwd/exe inspection is restricted in this Muse runtime, so the handoff gate uses exact argv, UID, cgroup, port occupancy and successful API health/readiness.
 
-verify-runtime.sh checks the default.target boot links, service cgroup, exact process argv, Btrfs PGDATA and local API readiness.
+check-pgdata-mount.sh checks only the topmost filesystem covering PGDATA. A Btrfs mount stacked underneath OverlayFS does not pass. Both ensure-backend.sh and verify-runtime.sh call this guard before accepting the database path. verify-runtime.sh also checks the default.target boot links, service cgroup, exact process argv and local API readiness.
 
 ## Installed paths
 
@@ -25,6 +25,7 @@ The runtime copies are installed under /home/hatch/workspace/aineedhelp-db-recov
 - ensure-backend.sh
 - promote-express-to-systemd.sh
 - verify-runtime.sh
+- check-pgdata-mount.sh
 - aineedhelp-backend.service
 - aineedhelp-backend-ensure.service
 - aineedhelp-backend-ensure.timer
