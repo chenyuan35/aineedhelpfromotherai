@@ -86,8 +86,8 @@ handoff_unmanaged() {
   fi
 }
 
-# Check the filesystem actually serving PGDATA before calling the legacy
-# recovery helper. Do not infer visibility from findmnt's first mount match.
+# Check the filesystem actually serving PGDATA before calling the
+# versioned recovery helper. Do not infer visibility from stacked findmnt matches.
 AINEEDHELP_PGDATA="$PGDATA" /usr/bin/bash "$ROOT/check-pgdata-mount.sh" || {
   log "PGDATA is not on Btrfs; refusing backend recovery"
   exit 1
