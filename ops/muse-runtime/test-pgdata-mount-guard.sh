@@ -7,21 +7,13 @@ TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 mkdir -p "$TMP/pgdata" "$TMP/bin"
 
-cat > "$TMP/bin/findmnt" <<'MOCK'
+cat > "$TMP/bin/stat" <<'MOCK'
 #!/usr/bin/env bash
 set -Eeuo pipefail
-if [[ "${MOCK_FINDMNT_FAIL:-0}" == "1" ]]; then exit 2; fi
-first_only=0
-for arg in "$@"; do
-  [[ "$arg" == "--first-only" ]] && first_only=1
-done
-if [[ "$first_only" == 1 ]]; then
-  printf '%s\n' "${MOCK_FINDMNT_TOP:-overlay}"
-else
-  printf '%b\n' "${MOCK_FINDMNT_STACK:-overlay\\nbtrfs}"
-fi
+if [[ "${MOCK_STAT_FAIL:-0}" == "1" ]]; then exit 2; fi
+printf '%s\n' "${MOCK_STAT_FSTYPE:-overlay}"
 MOCK
-chmod +x "$TMP/bin/findmnt"
+chmod +x "$TMP/bin/stat"
 
 run_guard() {
   local expected="$1"; shift
@@ -38,13 +30,16 @@ run_guard() {
   printf 'PASS: expected %s (status=%s)\n' "$expected" "$status"
 }
 
-# Current Muse stack: OverlayFS is topmost even though Btrfs exists below it.
-run_guard fail MOCK_FINDMNT_TOP=overlay MOCK_FINDMNT_STACK='overlay\nbtrfs'
-# A genuinely topmost Btrfs mount is accepted.
-run_guard pass MOCK_FINDMNT_TOP=btrfs MOCK_FINDMNT_STACK=btrfs
-# An unknown mount lookup must fail closed.
-run_guard fail MOCK_FINDMNT_FAIL=1
-# A missing PGDATA path must fail before accepting any filesystem result.
+# statfs identifies the visible Btrfs filesystem even when mountinfo contains
+# other stacked entries at the same path.
+run_guard pass MOCK_STAT_FSTYPE=btrfs
+# OverlayFS must fail even when a Btrfs filesystem is stacked beneath it.
+run_guard fail MOCK_STAT_FSTYPE=overlay
+# Any other filesystem type fails closed.
+run_guard fail MOCK_STAT_FSTYPE=ext4
+# A failed filesystem lookup fails closed.
+run_guard fail MOCK_STAT_FAIL=1
+# A missing PGDATA path fails before accepting any filesystem result.
 status=0
 AINEEDHELP_PGDATA="$TMP/missing" PATH="$TMP/bin:$PATH" bash "$HELPER" >/dev/null 2>&1 || status=$?
 [[ "$status" -ne 0 ]] || { echo 'FAIL: missing PGDATA unexpectedly passed' >&2; exit 1; }

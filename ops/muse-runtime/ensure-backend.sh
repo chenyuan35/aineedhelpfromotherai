@@ -86,10 +86,10 @@ handoff_unmanaged() {
   fi
 }
 
-# Check the topmost mount before calling the legacy recovery helper. A Btrfs
-# mount stacked beneath OverlayFS must never satisfy the persistent-PGDATA gate.
+# Check the filesystem actually serving PGDATA before calling the legacy
+# recovery helper. Do not infer visibility from findmnt's first mount match.
 AINEEDHELP_PGDATA="$PGDATA" /usr/bin/bash "$ROOT/check-pgdata-mount.sh" || {
-  log "PGDATA topmost mount is not persistent Btrfs; refusing backend recovery"
+  log "PGDATA is not on Btrfs; refusing backend recovery"
   exit 1
 }
 
