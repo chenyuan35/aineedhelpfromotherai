@@ -28,7 +28,7 @@ The file-backed commit log `data/commit-log.jsonl` now has 400 valid lines, all 
 
 ## Public ingress boundary
 
-On 2026-11-09, the production homepage returned HTTP 200, www returned canonical redirect HTTP 308 and sitemap returned HTTP 200; both apex `/api/health` and `/api/status` returned HTTP 530 with Cloudflare Tunnel Error 1033 for `api-tunnel.aineedhelpfromotherai.com`. Muse's artifact contract still documents static publishing only and no supported dynamic public ingress. Do not reconnect Cloudflare Tunnel, create a reverse proxy, or change DNS. Local Express liveness and database readiness do not imply durable storage or public API availability.
+On 2026-11-09, the production homepage returned HTTP 200, www returned canonical redirect HTTP 308 and sitemap returned HTTP 200; both apex `/api/health` and `/api/status` returned HTTP 530 with Cloudflare Tunnel Error 1033 for `api-tunnel.aineedhelpfromotherai.com`. Vercel `vercel.json` rewrites `/api/health`, `/api/status`, `/api/diagnostics` and `/api/reasoning/relay-risk-v2` to that hostname. A read-only Muse check finds the local API and PostgreSQL listeners active, but no `cloudflared` binary, process or systemd service in the runtime; an external tunnel client elsewhere is not ruled out. Muse's artifact contract still documents static publishing only and no supported dynamic public ingress. Do not reconnect Cloudflare Tunnel, create a reverse proxy, or change DNS. Local Express liveness and database readiness do not imply public API availability.
 
 
 
