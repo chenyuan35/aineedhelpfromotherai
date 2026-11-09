@@ -17,12 +17,15 @@ The ensure script verifies both HTTP liveness/readiness and systemd ownership. A
 
 If one exact root-owned node server.js process is found on port 3000 in the known Desktop Commander tool-session cgroup while the service unit is inactive, ensure-backend.sh sends SIGTERM, waits for the PID to exit and for port 3000 to be released, then starts the systemd unit. It never uses SIGKILL and refuses unidentified or multiple processes. Procfs cwd/exe inspection is restricted in this Muse runtime, so the handoff gate uses exact argv, UID, cgroup, port occupancy and successful API health/readiness.
 
-check-pgdata-mount.sh uses `stat -f -c '%T'` to identify the filesystem actually serving PGDATA. Do not use `findmnt --first-only` as a topmost-mount test: it returns the first match, which may not be the visible filesystem when mount records are stacked. Both ensure-backend.sh and verify-runtime.sh call this guard before accepting the database path. A Btrfs result is not, by itself, proof of VM restart durability. verify-runtime.sh also checks the default.target boot links, service cgroup, exact process argv and local API readiness.
+check-pgdata-mount.sh uses `stat -f -c '%T'` to identify the filesystem actually serving PGDATA. The versioned ensure-postgres-btrfs.sh calls this guard before ACL or PostgreSQL recovery actions. The daily backup service runs the same guard in ExecStartPre, and backup-postgres-btrfs.sh separately verifies that its destination directory is also on Btrfs before writing. It creates owner-only logical DB/role dumps and treats a failed filesystem sync as a failed backup; this is still a local backup, not an off-host recovery copy. Do not use `findmnt --first-only` as a topmost-mount test: it returns the first match, which may not be the visible filesystem when mount records are stacked. Both ensure-backend.sh and verify-runtime.sh call this guard before accepting the database path. A Btrfs result is not, by itself, proof of VM restart durability. verify-runtime.sh also checks the default.target boot links, service cgroup, exact process argv and local API readiness.
 
 ## Installed paths
 
 The runtime copies are installed under /home/hatch/workspace/aineedhelp-db-recovery/:
 - ensure-backend.sh
+- ensure-postgres-btrfs.sh
+- backup-postgres-btrfs.sh
+- grant-postgres-traverse.py
 - promote-express-to-systemd.sh
 - verify-runtime.sh
 - check-pgdata-mount.sh

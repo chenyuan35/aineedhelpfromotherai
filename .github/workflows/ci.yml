@@ -50,6 +50,8 @@ jobs:
 
       - name: Muse PGDATA topmost-mount guard regression
         run: bash ops/muse-runtime/test-pgdata-mount-guard.sh
+      - name: Muse PostgreSQL recovery and backup guard regression
+        run: bash ops/muse-runtime/test-postgres-btrfs-runtime.sh
 
       - name: Relay observer backup transport
         run: bash scripts/test-relay-observer-backup-transport.sh
