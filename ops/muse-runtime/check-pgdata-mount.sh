@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Fail closed unless the topmost mount covering PGDATA is Btrfs.
-# A lower Btrfs mount hidden beneath OverlayFS is not a durable PGDATA path.
+# Fail closed unless statfs reports the filesystem actually serving PGDATA as Btrfs.
+# findmnt --first-only returns the first mount-table match, not necessarily the
+# visible filesystem when multiple mounts are stacked at the same path.
 set -Eeuo pipefail
 
 PGDATA="${AINEEDHELP_PGDATA:-/home/hatch/workspace/aineedhelp-db-runtime/pgdata}"
@@ -9,14 +10,14 @@ if [[ ! -d "$PGDATA" ]]; then
   exit 1
 fi
 
-if ! top_fstype="$(findmnt --noheadings --raw --first-only --target "$PGDATA" --output FSTYPE 2>/dev/null)"; then
-  printf 'FAIL: unable to determine the topmost mount covering PGDATA: %s\n' "$PGDATA" >&2
+if ! actual_fstype="$(stat -f -c '%T' -- "$PGDATA" 2>/dev/null)"; then
+  printf 'FAIL: unable to determine the actual filesystem serving PGDATA: %s\n' "$PGDATA" >&2
   exit 1
 fi
 
-if [[ "$top_fstype" != "btrfs" ]]; then
-  printf 'FAIL: PGDATA topmost filesystem is %s, not persistent Btrfs\n' "${top_fstype:-unknown}" >&2
+if [[ "$actual_fstype" != "btrfs" ]]; then
+  printf 'FAIL: PGDATA filesystem is %s, not Btrfs\n' "${actual_fstype:-unknown}" >&2
   exit 1
 fi
 
-printf 'PASS: PGDATA topmost filesystem is Btrfs (%s)\n' "$PGDATA"
+printf 'PASS: PGDATA filesystem is Btrfs (%s)\n' "$PGDATA"
