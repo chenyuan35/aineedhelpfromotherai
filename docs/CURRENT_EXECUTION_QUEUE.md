@@ -1,10 +1,12 @@
 # Current Execution Queue
 
-Last updated: 2026-11-09
+Last updated: 2026-11-16
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is the short atomic queue.
 
 ## Current decision
+
+**2026-11-16 CURRENT — PUBLIC API SERVED FROM VERCEL SERVERLESS (PR #509 MERGED, PRODUCTION VERIFIED):** Main `1a306ec5086dece5b85320d4591a2106b8962968`. `/api/health`, `/api/status` and `/api/diagnostics` are Vercel serverless functions; live apex returns 200 for all three and `api.aineedhelpfromotherai.com/api/health` is 200. The tunnel rewrites for those endpoints are removed. `/api/reasoning/relay-risk-v2` still proxies to the Cloudflare tunnel (needs Postgres) and remains 530; the tunnel cannot connect from the current host, so it needs a host with direct egress. Phone surface unchanged: homepage, tool, summaries (160 routes), sitemap all 200.
 
 **2026-11-09 CURRENT — MUSE LOCAL BACKEND ACTIVE; PGDATA VISIBLE FILESYSTEM BTRFS; RESTART DURABILITY AND PUBLIC API UNVERIFIED.** Current main is `3aec1e4e0f52240250982187abc1d4df799c4ec2` after docs-only PR #506; production Vercel deployment `dpl_9viVGWsXz6vESgch2bUCATuAcfWP` is READY on application/runtime SHA `947f096e8d86314713eed9d3c57dcb449eb1f1d8` (PR #506 changed documentation only). PR #505's `findmnt --first-only` guard is merged but not installed; its first-match assumption is invalid. A corrected statfs guard is prepared on branch `fix/muse-pgdata-visible-fs-check-20261109`. Latest application code remains PR #500 / `b1c406006784a29194c71eb6dd5cb9e12effc71a`.
 
