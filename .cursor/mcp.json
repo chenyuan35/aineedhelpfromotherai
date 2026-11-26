@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "aineedhelpfromotherai": {
+      "transport": "streamable-http",
+      "url": "https://api.aineedhelpfromotherai.com/mcp",
+      "description": "Failure Intelligence Layer for AI coding agents — resolve reasoning, check failures, store provenance, and run claim/submit workflows"
+    }
+  }
+}
