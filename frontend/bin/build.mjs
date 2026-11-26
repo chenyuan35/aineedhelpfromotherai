@@ -61,7 +61,7 @@ if (!existsSync(join(siteDir, 'node_modules', 'astro'))) {
 }
 execSync('npm run build', { cwd: siteDir, stdio:'inherit', env: cleanEnv });
 
-for (const f of ['index.html','404.html','site.css','robots.txt','sitemap.xml','ads.txt','favicon.svg','llms.txt','ai.txt','tiktok-developers-site-verification.txt','tiktokPsmqCGL7xkhikvs8Stb3TpPWKrvG5RSF.txt','tiktok3DuVMC1KTX8prUrm2XfKgT0y8V7yvO6a.txt']) {
+for (const f of ['index.html','404.html','site.css','robots.txt','sitemap.xml','ads.txt','favicon.svg','og-card.svg','llms.txt','ai.txt','tiktok-developers-site-verification.txt','tiktokPsmqCGL7xkhikvs8Stb3TpPWKrvG5RSF.txt','tiktok3DuVMC1KTX8prUrm2XfKgT0y8V7yvO6a.txt']) {
   const src=join(root,f); if(existsSync(src)) cpSync(src,join(dist,f));
 }
 for (const dir of ['tools','tiktok-publish','about','contact','privacy','terms','media']) {
