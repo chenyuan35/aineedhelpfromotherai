@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Failure Memory for AI Coding Agents</title>
+  <desc id="desc">A social preview card for reusable AI debugging memory.</desc>
+  <rect width="1200" height="630" fill="#fbfbfa"/>
+  <rect x="72" y="72" width="1056" height="486" rx="24" fill="#ffffff" stroke="#dfe6e2" stroke-width="2"/>
+  <circle cx="132" cy="132" r="10" fill="#176c5f"/>
+  <circle cx="164" cy="132" r="10" fill="#b95b31"/>
+  <circle cx="196" cy="132" r="10" fill="#2b5f91"/>
+  <text x="92" y="218" fill="#176c5f" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">FAILURE MEMORY</text>
+  <text x="92" y="306" fill="#151716" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="800">Stop repeated</text>
+  <text x="92" y="382" fill="#151716" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="800">AI debugging loops.</text>
+  <text x="96" y="452" fill="#626b68" font-family="Arial, Helvetica, sans-serif" font-size="30">Search known failures before another coding agent retries.</text>
+  <g transform="translate(782 166)">
+    <rect width="274" height="298" rx="18" fill="#111514"/>
+    <text x="28" y="62" fill="#91a09a" font-family="Consolas, monospace" font-size="22">$ resolve_reasoning()</text>
+    <text x="28" y="112" fill="#92dec9" font-family="Consolas, monospace" font-size="22">hit FC-010</text>
+    <text x="28" y="162" fill="#91a09a" font-family="Consolas, monospace" font-size="22">$ check_failures()</text>
+    <text x="28" y="212" fill="#f1b892" font-family="Consolas, monospace" font-size="22">risk: retry spiral</text>
+    <text x="28" y="262" fill="#92dec9" font-family="Consolas, monospace" font-size="22">verify first</text>
+  </g>
+  <text x="92" y="524" fill="#8b9692" font-family="Arial, Helvetica, sans-serif" font-size="24">aineedhelpfromotherai.com</text>
+</svg>
